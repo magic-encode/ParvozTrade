@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parvoz Trade</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}" />
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font.awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/venobox.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">
+    <!-- Style CSS -->  
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!-- Minify Version -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        
+        {% include 'navbar.html' %}
+
+        <!-- Empty Cart area start -->
+        <div class="section-404 section" data-bg-image="assets/images/404/bg-404.webp">
+            <div class="container">
+                <div class="content-404">
+                    <h1 class="title">Oops!</h1>
+                    <h2 class="sub-title">Page not found!</h2>
+                    <p>You could either go back or go to homepage</p>
+                    <div class="buttons">
+                        <a class="btn btn-primary btn-outline-hover-dark" href="index.html">Go back</a>
+                        <a class="btn btn-dark btn-outline-hover-dark" href="index.html">Homepage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Empty Cart area end -->
+
+        {% include 'footer.html' %}
+        
+    </div>
+
+    {% include 'jscript.html' %}
+    
+</body>
+
+</html>

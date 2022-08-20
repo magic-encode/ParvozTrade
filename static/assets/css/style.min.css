@@ -1401,7 +1401,7 @@ body.offcanvas-open {
     right: 15px
 }
 
-.offcanvas.offcanvas-mobile-menu {
+.offcanvas. {
     right: auto;
     left: 0;
     padding: 0;
@@ -1412,7 +1412,7 @@ body.offcanvas-open {
 }
 
 @media only screen and (max-width:479px) {
-    .offcanvas.offcanvas-mobile-menu {
+    .offcanvas. {
         width: 300px
     }
 }
@@ -1431,7 +1431,7 @@ body.offcanvas-open {
     border-radius: 50%
 }
 
-.offcanvas.offcanvas-mobile-menu .offcanvas-close::after {
+.offcanvas. .offcanvas-close::after {
     position: absolute;
     top: calc(50% - 1px);
     left: 50%;
@@ -1446,7 +1446,7 @@ body.offcanvas-open {
     background-color: #fff
 }
 
-.offcanvas.offcanvas-mobile-menu .offcanvas-close::before {
+.offcanvas. .offcanvas-close::before {
     position: absolute;
     top: calc(50% - 1px);
     left: 50%;
@@ -1461,7 +1461,7 @@ body.offcanvas-open {
     background-color: #fff
 }
 
-.offcanvas.offcanvas-mobile-menu .offcanvas-close:hover:before {
+.offcanvas. .offcanvas-close:hover:before {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg)
 }
@@ -1512,12 +1512,12 @@ body.offcanvas-open {
     transform: rotate(0) scale(.75)
 }
 
-.offcanvas.offcanvas-mobile-menu.offcanvas-open {
+.offcanvas..offcanvas-open {
     -webkit-transform: translateX(0);
     transform: translateX(0)
 }
 
-.offcanvas.offcanvas-mobile-menu.offcanvas-open .offcanvas-close {
+.offcanvas..offcanvas-open .offcanvas-close {
     left: 80%
 }
 

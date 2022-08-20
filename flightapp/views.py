@@ -20,3 +20,16 @@ def blogView(request):
 
 def contactView(request):
     return render(request, 'contact/contact.html')
+
+
+
+
+def profileView(request):
+    return render(request, 'pages/myaccount.html')
+
+
+def loginView(request):
+    return render(request, 'pages/login.html')
+
+def cartView(request):
+    return render(request, 'pages/cart.html')
