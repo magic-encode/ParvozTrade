@@ -1,0 +1,101 @@
+{% load static %}
+
+
+<!-- breadcrumb-area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="breadcrumb-title">Contact Us</h2>
+                <!-- breadcrumb-list start -->
+                <ul class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Contact</li>
+                </ul>
+                <!-- breadcrumb-list end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area end -->
+<!-- Contact Area Start -->
+<div class="contact-area">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-form">
+                        <div class="contact-title mb-30">
+                            <h2 class="title">Send A Quest</h2>
+                        </div>
+                        <form class="contact-form-style" id="contact-form" action="https://whizthemes.com/nazmul/php/mail.php" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input name="name" placeholder="Name*" type="text" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <input name="email" placeholder="Email*" type="email" />
+                                </div>
+                                <div class="col-lg-12">
+                                    <input name="subject" placeholder="Subject*" type="text" />
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <textarea name="message" placeholder="Your Message*"></textarea>
+                                    <button class="btn btn-primary" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                        <p class="form-messege"></p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="contact-info">
+                        <div class="single-contact">
+                            <div class="icon-box">
+                                <img src="{% static 'assets/images/icons/contact-1.png' %}" alt="">
+                            </div>
+                            <div class="info-box">
+                                <h5 class="title">Address</h5>
+                                <p>Your address goes here. <br>
+                                123 Your Location</p>
+                            </div>
+                        </div>
+                        <div class="single-contact">
+                            <div class="icon-box">
+                                <img src="{% static 'assets/images/icons/contact-2.png' %}" alt="">
+                            </div>
+                            <div class="info-box">
+                                <h5 class="title">Phone No</h5>
+                                <p><a href="tel:0123456789">+012 345 67 89</a></p>
+                                <p><a href="tel:0123456789">+012 345 67 89</a></p>
+                            </div>
+                        </div>
+                        <div class="single-contact m-0">
+                            <div class="icon-box">
+                                <img src="{% static 'assets/images/icons/contact-3.png' %}" alt="">
+                            </div>
+                            <div class="info-box">
+                                <h5 class="title">Email/Web</h5>
+                                <p><a href="mailto:demo@example.com">demo@example.com</a></p>
+                                <p><a href="https://www.example.com">www.example.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Area End -->
+<!-- map Area Start -->
+<div class="contact-map">
+    <div id="mapid">
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.492993761128!2d71.85178754347774!3d40.90060298537127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x439024698e718c38!2zNDDCsDU0JzAyLjIiTiA3McKwNTEnMTMuMSJF!5e1!3m2!1suz!2s!4v1661001484395!5m2!1suz!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="https://sites.google.com/view/maps-api-v2/mapv2"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- map Area End -->
