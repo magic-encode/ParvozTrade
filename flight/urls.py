@@ -7,8 +7,11 @@ from django.urls import path, re_path
 from django.views.static import serve
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
-    path('', include('flightapp.urls'))
+    path('', include('flightapp.urls')),
+    path('user/', include('users.urls')),
+    
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

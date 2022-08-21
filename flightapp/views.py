@@ -3,7 +3,6 @@ from django.shortcuts import render
 from flightapp.models.catagory import Banner
 
 
-
 def homeView(request):
     catagory = Banner.objects.all()
     context = {'catagory': catagory}
@@ -34,13 +33,5 @@ def contactView(request):
     return render(request, 'contact/contact.html')
 
 
-def profileView(request):
-    return render(request, 'pages/myaccount.html')
 
 
-def loginView(request):
-    return render(request, 'pages/login.html')
-
-
-def cartView(request):
-    return render(request, 'pages/cart.html')

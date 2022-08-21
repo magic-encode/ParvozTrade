@@ -1,4 +1,4 @@
-import os
+import  os
 
 from pathlib import Path
 from environs import Env
@@ -17,6 +17,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -24,15 +25,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'flightapp',
+    
+    'users', 
+    'flightapp', 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
     'whitenoise.middleware.WhiteNoiseMiddleware',
-
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -47,7 +47,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR / 'templates')
+           os.path.join(BASE_DIR / 'templates')     
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -62,6 +62,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'flight.wsgi.application'
+
+
 
 
 DATABASES = {
@@ -100,11 +102,14 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = str(BASE_DIR.joinpath('static'))
-STATICFILES_DIRS = []
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parvoz Trade</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}" />
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font.awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/venobox.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">
+    <!-- Style CSS -->  
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!-- Minify Version -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        
+        {% include 'navbar.html' %}
+
+        <!-- Thank You area start -->
+        <div class="thank-you-area">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-8">
+                        <div class="inner_complated">
+                            <div class="img_cmpted"><img src="assets/images/icons/cmpted_logo.png" alt=""></div>
+                            <p class="dsc_cmpted">Thank you for ordering in our store. You will receive a confirmation
+                                email shortly.</p>
+                            <div class="btn_cmpted">
+                                <a href="shop-4-column.html" class="shop-btn" title="Go To Shop">Continue Shopping </a>
+                            </div>
+                        </div>
+                        <div class="main_quickorder text-align-center">
+                            <h3 class="title">Call Us for Quick Order</h3>
+                            <div class="cntct typewriter-effect"><span class="call_desk"><a href="tel:+01234567890" id="typewriter_num">01 234 567 890</a></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Thank You area end -->
+
+        {% include 'footer.html' %}
+        
+    </div>
+
+    {% include 'jscript.html' %}
+    
+</body>
+
+</html>

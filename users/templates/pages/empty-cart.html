@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parvoz Trade</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}" />
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font.awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/venobox.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">
+    <!-- Style CSS -->  
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!-- Minify Version -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        
+        {% include 'navbar.html' %}
+
+        <!-- breadcrumb-area start -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 text-center">
+                        <h2 class="breadcrumb-title">Empty Cart</h2>
+                        <!-- breadcrumb-list start -->
+                        <ul class="breadcrumb-list">
+                            <li class="breadcrumb-item"><a href="{% {% url 'home' %} %}">Home</a></li>
+                            <li class="breadcrumb-item active">Empty Cart</li>
+                        </ul>
+                        <!-- breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcrumb-area end -->
+        <!-- Empty Cart area start -->
+        <div class="empty-cart-area pb-100px pt-100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="cart-heading">
+                            <h2>Your cart item</h2>
+                        </div>
+                        <div class="empty-text-contant text-center">
+                            <i class="pe-7s-shopbag"></i>
+                            <h3>There are no more items in your cart</h3>
+                            <a class="empty-cart-btn" href="shop-4-column.html">
+                                <i class="fa fa-arrow-left"> </i> Continue shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Empty Cart area end -->
+
+        {% include 'footer.html' %}
+        
+    </div>
+
+    {% include 'jscript.html' %}
+    
+</body>
+
+</html>
+
+
+
+
+
+
