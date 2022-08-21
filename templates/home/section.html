@@ -161,35 +161,39 @@
 <div class="banner-area style-one pt-100px pb-100px">
     <div class="container">
         <div class="row">
+            {% for item in catagory %}
             <div class="col-md-6">
                 <div class="single-banner nth-child-1">
-                    <img src="{% static 'assets/images/banner/3.webp' %}" alt="">
+                    <img src="{{item.image}}" alt="">
                     <div class="banner-content nth-child-1">
-                        <h3 class="title">Smart Watch For <br>
+                        <h3 class="title">{{item.name}}<br>
                         Your Hand</h3>
-                        <span class="category">From $29.00</span>
+                        <span class="category">{{item.price}} so'm</span>
                         <a href="shop-left-sidebar.html" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
+               
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="single-banner nth-child-2 mb-30px mb-lm-30px mt-lm-30px ">
-                    <img src="{% static 'assets/images/banner/4.webp' %}" alt="">
+
+                    <img src="{{item.image}}" alt="">
                     <div class="banner-content nth-child-2">
-                        <h3 class="title">Headphones</h3>
-                        <span class="category">From $95.00</span>
+                        <h3 class="title">{{item.name}}</h3>
+                        <span class="category">{{item.price}} so'm</span>
                         <a href="shop-left-sidebar.html" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="single-banner nth-child-2">
-                    <img src="{% static 'assets/images/banner/5.webp' %}" alt="">
+                    <img src="{{item.image}}" alt="">
                     <div class="banner-content nth-child-3">
-                        <h3 class="title">Smartphone</h3>
-                        <span class="category">From $69.00</span>
+                        <h3 class="title">{{item.name}}</h3>
+                        <span class="category">{{item.price}} so'm</span>
                         <a href="shop-left-sidebar.html" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
+          {% endfor %}
         </div>
     </div>
 </div>

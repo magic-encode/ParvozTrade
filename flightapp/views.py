@@ -1,8 +1,13 @@
+from multiprocessing import context
 from django.shortcuts import render
+from flightapp.models.catagory import Banner
+
 
 
 def homeView(request):
-    return render(request, 'home/index.html')
+    catagory = Banner.objects.all()
+    context = {'catagory': catagory}
+    return render(request, 'home/index.html', context)
 
 
 def aboutView(request):
