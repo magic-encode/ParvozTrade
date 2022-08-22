@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parvoz Trade</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}" />
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font.awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/venobox.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">
+    <!-- Style CSS -->  
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!-- Minify Version -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        
+        {% include 'navbar.html' %}
+
+        <!-- breadcrumb-area start -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 text-center">
+                        <h2 class="breadcrumb-title">Compare</h2>
+                        <!-- breadcrumb-list start -->
+                        <ul class="breadcrumb-list">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Compare</li>
+                        </ul>
+                        <!-- breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcrumb-area end -->
+        <!-- Compare Area Start -->
+        <div class="compare-area pt-100px pb-100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="compare.html#">
+                            <!-- Compare Table -->
+                            <div class="compare-table table-responsive">
+                                <table class="table mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="first-column">Product</td>
+                                            <td class="product-image-title">
+                                                <a href="compare.html#" class="image"><img class="img-responsive" src="assets/images/product-image/1.webp" alt="Compare Product" /></a>
+                                                <a href="compare.html#" class="category">Device</a>
+                                                <a href="compare.html#" class="title">Modern Smart Phone</a>
+                                            </td>
+                                            <td class="product-image-title">
+                                                <a href="compare.html#" class="image"><img class="img-responsive" src="assets/images/product-image/2.webp" alt="Compare Product" /></a>
+                                                <a href="compare.html#" class="category">Accessories</a>
+                                                <a href="compare.html#" class="title">Bluetooth Headphone</a>
+                                            </td>
+                                            <td class="product-image-title">
+                                                <a href="compare.html#" class="image"><img class="img-responsive" src="assets/images/product-image/3.webp" alt="Compare Product" /></a>
+                                                <a href="compare.html#" class="category">Smart</a>
+                                                <a href="compare.html#" class="title">Smart Music Box</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Description</td>
+                                            <td class="pro-desc">
+                                                <p>Lorem ipsum dolor sit amet, consect adipisicing elit, sed do eiusmod tempor incidi ut labore
+                                                    et dolore magna aliqua.</p>
+                                            </td>
+                                            <td class="pro-desc">
+                                                <p>Lorem ipsum dolor sit amet, consect adipisicing elit, sed do eiusmod tempor incidi ut labore
+                                                    et dolore magna aliqua.</p>
+                                            </td>
+                                            <td class="pro-desc">
+                                                <p>Lorem ipsum dolor sit amet, consect adipisicing elit, sed do eiusmod tempor incidi ut labore
+                                                    et dolore magna aliqua. </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Price</td>
+                                            <td class="pro-price">$295</td>
+                                            <td class="pro-price">$275</td>
+                                            <td class="pro-price">$395</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Color</td>
+                                            <td class="pro-color">Black</td>
+                                            <td class="pro-color">Black</td>
+                                            <td class="pro-color">Black</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Stock</td>
+                                            <td class="pro-stock">In Stock</td>
+                                            <td class="pro-stock">In Stock</td>
+                                            <td class="pro-stock">In Stock</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Add to cart</td>
+                                            <td class="pro-addtocart">
+                                                <a href="compare.html#" class="add-to-cart" tabindex="0"><span>ADD TO CART</span></a>
+                                            </td>
+                                            <td class="pro-addtocart">
+                                                <a href="compare.html#" class="add-to-cart" tabindex="0"><span>ADD TO CART</span></a>
+                                            </td>
+                                            <td class="pro-addtocart">
+                                                <a href="compare.html#" class="add-to-cart" tabindex="0"><span>ADD TO CART</span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Delete</td>
+                                            <td class="pro-remove">
+                                                <button><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                            <td class="pro-remove">
+                                                <button><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                            <td class="pro-remove">
+                                                <button><i class="fa fa-trash-o"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first-column">Rating</td>
+                                            <td class="pro-ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </td>
+                                            <td class="pro-ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </td>
+                                            <td class="pro-ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Compare Area End -->
+
+        {% include 'footer.html' %}
+        
+    </div>
+
+    {% include 'jscript.html' %}
+    
+</body>
+
+</html>
+

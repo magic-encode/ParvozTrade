@@ -1,6 +1,7 @@
 from django.contrib import admin
-from flightapp.models.catagory import Banner
+from flightapp.models.products import Products
+from flightapp.models.catagory import Categories
 
 
-
-admin.site.register(Banner)
+admin.site.register(Categories)
+admin.site.register(Products)

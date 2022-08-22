@@ -15,8 +15,9 @@
                 <div class="col d-none d-lg-block">
                     <div class="top-nav">
                         <ul>
-                            <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
-                            <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> demo@example.com</a></li>
+                            <li><a href="{% url 'faq' %}"><i class="fa fa-question"></i> Savollar </a></li>
+                            <li><a href="tel:+998940593733"><i class="fa fa-phone"></i> +998940593733</a></li>
+                            <li><a href="{% url 'contact' %}"><i class="fa fa-envelope-o"></i> player2020uz@gmail.com</a></li>
                             <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Account</a></li>
                         </ul>
                     </div>
@@ -232,6 +233,7 @@
     <button class="offcanvas-close"></button>
     <div class="user-panel">
         <ul>
+            <li><a href="{% url 'faq' %}"><i class="fa fa-phone"></i> +012 3456 789</a></li>
             <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
             <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> demo@example.com</a></li>
             <li><a href="my-account.html"><i class="fa fa-user"></i> Account</a></li>
@@ -279,4 +281,5 @@
         </div>
     </div>
 </div>
-<!-- OffCanvas Menu End -->->
+<!-- OffCanvas Menu End -->
+<h1></h1>

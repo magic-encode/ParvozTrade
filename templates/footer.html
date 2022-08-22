@@ -60,11 +60,11 @@
                             <div class="footer-links">
                                 <div class="footer-row">
                                     <ul class="align-items-center">
-                                        <li class="li"><a class="single-link" href="my-account.html">My Account</a></li>
-                                        <li class="li"><a class="single-link" href="contact.html">Contact</a></li>
-                                        <li class="li"><a class="single-link" href="cart.html">Shopping cart</a></li>
-                                        <li class="li"><a class="single-link" href="shop-left-sidebar.html">Shop</a></li>
-                                        <li class="li"><a class="single-link" href="login.html">Services Login</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'profile' %}">My Account</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'contact' %}">Contact</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'cart' %}">Shopping cart</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'shop' %}">Shop</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'login' %}">Services Login</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                 <div class="line-shape-top line-height-1">
                     <div class="row flex-md-row-reverse align-items-center">
                         <div class="col-md-6 text-center text-md-end">
-                            <div class="payment-mth"><a href="index.html#"><img class="img img-fluid" src="{% static 'assets/images/icons/payment.png' %}" alt="payment-image"></a></div>
+                            <div class="payment-mth"><a href="#"><img class="img img-fluid" src="{% static 'assets/images/icons/payment.png' %}" alt="payment-image"></a></div>
                         </div>
                         <div class="col-md-6 text-center text-md-start">
                             <p class="copy-text"> © 2021 <strong>Hmart</strong> Made With <i class="fa fa-heart"
