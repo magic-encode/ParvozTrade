@@ -1,3 +1,4 @@
+from sre_parse import CATEGORIES
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
@@ -15,12 +16,19 @@ class Products(models.Model):
         ('sale', 'SALE'),
     )
     
+    CATEGORIES = (
+        ('eng_kop_sotilganlar', 'ENG_KOP_SOTILADIGAN'),
+        ('kun_takliflari', 'KUN_TAKLIFLARI'),
+        
+    )
+    
     name = models.CharField(max_length=255, verbose_name="mahsulotning nomi")
     slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
     description = models.TextField(null=True, blank=True,verbose_name="mahsulot haqida qisqacha")
-    price = models.FloatField(verbose_name="mahsulotning narxi")
-    discount = models.PositiveIntegerField(
-        verbose_name="Chegirma", default=0, blank=True)
+    price_old = models.CharField(max_length=100, verbose_name="mahsulotning eski narxi", null=False, blank=True)
+    price_new = models.FloatField(verbose_name="mahsulotning yangi narxi")
+    discount = models.CharField(max_length=100,
+        verbose_name="Chegirma", blank=True, null=True)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name="category")
     image = models.ImageField(
         verbose_name='450x200', blank=True, default="banner_1.jpg")
@@ -36,5 +44,24 @@ class Products(models.Model):
 
         super().save(*args, **kwargs)
 
+    def __str__(self) -> str:
+        return self.name
+    
+
+class Banner(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField()
+    price = models.FloatField()
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    
+class BannerLeft(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField()
+    price = models.FloatField()
+    
     def __str__(self) -> str:
         return self.name

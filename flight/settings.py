@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     
     'users', 
     'flightapp', 
+    'django_filters',
 ]
 
 MIDDLEWARE = [

@@ -163,7 +163,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="single-banner nth-child-1">
-                    {% for left in bannerleft %}
+                    {% for left in banners %}
                     <img src="{{left.image.url}}" alt="">
                     <div class="banner-content nth-child-1">
                         <h3 class="title">{{left.name}}</h3> <br>
@@ -175,7 +175,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                {% for right in bannerright %}
+                {% for right in bannerleft %}
                 <div class="single-banner nth-child-2 mb-30px mb-lm-30px mt-lm-30px ">
                     <img src="{{right.image.url}}" alt="">
                     <div class="banner-content nth-child-2">
@@ -227,21 +227,21 @@
                                 <div class="product">
                                     <span class="badges">
                                         <span class="new">{{product.status}}</span>
-                                        <span class="sale">{{offer.discount}}</span>
+                                        <span class="sale">-{{product.discount}}%</span>
                                     </span>
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="{{offer.image.url}}" alt="Product" />
-                                            <img class="hover-image" src="{{offer.image.url}}" alt="Product" />
+                                            <img src="{{product.image.url}}" alt="Product" />
+                                            <img class="hover-image" src="{{product.image.url}}" alt="Product" />
                                         </a>
                                     </div>
                                     <div class="content">
                                         
-                                        <h5 class="title"><a href="single-product.html">{{offer.name}}
+                                        <h5 class="title"><a href="single-product.html">{{product.name}}
                                             </a>
                                         </h5>
                                         <span class="price">
-                                            <span class="new"><del>${{offer.price_old}}</del> - <b>${{offer.price_new}}</b></span>
+                                            <span class="new"><del>${{product.price_old}}</del> - <b>${{product.price_new}}</b></span>
                                         </span>
                                     </div>
                                     <div class="actions">
