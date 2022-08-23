@@ -14,15 +14,16 @@
         </div>
         <div class="row">
             <div class="col-xl-6 col-lg-6 mb-md-35px mb-lm-35px">
+                {% for device in devices %}
                 <div class="single-feature-content">
                     <div class="feature-image">
-                        <img src="{% static 'assets/images/feature-image/1.webp' %}" alt="">
+                        <img src="{{device.image.url}}" alt="">
                     </div>
                     <div class="top-content">
-                        <h4 class="title"><a href="single-product.html">Bluetooth Headphone </a></h4>
+                        <h4 class="title"><a href="single-product.html">{{device.name}} </a></h4>
                         <span class="price">
-                    <span class="old"><del>$48.50</del></span>
-                        <span class="new">$38.50</span>
+                    <span class="old"><del>${{device.price_old}}</del> - </span>
+                        <span class="new">${{device.price_new}}</span>
                         </span>
                     </div>
                     <div class="bottom-content">
@@ -33,11 +34,13 @@
                             Now </a>
                     </div>
                 </div>
+                {% endfor %}
             </div>
             <div class="col-xl-6 col-lg-6">
+                {% for item in features %}
                 <div class="feature-right-content">
                     <div class="image-side">
-                        <img src="{% static 'assets/images/feature-image/2.webp' %}" alt=""> 
+                        <img src="{{item.image.url}}" alt=""> 
                         <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
                             class="pe-7s-shopbag"></i></button>
                     </div>
@@ -47,52 +50,23 @@
                             <div data-countdown="2021/09/15"></div>
                         </div>
                         <div class="prize-content">
-                            <h5 class="title"><a href="single-product.html">Ladies Smart Watch</a></h5>
+                            <h5 class="title"><a href="single-product.html">{{item.name}}</a></h5>
                             <span class="price">
-                    <span class="old">$48.50</span>
-                            <span class="new">$38.50</span>
+                    <span class="old">${{item.price_old}}</span>
+                            <span class="new">${{item.price_new}}</span>
                             </span>
                         </div>
                         <div class="product-feature">
                             <ul>
-                                <li>Predecessor : <span>None.</span></li>
-                                <li>Support Type : <span>Neutral.</span></li>
-                                <li>Cushioning : <span>High Energizing.</span></li>
-                                <li>Total Weight : <span> 300gm</span></li>
+                                <li>Predecessor : <span>{{item.predecessor}}</span></li>
+                                <li>Support Type : <span>{{item.supporttype}}</span></li>
+                                <li>Cushioning : <span>{{item.cushioning}}</span></li>
+                                <li>Total Weight : <span>{{item.totalweight}} </span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <div class="feature-right-content mt-30px">
-                    <div class="image-side">
-                        <img src="{% static 'assets/images/feature-image/3.webp' %}" alt="">
-                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                            class="pe-7s-shopbag"></i></button>
-                    </div>
-                    <div class="content-side">
-                        <div class="deal-timing">
-                            <span>End In:</span>
-                            <div data-countdown="2021/09/15"></div>
-                        </div>
-                        <div class="prize-content">
-                            <h5 class="title"><a href="single-product.html">Ladies Smart Watch</a></h5>
-                            <span class="price">
-                    <span class="old">$48.50</span>
-                            <span class="new">$38.50</span>
-                            </span>
-                        </div>
-                        <div class="product-feature">
-                            <ul>
-                                <li>Predecessor : <span>None.</span></li>
-                                <li>Support Type : <span>Neutral.</span></li>
-                                <li>Cushioning : <span>High Energizing.</span></li>
-                                <li>Total Weight : <span> 300gm</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>

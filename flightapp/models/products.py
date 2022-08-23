@@ -62,3 +62,27 @@ class BannerLefts(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+
+class FeatureRights(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField()
+    price_old = models.FloatField(verbose_name="mahsulotning eski narxi")
+    price_new = models.FloatField(verbose_name="mahsulotning yangi narxi")
+    
+    predecessor = models.CharField(max_length=255, default=None)
+    supporttype = models.CharField(max_length=255, default=None)
+    cushioning = models.CharField(max_length=255, default=None)
+    totalweight = models.CharField(max_length=255, default=None)
+    
+    def __str__(self):
+        return self.name
+    
+    
+class Brand(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField()
+    description = models.CharField(max_length=255, null=True, blank=True)    
+    
+    
