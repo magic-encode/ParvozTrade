@@ -54,6 +54,7 @@
                 <div class="row">
                     <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                         <div class="login-register-wrapper">
+
                             <div class="login-register-tab-list nav">
                                 <a class="active" data-bs-toggle="tab" href="login.html#lg1">
                                     <h4>login</h4>
@@ -62,18 +63,19 @@
                                     <h4>register</h4>
                                 </a>
                             </div>
+
                             <div class="tab-content">
+                                {% comment %} login inlines {% endcomment %}
                                 <div id="lg1" class="tab-pane active">
                                     <div class="login-form-container">
                                         <div class="login-register-form">
-                                            <form action="login.html#" method="post">
+                                            <form action="{% url 'login' %}" method="POST">
+                                                {% csrf_token %}
                                                 <input type="text" name="user-name" placeholder="Username" />
                                                 <input type="password" name="user-password" placeholder="Password" />
                                                 <div class="button-box">
                                                     <div class="login-toggle-btn">
-                                                        <input type="checkbox" />
-                                                        <a class="flote-none" href="javascript:void(0)">Remember me</a>
-                                                        <a href="login.html#">Forgot Password?</a>
+                                                        <a href="{% url 'reset_password' %}">Forgot Password?</a>
                                                     </div>
                                                     <button type="submit"><span>Login</span></button>
                                                 </div>
@@ -81,10 +83,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% comment %} registers inline  {% endcomment %}
                                 <div id="lg2" class="tab-pane">
                                     <div class="login-form-container">
                                         <div class="login-register-form">
-                                            <form action="login.html#" method="post">
+                                            <form action="{% url 'login' %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="text" name="first-name" placeholder="FirstName" />
                                                 <input type="text" name="user-name" placeholder="Username" />
                                                 <input type="password" name="user-password" placeholder="Password" />
                                                 <input name="user-email" placeholder="Email" type="email" />

@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 
-from flightapp.models.catagory import Categories
+from flightapp.models.category import Categories
 
 
 User = get_user_model()
@@ -81,8 +81,5 @@ class FeatureRights(models.Model):
     
     
 class Brand(models.Model):
-    name = models.CharField(max_length=255)
     image = models.ImageField()
-    description = models.CharField(max_length=255, null=True, blank=True)    
-    
     

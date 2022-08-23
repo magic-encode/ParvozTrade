@@ -8,9 +8,13 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col">
+                    
                     <div class="welcome-text">
+                       
                         <p>World Wide Completely Free Returns and Shipping</p>
+                    
                     </div>
+                    
                 </div>
                 <div class="col d-none d-lg-block">
                     <div class="top-nav">
@@ -18,7 +22,10 @@
                             <li><a href="{% url 'faq' %}"><i class="fa fa-question"></i> Savollar </a></li>
                             <li><a href="tel:+998940593733"><i class="fa fa-phone"></i> +998940593733</a></li>
                             <li><a href="{% url 'contact' %}"><i class="fa fa-envelope-o"></i> player2020uz@gmail.com</a></li>
+                            {% if request.user.is_authenticated %}
                             <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Account</a></li>
+                            
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

@@ -1,24 +1,24 @@
-# from django.db.models import Q
-# from django.db.models import Sum
+from django.db.models import Q
+from django.db.models import Sum
 # # from flightapp.libs.telegram import telebot
 
-# from flightapp.models.cart import Cart
-# from flightapp.models.products import Products
-# from flightapp.models.catagory import Categories
-# from flightapp.models.customer import CustomerModel
-# from flightapp.models.order_history import OrderHistory
+from flightapp.models.cart import Cart
+from flightapp.models.products import Products
+from flightapp.models.category import Categories
+from flightapp.models.customer import CustomerModel
+from flightapp.models.order_history import OrderHistory
 
 
-# def getCategoryid(mystr: str) -> int:
-#     """
-#         This function returns the category identifier id
-#     """
-#     id = ""
-#     for item in mystr:
-#         if item.isdigit():
-#             id += item
+def getCategoryid(mystr: str) -> int:
+    """
+        This function returns the category identifier id
+    """
+    id = ""
+    for item in mystr:
+        if item.isdigit():
+            id += item
     
-#     return id
+    return id
 
 
 # def send_message(mydict: dict, _type: str= telebot.TYPE_ORDERS) -> None:
@@ -48,25 +48,25 @@
 
 
 
-# def searchHelper(request) -> dict:
-#     """Returns a list of products"""
-#     search_query: str = ""
+def searchHelper(request) -> dict:
+    """Returns a list of products"""
+    search_query: str = ""
     
-#     if request.GET.get('search_query'):
-#         search_query = request.GET.get('search_query')
+    if request.GET.get('search_query'):
+        search_query = request.GET.get('search_query')
     
-#     category: str = Categories.objects.filter(
-#         name__icontains=search_query
-#     )
+    category: str = Categories.objects.filter(
+        name__icontains=search_query
+    )
     
-#     products: list = Products.objects.distinct().filter(
-#         Q(name__icontains=search_query) |
-#         Q(description__icontains=search_query) |
-#         Q(price__icontains=search_query)|
-#         Q(category__in=category)
-#     )
+    products: list = Products.objects.distinct().filter(
+        Q(name__icontains=search_query) |
+        Q(description__icontains=search_query) |
+        Q(price__icontains=search_query)|
+        Q(category__in=category)
+    )
     
-#     return products, search_query
+    return products, search_query
 
 
 
@@ -90,7 +90,8 @@
 #         if cartProducts:
 #             myctx['sum'] = cartProducts.products.aggregate(Sum('price')).get('price__sum')
 #             myctx["cardItems"]=cartProducts.products.all()
-#             myctx["cartProductsCount"]=cartProducts.products.count()
+#   
+# myctx["cartProductsCount"]=cartProducts.products.count()
     
 #     return myctx
 
