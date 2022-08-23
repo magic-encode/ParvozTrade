@@ -3,25 +3,35 @@
 <!-- Eng kop sotilganlar -->
 <div class="tab-pane fade" id="toprated">
     <div class="row">
+        {% for x in best_seller %}
         <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
             <!-- Single Prodect -->
             <div class="product">
                 <span class="badges">
-                    <span class="new">New</span>
+                    {% if x.status %}
+                        <span class="sale">{{x.status}}</span>
+                    {% endif %}
+                    {% if x.discount %}
+                        <span class="sale">{{x.discount}}</span>
+                    {% endif %}
                 </span>
                 <div class="thumb">
                     <a href="single-product.html" class="image">
-                        <img src="{% static 'assets/images/product-image/1.webp' %}" alt="Product" />
-                        <img class="hover-image" src="{% static 'assets/images/product-image/1.webp' %}" alt="Product" />
+                        <img src="{{x.image.url}}" alt="Product" />
+                        <img class="hover-image" src="{{x.image.url}}" alt="Product" />
                     </a>
                 </div>
                 <div class="content">
-                    <span class="category"><a href="index.html#">Accessories</a></span>
-                    <h5 class="title"><a href="single-product.html">Modern Smart Phone
+                    
+                    <h5 class="title"><a href="single-product.html">{{x.name}}
                         </a>
                     </h5>
                     <span class="price">
-                        <span class="new">$38.50</span>
+                        <span class="new">
+                            {% if x.price_old %}
+                            <del>{{x.price_old}} - </del> 
+                            {% endif %}
+                            <b>${{x.price_new}}</b></span>
                     </span>
                 </div>
                 <div class="actions">
@@ -34,7 +44,7 @@
                 </div>
             </div>
         </div>
-       
+        {% endfor %}
     </div>
 </div>
 <!-- 2nd tab end -->

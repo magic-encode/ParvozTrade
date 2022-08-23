@@ -4,27 +4,31 @@
 <!-- kun takliflari -->
 <div class="tab-pane fade show active" id="newarrivals">
     <div class="row mb-n-30px">
-        {% for product in day_recommends %}
+        {% for recommend in day_recommends %}
         <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
             <!-- Single Prodect -->
             <div class="product">
                 <span class="badges">
-                    <span class="new">{{product.status}}</span>
-                    <span class="sale">-{{product.discount}}%</span>
+                    {% if x.status %}
+                        <span class="sale">{{recommend.status}}</span>
+                    {% endif %}
+                    {% if x.discount %}
+                        <span class="sale">-{{recommend.discount}}%</span>
+                    {% endif %}
                 </span>
                 <div class="thumb">
                     <a href="single-product.html" class="image">
-                        <img src="{{product.image.url}}" alt="Product" />
-                        <img class="hover-image" src="{{product.image.url}}" alt="Product" />
+                        <img src="{{recommend.image.url}}" alt="Product" />
+                        <img class="hover-image" src="{{recommend.image.url}}" alt="Product" />
                     </a>
                 </div>
                 <div class="content">
                     
-                    <h5 class="title"><a href="single-product.html">{{product.name}}
+                    <h5 class="title"><a href="single-product.html">{{recommend.name}}
                         </a>
                     </h5>
                     <span class="price">
-                        <span class="new"><del>${{product.price_old}}</del> - <b>${{product.price_new}}</b></span>
+                        <span class="new"><del>{{recommend.price_old}}</del> - <b>${{recommend.price_new}}</b></span>
                     </span>
                 </div>
                 <div class="actions">

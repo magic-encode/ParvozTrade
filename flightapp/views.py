@@ -39,7 +39,7 @@ def homeView(request):
     banners = Banner.objects.all()
     products = Products.objects.all()
     bannerleft = BannerLefts.objects.all()
-    context: dict = { **dbctx,'products': products, 'banners': banners, 'bannerleft': bannerleft}
+    context: dict = { **dbctx, 'products': products, 'banners': banners, 'bannerleft': bannerleft}
     
     return render(request, 'home/index.html', context)
 

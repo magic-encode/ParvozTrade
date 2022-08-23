@@ -6,8 +6,8 @@
 
 /* VARIABLE DEFINITIONS */
 :root {
-  --primary: #79aec8;
-  --secondary: #417690;
+  --primary: #f9cb0b;
+  --secondary: #f9cb0b;
   --accent: #f5dd5d;
   --primary-fg: #fff;
 
@@ -25,9 +25,9 @@
   --breadcrumbs-link-fg: var(--body-bg);
   --breadcrumbs-bg: var(--primary);
 
-  --link-fg: #447e9b;
-  --link-hover-color: #036;
-  --link-selected-fg: #5b80b2;
+  --link-fg: #f9cb0b;
+  --link-hover-color: #f9cb0b;
+  --link-selected-fg: #f9cb0b;
 
   --hairline-color: #e8e8e8;
   --border-color: #ccc;
@@ -44,9 +44,9 @@
 
   --button-fg: #fff;
   --button-bg: var(--primary);
-  --button-hover-bg: #609ab6;
+  --button-hover-bg: #f9cb0b;
   --default-button-bg: var(--secondary);
-  --default-button-hover-bg: #205067;
+  --default-button-hover-bg: #f9cb0b;
   --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
   --close-button-hover-bg: #747474;
   --delete-button-bg: #ba2121;
@@ -59,7 +59,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #264b5d;
+    --primary: #f9cb0b;
     --primary-fg: #eee;
 
     --body-fg: #eeeeee;
@@ -70,9 +70,9 @@
     --breadcrumbs-link-fg: #e0e0e0;
     --breadcrumbs-bg: var(--primary);
 
-    --link-fg: #81d4fa;
-    --link-hover-color: #4ac1f7;
-    --link-selected-fg: #6f94c6;
+    --link-fg: #f9cb0b;
+    --link-hover-color: #f9cb0b;
+    --link-selected-fg: #f9cb0b;
 
     --hairline-color: #272727;
     --border-color: #353535;
@@ -84,7 +84,7 @@
 
     --darkened-bg: #212121;
     --selected-bg: #1b1b1b;
-    --selected-row: #00363a;
+    --selected-row: #f9cb0b;
 
     --close-button-bg: #333333;
     --close-button-hover-bg: #666666;
