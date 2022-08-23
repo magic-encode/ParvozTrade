@@ -1,4 +1,3 @@
-from sre_parse import CATEGORIES
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
@@ -16,11 +15,11 @@ class Products(models.Model):
         ('sale', 'SALE'),
     )
     
-    CATEGORIES = (
-        ('eng_kop_sotilganlar', 'ENG_KOP_SOTILADIGAN'),
-        ('kun_takliflari', 'KUN_TAKLIFLARI'),
+    # CATEGORIES = (
+    #     ('eng_kop_sotilganlar', 'ENG_KOP_SOTILADIGAN'),
+    #     ('kun_takliflari', 'KUN_TAKLIFLARI'),
         
-    )
+    # )
     
     name = models.CharField(max_length=255, verbose_name="mahsulotning nomi")
     slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
@@ -58,7 +57,7 @@ class Banner(models.Model):
         return self.name
     
     
-class BannerLeft(models.Model):
+class BannerLefts(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField()
     price = models.FloatField()

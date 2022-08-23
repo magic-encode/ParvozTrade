@@ -1,0 +1,44 @@
+{% load static %}
+
+
+<!-- kun takliflari -->
+<div class="tab-pane fade show active" id="newarrivals">
+    <div class="row mb-n-30px">
+        {% for product in day_recommends %}
+        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
+            <!-- Single Prodect -->
+            <div class="product">
+                <span class="badges">
+                    <span class="new">{{product.status}}</span>
+                    <span class="sale">-{{product.discount}}%</span>
+                </span>
+                <div class="thumb">
+                    <a href="single-product.html" class="image">
+                        <img src="{{product.image.url}}" alt="Product" />
+                        <img class="hover-image" src="{{product.image.url}}" alt="Product" />
+                    </a>
+                </div>
+                <div class="content">
+                    
+                    <h5 class="title"><a href="single-product.html">{{product.name}}
+                        </a>
+                    </h5>
+                    <span class="price">
+                        <span class="new"><del>${{product.price_old}}</del> - <b>${{product.price_new}}</b></span>
+                    </span>
+                </div>
+                <div class="actions">
+                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                        class="pe-7s-shopbag"></i></button>
+                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                            class="pe-7s-like"></i></button>
+                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+                    
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+<!-- 1st tab end -->

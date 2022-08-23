@@ -1,0 +1,35 @@
+{% load static%}
+
+<!-- Banner Area Start -->
+<div class="banner-area style-one pt-100px pb-100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="single-banner nth-child-1">
+                    {% for left in banners %}
+                    <img src="{{left.image.url}}" alt="">
+                    <div class="banner-content nth-child-1">
+                        <h3 class="title">{{left.name}}</h3> <br>
+                        {{left.description}} </h3>
+                        <span class="category">{{left.price}}$ dan</span>
+                        <a href="{% url 'shopdetail' %}" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                {% for right in bannerleft %}
+                <div class="single-banner nth-child-2 mb-30px mb-lm-30px mt-lm-30px ">
+                    <img src="{{right.image.url}}" alt="">
+                    <div class="banner-content nth-child-2">
+                        <h3 class="title">{{right.name}}</h3>
+                        <span class="category">{{right.price}}$ dan</span>
+                        <a href="{% url 'shopdetail' %}" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
