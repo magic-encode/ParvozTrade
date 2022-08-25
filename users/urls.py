@@ -7,7 +7,11 @@ from . import views
 urlpatterns = [
     path('', views.profileView, name='profile'),
     path('login/', views.loginView, name='login'),
+    path('register/', views.registerUser, name='register'),
     path('logout/', views.logoutUser, name="logout"),
+    
+    path('blog/', views.blogView, name='blog'),
+    path('blog/<int:pk', views.blogdetailView, 'blogdetail'),
     
     path('cart/', views.cartView, name='cart'),
 

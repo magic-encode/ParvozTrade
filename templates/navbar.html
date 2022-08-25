@@ -24,7 +24,8 @@
                             <li><a href="{% url 'contact' %}"><i class="fa fa-envelope-o"></i> player2020uz@gmail.com</a></li>
                             {% if request.user.is_authenticated %}
                             <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Account</a></li>
-                            
+                            {% else %}
+                            <li><a href="{% url 'login' %}"><i class="fa fa-arrow-right"></i> Login</a></li>
                             {% endif %}
                         </ul>
                     </div>

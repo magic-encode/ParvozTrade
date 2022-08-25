@@ -21,7 +21,7 @@ def loginUser(request):
     page = 'login'
 
     if request.user.is_authenticated:
-        return redirect('profiles')
+        return redirect('home')
 
     if request.method == 'POST':
         username = request.POST['username'].lower()
@@ -36,8 +36,8 @@ def loginUser(request):
 
         if user is not None:
             login(request, user)
-            return redirect(request.GET['next'] if 'next' in request.GET else 'account')
-
+            return redirect('profile')
+            # request.GET['next'] if 'next' in request.GET else 'account'
         else:
             messages.error(request, 'Username OR password is incorrect')
 
@@ -64,7 +64,7 @@ def registerUser(request):
             messages.success(request, 'User account was created!')
 
             login(request, user)
-            return redirect('edit-account')
+            return redirect('profile')
 
         else:
             messages.success(
@@ -72,13 +72,13 @@ def registerUser(request):
 
     context = {'page': page, 'form': form}
     return render(request, 'pages/login.html', context)
-
+ 
 
 def loginView(request):
     return render(request, 'pages/login.html')
 
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def editAccount(request):
     profile = request.user.profile
     form = User(instance=profile)
@@ -124,3 +124,11 @@ def thanksView(request):
 
 def wishlistView(request):
     return render(request, 'pages/wishlist.html')
+
+
+def blogView(request):
+    return render(request, 'blog/blog.html')
+
+
+def blogdetailView(request):
+    return render(request, 'blog/detail.html')

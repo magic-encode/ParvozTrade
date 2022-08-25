@@ -66,12 +66,6 @@ def shopdetailView(request):
     return render(request, 'shop/detail.html')
 
 
-def blogView(request):
-    return render(request, 'blog/blog.html')
-
-
-def blogdetailView(request):
-    return render(request, 'blog/detail.html')
 
 
 def contactView(request):

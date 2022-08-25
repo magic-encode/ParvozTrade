@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="tab-content">
-                                {% comment %} login inlines {% endcomment %}
+                                
                                 <div id="lg1" class="tab-pane active">
                                     <div class="login-form-container">
                                         <div class="login-register-form">
@@ -83,16 +83,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                {% comment %} registers inline  {% endcomment %}
+                                
                                 <div id="lg2" class="tab-pane">
                                     <div class="login-form-container">
                                         <div class="login-register-form">
                                             <form action="{% url 'login' %}" method="POST">
                                                 {% csrf_token %}
-                                                <input type="text" name="first-name" placeholder="FirstName" />
-                                                <input type="text" name="user-name" placeholder="Username" />
-                                                <input type="password" name="user-password" placeholder="Password" />
-                                                <input name="user-email" placeholder="Email" type="email" />
+                                                {% for field in form %}
+                                                <label for="formInput#text">{{field.label}}</label>
+                                                {{field}}
+                                                {% endfor %}
                                                 <div class="button-box">
                                                     <button type="submit"><span>Register</span></button>
                                                 </div>
@@ -100,6 +100,7 @@
                                         </div>
                                     </div>
                                 </div>
+                 
                             </div>
                         </div>
                     </div>
