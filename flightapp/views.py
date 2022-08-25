@@ -17,9 +17,10 @@ from flightapp.models.products import FeatureRights
 from flightapp.models.category import Categories
 from flightapp.models.order_history import OrderHistory
 
-# from flightapp.utils import send_message
+from .forms import GetInfoForm
+from .bots.bot import telegram_bot_sendtext
 from flightapp.utils import searchHelper
-# from flightapp.utils import categWishlistHelper
+from flightapp.utils import categWishlistHelper
 # from flightapp.libs.telegram import telebot
 
 
@@ -53,20 +54,121 @@ def homeView(request):
 
  
 def aboutView(request):
-    return render(request, 'about/about.html')
+    context: dict = categWishlistHelper(request)
+    
+    return render(request, 'myshop/about.html', context)
 
 
 def shopView(request):
-    return render(request, 'shop/shop.html')
+    context: dict = categWishlistHelper(request)
+    
+    return render(request, 'myshop/shop.html', context)
 
 
-def shopdetailView(request):
-    # context: dict = categWishlistHelper(request)
-    # context["items"]=Products.objects.get(id=id)
-    return render(request, 'shop/detail.html')
+def shopdetailView(request, id):
+    context: dict = categWishlistHelper(request)
+    
+    context["items"]=Products.objects.get(id=id)
 
+    return render(request, 'myshop/shop-detail.html', context)
+
+
+def myWishlistView(request):
+    context: dict = categWishlistHelper(request)
+    if request.user.is_authenticated:
+        cartHistory: OrderHistory = OrderHistory.objects.filter(user=request.user).prefetch_related("products").first()
+        
+        if cartHistory:
+            context['items'] = cartHistory.products.all()
+            context["cardItems"]=context['items']
+            
+    return render(request, 'myshop/wishlist.html', context)
+
+
+# @login_required(login_url='my-account')
+def removeCartView(request, id: int) -> None:
+    cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
+    if cartProducts:
+        cartItem = cartProducts.products.get(id=id)
+        cartProducts.products.remove(cartItem)
+        messages.add_message(request, messages.INFO, 'Savatchadan muofaqqiyatli o\'chirildi ✅')
+    
+    return redirect('home')
+
+
+# @login_required(login_url='my-account')
+def removeOrderHistoryView(request, id: int) -> None:
+    cartHistory: OrderHistory = OrderHistory.objects.filter(user=request.user).prefetch_related("products").first()
+    if cartHistory:
+        cartItem = cartHistory.products.get(id=id)
+        cartHistory.products.remove(cartItem)
+        messages.add_message(request, messages.INFO, 'Buyurtmalar tarixidan muofaqqiyatli o\'chirildi ✅')
+    
+    return redirect('home')
+
+
+# @login_required(login_url='my-account')
+def addCartView(request, id: int) -> None:
+    messages.add_message(request, messages.INFO, 'Savatchaga muofaqqiyatli qo\'shildi ✅')
+    
+    product: Products = Products.objects.get(id=id)
+    cart,_ = Cart.objects.get_or_create(user=request.user)
+    cart.products.add(product)
+    cart.save()
+    if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
+        return redirect('home')
+    
+    return redirect('shop-detail', product.id)
+
+
+# def orderView(request):
+#     if request.method == 'POST':
+#         price: int = 0
+#         text: str = ""
+#         text += f"<b>ID</b>: {uuid4()}\n\n"
+#         text += f"Haridor ismi: {request.user.first_name}\n"
+#         text += f"Haridor Raqami: {request.user.phone}\n\n"
+        
+#         cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
+#         order_history, _ = OrderHistory.objects.get_or_create(user=request.user)
+        
+#         for product in cartProducts.products.all():
+#             price += product.price
+#             order_history.products.add(product)
+#             order_history.save()
+#             text += f"{product.name} - {product.price} UZS\n"
+        
+#         cartProducts.delete()
+#         text += F"Jami - {price} UZS"
+#         telebot.send_message(text, telebot.TYPE_ORDERS)
+        
+#     return redirect('thanks')
 
 
 
 def contactView(request):
-    return render(request, 'contact/contact.html')
+    form = GetInfoForm()
+    if request.POST:
+        form = GetInfoForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.save()
+            text = f"Xabar yuborgan shaxs => {obj.fullname}\n  Nomeri: +{obj.nomer}\n  Email =>{obj.email}\n Xabar matni => {obj.message}"
+            resp = telegram_bot_sendtext(text)
+            if resp: 
+                messages.success(
+                    request, 'Xabaringiz muofaqqiyati yuborildi, tez oraqa sizga javob beramiz!')
+            else:
+                messages.success(
+                    request, "Xabar yuborib  men biln bog'")
+
+            return redirect('contact')
+
+    else:
+        form = GetInfoForm()
+
+    context = {
+        "form": form
+    }
+
+    return render(request, 'contact/contact.html', context)

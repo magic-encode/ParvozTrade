@@ -70,28 +70,27 @@ def searchHelper(request) -> dict:
 
 
 
-# def categWishlistHelper(request) -> dict:
-#     categories = Categories.objects.all()
+def categWishlistHelper(request) -> dict:
+    categories = Categories.objects.all()
     
-#     """This function returns a list of wishlists and cart for each user"""
-#     myctx: dict = {}
-#     myctx["order_history"] = 0
-#     myctx["cartProductsCount"] = 0
-#     myctx['categories'] = categories
+    """This function returns a list of wishlists and cart for each user"""
+    myctx: dict = {}
+    myctx["order_history"] = 0
+    myctx["cartProductsCount"] = 0
+    myctx['categories'] = categories
     
-#     if request.user.is_authenticated:
-#         cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
+    if request.user.is_authenticated:
+        cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
         
-#         cartHistory: OrderHistory = OrderHistory.objects.filter(user=request.user).prefetch_related("products").first()
+        cartHistory: OrderHistory = OrderHistory.objects.filter(user=request.user).prefetch_related("products").first()
         
-#         if cartHistory:
-#             myctx["order_history"]=cartHistory.products.count()
+        if cartHistory:
+            myctx["order_history"]=cartHistory.products.count()
         
-#         if cartProducts:
-#             myctx['sum'] = cartProducts.products.aggregate(Sum('price')).get('price__sum')
-#             myctx["cardItems"]=cartProducts.products.all()
-#   
-# myctx["cartProductsCount"]=cartProducts.products.count()
+        if cartProducts:
+            myctx['sum'] = cartProducts.products.aggregate(Sum('price')).get('price__sum')
+            myctx["cardItems"]=cartProducts.products.all()
+            myctx["cartProductsCount"]=cartProducts.products.count()
     
-#     return myctx
+    return myctx
 

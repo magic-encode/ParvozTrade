@@ -27,52 +27,42 @@
                 <div class="blog-posts">
                     <div class="single-blog-post blog-grid-post">
                         <div class="blog-image single-blog">
-                            <img class="img-fluid h-auto border-radius-10px" src="{% static 'assets/images/blog-image/single-blog.webp' %}" alt="blog" />
+                            {% if post.image %}
+                            <img class="img-fluid h-auto border-radius-10px" src="{{ post.image.url}}" alt="blog" />
+                            {% else %}
+                            <img class="img-fluid h-auto border-radius-10px" src="{{ post.video_img}}" alt="blog" />
+                            {% endif %}
+                        </div>
+                        <div class="quate-speech-area">
+                            <p class="quate-speech" data-aos="fade-up" data-aos-delay="200">
+                                {{ post.aforizm }}
+                            </p>
+                            <span class="quater">{{ post.name_aforiz }} </span>
                         </div>
                         <div class="blog-post-content-inner mt-30px">
                             <div class="blog-athor-date">
-                                <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i> 27,Jun 2030</span>
-                                <span><a class="blog-author" href="blog-grid.html"><i class="fa fa-user" aria-hidden="true"></i> Oaklee Odom</a></span>
+                                <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i>{{ post.data }} </span>
+                                <span><a class="blog-author" href="blog-grid.html"><i class="fa fa-user" aria-hidden="true"></i>{{ post.userd }} </a></span>
                             </div>
-                            <h4 class="blog-title">10 Principles of Psychology You Can Use to Improve Your Smart Product </h4>
+                            <h4 class="blog-title">{{ post.title }} </h4>
                             <p data-aos="fade-up">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore eto dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcol laboris nisi ut aliquipp ex ea commodo consequat. Duis aute irure dolor in reprehenderit inloifk voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaec cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                {{ post.body }}
                             </p>
-                            <div class="quate-speech-area">
-                                <p class="quate-speech" data-aos="fade-up" data-aos-delay="200">
-                                    Lorem ipsum dolor sit amet, consectetur adipisici elit sed do eiusmod tempor incididunt ut
-                                </p>
-                                <span class="quater">Elmer Schmidt</span>
-                            </div>
+                            
                         </div>
-                        <div class="single-post-content">
-                            <p data-aos="fade-up" data-aos-delay="200">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore eto dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcol laboris nisi ut aliquipp ex ea commodo consequat. Duis aute irure dolor in reprehenderit inloifk voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                        </div>
+                        
                     </div>
-                    <div class="another-post">
-                        <div class="content-side">
-                            <p class="mb-30px">Lorem ipsum dolor sit amet, consec adipisic elit, sed do eius tempor incididu ut labore et dolore ma aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nil ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptat velit esse cillum dolore</p>
-                            <p>leu fugiat nulla pariatur. Excepteur sintocca
-                                cupidatat non proident, sunt in culpa qui off deserunt mollit anim id est laborum. Sed utl perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
-                        </div>
-                        <div class="image-side">
-                            <img src="assets/images/blog-image/side-image.webp" alt="">
-                        </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore eto dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcol laboris nisi ut aliquipp ex ea commodo consequat. Duis aute irure dolor in reprehenderit inloifk voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                     <!-- single blog post -->
                 </div>
                 <div class="blog-single-tags-share d-md-flex justify-content-between">
+
                     <div class="blog-single-tags d-flex" data-aos="fade-up" data-aos-delay="200">
                         <span class="title">Tages:</span>
                         <ul class="tag-list">
                             <li><a href="blog-single-left-sidebar.html#">Mobile,</a></li>
-                            <li><a href="blog-single-left-sidebar.html#">Laptop,</a></li>
-                            <li class="m-0"><a href="blog-single-left-sidebar.html#">Smart TV</a></li>
                         </ul>
                     </div>
+                    
                     <div class="blog-single-share mb-xs-15px d-flex" data-aos="fade-up" data-aos-delay="200">
                         <span class="title">Share:</span>
                         <ul class="social">
@@ -93,6 +83,7 @@
                 </div>
                 <div class="blog-nav">
                     <div class="blog-nav-wrap">
+
                         <div class="nav-left d-flex justify-content-start align-items-center">
                             <a class="nav-img" href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/post-1.webp' %}" alt="" /><i class="fa fa-angle-left"></i></a>
                             <div class="media-side">
@@ -102,6 +93,7 @@
                                 </h5>
                             </div>
                         </div>
+
                         <div class="nav-right d-flex justify-content-end flex-row-reverse align-items-center">
                             <a class="nav-img" href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/post-2.webp' %}" alt="" /><i class="fa fa-angle-right"></i></a>
                             <div class="media-side">
@@ -111,6 +103,7 @@
                                 </h5>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="comment-area">
@@ -189,6 +182,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="blog-comment-form">
                     <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Leave a Comment</h2>
                     <div class="form-inner">
@@ -219,6 +213,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
             <!-- Sidebar Area Start -->
             <div class="col-lg-4 order-lg-first col-md-12 order-md-last mt-md-50px mt-lm-50px" data-aos="fade-up" data-aos-delay="200">
@@ -262,39 +258,7 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <div class="recent-single-post d-flex">
-                                    <div class="thumb-side">
-                                        <a href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/post-2.webp' %}" alt="" /></a>
-                                    </div>
-                                    <div class="media-side">
-                                        <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
-                                        <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
-                                                amet conse adip</a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="recent-single-post d-flex">
-                                    <div class="thumb-side">
-                                        <a href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/post-3.webp' %}" alt="" /></a>
-                                    </div>
-                                    <div class="media-side">
-                                        <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
-                                        <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
-                                                amet conse adip</a>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="recent-single-post d-flex">
-                                    <div class="thumb-side">
-                                        <a href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/post-1.webp' %}" alt="" /></a>
-                                    </div>
-                                    <div class="media-side">
-                                        <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
-                                        <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
-                                                amet conse adip</a>
-                                        </h5>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- Sidebar single item -->

@@ -1,4 +1,4 @@
-import  os
+import os
 
 from pathlib import Path
 from environs import Env
@@ -17,7 +17,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,9 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'users', 
-    'flightapp', 
+
+    'users',
+    'flightapp',
     'django_filters',
 ]
 
@@ -48,7 +47,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-           os.path.join(BASE_DIR / 'templates')     
+            os.path.join(BASE_DIR / 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -65,8 +64,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'flight.wsgi.application'
 
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': env.str('POSTGRES_ENGINE'),
@@ -77,6 +74,13 @@ DATABASES = {
         'PORT': env.str('POSTGRES_PORT'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -118,7 +122,6 @@ EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 
 
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -126,9 +129,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-MEDIA_ROOT = Path.joinpath(BASE_DIR,'media')
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

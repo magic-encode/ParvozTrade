@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 
 from .forms import CustomUserCreationForm
-
+from .models import Post  
 # -------------------------  pages ------------------------- ------------------------- ---------------------
 
 
@@ -127,8 +127,14 @@ def wishlistView(request):
 
 
 def blogView(request):
-    return render(request, 'blog/blog.html')
+    blogs = Post.objects.all()
+    context = {'blogs': blogs}
+    return render(request, 'blog/blog.html', context)
 
 
-def blogdetailView(request):
-    return render(request, 'blog/detail.html')
+def blogDetailView(request, id):
+    blog = Post.objects.get(id=id)
+    
+    return render(request, 'blog/detail.html', {'blog': blog})
+
+
