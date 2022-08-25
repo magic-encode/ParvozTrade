@@ -9,8 +9,9 @@ from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
-from .forms import CustomUserCreationForm
+from .forms import CreateUserForm
 from .models import Post  
+
 # -------------------------  pages ------------------------- ------------------------- ---------------------
 
 
@@ -52,10 +53,10 @@ def logoutUser(request):
 
 def registerUser(request):
     page = 'register'
-    forms = CustomUserCreationForm()
+    forms = CreateUserForm()
 
     if request.method == 'POST':
-        forms = CustomUserCreationForm(request.POST)
+        forms = CreateUserForm(request.POST)
         if forms.is_valid():
             user = forms.save(commit=False)
             user.username = user.username.lower()
