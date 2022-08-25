@@ -85,7 +85,7 @@ def myWishlistView(request):
     return render(request, 'myshop/wishlist.html', context)
 
 
-# @login_required(login_url='my-account')
+@login_required(login_url='profile')
 def removeCartView(request, id: int) -> None:
     cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
     if cartProducts:
@@ -96,7 +96,7 @@ def removeCartView(request, id: int) -> None:
     return redirect('home')
 
 
-# @login_required(login_url='my-account')
+@login_required(login_url='my-account')
 def removeOrderHistoryView(request, id: int) -> None:
     cartHistory: OrderHistory = OrderHistory.objects.filter(user=request.user).prefetch_related("products").first()
     if cartHistory:

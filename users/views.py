@@ -37,7 +37,7 @@ def loginUser(request):
         if user is not None:
             login(request, user)
             return redirect('profile')
-            # request.GET['next'] if 'next' in request.GET else 'account'
+            request.GET['next'] if 'next' in request.GET else 'account'
         else:
             messages.error(request, 'Username OR password is incorrect')
 
@@ -52,12 +52,12 @@ def logoutUser(request):
 
 def registerUser(request):
     page = 'register'
-    form = CustomUserCreationForm()
+    forms = CustomUserCreationForm()
 
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
+        forms = CustomUserCreationForm(request.POST)
+        if forms.is_valid():
+            user = forms.save(commit=False)
             user.username = user.username.lower()
             user.save()
 
@@ -70,7 +70,7 @@ def registerUser(request):
             messages.success(
                 request, 'An error has occurred during registration')
 
-    context = {'page': page, 'form': form}
+    context = {'page': page, 'forms': forms}
     return render(request, 'pages/login.html', context)
  
 
