@@ -135,7 +135,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+# AUTH_USER_MODEL = 'users.CustomUser'
 
 if os.getcwd() == '/app':
     DEBUG = False

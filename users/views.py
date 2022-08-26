@@ -9,14 +9,15 @@ from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
-from .forms import CreateUserForm
+from .forms import CreateUserForm, ProfileForm
 from .models import Post  
 
 # -------------------------  pages ------------------------- ------------------------- ---------------------
 
 
 def profileView(request):
-    return render(request, 'pages/myaccount.html')
+    profile = ProfileForm()
+    return render(request, 'pages/profiles.html', {'profile': profile})
 
 def loginUser(request):
     page = 'login'
