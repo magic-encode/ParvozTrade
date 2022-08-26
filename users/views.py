@@ -3,14 +3,14 @@ from django.shortcuts import redirect
 
 from django.contrib import messages
 from django.contrib.auth import login
-from django.contrib.auth import logout 
+from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
 from .forms import CreateUserForm, ProfileForm
-from .models import Post  
+from .models import Post
 
 # -------------------------  pages ------------------------- ------------------------- ---------------------
 
@@ -18,6 +18,7 @@ from .models import Post
 def profileView(request):
     profile = ProfileForm()
     return render(request, 'pages/profiles.html', {'profile': profile})
+
 
 def loginUser(request):
     page = 'login'
@@ -33,13 +34,14 @@ def loginUser(request):
             user = User.objects.get(username=username)
         except:
             messages.error(request, 'Username does not exist')
-
+        print("Salom Dunyo")
         user = authenticate(request, username=username, password=password)
-
+        
         if user is not None:
             login(request, user)
+            request.GET['next'] if 'next' in request.GET else 'profile'
             return redirect('profile')
-            request.GET['next'] if 'next' in request.GET else 'account'
+            
         else:
             messages.error(request, 'Username OR password is incorrect')
 
@@ -74,7 +76,7 @@ def registerUser(request):
 
     context = {'page': page, 'forms': forms}
     return render(request, 'pages/login.html', context)
- 
+
 # @unauthenticated_user
 # def registerUser(request):
 
@@ -91,7 +93,7 @@ def registerUser(request):
 
 #     context = {'forms': forms}
 #     return render(request, 'pages/login.html', context)
- 
+
 
 def loginView(request):
     return render(request, 'pages/login.html')
@@ -153,7 +155,5 @@ def blogView(request):
 
 def blogDetailView(request, id):
     blog = Post.objects.get(id=id)
-    
+
     return render(request, 'blog/detail.html', {'blog': blog})
-
-

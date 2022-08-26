@@ -56,13 +56,13 @@ def homeView(request):
 def aboutView(request):
     context: dict = categWishlistHelper(request)
     
-    return render(request, 'myshop/about.html', context)
+    return render(request, 'about/about.html', context)
 
 
 def shopView(request):
     context: dict = categWishlistHelper(request)
     
-    return render(request, 'myshop/shop.html', context)
+    return render(request, 'shop/shop.html', context)
 
 
 def shopdetailView(request, id):
@@ -70,7 +70,7 @@ def shopdetailView(request, id):
     
     context["items"]=Products.objects.get(id=id)
 
-    return render(request, 'myshop/shop-detail.html', context)
+    return render(request, 'shop/detail.html', context)
 
 
 def myWishlistView(request):
@@ -82,7 +82,7 @@ def myWishlistView(request):
             context['items'] = cartHistory.products.all()
             context["cardItems"]=context['items']
             
-    return render(request, 'myshop/wishlist.html', context)
+    return render(request, 'pages/wishlist.html', context)
 
 
 @login_required(login_url='profile')

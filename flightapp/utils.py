@@ -88,7 +88,7 @@ def categWishlistHelper(request) -> dict:
             myctx["order_history"]=cartHistory.products.count()
         
         if cartProducts:
-            myctx['sum'] = cartProducts.products.aggregate(Sum('price')).get('price__sum')
+            myctx['sum'] = cartProducts.products.aggregate(Sum('price_new')).get('price_new__sum')
             myctx["cardItems"]=cartProducts.products.all()
             myctx["cartProductsCount"]=cartProducts.products.count()
     

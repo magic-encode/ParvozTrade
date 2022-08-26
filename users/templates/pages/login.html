@@ -1,30 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx" dir="ltr">
 {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parvoz Trade</title>
-    <meta name="robots" content="index, follow" />
-    <meta name="description" content="Hmart-Smart Product eCommerce html Template">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}" />
-    <!-- CSS
-    ============================================ -->
-    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'assets/css/font.awesome.css' %}" />
-    <link rel="stylesheet" href="{% static 'assets/css/pe-icon-7-stroke.css' %}" />
-    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/venobox.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">
-    <!-- Style CSS -->  
-    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-    <!-- Minify Version -->
-    <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
-</head>
+{% include 'head.html' %}
 
 <body>
     <div class="main-wrapper">
@@ -38,7 +15,7 @@
                         <h2 class="breadcrumb-title">Login</h2>
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
                             <li class="breadcrumb-item active">Login</li>
                         </ul>
                         <!-- breadcrumb-list end -->
@@ -63,11 +40,19 @@
                                     <h4>register</h4>
                                 </a>
                             </div>
-
+                            
                             <div class="tab-content">
                                 
                                 <div id="lg1" class="tab-pane active">
                                     <div class="login-form-container">
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                            <center>
+                                                <p style="color: red;">{{message}}</p>
+                                                <br>
+                                            </center>
+                                            {% endfor %}
+                                                {% endif %}
                                         <div class="login-register-form">
                                             <form action="{% url 'login' %}" method="POST">
                                                 {% csrf_token %}
