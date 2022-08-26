@@ -1,4 +1,8 @@
+
+from cgitb import text
+
 # from django.contrib.auth.models import AbstractUser
+
 from django.db import models
 
 from django.contrib.auth import get_user_model
@@ -27,4 +31,4 @@ class Post(models.Model):
 #     email = models.EmailField(max_length=255)
 #     password1 = models.CharField(max_length=255)
 #     password2 = models.CharField(max_length=255)
-    
+

@@ -24,11 +24,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     
+=======
+
+
+    'users',
+    'flightapp',
+
+
+>>>>>>> 88f016989564ff8e1b5e4ad00c5d102cf1df37d9
     'users',
     
     'flightapp',
     'django_filters',
+
 ]
 
 MIDDLEWARE = [

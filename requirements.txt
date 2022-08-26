@@ -1,3 +1,8 @@
+
+
+Django==3.2.12
+django-filter==22.1
+
 asgiref==3.5.2
 attrs==22.1.0
 autopep8==1.7.0
@@ -12,6 +17,7 @@ docker==5.0.3
 docker-compose==1.29.2
 dockerpty==0.4.1
 docopt==0.6.2
+
 environs==9.5.0
 gunicorn==20.1.0
 idna==3.3

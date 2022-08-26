@@ -34,9 +34,10 @@
         </div>
     </div>
     <!-- Header top area end -->
-    <!-- Header action area start -->
-    <div class="header-bottom  d-none d-lg-block">
-        <div class="container">
+    
+      <!-- Header action area start -->
+      <div class="header-bottom  d-none d-lg-block">
+          <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-3 col">
                     <div class="header-logo">
@@ -55,11 +56,12 @@
                     <div class="header-actions">
                         <!-- Single Wedge Start -->
                         <a href="" class="header-action-btn offcanvas-toggle">
-                            <i class="pe-7s-like"></i>
+                            <a data-bs-toggle="modal" href="#exampleModalToggle2" role="button"><i class="pe-7s-like"></i></a>
+                            
                         </a>
                         <!-- Single Wedge End -->
                         <a href="" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
-                            <i class="pe-7s-shopbag"></i>
+                            <a data-bs-toggle="modal" href="#exampleModalToggle" role="button"><i class="pe-7s-shopbag"></i></a>
                             <span class="header-action-num">01</span>
                             <!-- <span class="cart-amount">€30.00</span> -->
                         </a>
@@ -111,6 +113,105 @@
     </div>
     <!-- Header action area end -->
 
+<!-- 
+    modal start
+ -->
+ <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel">Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+        </div>
+        <div class="modal-body">
+            <div class="inner">
+                <div class="body customScroll">
+                    <ul class="minicart-product-list">
+                        <li>
+                            <a href="single-product.html" class="image"><img src="assets/images/product-image/1.webp" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Modern Smart Phone</a>
+                                <span class="quantity-price">1 x <span class="amount">$18.86</span></span>
+                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="single-product.html" class="image"><img src="assets/images/product-image/2.webp" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Bluetooth Headphone</a>
+                                <span class="quantity-price">1 x <span class="amount">$43.28</span></span>
+                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="single-product.html" class="image"><img src="assets/images/product-image/3.webp" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Smart Music Box</a>
+                                <span class="quantity-price">1 x <span class="amount">$37.34</span></span>
+                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+               
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary text-success" ><a href="{% url 'cart' %}">Cart</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Wishlist</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+        </div>
+        <div class="modal-body">
+            <div class="inner">
+                <div class="body customScroll">
+                    <ul class="minicart-product-list">
+                        <li>
+                            <a href="single-product.html" class="image"><img src="assets/images/product-image/1.webp" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Modern Smart Phone</a>
+                                <span class="quantity-price">1 x <span class="amount">$21.86</span></span>
+                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="single-product.html" class="image"><img src="assets/images/product-image/2.webp" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Bluetooth Headphone</a>
+                                <span class="quantity-price">1 x <span class="amount">$13.28</span></span>
+                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="single-product.html" class="image"><img src="assets/images/product-image/3.webp" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="single-product.html" class="title">Smart Music Box</a>
+                                <span class="quantity-price">1 x <span class="amount">$17.34</span></span>
+                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary text-success"><a href="{% url 'wishlist' %}">View vishlist</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- 
+    modal end
+  -->
+
+
     <!-- header navigation area start -->
     <div class="header-nav-area d-none d-lg-block sticky-nav">
         <div class="container">
@@ -151,89 +252,12 @@
 <!-- offcanvas overlay end -->
 <!-- OffCanvas Wishlist Start -->
 <div id="offcanvas-wishlist" class="offcanvas offcanvas-wishlist">
-    <div class="inner">
-        <div class="head">
-            <span class="title">Wishlist</span>
-            <button class="offcanvas-close">×</button>
-        </div>
-        <div class="body customScroll">
-            <ul class="minicart-product-list">
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/1.webp" alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Modern Smart Phone</a>
-                        <span class="quantity-price">1 x <span class="amount">$21.86</span></span>
-                        <a href="single-product-tabstyle-3.html#" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/2.webp" alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Bluetooth Headphone</a>
-                        <span class="quantity-price">1 x <span class="amount">$13.28</span></span>
-                        <a href="single-product-tabstyle-3.html#" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/3.webp" alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Smart Music Box</a>
-                        <span class="quantity-price">1 x <span class="amount">$17.34</span></span>
-                        <a href="single-product-tabstyle-3.html#" class="remove">×</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="foot">
-            <div class="buttons">
-                <a href="wishlist.html" class="btn btn-dark btn-hover-primary mt-30px">view wishlist</a>
-            </div>
-        </div>
-    </div>
+  
 </div>
 <!-- OffCanvas Wishlist End -->
 <!-- OffCanvas Cart Start -->
 <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
-    <div class="inner">
-        <div class="head">
-            <span class="title">Cart</span>
-            <button class="offcanvas-close">×</button>
-        </div>
-        <div class="body customScroll">
-            <ul class="minicart-product-list">
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/1.webp" alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Modern Smart Phone</a>
-                        <span class="quantity-price">1 x <span class="amount">$18.86</span></span>
-                        <a href="single-product-tabstyle-3.html#" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/2.webp" alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Bluetooth Headphone</a>
-                        <span class="quantity-price">1 x <span class="amount">$43.28</span></span>
-                        <a href="single-product-tabstyle-3.html#" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="single-product.html" class="image"><img src="assets/images/product-image/3.webp" alt="Cart product Image"></a>
-                    <div class="content">
-                        <a href="single-product.html" class="title">Smart Music Box</a>
-                        <span class="quantity-price">1 x <span class="amount">$37.34</span></span>
-                        <a href="single-product-tabstyle-3.html#" class="remove">×</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="foot">
-            <div class="buttons mt-30px">
-                <a href="{% url 'cart' %}" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
-                <a href="checkout.html" class="btn btn-outline-dark current-btn">checkout</a>
-            </div>
-        </div>
-    </div>
+   
 </div>
 <!-- OffCanvas Cart End -->
 <!-- OffCanvas Menu Start -->

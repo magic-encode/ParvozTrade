@@ -9,8 +9,12 @@ from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
+from .forms import CustomUserCreationForm
+from .models import Post  
+
 from .forms import CreateUserForm, ProfileForm
 from .models import Post
+
 
 # -------------------------  pages ------------------------- ------------------------- ---------------------
 
@@ -156,4 +160,11 @@ def blogView(request):
 def blogDetailView(request, id):
     blog = Post.objects.get(id=id)
 
+
+    return render(request, 'blog/detail.html', {'blog': blog})
+
+
+def blogDetailView(request, id):
+    blog = Post.objects.get(id=id)
+    
     return render(request, 'blog/detail.html', {'blog': blog})
