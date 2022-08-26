@@ -51,45 +51,45 @@ def logoutUser(request):
     return redirect('login')
 
 
-# def registerUser(request):
-#     page = 'register'
-#     forms = CreateUserForm()
-
-#     if request.method == 'POST':
-#         forms = CreateUserForm(request.POST)
-#         if forms.is_valid():
-#             user = forms.save(commit=False)
-#             user.username = user.username.lower()
-#             user.save()
-
-#             messages.success(request, 'User account was created!')
-
-#             login(request, user)
-#             return redirect('profile')
-
-#         else:
-#             messages.success(
-#                 request, 'An error has occurred during registration')
-
-#     context = {'page': page, 'forms': forms}
-#     return render(request, 'pages/login.html', context)
- 
-# @unauthenticated_user
 def registerUser(request):
-
+    page = 'register'
     forms = CreateUserForm()
+
     if request.method == 'POST':
         forms = CreateUserForm(request.POST)
         if forms.is_valid():
-            user = forms.save()
-            username = forms.cleaned_data.get('username')
+            user = forms.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
 
-            messages.success(request, 'Account was created for ' + username)
+            messages.success(request, 'User account was created!')
+
             login(request, user)
-            return redirect('login')
+            return redirect('profile')
 
-    context = {'forms': forms}
+        else:
+            messages.success(
+                request, 'An error has occurred during registration')
+
+    context = {'page': page, 'forms': forms}
     return render(request, 'pages/login.html', context)
+ 
+# @unauthenticated_user
+# def registerUser(request):
+
+#     forms = CreateUserForm()
+#     if request.method == 'POST':
+#         forms = CreateUserForm(request.POST)
+#         if forms.is_valid():
+#             user = forms.save()
+#             username = forms.cleaned_data.get('username')
+
+#             messages.success(request, 'Account was created for ' + username)
+#             login(request, user)
+#             return redirect('login')
+
+#     context = {'forms': forms}
+#     return render(request, 'pages/login.html', context)
  
 
 def loginView(request):
