@@ -87,12 +87,9 @@
                                 <div id="lg2" class="tab-pane">
                                     <div class="login-form-container">
                                         <div class="login-register-form">
-                                            <form action="{% url 'login' %}" method="POST">
+                                            <form action="{% url 'register' %}" method="POST">
                                                 {% csrf_token %}
-                                                {% for field in form %}
-                                                <label for="formInput#text">{{field.label}}</label>
-                                                {{field}}
-                                                {% endfor %}
+                                                {{forms.as_p}}
                                                 <div class="button-box">
                                                     <button type="submit"><span>Register</span></button>
                                                 </div>

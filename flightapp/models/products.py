@@ -34,6 +34,11 @@ class Products(models.Model):
         max_length=50, verbose_name="status", choices=STATUS, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    
+    weight = models.CharField(max_length=50, verbose_name="weight",null=True, blank=True)
+    olchami = models.CharField(max_length=255, verbose_name="olchami",null=True, blank=True)
+    materials = models.CharField(max_length=255, verbose_name="materials",null=True, blank=True)
+    other_info = models.CharField(max_length=500, null=True, blank=True)
 
     def save(self, *args, **kwargs) -> None:
         if not self.slug:

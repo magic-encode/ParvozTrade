@@ -28,24 +28,16 @@
                         <div class="contact-title mb-30">
                             <h2 class="title">Send A Quest</h2>
                         </div>
-                        <form class="contact-form-style" id="contact-form" action="https://whizthemes.com/nazmul/php/mail.php" method="post">
+                        <form class="contact-form-style" action="{% url 'contact' %}" method="POST">
+                            {% csrf_token %}
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <input name="name" placeholder="Name*" type="text" />
-                                </div>
-                                <div class="col-lg-6">
-                                    <input name="email" placeholder="Email*" type="email" />
-                                </div>
-                                <div class="col-lg-12">
-                                    <input name="subject" placeholder="Subject*" type="text" />
-                                </div>
+                                {{form.as_p}}
                                 <div class="col-lg-12 text-center">
-                                    <textarea name="message" placeholder="Your Message*"></textarea>
-                                    <button class="btn btn-primary" type="submit">Send Message</button>
+                                    <button class="btn btn-primary" type="submit" name="submit" value="Send message">Send Message</button>
                                 </div>
                             </div>
                         </form>
-                        <p class="form-messege"></p>
+                        
                     </div>
                 </div>
                 <div class="col-12">

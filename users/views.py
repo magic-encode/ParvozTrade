@@ -11,11 +11,17 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import CustomUserCreationForm
 from .models import Post  
+
+from .forms import CreateUserForm, ProfileForm
+from .models import Post  
+
+
 # -------------------------  pages ------------------------- ------------------------- ---------------------
 
 
 def profileView(request):
-    return render(request, 'pages/myaccount.html')
+    profile = ProfileForm()
+    return render(request, 'pages/profiles.html', {'profile': profile})
 
 def loginUser(request):
     page = 'login'
@@ -37,7 +43,7 @@ def loginUser(request):
         if user is not None:
             login(request, user)
             return redirect('profile')
-            # request.GET['next'] if 'next' in request.GET else 'account'
+            request.GET['next'] if 'next' in request.GET else 'account'
         else:
             messages.error(request, 'Username OR password is incorrect')
 
@@ -52,12 +58,12 @@ def logoutUser(request):
 
 def registerUser(request):
     page = 'register'
-    form = CustomUserCreationForm()
+    forms = CreateUserForm()
 
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
+        forms = CreateUserForm(request.POST)
+        if forms.is_valid():
+            user = forms.save(commit=False)
             user.username = user.username.lower()
             user.save()
 
@@ -70,8 +76,25 @@ def registerUser(request):
             messages.success(
                 request, 'An error has occurred during registration')
 
-    context = {'page': page, 'form': form}
+    context = {'page': page, 'forms': forms}
     return render(request, 'pages/login.html', context)
+ 
+# @unauthenticated_user
+# def registerUser(request):
+
+#     forms = CreateUserForm()
+#     if request.method == 'POST':
+#         forms = CreateUserForm(request.POST)
+#         if forms.is_valid():
+#             user = forms.save()
+#             username = forms.cleaned_data.get('username')
+
+#             messages.success(request, 'Account was created for ' + username)
+#             login(request, user)
+#             return redirect('login')
+
+#     context = {'forms': forms}
+#     return render(request, 'pages/login.html', context)
  
 
 def loginView(request):
@@ -136,3 +159,13 @@ def blogDetailView(request, id):
     blog = Post.objects.get(id=id)
     
     return render(request, 'blog/detail.html', {'blog': blog})
+
+
+
+def blogDetailView(request, id):
+    blog = Post.objects.get(id=id)
+    
+    return render(request, 'blog/detail.html', {'blog': blog})
+
+
+
