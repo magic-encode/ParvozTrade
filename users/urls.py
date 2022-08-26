@@ -2,6 +2,8 @@ from django.urls import path
 
 from . import views
 
+from .views import blogDetailView
+
 
 
 urlpatterns = [
@@ -11,7 +13,7 @@ urlpatterns = [
     path('logout/', views.logoutUser, name="logout"),
     
     path('blog/', views.blogView, name='blog'),
-    path('blog/<int:pk', views.blogdetailView, 'blogdetail'),
+    path('blog/<int:id>/', views.blogDetailView, name='blogdetail'),
     
     path('cart/', views.cartView, name='cart'),
 

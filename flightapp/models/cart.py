@@ -1,10 +1,10 @@
 from django.db import models
 from django.db.models import Sum
+from flightapp.models.products import Products
 from django.contrib.auth import get_user_model
 
-from flightapp.models.products import Products
-
 User = get_user_model()
+
 
 
 class Cart(models.Model):

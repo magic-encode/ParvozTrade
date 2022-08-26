@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     
     'users', 
     'flightapp', 
-    'django_filters',
+    # 'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +63,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'flight.wsgi.application'
+
 
 
 
