@@ -23,38 +23,37 @@ def profileView(request):
     return render(request, 'pages/profiles.html')
 
 
-def loginUser(request):
-    page = 'login'
+# def loginUser(request):
+    
+#     if request.user.is_authenticated:
+#         return redirect('home')
 
-    if request.user.is_authenticated:
-        return redirect('home')
+#     # if request.method == 'POST':
+#     #     username = request.POST['username'].lower()
+#     #     password = request.POST['password']
 
-    if request.method == 'POST':
-        username = request.POST['username'].lower()
-        password = request.POST['password']
-
-        try:
-            user = CustomUser.objects.get(username=username)
-        except:
-            messages.error(request, 'Username does not exist')
-        print("Salom Dunyo")
-        user = authenticate(request, username=username, password=password)
+#     #     try:
+#     #         user = CustomUser.objects.get(username=username)
+#     #     except:
+#     #         messages.error(request, 'Username does not exist')
+#     #     print("Salom Dunyo")
+#     #     user = authenticate(request, username=username, password=password)
         
-        if user is not None:
-            login(request, user)
-            request.GET['next'] if 'next' in request.GET else 'profile'
-            return redirect('profile')
+#     #     if user is not None:
+#     #         login(request, user)
+#     #         request.GET['next'] if 'next' in request.GET else 'profile'
+#     #         return redirect('profile')
             
-        else:
-            messages.error(request, 'Username OR password is incorrect')
+#     #     else:
+#     #         messages.error(request, 'Username OR password is incorrect')
 
-    return render(request, 'pages/login.html')
+#     return render(request, 'pages/login.html')
 
 
-def logoutUser(request):
-    logout(request)
-    messages.info(request, 'User was logged out!')
-    return redirect('login')
+# def logoutUser(request):
+#     logout(request)
+#     messages.info(request, 'User was logged out!')
+#     return redirect('login')
 
 
 def registerUser(request):
@@ -78,7 +77,7 @@ def registerUser(request):
                 request, 'An error has occurred during registration')
 
     context = {'page': page, 'forms': forms}
-    return render(request, 'pages/register.html', context)
+    return render(request, 'registration/register.html', context)
 
 # @unauthenticated_user
 # def registerUser(request):
