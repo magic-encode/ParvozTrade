@@ -30,6 +30,17 @@ def createProfile(sender, instance, created, **kwargs):
             [profile.email],
             fail_silently=False,
         )
-    
-        
+
+
+def updateUser(sender, instance, created, **kwargs):
+    profile = instance
+    user = profile.user
+
+    if created == False:
+        user.first_name = profile.name
+        user.username = profile.username
+        user.email = profile.email
+        user.save()
+
 post_save.connect(createProfile, sender=CustomUser)
+post_save.connect(updateUser, sender=Profile)

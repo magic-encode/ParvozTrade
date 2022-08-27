@@ -111,10 +111,13 @@ def editAccount(request):
         if form.is_valid():
             form.save()
 
-            return redirect('account')
+            return redirect('uzgardi')
 
     context = {'form': form}
-    return render(request, 'users/profile_form.html', context)
+    return render(request, 'pages/profile.html', context)
+
+def uzgarView(request):
+    return render(request, 'registration/uzgardi.html')
 
 
 def cartView(request):

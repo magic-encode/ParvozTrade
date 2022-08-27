@@ -14,6 +14,9 @@ urlpatterns = [
     path('blog/<int:id>/', views.blogDetailView, name='blogdetail'),
     
     path('cart/', views.cartView, name='cart'),
+    path('editAccount/', views.editAccount, name='edit'),
+    path('uzgardi/', views.uzgarView, name='uzgardi'),
+    
 
     path('faq/', views.faqView, name='faq'),
     path('error/', views.errorView, name='error'),

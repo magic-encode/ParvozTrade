@@ -34,7 +34,7 @@
                             <ul role="tablist" class="nav flex-column dashboard-list">         
                                 <li> <a href="my-account.html#orders" data-bs-toggle="tab" class="nav-link">Orders</a></li>
                                 <li><a href="my-account.html#address" data-bs-toggle="tab" class="nav-link">Addresses</a></li>
-                                <li><a href="my-account.html#account-details" data-bs-toggle="tab" class="nav-link">Account details</a>
+                                <li><a href="my-account.html#account-details" data-bs-toggle="tab" class="nav-link">Change Password</a>
                                 </li>
                                 <li><a href="{% url 'logout' %}" class="nav-link">logout</a></li>
                             </ul>
@@ -97,7 +97,8 @@
                                 <div class="login">
                                     <div class="login_form_container">
                                         <div class="account_login_form">
-                                            <form action="my-account.html#">
+                                            <form action="{% url 'edit' %}" method="POST">
+                                                {% csrf_token %}
                                                 
                                                 <div class="default-form-box mb-20">
                                                     <label>User Name</label>
