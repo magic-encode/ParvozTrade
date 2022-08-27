@@ -1,11 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
-from django.contrib.auth import get_user_model
 
 from flightapp.models.category import Categories
 
-
-User = get_user_model()
 
 
 class Products(models.Model):

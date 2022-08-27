@@ -1,11 +1,10 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 
 from flightapp.models.products import Products
 
-User = get_user_model()
+from users.models import CustomUser
 
 
 class Wishlist(models.Model):
-    user     = models.ForeignKey(User, on_delete=models.CASCADE)
+    user     = models.OneToOneField(CustomUser,on_delete=models.PROTECT)
     products = models.ManyToManyField(Products,blank=True, related_name='wishlist')

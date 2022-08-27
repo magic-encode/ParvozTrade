@@ -36,9 +36,6 @@
                                 <a class="active" data-bs-toggle="tab" href="login.html#lg1">
                                     <h4>login</h4>
                                 </a>
-                                <a data-bs-toggle="tab" href="login.html#lg2">
-                                    <h4>register</h4>
-                                </a>
                             </div>
                             
                             <div class="tab-content">
@@ -68,21 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div id="lg2" class="tab-pane">
-                                    <div class="login-form-container">
-                                        <div class="login-register-form">
-                                            <form action="{% url 'register' %}" method="POST">
-                                                {% csrf_token %}
-                                                {{forms.as_p}}
-                                                <div class="button-box">
-                                                    <button type="submit"><span>Register</span></button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                 
+                                                              
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('flightapp.urls')),
     path('user/', include('users.urls')),
+#     path('users/login/', include('django.contrib.auth.urls')),
     
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
          name="reset_password"),

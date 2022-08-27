@@ -4,15 +4,14 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth import logout
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
-from .forms import CustomUserCreationForm
-from .models import Post  
+from .forms import CustomUser
+from .forms import CreateUserForm
 
-from .forms import CreateUserForm, ProfileForm
 from .models import Post
 
 
@@ -20,8 +19,8 @@ from .models import Post
 
 
 def profileView(request):
-    profile = ProfileForm()
-    return render(request, 'pages/profiles.html', {'profile': profile})
+    
+    return render(request, 'pages/profiles.html')
 
 
 def loginUser(request):
@@ -35,7 +34,7 @@ def loginUser(request):
         password = request.POST['password']
 
         try:
-            user = User.objects.get(username=username)
+            user = CustomUser.objects.get(username=username)
         except:
             messages.error(request, 'Username does not exist')
         print("Salom Dunyo")
@@ -79,7 +78,7 @@ def registerUser(request):
                 request, 'An error has occurred during registration')
 
     context = {'page': page, 'forms': forms}
-    return render(request, 'pages/login.html', context)
+    return render(request, 'pages/register.html', context)
 
 # @unauthenticated_user
 # def registerUser(request):
@@ -106,10 +105,10 @@ def loginView(request):
 # @login_required(login_url='login')
 def editAccount(request):
     profile = request.user.profile
-    form = User(instance=profile)
+    form = CustomUser(instance=profile)
 
     if request.method == 'POST':
-        form = User(request.POST, request.FILES, instance=profile)
+        form = CustomUser(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
 

@@ -22,8 +22,8 @@
                             <li><a href="{% url 'faq' %}"><i class="fa fa-question"></i> Savollar </a></li>
                             <li><a href="tel:+998940593733"><i class="fa fa-phone"></i> +998940593733</a></li>
                             <li><a href="{% url 'contact' %}"><i class="fa fa-envelope-o"></i> player2020uz@gmail.com</a></li>
-                            {% if request.user.is_authenticated %}
-                            <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Account</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> {{ user.username }}</a></li> </a></li>
                             {% else %}
                             <li><a href="{% url 'login' %}"><i class="fa fa-arrow-right"></i> Login</a></li>
                             {% endif %}

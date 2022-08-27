@@ -1,13 +1,17 @@
-
-from cgitb import text
-
-# from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser
 
 from django.db import models
 
-from django.contrib.auth import get_user_model
 
-User = get_user_model()
+
+class CustomUser(AbstractUser):
+    fullname = models.CharField(max_length=255, null=True, blank=True)
+    number = models.BigIntegerField(null=True, blank=True)
+    password1 = models.CharField(max_length=255)
+    password2 = models.CharField(max_length=255)
+
+    class Meta(AbstractUser.Meta):
+        swappable = 'AUTH_USER_MODEL'
 
 
 class Post(models.Model):
@@ -15,7 +19,7 @@ class Post(models.Model):
     image = models.ImageField(verbose_name='image', null=True, blank=True)
     video = models.URLField(verbose_name='video', null=True, blank=True)
     video_img = models.ImageField(verbose_name='video_img', null=True, blank=True)
-    userd  = models.ForeignKey(User, related_name='userd', on_delete=models.DO_NOTHING)
+    userd  = models.OneToOneField(CustomUser,on_delete=models.PROTECT)
     text = models.TextField(verbose_name='blog matni')
     aforizm = models.CharField(max_length=255, blank=True, null=True, verbose_name='aqilli gaplar')
     name_aforiz = models.CharField(max_length=255, blank=True, null=True, verbose_name='aforizm egasi')
@@ -24,11 +28,4 @@ class Post(models.Model):
     def __str__(self):          
         return str(f"ID-{self.id} {self.title}")
 
-
-# class CustomUser(AbstractUser):
-#     first_name = models.CharField(max_length=255)
-#     name = models.CharField(max_length=255)
-#     email = models.EmailField(max_length=255)
-#     password1 = models.CharField(max_length=255)
-#     password2 = models.CharField(max_length=255)
 
