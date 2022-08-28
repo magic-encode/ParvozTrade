@@ -8,6 +8,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 from flightapp.models.cart import Cart
+from flightapp.models.wishlist import Wishlist
+
 from flightapp.models.products import Brand, FeatureLeft
 from flightapp.models.products import Banner
 from flightapp.models.products import Products
@@ -49,28 +51,28 @@ def homeView(request):
     features = FeatureRights.objects.all()
     devices = FeatureLeft.objects.all()
     brand = Brand.objects.all()
-    context: dict = {**dbctx, **myctx,'products': products, 'banners': banners,
+    context: dict = {**dbctx, **myctx, 'products': products, 'banners': banners,
                      'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices}
 
     return render(request, 'home/index.html', context)
 
- 
+
 def aboutView(request):
     context: dict = categWishlistHelper(request)
-    
+
     return render(request, 'about/about.html', context)
 
 
 def shopView(request):
     context: dict = categWishlistHelper(request)
-    
+
     return render(request, 'shop/shop.html', context)
 
 
 def shopdetailView(request, id):
     context: dict = categWishlistHelper(request)
-    
-    context["items"]=Products.objects.get(id=id)
+
+    context["items"] = Products.objects.get(id=id)
 
     return render(request, 'shop/detail.html', context)
 
@@ -78,48 +80,113 @@ def shopdetailView(request, id):
 def myWishlistView(request):
     context: dict = categWishlistHelper(request)
     if request.user.is_authenticated:
-        cartHistory: OrderHistory = OrderHistory.objects.filter(user=request.user).prefetch_related("products").first()
-        
+        cartHistory: OrderHistory = OrderHistory.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
         if cartHistory:
             context['items'] = cartHistory.products.all()
-            context["cardItems"]=context['items']
-            
+            context["cardItems"] = context['items']
+
     return render(request, 'pages/wishlist.html', context)
 
 
 @login_required(login_url='profile')
-def removeCartView(request, id: int) -> None:
-    cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
-    if cartProducts:
-        cartItem = cartProducts.products.get(id=id)
-        cartProducts.products.remove(cartItem)
-        messages.add_message(request, messages.INFO, 'Savatchadan muofaqqiyatli o\'chirildi ✅')
-    
+def cartView(request):
+    context: dict = categWishlistHelper(request)
+
+    if request.user.is_authenticated:
+        cartProducts: Cart = Cart.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
+        if cartProducts:
+            context['items'] = cartProducts.products.all()
+            context["cardItems"] = context['items']
+            context["cartProductsCount"] = cartProducts.products.count()
+
+            context['sum'] = cartProducts.products.aggregate(
+                Sum('price_new')).get('price_new__sum')
+
+    return render(request, 'pages/cart/cart.html', context)
+
+
+@login_required(login_url='profile')
+def wishlistView(request):
+    context: dict = categWishlistHelper(request)
+
+    if request.user.is_authenticated:
+        wishProducts: Wishlist = Wishlist.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
+        if wishProducts:
+            context['items'] = wishProducts.products.all()
+            context["cardItems"] = context['items']
+            
+            
+    return render(request, 'pages/wishlist.html')
+
+
+@login_required(login_url='profile')
+def addWishlistView(request, id) -> None:
+   
+    product: Products = Products.objects.get(id=id)
+    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+    wishlist.products.add(product)
+    wishlist.save()
+    if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
+        return redirect('home')
+
     return redirect('home')
 
 
-@login_required(login_url='my-account')
+@login_required(login_url='profile')
+def removeWishlistView(request, id: int) -> None:
+    wishProducts: Wishlist = Wishlist.objects.filter(
+        user=request.user).prefetch_related("products").first()
+    if wishProducts:
+        wishItem = wishProducts.products.get(id=id)
+        wishProducts.products.remove(wishItem)
+        
+    return redirect('wishlist')
+
+
+@login_required(login_url='profile')
+def removeCartView(request, id: int) -> None:
+    cartProducts: Cart = Cart.objects.filter(
+        user=request.user).prefetch_related("products").first()
+    if cartProducts:
+        cartItem = cartProducts.products.get(id=id)
+        cartProducts.products.remove(cartItem)
+        messages.add_message(request, messages.INFO,
+                             'Savatchadan muofaqqiyatli o\'chirildi ✅')
+
+    return redirect('cart')
+
+
+@login_required(login_url='profile')
 def removeOrderHistoryView(request, id: int) -> None:
-    cartHistory: OrderHistory = OrderHistory.objects.filter(user=request.user).prefetch_related("products").first()
+    cartHistory: OrderHistory = OrderHistory.objects.filter(
+        user=request.user).prefetch_related("products").first()
     if cartHistory:
         cartItem = cartHistory.products.get(id=id)
         cartHistory.products.remove(cartItem)
-        messages.add_message(request, messages.INFO, 'Buyurtmalar tarixidan muofaqqiyatli o\'chirildi ✅')
-    
+        messages.add_message(request, messages.INFO,
+                             'Buyurtmalar tarixidan muofaqqiyatli o\'chirildi ✅')
+
     return redirect('home')
 
 
 # @login_required(login_url='my-account')
 def addCartView(request, id) -> None:
-    messages.add_message(request, messages.INFO, 'Savatchaga muofaqqiyatli qo\'shildi ✅')
-    
+    messages.add_message(request, messages.INFO,
+                         'Savatchaga muofaqqiyatli qo\'shildi ✅')
+
     product: Products = Products.objects.get(id=id)
-    cart,_ = Cart.objects.get_or_create(user=request.user)
+    cart, _ = Cart.objects.get_or_create(user=request.user)
     cart.products.add(product)
     cart.save()
     if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
         return redirect('home')
-    
+
     return redirect('home')
 
 
@@ -130,22 +197,21 @@ def addCartView(request, id) -> None:
 #         text += f"<b>ID</b>: {uuid4()}\n\n"
 #         text += f"Haridor ismi: {request.user.first_name}\n"
 #         text += f"Haridor Raqami: {request.user.phone}\n\n"
-        
+
 #         cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
 #         order_history, _ = OrderHistory.objects.get_or_create(user=request.user)
-        
+
 #         for product in cartProducts.products.all():
 #             price += product.price
 #             order_history.products.add(product)
 #             order_history.save()
 #             text += f"{product.name} - {product.price} UZS\n"
-        
+
 #         cartProducts.delete()
 #         text += F"Jami - {price} UZS"
 #         telebot.send_message(text, telebot.TYPE_ORDERS)
-        
-#     return redirect('thanks')
 
+#     return redirect('thanks')
 
 
 def contactView(request):
@@ -157,7 +223,7 @@ def contactView(request):
             obj.save()
             text = f"Xabar yuborgan shaxs => {obj.fullname}\n  Nomeri: +{obj.nomer}\n  Email =>{obj.email}\n Xabar matni => {obj.message}"
             resp = telegram_bot_sendtext(text)
-            if resp: 
+            if resp:
                 messages.success(
                     request, 'Xabaringiz muofaqqiyati yuborildi, tez oraqa sizga javob beramiz!')
             else:

@@ -13,7 +13,7 @@ urlpatterns = [
     path('blog/', views.blogView, name='blog'),
     path('blog/<int:id>/', views.blogDetailView, name='blogdetail'),
     
-    path('cart/', views.cartView, name='cart'),
+    
     path('editAccount/', views.editAccount, name='edit'),
     path('uzgardi/', views.uzgarView, name='uzgardi'),
     
@@ -26,7 +26,6 @@ urlpatterns = [
     
     path('chekout/', views.chekoutView, name='chekout'),
 
-    path('wishlist/', views.wishlistView, name='wishlist'),
     path('coming-soon/', views.comingView, name='coming-soon'),
     
 ]

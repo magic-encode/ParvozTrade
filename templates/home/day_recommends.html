@@ -32,17 +32,65 @@
                     </span>
                 </div>
                 <div class="actions">
-                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                        class="pe-7s-shopbag"></i></button>
-                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                            class="pe-7s-like"></i></button>
+                    <a href="{% url 'add-cart' item.id%}" class="cart-btn" type="submit">
+                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart{{item.id}}"><i
+                            class="pe-7s-shopbag"></i>
+                        </button>
+                    </a>
+                    <a href="{% url 'add-wishlist' item.id%}" class="cart-btn" type="submit">
+                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{item.id}}"><i
+                            class="pe-7s-like"></i>
+                        </button>
+                    </a>
+                    
                     <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{item.id}}"><i class="pe-7s-look"></i></button>
                     
                 </div>
             </div>
         </div>
 
+        <!-- Modal Cart -->
+            <div class="modal customize-class fade" id="exampleModal-Cart{{item.id}}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                            <div class="tt-modal-messages">
+                                <i class="pe-7s-check"></i> Mahsulot Savatchaga muvaffaqiyatli qoshildi !!!
+                            </div>
+                            <div class="tt-modal-product">
+                                <div class="tt-img">
+                                    <img src="{{item.image.url}}" alt="Modern Smart Phone">
+                                </div>
+                                <h2 class="tt-title"><a href="#">{{item.name}}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
         <!-- Modal -->
+
+        <!-- Modal wishlist -->
+            <div class="modal customize-class fade" id="exampleModal-Wishlist{{ item.id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                            <div class="tt-modal-messages">
+                                <i class="pe-7s-check"></i> Mahsulot sevimlilarga muvaffaqiyatli qoshildi !!!
+                            </div>
+                            <div class="tt-modal-product">
+                                <div class="tt-img">
+                                    <img src="{{item.image.url}}" alt="Modern Smart Phone">
+                                </div>
+                                <h2 class="tt-title"><a href="index.html#">{{item.name}}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         <div class="modal modal-2 fade" id="exampleModal{{item.id}}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -92,15 +140,21 @@
                                 
                                     <div class="pro-details-quality">
                                         
-                                        <div class="pro-details-cart">
-                                            <a href="{% url 'shopdetail' item.id %}" class="cart-btn" type="submit">
-                                                Buyurtma berish
-                                              </a>
-                                              <a href="{% url 'add-cart' item.id%}" class="cart-btn" type="submit">
-                                                Savatchaga+
-                                              </a>
-                                        </div>
                                     
+                                            <a href="{% url 'shopdetail' item.id %}" class="cart-btn" type="submit">
+                                                <div class="pro-details-cart">
+                                                    <button class="add-cart">Buyurtma +
+                                                    </button>
+                                                </div>
+                                              </a>
+
+                                              <a href="{% url 'add-cart' item.id%}" class="cart-btn" type="submit">
+                                                <div class="pro-details-cart">
+                                                    <button class="add-cart">Savatcha +
+                                                    </button>
+                                                </div>
+                                              </a>
+                                        
                                         
                                     </div>
                                     

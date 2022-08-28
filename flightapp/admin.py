@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from flightapp.models.cart import Cart
+from flightapp.models.wishlist import Wishlist
 
 from flightapp.models.products import Brand 
 from flightapp.models.products import Banner
@@ -17,6 +18,7 @@ admin.site.register(Cart)
 admin.site.register(Brand)
 admin.site.register(Banner)
 admin.site.register(Products)
+admin.site.register(Wishlist)
 admin.site.register(Categories)
 admin.site.register(BannerLefts)
 admin.site.register(FeatureLeft)

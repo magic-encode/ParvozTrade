@@ -120,8 +120,6 @@ def uzgarView(request):
     return render(request, 'registration/uzgardi.html')
 
 
-def cartView(request):
-    return render(request, 'pages/cart/cart.html')
 
 
 def errorView(request):
