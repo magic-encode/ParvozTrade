@@ -66,9 +66,11 @@ def cartHover(request):
             user=request.user).prefetch_related("products").first()
 
         if cartProducts:
-            context['itemsr'] = cartProducts.products.all()
-            context["cardItems"] = context['itemsr']
+            context['items'] = cartProducts.products.all()
+            context["cardItem"] = context['items']
             context["cartProductsCount"] = cartProducts.products.count()
+            
+    return render(request, 'navbar.html', context)
 
 
 def aboutView(request):
@@ -91,6 +93,7 @@ def shopdetailView(request, id):
     return render(request, 'shop/detail.html', context)
 
 
+@login_required(login_url='profile')
 def myWishlistView(request):
     context: dict = categWishlistHelper(request)
     if request.user.is_authenticated:
