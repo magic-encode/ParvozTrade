@@ -1,4 +1,3 @@
-from multiprocessing import context
 from uuid import uuid4
 
 from django.db.models import Sum
@@ -21,11 +20,11 @@ from flightapp.models.products import FeatureRights
 from flightapp.models.category import Categories
 from flightapp.models.order_history import OrderHistory
 
-from .forms import GetInfoForm
-from .bots.bot import telegram_bot_sendtext
-from flightapp.utils import searchHelper
-from flightapp.utils import categWishlistHelper
-# from flightapp.libs.telegram import telebot
+from flightapp.forms import GetInfoForm
+
+from flightapp.utils import searchHelper, wishList
+from flightapp.utils import categWishlistHelper, send_message
+from flightapp.libs.telegram import telebot
 
 
 def homeView(request):
@@ -35,24 +34,16 @@ def homeView(request):
         category=Categories.ENG_KOP_SOTILADIGAN)  # eng ko'p sotiladigan
     device = Products.objects.filter(
         category=Categories.SIZ_UCHUN_TAVFSIYA)  # eng mashhur mahsulotlar
-    
+
 # (category__in=[
 #         Categories.ENG_KOP_SOTILADIGAN,
 #         Categories.KUN_TAKLIFLARI])
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
     dbctx["best_seller"] = best_seller
-    
+
     dbctx['day_recommends'] = day_recommends
     dbctx["device"] = device
-    
-    # if request.user.is_authenticated:
-    #     itemlar = Cart.objects.filter(user=request.user).prefetch_related("products").first()
-        
-    #     if itemlar:
-    #         context['items'] = itemlar.products.all()
-    #         context["cardItems"] = context['items']
-    
 
     banners = Banner.objects.all()
     products = Products.objects.all()
@@ -60,14 +51,11 @@ def homeView(request):
     features = FeatureRights.objects.all()
     devices = FeatureLeft.objects.all()
     brand = Brand.objects.all()
-    
+
     context: dict = {**dbctx, **myctx, 'products': products, 'banners': banners,
                      'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices, }
 
     return render(request, 'home/index.html', context)
-
-            
-
 
 
 def aboutView(request):
@@ -77,7 +65,7 @@ def aboutView(request):
 
 
 def shopView(request):
-    
+
     _all_products = Products.objects.all()
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
@@ -93,20 +81,6 @@ def shopdetailView(request, id):
     context["items"] = Products.objects.get(id=id)
 
     return render(request, 'shop/detail.html', context)
-
-
-@login_required(login_url='profile')
-def myWishlistView(request):
-    context: dict = categWishlistHelper(request)
-    if request.user.is_authenticated:
-        cartHistory: OrderHistory = OrderHistory.objects.filter(
-            user=request.user).prefetch_related("products").first()
-
-        if cartHistory:
-            context['items'] = cartHistory.products.all()
-            context["cardItems"] = context['items']
-
-    return render(request, 'pages/wishlist.html', context)
 
 
 @login_required(login_url='profile')
@@ -130,25 +104,23 @@ def cartView(request):
 
 @login_required(login_url='profile')
 def wishlistView(request):
-    context: dict = categWishlistHelper(request)
+    context: dict = wishList(request)
 
-    wishs = Wishlist.objects.all()
-     
     if request.user.is_authenticated:
-        cartProducts: Cart = Cart.objects.filter(
+        wishProduct: Wishlist = Wishlist.objects.filter(
             user=request.user).prefetch_related("products").first()
 
-        if cartProducts:
-            context['items'] = cartProducts.products.all()
-            context["cardItems"] = context['items']
-            context["cartProductsCount"] = cartProducts.products.count()       
-            
-    return render(request, 'pages/wishlist.html')
+        if wishProduct:
+            context["items"] = wishProduct.products.all()
+            context["cardItem"] = context['items']
+            context["cartProductsCount"] = wishProduct.products.count()
+
+    return render(request, 'pages/wishlist.html', context)
 
 
 @login_required(login_url='profile')
 def addWishlistView(request, id) -> None:
-   
+
     product: Products = Products.objects.get(id=id)
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
     wishlist.products.add(product)
@@ -166,7 +138,7 @@ def removeWishlistView(request, id: int) -> None:
     if wishProducts:
         wishItem = wishProducts.products.get(id=id)
         wishProducts.products.remove(wishItem)
-        
+
     return redirect('wishlist')
 
 
@@ -196,7 +168,7 @@ def removeOrderHistoryView(request, id: int) -> None:
     return redirect('home')
 
 
-# @login_required(login_url='my-account')
+@login_required(login_url='profile')
 def addCartView(request, id) -> None:
     messages.add_message(request, messages.INFO,
                          'Savatchaga muofaqqiyatli qo\'shildi ✅')
@@ -211,54 +183,48 @@ def addCartView(request, id) -> None:
     return redirect('home')
 
 
-# def orderView(request):
-#     if request.method == 'POST':
-#         price: int = 0
-#         text: str = ""
-#         text += f"<b>ID</b>: {uuid4()}\n\n"
-#         text += f"Haridor ismi: {request.user.first_name}\n"
-#         text += f"Haridor Raqami: {request.user.phone}\n\n"
+def orderView(request):
+    if request.method == 'POST':
+        price: int = 0
+        text: str = ""
+        text += f"<b>ID</b>: {uuid4()}\n\n"
+        text += f"Haridor ismi: {request.user.first_name}\n"
+        text += f"Haridor Raqami: {request.user.phone}\n\n"
 
-#         cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
-#         order_history, _ = OrderHistory.objects.get_or_create(user=request.user)
+        cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
+        order_history, _ = OrderHistory.objects.get_or_create(user=request.user)
 
-#         for product in cartProducts.products.all():
-#             price += product.price
-#             order_history.products.add(product)
-#             order_history.save()
-#             text += f"{product.name} - {product.price} UZS\n"
+        for product in cartProducts.products.all():
+            price += product.price_new
+            order_history.products.add(product)
+            order_history.save()
+            text += f"{product.name} - {product.price} UZS\n"
 
-#         cartProducts.delete()
-#         text += F"Jami - {price} UZS"
-#         telebot.send_message(text, telebot.TYPE_ORDERS)
+        cartProducts.delete()
+        text += F"Jami - {price} UZS"
+        telebot.send_message(text, telebot.TYPE_ZAKAS)
 
-#     return redirect('thanks')
+    return redirect('thanks')
 
 
-def contactView(request):
+def contactView(request, _type: str = telebot.TYPE_SAVOL):
     form = GetInfoForm()
+    
     if request.POST:
         form = GetInfoForm(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            text = f"Xabar yuborgan shaxs => {obj.fullname}\n  Nomeri: +{obj.nomer}\n  Email =>{obj.email}\n Xabar matni => {obj.message}"
-            resp = telegram_bot_sendtext(text)
-            if resp:
-                messages.success(
-                    request, 'Xabaringiz muofaqqiyati yuborildi, tez oraqa sizga javob beramiz!')
-            else:
-                messages.success(
-                    request, "Xabar yuborib  men biln bog'")
+            text = f"<b>Order ID: {obj.id}</b>\n\n"
+            text = f"<b>Customer Name: {obj.fullname}</b>\n"
+            text = f"<b>Customer Phone: {obj.phone}</b>\n"
+            text = f"<b>Xabar matni: {obj.message}</b>\n"
+            
+            telebot.send_message(text, _type)
 
             return redirect('contact')
 
-    else:
-        form = GetInfoForm()
-
-    context = {
-        "form": form
-    }
+    context["form"] = form
     
     context: dict = categWishlistHelper(request)
 
@@ -269,6 +235,8 @@ def contactView(request):
         if cartProducts:
             context['items'] = cartProducts.products.all()
             context["cardItems"] = context['items']
+    
             context["cartProductsCount"] = cartProducts.products.count()
+            
 
     return render(request, 'contact/contact.html', context)

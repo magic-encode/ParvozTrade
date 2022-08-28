@@ -23,6 +23,17 @@ from .models import Post
 
 def profileView(request):
     
+    context: dict = categWishlistHelper(request)
+    
+    if request.user.is_authenticated:
+        cartProducts: Cart = Cart.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
+        if cartProducts:
+            context['items'] = cartProducts.products.all()
+            context["cardItems"] = context['items']
+            context["cartProductsCount"] = cartProducts.products.count()
+    
     return render(request, 'pages/profiles.html')
 
 
