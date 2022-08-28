@@ -1,7 +1,9 @@
 {% load static%}
 
 <!-- Banner Area Start -->
-<div class="banner-area style-one pt-100px pb-100px">
+<h1 style="text-align:center; margin: 20px;">Eng mashhur mahsulotlar </h1>
+<div class="banner-area style-one pt-px pb-100px">
+   
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -12,7 +14,7 @@
                         <h3 class="title">{{left.name}}</h3> <br>
                         {{left.description}} </h3>
                         <span class="category">{{left.price}}$ dan</span>
-                        <a href="{% url 'shopdetail' %}" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="{% url 'shopdetail' left.id %}" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     {% endfor %}
                 </div>
@@ -24,7 +26,7 @@
                     <div class="banner-content nth-child-2">
                         <h3 class="title">{{right.name}}</h3>
                         <span class="category">{{right.price}}$ dan</span>
-                        <a href="{% url 'shopdetail' %}" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="{% url 'shopdetail' right.id %}" class="shop-link"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 {% endfor %}

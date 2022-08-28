@@ -8,10 +8,11 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 from flightapp.models.cart import Cart
-from flightapp.models.products import Brand
+from flightapp.models.products import Brand, FeatureLeft
 from flightapp.models.products import Banner
 from flightapp.models.products import Products
 from flightapp.models.products import BannerLefts
+from flightapp.models.products import FeatureLeft
 from flightapp.models.products import FeatureRights
 
 from flightapp.models.category import Categories
@@ -36,7 +37,7 @@ def homeView(request):
         Categories.KUN_TAKLIFLARI])
 
     dbctx: dict = {}
-    # myctx: dict = categWishlistHelper(request)
+    myctx: dict = categWishlistHelper(request)
     dbctx["best_seller"] = best_seller
     dbctx["all_products"] = _all_products
     dbctx['day_recommends'] = day_recommends
@@ -46,9 +47,10 @@ def homeView(request):
     products = Products.objects.all()
     bannerleft = BannerLefts.objects.all()
     features = FeatureRights.objects.all()
+    devices = FeatureLeft.objects.all()
     brand = Brand.objects.all()
-    context: dict = {**dbctx, 'products': products, 'banners': banners,
-                     'bannerleft': bannerleft, 'features': features, 'brand': brand}
+    context: dict = {**dbctx, **myctx,'products': products, 'banners': banners,
+                     'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices}
 
     return render(request, 'home/index.html', context)
 
@@ -108,7 +110,7 @@ def removeOrderHistoryView(request, id: int) -> None:
 
 
 # @login_required(login_url='my-account')
-def addCartView(request, id: int) -> None:
+def addCartView(request, id) -> None:
     messages.add_message(request, messages.INFO, 'Savatchaga muofaqqiyatli qo\'shildi ✅')
     
     product: Products = Products.objects.get(id=id)
@@ -118,7 +120,7 @@ def addCartView(request, id: int) -> None:
     if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
         return redirect('home')
     
-    return redirect('shop-detail', product.id)
+    return redirect('home')
 
 
 # def orderView(request):

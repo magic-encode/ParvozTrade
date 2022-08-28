@@ -82,6 +82,16 @@ class FeatureRights(models.Model):
         return self.name
     
     
+class FeatureLeft(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField()
+    price_old = models.FloatField(verbose_name="mahsulotning eski narxi")
+    price_new = models.FloatField(verbose_name="mahsulotning yangi narxi")
+    
+    def __str__(self):
+        return self.name
+    
+    
 class Brand(models.Model):
     image = models.ImageField()
     
