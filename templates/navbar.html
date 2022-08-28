@@ -124,7 +124,7 @@
         <div class="modal-body">
             <div class="inner">
                 <div class="body customScroll">
-                    {% for item in itemsr %}
+                    {% for item in cardItems %}
                     <ul class="minicart-product-list">
                         <li>
                             <a href="single-product.html" class="image"><img src="{{item.image.url}}" alt="Cart product Image"></a>
@@ -159,32 +159,19 @@
         <div class="modal-body">
             <div class="inner">
                 <div class="body customScroll">
+                    {% for item in cardItems %}
                     <ul class="minicart-product-list">
                         <li>
-                            <a href="single-product.html" class="image"><img src="assets/images/product-image/1.webp" alt="Cart product Image"></a>
+                            <a href="single-product.html" class="image"><img src="{{item.image.url}}" alt="Cart product Image"></a>
                             <div class="content">
-                                <a href="single-product.html" class="title">Modern Smart Phone</a>
-                                <span class="quantity-price">1 x <span class="amount">$21.86</span></span>
-                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
+                                <a href="single-product.html" class="title">{{item.name}}</a>
+                                <span class="quantity-price">1 x <span class="amount">${{item.price_new}}</span></span>
+                                <a href="{% url 'remove-wishlist' item.id %}" class="remove">×</a>
                             </div>
                         </li>
-                        <li>
-                            <a href="single-product.html" class="image"><img src="assets/images/product-image/2.webp" alt="Cart product Image"></a>
-                            <div class="content">
-                                <a href="single-product.html" class="title">Bluetooth Headphone</a>
-                                <span class="quantity-price">1 x <span class="amount">$13.28</span></span>
-                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="single-product.html" class="image"><img src="assets/images/product-image/3.webp" alt="Cart product Image"></a>
-                            <div class="content">
-                                <a href="single-product.html" class="title">Smart Music Box</a>
-                                <span class="quantity-price">1 x <span class="amount">$17.34</span></span>
-                                <a href="single-product-tabstyle-3.html#" class="remove">×</a>
-                            </div>
-                        </li>
+                        
                     </ul>
+                    {% endfor %}
                 </div>
             </div>
         </div>

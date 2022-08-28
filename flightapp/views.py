@@ -1,3 +1,4 @@
+from multiprocessing import context
 from uuid import uuid4
 
 from django.db.models import Sum
@@ -34,16 +35,24 @@ def homeView(request):
         category=Categories.ENG_KOP_SOTILADIGAN)  # eng ko'p sotiladigan
     device = Products.objects.filter(
         category=Categories.SIZ_UCHUN_TAVFSIYA)  # eng mashhur mahsulotlar
-    _all_products = Products.objects.all()
+    
 # (category__in=[
 #         Categories.ENG_KOP_SOTILADIGAN,
 #         Categories.KUN_TAKLIFLARI])
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
     dbctx["best_seller"] = best_seller
-    dbctx["all_products"] = _all_products
+    
     dbctx['day_recommends'] = day_recommends
     dbctx["device"] = device
+    
+    # if request.user.is_authenticated:
+    #     itemlar = Cart.objects.filter(user=request.user).prefetch_related("products").first()
+        
+    #     if itemlar:
+    #         context['items'] = itemlar.products.all()
+    #         context["cardItems"] = context['items']
+    
 
     banners = Banner.objects.all()
     products = Products.objects.all()
@@ -53,24 +62,12 @@ def homeView(request):
     brand = Brand.objects.all()
     
     context: dict = {**dbctx, **myctx, 'products': products, 'banners': banners,
-                     'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices}
+                     'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices, }
 
     return render(request, 'home/index.html', context)
 
-
-def cartHover(request):
-    context: dict = categWishlistHelper(request)
-
-    if request.user.is_authenticated:
-        cartProducts: Cart = Cart.objects.filter(
-            user=request.user).prefetch_related("products").first()
-
-        if cartProducts:
-            context['items'] = cartProducts.products.all()
-            context["cardItem"] = context['items']
-            context["cartProductsCount"] = cartProducts.products.count()
             
-    return render(request, 'navbar.html', context)
+
 
 
 def aboutView(request):
@@ -80,7 +77,12 @@ def aboutView(request):
 
 
 def shopView(request):
-    context: dict = categWishlistHelper(request)
+    
+    _all_products = Products.objects.all()
+    dbctx: dict = {}
+    myctx: dict = categWishlistHelper(request)
+    dbctx["all_products"] = _all_products
+    context = {**dbctx, **myctx}
 
     return render(request, 'shop/shop.html', context)
 
@@ -255,5 +257,16 @@ def contactView(request):
     context = {
         "form": form
     }
+    
+    context: dict = categWishlistHelper(request)
+
+    if request.user.is_authenticated:
+        cartProducts: Cart = Cart.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
+        if cartProducts:
+            context['items'] = cartProducts.products.all()
+            context["cardItems"] = context['items']
+            context["cartProductsCount"] = cartProducts.products.count()
 
     return render(request, 'contact/contact.html', context)

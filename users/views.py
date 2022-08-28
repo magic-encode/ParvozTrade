@@ -12,6 +12,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUser
 from .forms import CreateUserForm
 
+from flightapp.utils import categWishlistHelper
+from flightapp.models.cart import Cart
+
 from .models import Post
 
 
@@ -153,6 +156,20 @@ def wishlistView(request):
 def blogView(request):
     blogs = Post.objects.all()
     context = {'blogs': blogs}
+    
+    
+    context: dict = categWishlistHelper(request)
+
+    if request.user.is_authenticated:
+        cartProducts: Cart = Cart.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
+        if cartProducts:
+            context['items'] = cartProducts.products.all()
+            context["cardItems"] = context['items']
+            context["cartProductsCount"] = cartProducts.products.count()
+    
+    
     return render(request, 'blog/blog.html', context)
 
 

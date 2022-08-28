@@ -19,7 +19,6 @@ urlpatterns = [
     path('add-wishlist/<str:id>/', views.addWishlistView, name='add-wishlist'),
     path('remove-wishlist/<str:id>/', views.removeWishlistView, name='remove-wishlist'),
     
-    path('cart-hover/', views.cartHover, name='cart-hover'),
     
     path('contact/', views.contactView, name='contact'), 
 ]
