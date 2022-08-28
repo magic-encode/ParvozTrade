@@ -132,14 +132,16 @@ def cartView(request):
 def wishlistView(request):
     context: dict = categWishlistHelper(request)
 
+    wishs = Wishlist.objects.all()
+     
     if request.user.is_authenticated:
-        wishProducts: Wishlist = Wishlist.objects.filter(
+        cartProducts: Cart = Cart.objects.filter(
             user=request.user).prefetch_related("products").first()
 
-        if wishProducts:
-            context['items'] = wishProducts.products.all()
+        if cartProducts:
+            context['items'] = cartProducts.products.all()
             context["cardItems"] = context['items']
-            
+            context["cartProductsCount"] = cartProducts.products.count()       
             
     return render(request, 'pages/wishlist.html')
 
