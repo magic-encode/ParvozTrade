@@ -1,6 +1,6 @@
 {% load static %}
 
- {% comment %} <!-- Modal -->
+<!-- Modal -->
  <div class="modal modal-2 fade" id="exampleModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -51,10 +51,10 @@
                             <div class="pro-details-quality">
                                 
                                 <div class="pro-details-cart">
-                                    <a href="{% url 'shopdetail' x.id %}" class="cart-btn" type="submit">
+                                    {% comment %} <a href="{% url 'shopdetail'  %}" class="cart-btn" type="submit"> {% endcomment %}
                                         Buyurtma berish
                                       </a>
-                                      <a href="{% url 'add-cart' x.id%}" class="cart-btn" type="submit">
+                                      {% comment %} <a href="{% url 'add-cart' %}" class="cart-btn" type="submit"> {% endcomment %}
                                         Savatchaga+
                                       </a>
                                 </div>
@@ -70,8 +70,7 @@
         </div>
     </div>
 </div>
-<!-- Modal end --> {% endcomment %}
-
+<!-- Modal end -->
 <!-- Modal Cart -->
 <div class="modal customize-class fade" id="exampleModal-Cart" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

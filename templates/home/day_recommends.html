@@ -4,31 +4,31 @@
 <!-- kun takliflari -->
 <div class="tab-pane fade show active" id="newarrivals">
     <div class="row mb-n-30px">
-        {% for x in day_recommends %} 
+        {% for item in day_recommends %} 
         <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
             <!-- Single Prodect -->
             <div class="product">
                 <span class="badges">
-                    {% if x.status %}
-                        <span class="sale">{{x.status}}</span>
+                    {% if item.status %}
+                        <span class="sale">{{item.status}}</span>
                     {% endif %}
-                    {% if x.discount %}
-                        <span class="sale">-{{x.discount}}%</span>
+                    {% if item.discount %}
+                        <span class="sale">-{{item.discount}}%</span>
                     {% endif %}
                 </span>
                 <div class="thumb">
                     <a href="single-product.html" class="image">
-                        <img src="{{x.image.url}}" alt="Product" />
-                        <img class="hover-image" src="{{x.image.url}}" alt="Product" />
+                        <img src="{{item.image.url}}" alt="Product" />
+                        <img class="hover-image" src="{{item.image.url}}" alt="Product" />
                     </a>
                 </div>
                 <div class="content">
                     
-                    <h5 class="title"><a href="single-product.html">{{x.name}}
+                    <h5 class="title"><a href="single-product.html">{{item.name}}
                         </a>
                     </h5>
                     <span class="price">
-                        <span class="new"><del>{{x.price_old}}</del> - <b>${{x.price_new}}</b></span>
+                        <span class="new"><del>{{item.price_old}}</del> - <b>${{item.price_new}}</b></span>
                     </span>
                 </div>
                 <div class="actions">
@@ -36,14 +36,14 @@
                         class="pe-7s-shopbag"></i></button>
                     <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
                             class="pe-7s-like"></i></button>
-                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{item.id}}"><i class="pe-7s-look"></i></button>
                     
                 </div>
             </div>
         </div>
 
         <!-- Modal -->
-        <div class="modal modal-2 fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal modal-2 fade" id="exampleModal{{item.id}}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -55,7 +55,7 @@
                                 <div class="swiper-container gallery-top">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{x.image.url}}" alt="">
+                                            <img class="img-responsive m-auto" src="{{item.image.url}}" alt="">
                                         </div>
                                         
                                     </div>
@@ -68,10 +68,10 @@
 
                             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                                 <div class="product-details-content quickview-content">
-                                    <h2>{{x.name}} </h2>
+                                    <h2>{{item.name}} </h2>
                                     <div class="pricing-meta">
                                         <ul class="d-flex">
-                                            <li class="new-price">Narxi: {{x.price_new}} so'm</li>
+                                            <li class="new-price">Narxi: {{item.price_new}} so'm</li>
                                         </ul>
                                     </div>
                                     <div class="pro-details-rating-wrap">
@@ -86,17 +86,17 @@
                                     </div>
                                 
                                     <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                                        <p class="mt-30px">{{x.description}}</p>
+                                        <p class="mt-30px">{{item.description}}</p>
                                     </div>
                                     
                                 
                                     <div class="pro-details-quality">
                                         
                                         <div class="pro-details-cart">
-                                            <a href="{% url 'shopdetail' x.id %}" class="cart-btn" type="submit">
+                                            <a href="{% url 'shopdetail' item.id %}" class="cart-btn" type="submit">
                                                 Buyurtma berish
                                               </a>
-                                              <a href="{% url 'add-cart' x.id%}" class="cart-btn" type="submit">
+                                              <a href="{% url 'add-cart' item.id%}" class="cart-btn" type="submit">
                                                 Savatchaga+
                                               </a>
                                         </div>
