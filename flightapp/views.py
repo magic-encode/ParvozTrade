@@ -32,14 +32,14 @@ def homeView(request):
         category=Categories.ENG_KOP_SOTILADIGAN)  # eng ko'p sotiladigan
     devices = Products.objects.filter(
         category=Categories.SIZ_UCHUN_TAVFSIYA)  # eng mashhur mahsulotlar
-    _all_products = Products.objects.exclude(category__in=[
-        Categories.ENG_KOP_SOTILADIGAN,
-        Categories.KUN_TAKLIFLARI])
-
+    # all_products = Products.objects.all()
+# (category__in=[
+#         Categories.ENG_KOP_SOTILADIGAN,
+#         Categories.KUN_TAKLIFLARI])
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
     dbctx["best_seller"] = best_seller
-    dbctx["all_products"] = _all_products
+    # dbctx["all_products"] = _all_products
     dbctx['day_recommends'] = day_recommends
     dbctx["devices"] = devices
 

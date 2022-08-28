@@ -60,45 +60,121 @@
                     <div class="row">
                         <div class="col">
                             <div class="tab-content">
+
                                 <div class="tab-pane fade show active" id="shop-grid">
                                     <div class="row mb-n-30px">
-                                        {% for x in all_products %}
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                                            <!-- Single Prodect -->
-                                            <div class="product">
-                                                {% if x.status %}
-                                                    <span class="sale">{{x.status}}</span>
-                                                {% endif %}
-                                                {% if x.discount %}
-                                                    <span class="sale">-{{x.discount}}%</span>
-                                                {% endif %}
-                                                <div class="thumb">
-                                                    <a href="" class="image">
-                                                        <img src="{{x.image.url}}" alt="Product" />
-                                                        <img class="hover-image" src="{{x.image.url}}" alt="Product" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    
-                                                    <h5 class="title"><a href="">{{x.name}}
-                                                        </a>
-                                                    </h5>
-                                                    <span class="price">
-                                                    <span class="new">${{x.price_new}}</span>
+                                        {% for x in day_recommends %}
+                                            <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
+                                                <!-- Single Prodect -->
+                                                <div class="product">
+                                                    <span class="badges">
+                                                        {% if x.status %}
+                                                            <span class="sale">{{x.status}}</span>
+                                                        {% endif %}
+                                                        {% if x.discount %}
+                                                            <span class="sale">-{{x.discount}}%</span>
+                                                        {% endif %}
                                                     </span>
-                                                </div>
-                                                <div class="actions">
-                                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                                        class="pe-7s-shopbag"></i></button>
-                                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                                            class="pe-7s-like"></i></button>
-                                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                                    
+                                                    <div class="thumb">
+                                                        <a href="single-product.html" class="image">
+                                                            <img src="{{x.image.url}}" alt="Product" />
+                                                            <img class="hover-image" src="{{x.image.url}}" alt="Product" />
+                                                        </a>
+                                                    </div>
+                                                    <div class="content">
+                                                        
+                                                        <h5 class="title"><a href="single-product.html">{{x.name}}
+                                                            </a>
+                                                        </h5>
+                                                        <span class="price">
+                                                            <span class="new"><del>{{x.price_old}}</del> - <b>${{x.price_new}}</b></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                                                            class="pe-7s-shopbag"></i></button>
+                                                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                                                                class="pe-7s-like"></i></button>
+                                                        <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+                                                        
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        {% endfor %}                                       
+                                            <!-- Modal -->
+                                            <div class="modal modal-2 fade" id="exampleModal" tabindex="-1" role="dialog">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                                                            <div class="row">
+                                                                
+                                                                <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                                                                    <!-- Swiper -->
+                                                                    <div class="swiper-container gallery-top">
+                                                                        <div class="swiper-wrapper">
+                                                                            <div class="swiper-slide">
+                                                                                <img class="img-responsive m-auto" src="{{x.image.url}}" alt="">
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                                                        
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                                                                    <div class="product-details-content quickview-content">
+                                                                        <h2>{{x.name}} </h2>
+                                                                        <div class="pricing-meta">
+                                                                            <ul class="d-flex">
+                                                                                <li class="new-price">Narxi: {{x.price_new}} so'm</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="pro-details-rating-wrap">
+                                                                            <div class="rating-product">
+                                                                                <i class="fa fa-star"></i>
+                                                                                <i class="fa fa-star"></i>
+                                                                                <i class="fa fa-star"></i>
+                                                                                <i class="fa fa-star"></i>
+                                                                                <i class="fa fa-star"></i>
+                                                                            </div>
+                                                                        
+                                                                        </div>
+                                                                    
+                                                                        <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                                                            <p class="mt-30px">{{x.description}}</p>
+                                                                        </div>
+                                                                        
+                                                                    
+                                                                        <div class="pro-details-quality">
+                                                                            
+                                                                            <div class="pro-details-cart">
+                                                                                <a href="{% url 'shopdetail' x.id %}" class="cart-btn" type="submit">
+                                                                                    Buyurtma berish
+                                                                                </a>
+                                                                                <a href="{% url 'add-cart' x.id%}" class="cart-btn" type="submit">
+                                                                                    Savatchaga+
+                                                                                </a>
+                                                                            </div>
+                                                                        
+                                                                            
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                </div>
+
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal end -->
+        
+                                        {% endfor %}                                     
                                     </div>
                                 </div>
 
