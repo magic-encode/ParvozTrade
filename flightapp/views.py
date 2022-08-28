@@ -51,10 +51,24 @@ def homeView(request):
     features = FeatureRights.objects.all()
     devices = FeatureLeft.objects.all()
     brand = Brand.objects.all()
+    
     context: dict = {**dbctx, **myctx, 'products': products, 'banners': banners,
                      'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices}
 
     return render(request, 'home/index.html', context)
+
+
+def cartHover(request):
+    context: dict = categWishlistHelper(request)
+
+    if request.user.is_authenticated:
+        cartProducts: Cart = Cart.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
+        if cartProducts:
+            context['itemsr'] = cartProducts.products.all()
+            context["cardItems"] = context['itemsr']
+            context["cartProductsCount"] = cartProducts.products.count()
 
 
 def aboutView(request):

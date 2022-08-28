@@ -113,20 +113,18 @@
     </div>
     <!-- Header action area end -->
 
-<!-- 
-    modal start
- -->
+<!-- modal start -->
  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel">Cart</h5>
+          <h5 class="modal-title" id="exampleModalToggleLabel">Savatcha ro'yxati</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
         </div>
         <div class="modal-body">
             <div class="inner">
                 <div class="body customScroll">
-                    {% for item in items %}
+                    {% for item in itemsr %}
                     <ul class="minicart-product-list">
                         <li>
                             <a href="single-product.html" class="image"><img src="{{item.image.url}}" alt="Cart product Image"></a>
@@ -144,7 +142,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary text-success" ><a href="{% url 'cart' %}">Cart</a></button>
+          <button class="btn btn-primary text-success" ><a href="{% url 'cart' %}" style="color: green; letter-spacing: 7px;">Cart</a></button>
         </div>
       </div>
     </div>
@@ -196,10 +194,7 @@
       </div>
     </div>
   </div>
- <!-- 
-    modal end
-  -->
-
+ <!-- modal end -->
 
     <!-- header navigation area start -->
     <div class="header-nav-area d-none d-lg-block sticky-nav">
@@ -249,6 +244,7 @@
    
 </div>
 <!-- OffCanvas Cart End -->
+
 <!-- OffCanvas Menu Start -->
 <div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
     <button class="offcanvas-close"></button>
