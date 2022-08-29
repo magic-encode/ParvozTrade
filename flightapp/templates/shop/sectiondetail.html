@@ -28,8 +28,8 @@
                     <div class="swiper-container zoom-top-2 align-self-start">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{{item.image.url}}" alt="">
-                                <a class="venobox full-preview" data-gall="myGallery" href="{{item.image.url}}" alt="">
+                                <img class="img-responsive m-auto" src="{{items.image.url}}" alt="">
+                                <a class="venobox full-preview" data-gall="myGallery" href="{{items.image.url}}" alt="">
                                     <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -39,10 +39,10 @@
             </div>
             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="product-details-content quickview-content ml-25px">
-                    <h2>Modern Smart Phone</h2>
+                    <h2>{{items.name}}</h2>
                     <div class="pricing-meta">
                         <ul class="d-flex">
-                            <li class="new-price">$20.90</li>
+                            <li class="new-price">${{items.price_new}}</li>
                         </ul>
                     </div>
                     <div class="pro-details-rating-wrap">
@@ -55,23 +55,13 @@
                         </div>
                         <span class="read-review"><a class="reviews" href="single-product-tabstyle-2.html#">(5 Customer Review)</a></span>
                     </div>
-                    <p class="mt-30px">Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor</p>
-                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                        <span>SKU:</span>
-                        <ul class="d-flex">
-                            <li>
-                                <a href="single-product-tabstyle-2.html#">Ch-256xl</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <p class="mt-30px">{{items.description}} </p>
+                    
                     <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
                         <span>Categories: </span>
                         <ul class="d-flex">
                             <li>
-                                <a href="single-product-tabstyle-2.html#">Smart Device, </a>
-                            </li>
-                            <li>
-                                <a href="single-product-tabstyle-2.html#">ETC</a>
+                                <a href="#">{{items.category.name}} </a>
                             </li>
                         </ul>
                     </div>
@@ -79,27 +69,30 @@
                         <span>Tags: </span>
                         <ul class="d-flex">
                             <li>
-                                <a href="single-product-tabstyle-2.html#">Smart Device, </a>
+                                <a href="#">{{items.category.tag}} </a>
                             </li>
-                            <li>
-                                <a href="single-product-tabstyle-2.html#">Phone</a>
-                            </li>
+                            
                         </ul>
                     </div>
                     <div class="pro-details-quality">
-                        <div class="cart-plus-minus">
-                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                        </div>
+                       
                         <div class="pro-details-cart">
-                            <button class="add-cart"> Add To
-                                Cart</button>
+                            <a href="{% url 'add-cart' items.id%}?next ={{ path.url }}" class="cart-btn" type="submit">
+                                <button class="add-cart">
+                                    Savatcha +
+                                </button>
+                            </a>
+                            
                         </div>
                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                            <a href="wishlist.html"><i class="pe-7s-like"></i></a>
+                            
+                                <button class="add-cart">
+                                    <a href="{% url 'add-wishlist' items.id%}?next = {{ path.url }}" type="submit">
+                                        <i class="pe-7s-like">
+                                    </a>
+                                </button>
                         </div>
-                        <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                            <a href="compare.html"><i class="pe-7s-refresh-2"></i></a>
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- product details description area start -->
@@ -113,17 +106,17 @@
                         <div id="des-details2" class="tab-pane">
                             <div class="product-anotherinfo-wrapper text-start">
                                 <ul>
-                                    <li><span>Weight</span> 400 g</li>
-                                    <li><span>Dimensions</span>10 x 10 x 15 cm</li>
-                                    <li><span>Materials</span> 60% cotton, 40% polyester</li>
-                                    <li><span>Other Info</span> American heirloom jean shorts pug seitan letterpress</li>
+                                    <li><span>Weight</span>{{items.weight}} </li>
+                                    <li><span>Dimensions</span>{{items.olchami}} </li>
+                                    <li><span>Materials</span>{{items.materials}} </li>
+                                    <li><span>Other Info</span>{{items.other_info}} </li>
                                 </ul>
                             </div>
                         </div>
                         <div id="des-details1" class="tab-pane active">
                             <div class="product-description-wrapper">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip efgx ea co consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occae cupidatat non proident, sunt in culpa qui
+                                    {{items.description}}
                                 </p>
                             </div>
                         </div>

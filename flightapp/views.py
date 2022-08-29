@@ -28,6 +28,8 @@ from flightapp.libs.telegram import telebot
 
 
 def homeView(request):
+    
+            
     day_recommends = Products.objects.filter(
         category=Categories.KUN_TAKLIFLARI)  # kunning eng yaxhi takliflari
     best_seller = Products.objects.filter(
@@ -37,6 +39,7 @@ def homeView(request):
 
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
+    mywish = wishList(request)
     dbctx["best_seller"] = best_seller
 
     dbctx['day_recommends'] = day_recommends
@@ -50,12 +53,13 @@ def homeView(request):
     brand = Brand.objects.all()
 
     context: dict = {**dbctx, **myctx, 'products': products, 'banners': banners,
-                     'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices, }
+                     'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices, 'mywish': mywish}
 
     return render(request, 'home/index.html', context)
 
 
 def aboutView(request):
+      
     context: dict = categWishlistHelper(request)
 
     return render(request, 'about/about.html', context)
@@ -162,7 +166,7 @@ def removeOrderHistoryView(request, id: int) -> None:
         messages.add_message(request, messages.INFO,
                              'Buyurtmalar tarixidan muofaqqiyatli o\'chirildi ✅')
 
-    return redirect('home')
+    return redirect('profile')
 
 
 @login_required(login_url='login')
@@ -173,9 +177,9 @@ def addCartView(request, id) -> None:
     cart.products.add(product)
     cart.save()
     if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
-        return redirect('home')
+        return redirect('cart')
 
-    return redirect('home')
+    return redirect('cart')
 
 
 def orderView(request):

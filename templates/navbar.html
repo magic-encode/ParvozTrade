@@ -153,7 +153,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel2">Wishlist</h5>
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Sevimlilar ro'yxati</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
         </div>
         <div class="modal-body">
@@ -165,7 +165,7 @@
                             <a href="single-product.html" class="image"><img src="{{item.image.url}}" alt="Cart product Image"></a>
                             <div class="content">
                                 <a href="single-product.html" class="title">{{item.name}}</a>
-                                <span class="quantity-price">1 x <span class="amount">${{item.price_new}}</span></span>
+                                <span class="quantity-price"><span class="amount">${{item.price_new}}</span></span>
                                 <a href="{% url 'remove-wishlist' item.id %}" class="remove">×</a>
                             </div>
                         </li>
@@ -176,7 +176,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary text-success"><a href="{% url 'wishlist' %}">View vishlist</a></button>
+          <button class="btn btn-primary text-success"><a href="{% url 'wishlist' %}" style="color: green; letter-spacing: 7px;">Sevimlilar</a></button>
         </div>
       </div>
     </div>

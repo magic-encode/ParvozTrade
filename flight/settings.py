@@ -26,9 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'users',
-    'crispy_forms',
+    # 'crispy_forms',
     'flightapp',
-    'django_filters',
+    # 'django_filters',
 
 ]
 
