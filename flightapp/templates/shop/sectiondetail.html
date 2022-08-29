@@ -77,7 +77,7 @@
                     <div class="pro-details-quality">
                        
                         <div class="pro-details-cart">
-                            <a href="{% url 'add-cart' items.id%}?next ={{ path.url }}" class="cart-btn" type="submit">
+                            <a href="{% url 'add-cart' items.id %}" class="cart-btn" type="submit">
                                 <button class="add-cart">
                                     Savatcha +
                                 </button>
@@ -87,8 +87,8 @@
                         <div class="pro-details-compare-wishlist pro-details-wishlist ">
                             
                                 <button class="add-cart">
-                                    <a href="{% url 'add-wishlist' items.id%}?next = {{ path.url }}" type="submit">
-                                        <i class="pe-7s-like">
+                                    <a href="{% url 'add-wishlist' items.id %}" type="submit">
+                                        {% comment %} <i class="pe-7s-like"> {% endcomment %}
                                     </a>
                                 </button>
                         </div>
@@ -234,6 +234,9 @@
         </div>
     </div>
 </div>
+
+
+
 <!-- Product Area Start -->
 <div class="product-area related-product">
     <div class="container">
@@ -250,267 +253,171 @@
         <div class="row">
             <div class="col">
                 <div class="new-product-slider swiper-container slider-nav-style-1">
+
                     <div class="swiper-wrapper">
+                        {% for alls in all_products %}
                         <div class="swiper-slide">
+
                             <!-- Single Prodect -->
                             <div class="product">
-                                <span class="badges">
-                                <span class="new">New</span>
-                                </span>
+                                {% if alls.status %}
+                                <span class="sale">{{alls.status}}</span>
+                                {% endif %}
+                                {% if alls.discount %}
+                                    <span class="sale">-{{alls.discount}}%</span>
+                                {% endif %}
                                 <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{% static 'assets/images/product-image/1.webp' %}" alt="Product" />
-                                        <img class="hover-image" src="{% static 'assets/images/product-image/1.webp' %}" alt="Product" />
+                                    <a href="{% url 'shopdetail' alls.id %}" class="image">
+                                        <img src="{{alls.image.url}}" alt="Product" />
+                                        <img class="hover-image" src="{{alls.image.url}}" alt="Product" />
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <span class="category"><a href="single-product-tabstyle-2.html#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Modern Smart Phone
+                                    
+                                    <h5 class="title">
+                                        <a href="{% url 'shopdetail' alls.id %}">{{alls.name}}
                                         </a>
                                     </h5>
                                     <span class="price">
-                                    <span class="new">$38.50</span>
+                                        {% if alls.price_old %}
+                                        <span class="new"><del>{{alls.price_old}}</del> - <b>${{alls.price_new}}</b></span>
+                                        {% else %}
+                                        <span class="new"><b>${{alls.price_new}}</b></span>
+                                        {% endif %}
                                     </span>
                                 </div>
                                 <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                        class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                <span class="sale">-10%</span>
-                                <span class="new">New</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{% static 'assets/images/product-image/2.webp' %}" alt="Product" />
-                                        <img class="hover-image" src="{% static 'assets/images/product-image/2.webp' %}" alt="Product" />
+                                    <a href="{% url 'add-cart' alls.id%}" class="cart-btn" type="submit">
+                                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart{{alls.id}}"><i
+                                            class="pe-7s-shopbag"></i>
+                                        </button>
+                                        
                                     </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="single-product-tabstyle-2.html#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Bluetooth Headphone
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                    <span class="old">$48.50</span>
-                                    <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                        class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                <span class="new">Sale</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{% static 'assets/images/product-image/3.webp' %}" alt="Product" />
-                                        <img class="hover-image" src="{% static 'assets/images/product-image/3.webp' %}" alt="Product" />
+                                    <a href="{% url 'add-wishlist' alls.id%}" class="cart-btn" type="submit">
+                                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{alls.id}}"><i
+                                            class="pe-7s-like"></i>
+                                        </button>
                                     </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="single-product-tabstyle-2.html#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Music Box
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                    <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                        class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
+                                    
+                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{alls.id}}"><i class="pe-7s-look"></i></button>
+                                    
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                <span class="new">New</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{% static 'assets/images/product-image/4.webp' %}" alt="Product" />
-                                        <img class="hover-image" src="{% static 'assets/images/product-image/1.webp' %}" alt="Product" />
-                                    </a>
+                        <!-- Modal Cart -->
+                        <div class="modal customize-class fade" id="exampleModal-Cart{{alls.id}}" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                                        <div class="tt-modal-messages">
+                                            <i class="pe-7s-check"></i> Mahsulot Savatchaga muvaffaqiyatli qoshildi !!!
+                                        </div>
+                                        <div class="tt-modal-product">
+                                            <div class="tt-img">
+                                                <img src="{{alls.image.url}}" alt="Modern Smart Phone">
+                                            </div>
+                                            <h2 class="tt-title"><a href="#">{{alls.name}}</a></h2>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <span class="category"><a href="single-product-tabstyle-2.html#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Air Pods 25Hjkl Black
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                    <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                        class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
+                            </div>
+                        </div>  
+                    <!-- Modal -->
+
+                    <!-- Modal wishlist -->
+                        <div class="modal customize-class fade" id="exampleModal-Wishlist{{ alls.id }}" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                                        <div class="tt-modal-messages">
+                                            <i class="pe-7s-check"></i> Mahsulot sevimlilarga muvaffaqiyatli qoshildi !!!
+                                        </div>
+                                        <div class="tt-modal-product">
+                                            <div class="tt-img">
+                                                <img src="{{alls.image.url}}" alt="Modern Smart Phone">
+                                            </div>
+                                            <h2 class="tt-title"><a href="index.html#">{{alls.name}}</a></h2>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                            </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{% static 'assets/images/product-image/5.webp' %}" alt="Product" />
-                                        <img class="hover-image" src="{% static 'assets/images/product-image/5.webp' %}" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="single-product-tabstyle-2.html#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Hand Watch
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                    <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                        class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                <span class="sale">-8%</span>
-                                <span class="new">Sale</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{% static 'assets/images/product-image/6.webp' %}" alt="Product" />
-                                        <img class="hover-image" src="{% static 'assets/images/product-image/6.webp' %}" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="single-product-tabstyle-2.html#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Table Camera
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                    <span class="old">$138.50</span>
-                                    <span class="new">$112.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                        class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                <span class="new">Sale</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{% static 'assets/images/product-image/7.webp' %}" alt="Product" />
-                                        <img class="hover-image" src="{% static 'assets/images/product-image/1.webp' %}" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="single-product-tabstyle-2.html#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Round Pocket Router
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                    <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                        class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
+
+
+                        <div class="modal modal-2 fade" id="exampleModal{{alls.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                                                <!-- Swiper -->
+                                                <div class="swiper-container gallery-top">
+                                                    <div class="swiper-wrapper">
+                                                        <div class="swiper-slide">
+                                                            <img class="img-responsive m-auto" src="{{alls.image.url}}" alt="">
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                                                <div class="product-details-content quickview-content">
+                                                    <h2>{{alls.name}} </h2>
+                                                    <div class="pricing-meta">
+                                                        <ul class="d-flex">
+                                                            <li class="new-price">Narxi: {{alls.price_new}} so'm</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="pro-details-rating-wrap">
+                                                        <div class="rating-product">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                
+                                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                                        <p class="mt-30px">{{alls.description}}</p>
+                                                    </div>
+                                                    
+                                                
+                                                    <div class="pro-details-quality">
+                                                        <a href="{% url 'shopdetail' alls.id %}" class="cart-btn" type="submit">
+                                                            <div class="pro-details-cart">
+                                                                <button class="add-cart">Buyurtma +
+                                                                </button>
+                                                            </div>
+                                                        </a>
+                                                        <a href="{% url 'add-cart' alls.id%}" class="cart-btn" type="submit">
+                                                            <div class="pro-details-cart">
+                                                                <button class="add-cart">Savatcha +
+                                                                </button>
+                                                            </div>
+                                                        </a>                                                                                                                                              
+                                                    </div>                                                                    
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                <span class="sale">-5%</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{% static 'assets/images/product-image/8.webp' %}" alt="Product" />
-                                        <img class="hover-image" src="{% static 'assets/images/product-image/8.webp' %}" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="single-product-tabstyle-2.html#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Power Bank 10000Mhp
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                    <span class="old">$260.00</span>
-                                    <span class="new">$238.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                                        class="pe-7s-shopbag"></i></button>
-                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
-                                            class="pe-7s-like"></i></button>
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
-                                            class="pe-7s-refresh-2"></i></button>
-                                </div>
-                            </div>
+                        <!-- Modal end -->
+                        {% endfor %}                                                                             
                         </div>
+                        {% endfor %}
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-buttons">

@@ -159,14 +159,14 @@
         <div class="modal-body">
             <div class="inner">
                 <div class="body customScroll">
-                    {% for item in cardItem %}
+                    {% for items in cardItem %}
                     <ul class="minicart-product-list">
                         <li>
-                            <a href="single-product.html" class="image"><img src="{{item.image.url}}" alt="Cart product Image"></a>
+                            <a href="single-product.html" class="image"><img src="{{items.image.url}}" alt="Cart product Image"></a>
                             <div class="content">
-                                <a href="single-product.html" class="title">{{item.name}}</a>
-                                <span class="quantity-price"><span class="amount">${{item.price_new}}</span></span>
-                                <a href="{% url 'remove-wishlist' item.id %}" class="remove">×</a>
+                                <a href="single-product.html" class="title">{{items.name}}</a>
+                                <span class="quantity-price"><span class="amount">${{items.price_new}}</span></span>
+                                <a href="{% url 'remove-wishlist' items.id %}" class="remove">×</a>
                             </div>
                         </li>
                         

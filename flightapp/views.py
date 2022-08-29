@@ -77,9 +77,14 @@ def shopView(request):
 
 
 def shopdetailView(request, id):
-    context: dict = categWishlistHelper(request)
+    myctx: dict = categWishlistHelper(request)
+    _all_products = Products.objects.all()
+    dbctx: dict = {}
+    dbctx["all_products"] = _all_products
+   
 
-    context["items"] = Products.objects.get(id=id)
+    dbctx["items"] = Products.objects.get(id=id)
+    context = {**dbctx, **myctx}
 
     return render(request, 'shop/detail.html', context)
 
@@ -126,10 +131,7 @@ def addWishlistView(request, id) -> None:
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
     wishlist.products.add(product)
     wishlist.save()
-    if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
-        return redirect('home')
-
-    return redirect('home')
+    
 
 
 @login_required(login_url='login')
