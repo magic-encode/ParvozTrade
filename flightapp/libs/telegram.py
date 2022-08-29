@@ -19,11 +19,11 @@ class TeleBotClient:
 
 
     def send_message(self, text: str, _type: str) -> dict:
-        if _type == self.TYPE_SAVOL:
-            chat_id: str = self.__chat_id.get(self.TYPE_SAVOL)
-            
         if _type == self.TYPE_ZAKAS:
             chat_id: str = self.__chat_id.get(self.TYPE_ZAKAS)
+            
+        if _type == self.TYPE_SAVOL:
+            chat_id: str = self.__chat_id.get(self.TYPE_SAVOL)
         
         params = {
             'text': text,

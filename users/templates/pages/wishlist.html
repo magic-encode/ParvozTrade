@@ -26,7 +26,7 @@
             <!-- Wishlist Area Start -->
             <div class="cart-main-area pt-100px pb-100px">
                 <div class="container">
-                    <h3 class="cart-page-title">Your cart items</h3>
+                    <h1  style="text-align:center; margin-bottom:10px;" >Sevimli mahsulotlar</h1>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <form action="{% url 'wishlist' %}" method="POST">                               
@@ -43,23 +43,51 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
-                                            {% for item in cardItems %}
+                                            {% if user.is_authenticated %}
+                                                {% if cardItems %}
+                                                {% for item in cardItems %}
+                                                <tr>
+                                                    <td class="product-thumbnail">
+                                                        <a href="wishlist.html#"><img class="img-responsive ml-15px" src="{{item.image.url}}" alt="{{item.name}}" /></a>
+                                                    </td>
+                                                    <td class="product-name"><a href="wishlist.html#">{{item.name}}</a></td>
+                                                    <td class="product-price-cart"><span class="amount">${{item.price_new}}</span></td>
+                                                
+                                                    <td class="product-wishlist-cart">
+                                                        <a href="{% url 'add-cart' item.id%}">Savatcha +</a>
+                                                    </td>
+                                                    <td class="product-remove">             
+                                                        <a href="{% url 'remove-wishlist' item.id %}"><i class="fa fa-times"></i></a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                {% else %}
+                                                <div class="container-fluid  mt-100">
+                                                    <div class="row">
+                                                       <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                   
+                                                                </div>
+                                                                <div class="card-body cart">
+                                                                   <div class="col-sm-12 empty-cart-cls text-center">
+                                                                       <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                                                                       <h3><strong>Sevimlilar bo'sh !!!</strong></h3>
+                                                                       <h4>Sizga yoqqan mahsulotni qoshing :)</h4>
+                                                                       <a href="#" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a>
+                                                                   </div>
+                                                                </div>
+                                                            </div>
+                                                       </div>                                                   
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            {% else %}
                                             <tr>
-                                                <td class="product-thumbnail">
-                                                    <a href="wishlist.html#"><img class="img-responsive ml-15px" src="{{item.image.url}}" alt="{{item.name}}" /></a>
-                                                </td>
-                                                <td class="product-name"><a href="wishlist.html#">{{item.name}}</a></td>
-                                                <td class="product-price-cart"><span class="amount">${{item.price_new}}</span></td>
-                                               
-                                                <td class="product-wishlist-cart">
-                                                    <a href="{% url 'add-cart' item.id%}">Savatcha +</a>
-                                                </td>
-                                                <td class="product-remove">             
-                                                    <a href="{% url 'remove-wishlist' item.id %}"><i class="fa fa-times"></i></a>
-                                                </td>
+                                                <h1 style="text-align: center;"> Siz ro'yxatdan o'tmagansiz !!! </h1>
                                             </tr>
-                                            {% endfor %}
+
+                                            {% endif %}
                                         </tbody>
                                     </table>
                                 </div>

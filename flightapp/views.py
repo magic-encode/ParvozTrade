@@ -212,19 +212,16 @@ def contactView(request, _type: str = telebot.TYPE_SAVOL):
     
     if request.POST:
         form = GetInfoForm(request.POST)
+        # context["form"] = form
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            text = f"<b>Order ID: {obj.id}</b>\n\n"
-            text = f"<b>Customer Name: {obj.fullname}</b>\n"
-            text = f"<b>Customer Phone: {obj.phone}</b>\n"
-            text = f"<b>Xabar matni: {obj.message}</b>\n"
-            
+            text = f"<b>Order ID: {obj.id}</b>\n\n <b>Customer Name: {obj.fullname}</b>\n <b>Customer Phone: {obj.phone}</b>\n <b>Xabar matni: {obj.message}</b>"
+                       
             telebot.send_message(text, _type)
 
             return redirect('contact')
 
-    context["form"] = form
     
     context: dict = categWishlistHelper(request)
 
@@ -235,7 +232,7 @@ def contactView(request, _type: str = telebot.TYPE_SAVOL):
         if cartProducts:
             context['items'] = cartProducts.products.all()
             context["cardItems"] = context['items']
-    
+            context["form"] = form
             context["cartProductsCount"] = cartProducts.products.count()
             
 

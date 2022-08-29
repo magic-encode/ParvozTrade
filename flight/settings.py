@@ -68,8 +68,8 @@ MYSERVICE: dict = {
         'base_url': env.str('TELEBOT_URL'),
         'token': env.str('TELEBOT_TOKEN'),
         'chat_id': {
-            "chat_id_zakas": env.str('TELEBOT_CHAT_ID_ORDERS'),
-            "chat_id_savol": env.str('TELEBOT_CHAT_ID_WARNINGS'),
+            "chat_id_zakas": env.str('TELEBOT_CHAT_ID_ZAKAS'),
+            "chat_id_savol": env.str('TELEBOT_CHAT_ID_SAVOL'),
         }
     }
 }
