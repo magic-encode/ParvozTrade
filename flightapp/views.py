@@ -35,9 +35,6 @@ def homeView(request):
     device = Products.objects.filter(
         category=Categories.SIZ_UCHUN_TAVFSIYA)  # eng mashhur mahsulotlar
 
-# (category__in=[
-#         Categories.ENG_KOP_SOTILADIGAN,
-#         Categories.KUN_TAKLIFLARI])
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
     dbctx["best_seller"] = best_seller
@@ -63,7 +60,6 @@ def aboutView(request):
 
     return render(request, 'about/about.html', context)
 
-
 def shopView(request):
 
     _all_products = Products.objects.all()
@@ -83,7 +79,7 @@ def shopdetailView(request, id):
     return render(request, 'shop/detail.html', context)
 
 
-@login_required(login_url='profile')
+@login_required(login_url='login')
 def cartView(request):
     context: dict = categWishlistHelper(request)
 
@@ -102,7 +98,7 @@ def cartView(request):
     return render(request, 'pages/cart/cart.html', context)
 
 
-@login_required(login_url='profile')
+@login_required(login_url='login')
 def wishlistView(request):
     context: dict = wishList(request)
 
@@ -118,7 +114,7 @@ def wishlistView(request):
     return render(request, 'pages/wishlist.html', context)
 
 
-@login_required(login_url='profile')
+@login_required(login_url='login')
 def addWishlistView(request, id) -> None:
 
     product: Products = Products.objects.get(id=id)
@@ -126,12 +122,10 @@ def addWishlistView(request, id) -> None:
     wishlist.products.add(product)
     wishlist.save()
     if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
-        return redirect('home')
-
-    return redirect('home')
+        return redirect()
 
 
-@login_required(login_url='profile')
+@login_required(login_url='login')
 def removeWishlistView(request, id: int) -> None:
     wishProducts: Wishlist = Wishlist.objects.filter(
         user=request.user).prefetch_related("products").first()
@@ -142,7 +136,7 @@ def removeWishlistView(request, id: int) -> None:
     return redirect('wishlist')
 
 
-@login_required(login_url='profile')
+@login_required(login_url='login')
 def removeCartView(request, id: int) -> None:
     cartProducts: Cart = Cart.objects.filter(
         user=request.user).prefetch_related("products").first()
@@ -155,7 +149,7 @@ def removeCartView(request, id: int) -> None:
     return redirect('cart')
 
 
-@login_required(login_url='profile')
+@login_required(login_url='login')
 def removeOrderHistoryView(request, id: int) -> None:
     cartHistory: OrderHistory = OrderHistory.objects.filter(
         user=request.user).prefetch_related("products").first()
@@ -168,7 +162,7 @@ def removeOrderHistoryView(request, id: int) -> None:
     return redirect('home')
 
 
-@login_required(login_url='profile')
+@login_required(login_url='login')
 def addCartView(request, id) -> None:
     messages.add_message(request, messages.INFO,
                          'Savatchaga muofaqqiyatli qo\'shildi ✅')
@@ -191,8 +185,10 @@ def orderView(request):
         text += f"Haridor ismi: {request.user.first_name}\n"
         text += f"Haridor Raqami: {request.user.phone}\n\n"
 
-        cartProducts: Cart = Cart.objects.filter(user=request.user).prefetch_related("products").first()
-        order_history, _ = OrderHistory.objects.get_or_create(user=request.user)
+        cartProducts: Cart = Cart.objects.filter(
+            user=request.user).prefetch_related("products").first()
+        order_history, _ = OrderHistory.objects.get_or_create(
+            user=request.user)
 
         for product in cartProducts.products.all():
             price += product.price_new
@@ -209,20 +205,18 @@ def orderView(request):
 
 def contactView(request, _type: str = telebot.TYPE_SAVOL):
     form = GetInfoForm()
-    
+
     if request.POST:
         form = GetInfoForm(request.POST)
-        # context["form"] = form
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
             text = f"<b>Order ID: {obj.id}</b>\n\n <b>Customer Name: {obj.fullname}</b>\n <b>Customer Phone: {obj.phone}</b>\n <b>Xabar matni: {obj.message}</b>"
-                       
+
             telebot.send_message(text, _type)
 
             return redirect('contact')
 
-    
     context: dict = categWishlistHelper(request)
 
     if request.user.is_authenticated:
@@ -234,6 +228,5 @@ def contactView(request, _type: str = telebot.TYPE_SAVOL):
             context["cardItems"] = context['items']
             context["form"] = form
             context["cartProductsCount"] = cartProducts.products.count()
-            
 
     return render(request, 'contact/contact.html', context)

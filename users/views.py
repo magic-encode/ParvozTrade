@@ -4,7 +4,6 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth import logout
-# from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
@@ -37,38 +36,6 @@ def profileView(request):
     return render(request, 'pages/profiles.html')
 
 
-# def loginUser(request):
-    
-#     if request.user.is_authenticated:
-#         return redirect('home')
-
-#     # if request.method == 'POST':
-#     #     username = request.POST['username'].lower()
-#     #     password = request.POST['password']
-
-#     #     try:
-#     #         user = CustomUser.objects.get(username=username)
-#     #     except:
-#     #         messages.error(request, 'Username does not exist')
-#     #     print("Salom Dunyo")
-#     #     user = authenticate(request, username=username, password=password)
-        
-#     #     if user is not None:
-#     #         login(request, user)
-#     #         request.GET['next'] if 'next' in request.GET else 'profile'
-#     #         return redirect('profile')
-            
-#     #     else:
-#     #         messages.error(request, 'Username OR password is incorrect')
-
-#     return render(request, 'pages/login.html')
-
-
-# def logoutUser(request):
-#     logout(request)
-#     messages.info(request, 'User was logged out!')
-#     return redirect('login')
-
 
 def registerUser(request):
     page = 'register'
@@ -93,29 +60,14 @@ def registerUser(request):
     context = {'page': page, 'forms': forms}
     return render(request, 'registration/register.html', context)
 
-# @unauthenticated_user
-# def registerUser(request):
 
-#     forms = CreateUserForm()
-#     if request.method == 'POST':
-#         forms = CreateUserForm(request.POST)
-#         if forms.is_valid():
-#             user = forms.save()
-#             username = forms.cleaned_data.get('username')
-
-#             messages.success(request, 'Account was created for ' + username)
-#             login(request, user)
-#             return redirect('login')
-
-#     context = {'forms': forms}
-#     return render(request, 'pages/login.html', context)
 
 
 def loginView(request):
     return render(request, 'pages/login.html')
 
 
-# @login_required(login_url='login')
+@login_required(login_url='login')
 def editAccount(request):
     profile = request.user.profile
     form = CustomUser(instance=profile)
