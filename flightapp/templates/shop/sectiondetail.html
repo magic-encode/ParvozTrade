@@ -24,62 +24,12 @@
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                 <div class="product-details-img product-details-tab product-details-tab-2 d-flex">
-                    <div class="swiper-container mr-15px zoom-thumbs-2 align-self-start slider-nav-style-1 small-nav">
-                        <div class="swiper-wrapper">
-
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/small-image/1.webp' %}" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/small-image/2.webp' %}" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/small-image/3.webp' %}" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/small-image/4.webp' %}" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/small-image/5.webp' %}" alt="">
-                            </div>
-
-                        </div>
-                        <!-- Add Arrows -->
-                        <div class="swiper-buttons">
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                    </div>
                     <!-- Swiper -->
                     <div class="swiper-container zoom-top-2 align-self-start">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/zoom-image/1.webp' %}" alt="">
-                                <a class="venobox full-preview" data-gall="myGallery" href="{% static 'assets/images/product-image/zoom-image/1.webp' %}" alt="">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/zoom-image/2.webp' %}" alt="">
-                                <a class="venobox full-preview" data-gall="myGallery" href="{% static 'assets/images/product-image/zoom-image/2.webp' %}">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/zoom-image/3.webp' %}" alt="">
-                                <a class="venobox full-preview" data-gall="myGallery" href="{% static 'assets/images/product-image/zoom-image/3.webp' %}">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/zoom-image/4.webp' %}" alt="">
-                                <a class="venobox full-preview" data-gall="myGallery" href="{% static 'assets/images/product-image/zoom-image/4.webp' %}">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{% static 'assets/images/product-image/zoom-image/5.webp' %}" alt="">
-                                <a class="venobox full-preview" data-gall="myGallery" href="{% static 'assets/images/product-image/zoom-image/5.webp' %}">
+                                <img class="img-responsive m-auto" src="{{item.image.url}}" alt="">
+                                <a class="venobox full-preview" data-gall="myGallery" href="{{item.image.url}}" alt="">
                                     <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                 </a>
                             </div>

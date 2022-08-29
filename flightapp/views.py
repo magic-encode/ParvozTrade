@@ -60,6 +60,7 @@ def aboutView(request):
 
     return render(request, 'about/about.html', context)
 
+
 def shopView(request):
 
     _all_products = Products.objects.all()
@@ -122,7 +123,9 @@ def addWishlistView(request, id) -> None:
     wishlist.products.add(product)
     wishlist.save()
     if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
-        return redirect()
+        return redirect('home')
+
+    return redirect('home')
 
 
 @login_required(login_url='login')
@@ -164,8 +167,6 @@ def removeOrderHistoryView(request, id: int) -> None:
 
 @login_required(login_url='login')
 def addCartView(request, id) -> None:
-    messages.add_message(request, messages.INFO,
-                         'Savatchaga muofaqqiyatli qo\'shildi ✅')
 
     product: Products = Products.objects.get(id=id)
     cart, _ = Cart.objects.get_or_create(user=request.user)
