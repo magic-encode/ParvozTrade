@@ -8,7 +8,17 @@
     <div class="main-wrapper">
         
         {% include 'navbar.html' %}
+        {% if messages %}
 
+        {% for message in messages %}
+        <div class="alert  alert--{{message.tags}}" style="color: green;">
+            <p class="alert__message">{{message}} <a class="btn btn--danger" style="color: red;">x</a></p>
+         
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
         {% include 'shop/section.html' %}
 
         {% include 'footer.html' %}
@@ -16,6 +26,7 @@
     </div>
 
     {% include 'jscript.html' %}
+    <script src="{% static 'js/main.js' %}"></script>
     
 </body>
 

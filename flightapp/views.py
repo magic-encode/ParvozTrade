@@ -22,6 +22,7 @@ from flightapp.models.category import Categories
 from flightapp.models.order_history import OrderHistory
 
 from flightapp.forms import GetInfoForm
+from flightapp.forms import CommentsForm
 
 from flightapp.utils import searchHelper, wishList
 from flightapp.utils import categWishlistHelper, send_message
@@ -84,21 +85,31 @@ def shopdetailView(request, id):
     dbctx["all_products"] = _all_products
     items = Products.objects.get(id=id)
     comments = Comments.objects.all()
+    forms = CommentsForm()
     
     if request.method == "POST":
-        body = request.POST.get("body")
-        if body:
-            Comments(
-                items=items,      
-                person = request.user,
-                body = body,
-                reply = Comments.objects.get(id=int(body))
-            ).save()
-        
+        forms = CommentsForm(request.POST)
+        if forms.is_valid():
+            obj = forms.save(commit=False)
+            obj.save()
+   
+        return redirect('shopdetail')
+    
+    else:
+        forms = CommentsForm()
+    
+    
 
-    context = {**dbctx, **myctx, 'comments': comments, 'items': items}
+    context = {**dbctx, **myctx, 'comments': comments, 'items': items, 'forms': forms}
 
     return render(request, 'shop/detail.html', context)
+
+
+def commentRemove(request, id):
+    comments = Comments.objects.get(id=id)
+    comments.delete()
+
+    return redirect('shopdetail')
 
 
 @login_required(login_url='login')

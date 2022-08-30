@@ -293,21 +293,15 @@
     </div>
     <div class="inner customScroll">
         <div class="offcanvas-menu mb-4">
-            <ul class="">
-                <li><a href="{% url 'home' %}"><span class="menu-text">Home</span></a>
-                    
+            <ul>
+                <li class="dropdown"><a href="{% url 'home' %}">Home</a>
                 </li>
-                <li><a href="about.html">About</a></li>
-                <li>
-                    <a href="single-product-tabstyle-3.html#"><span class="menu-text">Pages</span></a>
-                   
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li class="dropdown position-static"><a href="{% url 'shop' %}">Shop</a>
                 </li>
-                <li><a href="single-product-tabstyle-3.html#"><span class="menu-text">Shop</span></a>
-                    
+                <li class="dropdown "><a href="{% url 'blog' %}">Blog </a>                          
                 </li>
-                <li><a href="single-product-tabstyle-3.html#"><span class="menu-text">Blog</span></a>
-                </li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </div>
         <!-- OffCanvas Menu End -->
@@ -328,6 +322,7 @@
     </div>
 </div>
 <script>
+
     function openMenu(){
         let hamburger = document.querySelector('.hamburder__nav__bar');
         let openMenu = document.querySelector('.openNavMenu') ;
@@ -346,5 +341,18 @@
         }
 
 </script>
+{% if messages %}
+{% for message in messages %}
+    <div class="alert  alert--{{message.tags}}">
+        <p class="alert__message">{{message}}</p>
+        <button class="alert__close">x</button>
+    </div>
+
+{% endfor %}
+
+{% endif %}
+<script src="{% static 'uikit/app.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 <!-- OffCanvas Menu End -->
+
 <h1></h1>

@@ -19,7 +19,7 @@
 <!-- breadcrumb-area end -->
 
 <!-- Product Details Area Start -->
-<div class="product-details-area pt-100px pb-100px" style="background-color: #FFFFFF;">
+<div class="product-details-area pt-100px pb-100px" style="background-color: #FFFFFF; ">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
@@ -137,6 +137,11 @@
                                                         <div class="rating-product">
                                                            {{sm.time}}
                                                         </div>
+                                                        {% if user.is_staff %}
+                                                        <a href="{% url 'remove' sm.id %}" style="" >
+                                                           delete
+                                                        </a>
+                                                        {% endif %}
                                                     </div>
                                                    
                                                 </div>
@@ -161,7 +166,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="rating-form-style form-submit">
-                                                            <textarea name="Your Review" placeholder="Message"></textarea>
+                                                            {{ forms.as_p}}
                                                             <button class="btn btn-primary btn-hover-color-primary " type="submit" value="Submit">Submit</button>
                                                         </div>
                                                     </div>
@@ -171,7 +176,7 @@
                                     </div>
                                 </div>
                                 {% else %}
-                                    <h3>Siz ro'yxatdan o'tmagansiz, iltimos ro'yxatdan o'ting  <a href="{% url 'login' %}">Login</h3>
+                                    <h5>Siz ro'yxatdan o'tmagansiz, iltimos ro'yxatdan o'ting  <a href="{% url 'login' %}"> ' Login  '</h5>
                                 {% endif %}
                             </div>
                         </div>
@@ -186,12 +191,12 @@
 
 
 <!-- Product Area Start -->
-<div class="product-area related-product" style="background-color: #FFFFFF;">
+<div class="product-area related-product" style="background-color: #FFFFFF; ">
     <div class="container">
         <!-- Section Title & Tab Start -->
         <div class="row">
             <div class="col-12">
-                <div class="section-title text-center m-0">
+                <div class="section-title text-center m-0" style="margin-top: 30px;">
                     <h2 class="title">Related Products</h2>
                     <p>There are many variations of passages of Lorem Ipsum available</p>
                 </div>
