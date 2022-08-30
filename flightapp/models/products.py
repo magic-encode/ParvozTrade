@@ -46,18 +46,10 @@ class Comments(models.Model):
         Products, on_delete=models.CASCADE)
     person = models.ForeignKey(
         CustomUser, on_delete=models.DO_NOTHING)
-    body = models.TextField(max_length=500)
+    body = models.TextField(max_length=500, null=True, blank=True)
     time = models.DateTimeField(auto_now_add=True)
 
 
-class SubComments(models.Model):
-    items = models.ForeignKey(
-        Products,  on_delete=models.CASCADE)
-    person = models.ForeignKey(
-        CustomUser,  on_delete=models.DO_NOTHING)
-    body = models.TextField(max_length=300)
-    time = models.DateTimeField(auto_now_add=True)
-    reply = models.ForeignKey(Comments, on_delete=models.CASCADE)
 
 
 class Banner(models.Model):

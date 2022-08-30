@@ -14,7 +14,6 @@ from flightapp.models.products import Brand, FeatureLeft
 from flightapp.models.products import Banner
 from flightapp.models.products import Products
 from flightapp.models.products import Comments
-from flightapp.models.products import SubComments
 from flightapp.models.products import BannerLefts
 from flightapp.models.products import FeatureLeft
 from flightapp.models.products import FeatureRights
@@ -87,21 +86,19 @@ def shopdetailView(request, id):
     
     if request.method == "POST":
         body = request.POST.get("body")
-        body_id = request.POST.get("body_id")
-        if body_id:
-            SubComments(items=items,
-                        person = request.user,
-                        body = body,
-                        reply = Comments.objects.get(id=int(body_id))
-                    ).save()
-        else:
-            Comments(items=items, person=request.user, body=body).save()
+        if body:
+            Comments(
+                items=items,      
+                person = request.user,
+                body = body,
+                reply = Comments.objects.get(id=int(body))
+            ).save()
         
         
     
     comments = []
     for c in Comments.objects.filter(items=items):
-        comments.append([c, SubComments.objects.filter(reply=c)])
+        comments.append([c, Comments.objects.filter(reply=c)])
     
 
     context = {**dbctx, **myctx, 'comments': comments, 'items': items}
