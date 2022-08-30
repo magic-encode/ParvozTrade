@@ -2,7 +2,49 @@
 
 
 <header>
-    
+    <style>
+        .hamburder__nav__bar{
+            width: 35%;
+            height: 100%;
+            background-color: transparent;
+            backdrop-filter: blur(5px);
+            position: fixed;
+            /* position: absolute !important; */
+            top: 0%;
+            left: 0%;
+            z-index: 999;
+            text-align: center;
+            left: -100%;
+            transition: 0.5s;
+        }
+        .hamber__menu__bar__ul{
+            display: flex;
+            gap: 2rem;
+        }
+        .hamber__menu__bar__ul li a i{
+            font-size: 20px;
+        }
+        .hamber__menu__bar__ul__box ul{
+            width: 100%;
+            justify-content: center;
+        }
+        .hambuger_user_panel{
+            width: 100%;
+        }
+        .hambuger_user_panel
+        ul
+        li
+        a{
+            width: 100%;
+            height: auto;
+            color: white;
+        }
+        @media screen and (max-width:500px) {
+            .hambuger_user_panel{
+            display: none;
+            }   
+        } 
+    </style>
     <!-- Header top area start -->
     <div class="header-top">
         <div class="container">
@@ -41,14 +83,14 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-3 col">
                     <div class="header-logo">
-                        <a href="index.html"><img src="{% static 'assets/images/logos.png' %}" alt="Site Logo" /></a>
+                        <a><img style="width:90%;" src="{% static 'assets/images/logos.png' %}" alt="Site Logo" /></a>
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="search-element">
                         <form action="index.html#">
                             <input type="text" placeholder="Search" />
-                            <button><i class="pe-7s-search"></i></button>
+                            <button><i class="pe-7s-search" style="font-size:25px"></i></button>
                         </form>
                     </div>
                 </div>
@@ -56,13 +98,13 @@
                     <div class="header-actions">
                         <!-- Single Wedge Start -->
                         <a href="" class="header-action-btn offcanvas-toggle">
-                            <a data-bs-toggle="modal" href="#exampleModalToggle2" role="button"><i class="pe-7s-like"></i></a>
+                            <a data-bs-toggle="modal" href="#exampleModalToggle2" role="button"><i class="pe-7s-like" style="font-size:30px"></i></a>
                             
                         </a>
                         <!-- Single Wedge End -->
                         <a href="" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
-                            <a data-bs-toggle="modal" href="#exampleModalToggle" role="button"><i class="pe-7s-shopbag"></i></a>
-                            <span class="header-action-num">01</span>
+                            <a data-bs-toggle="modal" href="#exampleModalToggle" role="button"><i class="pe-7s-shopbag" style="font-size:30px"></i></a>
+                            {% comment %} <span class="header-action-num">01</span> {% endcomment %}
                             <!-- <span class="cart-amount">€30.00</span> -->
                         </a>
                         <a href="index.html#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
@@ -80,7 +122,8 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-3 col">
                     <div class="header-logo">
-                        <a href="index.html"><img src="{% static 'assets/images/logo/logo.png' %}" alt="Site Logo" /></a>
+                        <a><img style="width:80%;" src="{% static 'assets/images/logos.png' %}" alt="Site Logo" /></a>
+
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
@@ -94,17 +137,22 @@
                 <div class="col-lg-3 col">
                     <div class="header-actions">
                         <!-- Single Wedge Start -->
-                        <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
+                        <a data-bs-toggle="modal" href="#exampleModalToggle2" role="button" href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
                             <i class="pe-7s-like"></i>
                         </a>
                         <!-- Single Wedge End -->
-                        <a href="index.html#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                        <a data-bs-toggle="modal" href="#exampleModalToggle" role="button" href="index.html#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
                             <i class="pe-7s-shopbag"></i>
-                            <span class="header-action-num">01</span>
+                            {% comment %} <span class="header-action-num">01</span> {% endcomment %}
                             <!-- <span class="cart-amount">€30.00</span> -->
                         </a>
-                        <a href="index.html#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
-                            <i class="pe-7s-menu"></i>
+                    
+                        <a onClick="openMenu()"   class="openNavMenu">
+                            <i class="pe-7s-menu" style="font-size: 30px;"></i>
+                        </a>
+                        <a style="display:none;" onClick="closeMenu()"  class="closeNavMenu" >
+                            <i class="pe-7s-close" style="font-size:30px;
+                            "></i>
                         </a>
                     </div>
                 </div>
@@ -142,7 +190,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary text-success" ><a href="{% url 'cart' %}" style="color: green; letter-spacing: 7px;">Cart</a></button>
+          <button class="btn btn-primary text-success" ><a href="{% url 'cart' %}" style="color: azure; letter-spacing: 7px;">Cart</a></button>
         </div>
       </div>
     </div>
@@ -233,9 +281,9 @@
 <!-- OffCanvas Cart End -->
 
 <!-- OffCanvas Menu Start -->
-<div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
+<div id="" class="hamburder__nav__bar">
     <button class="offcanvas-close"></button>
-    <div class="user-panel">
+    <div class="user-panel hambuger_user_panel">
         <ul>
             <li><a href="{% url 'faq' %}"><i class="fa fa-phone"></i> +012 3456 789</a></li>
             <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
@@ -245,7 +293,7 @@
     </div>
     <div class="inner customScroll">
         <div class="offcanvas-menu mb-4">
-            <ul>
+            <ul class="">
                 <li><a href="{% url 'home' %}"><span class="menu-text">Home</span></a>
                     
                 </li>
@@ -264,26 +312,39 @@
         </div>
         <!-- OffCanvas Menu End -->
         
-        <div class="offcanvas-social mt-auto">
-            <ul>
+        <div class="offcanvas-social mt-auto hamber__menu__bar__ul__box">
+            <ul class="hamber__menu__bar__ul">
                 <li>
-                    <a href="single-product-tabstyle-3.html#"><i class="fa fa-facebook"></i></a>
+                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-facebook"></i></a>
                 </li>
                 <li>
-                    <a href="single-product-tabstyle-3.html#"><i class="fa fa-twitter"></i></a>
+                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-twitter"></i></a>
                 </li>
                 <li>
-                    <a href="single-product-tabstyle-3.html#"><i class="fa fa-google"></i></a>
-                </li>
-                <li>
-                    <a href="single-product-tabstyle-3.html#"><i class="fa fa-youtube"></i></a>
-                </li>
-                <li>
-                    <a href="single-product-tabstyle-3.html#"><i class="fa fa-instagram"></i></a>
+                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-instagram"></i></a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+<script>
+    function openMenu(){
+        let hamburger = document.querySelector('.hamburder__nav__bar');
+        let openMenu = document.querySelector('.openNavMenu') ;
+        let closeMenu = document.querySelector('.closeNavMenu') ;
+            hamburger.style.left = '0%';
+            openMenu.style.display = "none"
+            closeMenu.style.display = "flex"
+        }
+        function closeMenu(){
+        let hamburger = document.querySelector('.hamburder__nav__bar');
+        let openMenu = document.querySelector('.openNavMenu') ;
+        let closeMenu = document.querySelector('.closeNavMenu') ;
+            hamburger.style.left = '-100%';
+            openMenu.style.display = "flex"
+            closeMenu.style.display = "none"
+        }
+
+</script>
 <!-- OffCanvas Menu End -->
 <h1></h1>

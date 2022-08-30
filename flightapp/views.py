@@ -131,7 +131,10 @@ def addWishlistView(request, id) -> None:
     wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
     wishlist.products.add(product)
     wishlist.save()
-    
+    if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
+        return redirect('home')
+
+    return redirect('home')
 
 
 @login_required(login_url='login')
