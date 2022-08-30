@@ -84,14 +84,15 @@ def shopdetailView(request, id):
     dbctx: dict = {}
     dbctx["all_products"] = _all_products
     items = Products.objects.get(id=id)
-    comments = Comments.objects.all()
     forms = CommentsForm()
     
     if request.method == "POST":
         forms = CommentsForm(request.POST)
         if forms.is_valid():
-            obj = forms.save(commit=False)
-            obj.save()
+            review = forms.save(commit=False)
+            review.item = items
+            review.person = request.user
+            review.save()
    
         return redirect('shopdetail')
     
@@ -100,7 +101,7 @@ def shopdetailView(request, id):
     
     
 
-    context = {**dbctx, **myctx, 'comments': comments, 'items': items, 'forms': forms}
+    context = {**dbctx, **myctx, 'items': items, 'forms': forms}
 
     return render(request, 'shop/detail.html', context)
 
