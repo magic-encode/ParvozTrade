@@ -83,6 +83,7 @@ def shopdetailView(request, id):
     dbctx: dict = {}
     dbctx["all_products"] = _all_products
     items = Products.objects.get(id=id)
+    comments = Comments.objects.all()
     
     if request.method == "POST":
         body = request.POST.get("body")
@@ -94,12 +95,6 @@ def shopdetailView(request, id):
                 reply = Comments.objects.get(id=int(body))
             ).save()
         
-        
-    
-    comments = []
-    for c in Comments.objects.filter(items=items):
-        comments.append([c, Comments.objects.filter(reply=c)])
-    
 
     context = {**dbctx, **myctx, 'comments': comments, 'items': items}
 
