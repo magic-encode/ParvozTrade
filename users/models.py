@@ -5,6 +5,7 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
+   
     fullname = models.CharField(max_length=255, null=True, blank=True)
     number = models.BigIntegerField(null=True, blank=True)
     password1 = models.CharField(max_length=255)

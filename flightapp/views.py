@@ -85,12 +85,12 @@ def shopdetailView(request, id):
     dbctx["all_products"] = _all_products
     
     comments = []
-    for c in Comments.objects.filter(product=product):
+    for c in Comments.objects.all():
         comments.append([c, SubComments.objects.filter(reply=c)])
     
 
     dbctx["items"] = Products.objects.get(id=id)
-    context = {**dbctx, **myctx}
+    context = {**dbctx, **myctx, 'comments': comments, }
 
     return render(request, 'shop/detail.html', context)
 

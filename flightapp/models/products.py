@@ -41,7 +41,7 @@ class Products(models.Model):
 
 
 class Comments(models.Model):
-    product = models.ForeignKey(
+    prod = models.ForeignKey(
         Products, on_delete=models.CASCADE)
     person = models.ForeignKey(
         CustomUser, on_delete=models.DO_NOTHING)
@@ -50,7 +50,7 @@ class Comments(models.Model):
 
 
 class SubComments(models.Model):
-    product = models.ForeignKey(
+    prod = models.ForeignKey(
         Products,  on_delete=models.CASCADE)
     person = models.ForeignKey(
         CustomUser,  on_delete=models.DO_NOTHING)

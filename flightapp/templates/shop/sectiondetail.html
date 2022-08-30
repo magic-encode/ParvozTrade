@@ -50,7 +50,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-            
+                        <span class="read-review"><a class="reviews" href="single-product-tabstyle-2.html#">(5 Customer Review)</a></span>
                     </div>
                    
                     
@@ -85,7 +85,7 @@
                             
                                 <button class="add-cart">
                                     <a href="{% url 'add-wishlist' items.id %}" type="submit">
-                                        {% comment %} <i class="pe-7s-like"> {% endcomment %}
+                                        Sevimlilar +
                                     </a>
                                 </button>
                         </div>
@@ -122,10 +122,38 @@
 
                                 <div class="col-lg-12">
                                     <div class="review-wrapper">
-                                        {% for %}
+                                    {% if user.is_authenticated %}
+                                        {% for sm in comments %}
+
                                         <div class="single-review">
                                             <div class="review-img">
-                                                <img src="{% static 'assets/images/review-image/1.png' %}" alt="" />
+                                                <img src="{% static 'default.jpeg' %}" alt="" />
+                                            </div>
+                                            <div class="review-content">
+                                                <div class="review-top-wrap">
+                                                    <div class="review-left">
+                                                        <div class="review-name">
+                                                            <h4>{{sm.0.person.username}} </h4>
+                                                        </div>
+                                                        <div class="rating-product">
+                                                           {{sm.0.time}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="review-left">
+                                                        <a href="single-product-tabstyle-2.html#">Reply</a>
+                                                    </div>
+                                                </div>
+                                                <div class="review-bottom">
+                                                    <p>
+                                                        {{sm.0.body}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="single-review child-review">
+                                            <div class="review-img">
+                                                <img src="{% static 'assets/images/review-image/2.png' %}" alt="" />
                                             </div>
                                             <div class="review-content">
                                                 <div class="review-top-wrap">
@@ -142,19 +170,20 @@
                                                         </div>
                                                     </div>
                                                     <div class="review-left">
-                                                        <span> </span>
+                                                        <a href="single-product-tabstyle-2.html#">Reply</a>
                                                     </div>
                                                 </div>
                                                 <div class="review-bottom">
-                                                    <p>
-                                                        Vestibulum ante ipsum primis aucibus orci luctustrices posuere
-                                                        cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper
-                                                        euismod vehicula. Phasellus quam nisi, congue id nulla.
-                                                    </p>
+                                                    <p>Vestibulum ante ipsum primis aucibus orci luctustrices posuere
+                                                        cubilia Curae Sus pen disse viverra ed viverra. Mauris ullarper
+                                                        euismod vehicula.</p>
                                                 </div>
                                             </div>
                                         </div>
-                                       
+                                        {% endfor %}
+                                    {% else %}
+                                    <h3>Siz ro'yxatdan o'tmagansiz, iltimos ro'yxatdan o'ting  <a href="{% url 'login' %}">Login</h3>
+                                    {% endif %}
                                     </div>
                                 </div>
 
