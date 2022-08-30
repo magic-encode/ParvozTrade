@@ -83,14 +83,28 @@ def shopdetailView(request, id):
     _all_products = Products.objects.all()
     dbctx: dict = {}
     dbctx["all_products"] = _all_products
+    items = Products.objects.get(id=id)
+    
+    if request.method == "POST":
+        body = request.POST.get("body")
+        body_id = request.POST.get("body_id")
+        if body_id:
+            SubComments(items=items,
+                        person = request.user,
+                        body = body,
+                        reply = Comments.objects.get(id=int(body_id))
+                    ).save()
+        else:
+            Comments(items=items, person=request.user, body=body).save()
+        
+        
     
     comments = []
-    for c in Comments.objects.all():
+    for c in Comments.objects.filter(items=items):
         comments.append([c, SubComments.objects.filter(reply=c)])
     
 
-    dbctx["items"] = Products.objects.get(id=id)
-    context = {**dbctx, **myctx, 'comments': comments, }
+    context = {**dbctx, **myctx, 'comments': comments, 'items': items}
 
     return render(request, 'shop/detail.html', context)
 

@@ -1,3 +1,4 @@
+from email import message
 from django.db import models
 from flightapp.models.category import Categories
 from users.models import CustomUser
@@ -41,7 +42,7 @@ class Products(models.Model):
 
 
 class Comments(models.Model):
-    prod = models.ForeignKey(
+    items = models.ForeignKey(
         Products, on_delete=models.CASCADE)
     person = models.ForeignKey(
         CustomUser, on_delete=models.DO_NOTHING)
@@ -50,7 +51,7 @@ class Comments(models.Model):
 
 
 class SubComments(models.Model):
-    prod = models.ForeignKey(
+    items = models.ForeignKey(
         Products,  on_delete=models.CASCADE)
     person = models.ForeignKey(
         CustomUser,  on_delete=models.DO_NOTHING)
