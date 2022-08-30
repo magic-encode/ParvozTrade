@@ -25,13 +25,10 @@
             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                 <div class="product-details-img product-details-tab product-details-tab-2 d-flex">
                     <!-- Swiper -->
-                    <div class="swiper-container zoom-top-2 align-self-start">
+                    <div class="swiper-container  align-self-start">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img class="img-responsive m-auto" src="{{items.image.url}}" alt="">
-                                <a class="venobox full-preview" data-gall="myGallery" href="{{items.image.url}}" alt="">
-                                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -53,9 +50,9 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <span class="read-review"><a class="reviews" href="single-product-tabstyle-2.html#">(5 Customer Review)</a></span>
+            
                     </div>
-                    <p class="mt-30px">{{items.description}} </p>
+                   
                     
                     <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
                         <span>Categories: </span>
@@ -100,7 +97,7 @@
                     <div class="description-review-topbar nav">
                         <button data-bs-toggle="tab" data-bs-target="#des-details2">Information</button>
                         <button class="active" data-bs-toggle="tab" data-bs-target="#des-details1">Description</button>
-                        <button data-bs-toggle="tab" data-bs-target="#des-details3">Reviews (02)</button>
+                        <button data-bs-toggle="tab" data-bs-target="#des-details3">Izohlar</button>
                     </div>
                     <div class="tab-content description-review-bottom">
                         <div id="des-details2" class="tab-pane">
@@ -125,6 +122,7 @@
 
                                 <div class="col-lg-12">
                                     <div class="review-wrapper">
+                                        {% for %}
                                         <div class="single-review">
                                             <div class="review-img">
                                                 <img src="{% static 'assets/images/review-image/1.png' %}" alt="" />
@@ -144,7 +142,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="review-left">
-                                                        <a href="single-product-tabstyle-2.html#">Reply</a>
+                                                        <span> </span>
                                                     </div>
                                                 </div>
                                                 <div class="review-bottom">
@@ -156,35 +154,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="single-review child-review">
-                                            <div class="review-img">
-                                                <img src="{% static 'assets/images/review-image/2.png' %}" alt="" />
-                                            </div>
-                                            <div class="review-content">
-                                                <div class="review-top-wrap">
-                                                    <div class="review-left">
-                                                        <div class="review-name">
-                                                            <h4>White Lewis</h4>
-                                                        </div>
-                                                        <div class="rating-product">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="review-left">
-                                                        <a href="single-product-tabstyle-2.html#">Reply</a>
-                                                    </div>
-                                                </div>
-                                                <div class="review-bottom">
-                                                    <p>Vestibulum ante ipsum primis aucibus orci luctustrices posuere
-                                                        cubilia Curae Sus pen disse viverra ed viverra. Mauris ullarper
-                                                        euismod vehicula.</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
                                     </div>
                                 </div>
 
@@ -260,13 +230,15 @@
 
                             <!-- Single Prodect -->
                             <div class="product" >
-                                {% if alls.status %}
-                                <span class="sale">{{alls.status}}</span>
-                                {% endif %}
-                                {% if alls.discount %}
-                                    <span class="sale">-{{alls.discount}}%</span>
-                                {% endif %}
-                                <div class="thumb" style="background-color: #FFFFFF;">
+                                <span class="badges">
+                                    {% if alls.status %}
+                                    <span class="sale">{{alls.status}}</span>
+                                    {% endif %}
+                                    {% if alls.discount %}
+                                        <span class="sale">-{{alls.discount}}%</span>
+                                    {% endif %}
+                                </span>
+                                <div class="thumb" >
                                     <a href="{% url 'shopdetail' alls.id %}" class="image">
                                         <img src="{{alls.image.url}}" alt="Product" />
                                         <img class="hover-image" src="{{alls.image.url}}" alt="Product" />

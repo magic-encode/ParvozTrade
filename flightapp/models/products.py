@@ -1,8 +1,6 @@
 from django.db import models
-from django.utils.text import slugify
-
 from flightapp.models.category import Categories
-
+from users.models import CustomUser
 
 
 class Products(models.Model):
@@ -12,9 +10,7 @@ class Products(models.Model):
         ('sale', 'SALE'),
     )
 
-
     name = models.CharField(max_length=255, verbose_name="mahsulotning nomi")
-    slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
     description = models.TextField(
         null=True, blank=True, verbose_name="mahsulot haqida qisqacha")
     price_old = models.FloatField(
@@ -31,20 +27,36 @@ class Products(models.Model):
         max_length=50, verbose_name="status", choices=STATUS, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    
-    weight = models.CharField(max_length=50, verbose_name="weight",null=True, blank=True)
-    olchami = models.CharField(max_length=255, verbose_name="olchami",null=True, blank=True)
-    materials = models.CharField(max_length=255, verbose_name="materials",null=True, blank=True)
+
+    weight = models.CharField(
+        max_length=50, verbose_name="weight", null=True, blank=True)
+    olchami = models.CharField(
+        max_length=255, verbose_name="olchami", null=True, blank=True)
+    materials = models.CharField(
+        max_length=255, verbose_name="materials", null=True, blank=True)
     other_info = models.CharField(max_length=500, null=True, blank=True)
-
-    def save(self, *args, **kwargs) -> None:
-        if not self.slug:
-            self.slug = slugify(self.name)
-
-        super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return self.name
+
+
+class Comments(models.Model):
+    product = models.ForeignKey(
+        Products, on_delete=models.CASCADE)
+    person = models.ForeignKey(
+        CustomUser, on_delete=models.DO_NOTHING)
+    body = models.TextField(max_length=500)
+    time = models.DateTimeField(auto_now_add=True)
+
+
+class SubComments(models.Model):
+    product = models.ForeignKey(
+        Products,  on_delete=models.CASCADE)
+    person = models.ForeignKey(
+        CustomUser,  on_delete=models.DO_NOTHING)
+    body = models.TextField(max_length=300)
+    time = models.DateTimeField(auto_now_add=True)
+    reply = models.ForeignKey(Comments, on_delete=models.CASCADE)
 
 
 class Banner(models.Model):
@@ -66,32 +78,30 @@ class BannerLefts(models.Model):
         return self.name
 
 
-
 class FeatureRights(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField()
     price_old = models.FloatField(verbose_name="mahsulotning eski narxi")
     price_new = models.FloatField(verbose_name="mahsulotning yangi narxi")
-    
+
     predecessor = models.CharField(max_length=255, default=None)
     supporttype = models.CharField(max_length=255, default=None)
     cushioning = models.CharField(max_length=255, default=None)
     totalweight = models.CharField(max_length=255, default=None)
-    
+
     def __str__(self):
         return self.name
-    
-    
+
+
 class FeatureLeft(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField()
     price_old = models.FloatField(verbose_name="mahsulotning eski narxi")
     price_new = models.FloatField(verbose_name="mahsulotning yangi narxi")
-    
+
     def __str__(self):
         return self.name
-    
-    
+
+
 class Brand(models.Model):
     image = models.ImageField()
-    

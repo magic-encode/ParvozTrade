@@ -13,6 +13,8 @@ from flightapp.models.wishlist import Wishlist
 from flightapp.models.products import Brand, FeatureLeft
 from flightapp.models.products import Banner
 from flightapp.models.products import Products
+from flightapp.models.products import Comments
+from flightapp.models.products import SubComments
 from flightapp.models.products import BannerLefts
 from flightapp.models.products import FeatureLeft
 from flightapp.models.products import FeatureRights
@@ -81,7 +83,11 @@ def shopdetailView(request, id):
     _all_products = Products.objects.all()
     dbctx: dict = {}
     dbctx["all_products"] = _all_products
-   
+    
+    comments = []
+    for c in Comments.objects.filter(product=product):
+        comments.append([c, SubComments.objects.filter(reply=c)])
+    
 
     dbctx["items"] = Products.objects.get(id=id)
     context = {**dbctx, **myctx}
