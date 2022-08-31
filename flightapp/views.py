@@ -83,34 +83,34 @@ def shopdetailView(request, id):
     _all_products = Products.objects.all()
     dbctx: dict = {}
     dbctx["all_products"] = _all_products
+    
+    
     items = Products.objects.get(id=id)
     forms = CommentsForm()
     
     if request.method == "POST":
         forms = CommentsForm(request.POST)
-        if forms.is_valid():
-            review = forms.save(commit=False)
-            review.item = items
-            review.person = request.user
-            review.save()
-   
-        return redirect('shopdetail')
-    
-    else:
-        forms = CommentsForm()
-    
-    
+        review = forms.save(commit=False)
+        review.item = items
+        review.person = request.user
+        review.save()
+        
+        messages.success(request, 'Your review was successfully submitted!')
+        return redirect('shopdetail', id=items.id)
 
+    
     context = {**dbctx, **myctx, 'items': items, 'forms': forms}
 
     return render(request, 'shop/detail.html', context)
 
 
 def commentRemove(request, id):
-    comments = Comments.objects.get(id=id)
-    comments.delete()
+    commentr = Comments.objects.get(id=id)
+    profile = request.user.is_staff
+    comment = profile.commentr_set.get(id=commentr.id)
+    comment.delete()
 
-    return redirect('shopdetail')
+    return redirect('shopdetail', id)
 
 
 @login_required(login_url='login')
@@ -156,9 +156,9 @@ def addWishlistView(request, id) -> None:
     wishlist.products.add(product)
     wishlist.save()
     if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
-        return redirect('home')
+        return redirect(request.GET['next'] if 'next' in request.GET else 'wishlist')
 
-    return redirect('home')
+    return redirect(request.GET['next'] if 'next' in request.GET else 'wishlist')
 
 
 @login_required(login_url='login')

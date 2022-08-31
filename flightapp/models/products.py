@@ -43,12 +43,13 @@ class Products(models.Model):
 
 class Comments(models.Model):
     item = models.ForeignKey(
-        Products, on_delete=models.CASCADE, related_name="comments", null=True, blank=True)
+        Products, on_delete=models.CASCADE, related_name="comment", null=True, blank=True)
     person = models.ForeignKey(
         CustomUser, related_name="user", on_delete=models.DO_NOTHING, null=True, blank=True)
     body = models.TextField(max_length=500, null=True, blank=True)
     time = models.DateTimeField(auto_now_add=True)
     
+
 
 
 

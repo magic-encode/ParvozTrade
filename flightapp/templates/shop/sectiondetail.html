@@ -122,7 +122,7 @@
 
                                 <div class="col-lg-12">
                                     {% if user.is_authenticated %}
-                                    {% for sm in items.comments.all %}
+                                    {% for sm in items.comment.all %}
                                     <div class="review-wrapper">
                                         <div class="single-review">
                                             <div class="review-img">
@@ -137,11 +137,11 @@
                                                         <div class="rating-product">
                                                            {{sm.time}}
                                                         </div>
-                                                        {% if user.is_staff %}
+                                                        {% comment %} {% if user.is_staff %}
                                                         <a href="{% url 'remove' sm.id %}" style="" >
                                                            delete
                                                         </a>
-                                                        {% endif %}
+                                                        {% endif %} {% endcomment %}
                                                     </div>
                                                    
                                                 </div>
