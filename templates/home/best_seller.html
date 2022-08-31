@@ -16,18 +16,25 @@
                     {% endif %}
                 </span>
                 <div class="thumb">
-                    <a href="single-product.html" class="image">
+                    <a href="{% url 'shopdetail' x.id %}" class="image">
                         <img src="{{x.image.url}}" alt="Product" />
                         <img class="hover-image" src="{{x.image.url}}" alt="Product" />
                     </a>
                 </div>
                 <div class="content">
-                    
-                    <h5 class="title"><a href="single-product.html">{{x.name}}
+                    <h5 class="title"><a href="{% url 'shopdetail' x.id %}">{{x.name}}
                         </a>
                     </h5>
                     <span class="price">
-                        <span class="new"><del>{{x.price_old}}</del> - <b>${{x.price_new}}</b></span>
+                        {% if x.price_old %}
+                        <span class="new"> 
+                            <del>${{x.price_old}}</del> - <b>${{x.price_new}}</b>
+                        </span>
+                        {% else %}
+                        <span class="new">                         
+                            <b>${{x.price_new}}</b>
+                        </span>
+                        {% endif %}   
                     </span>
                 </div>
                 <div class="actions">

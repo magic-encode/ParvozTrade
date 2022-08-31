@@ -1,6 +1,10 @@
 from django.db.models import Q
 from django.db.models import Sum
-from flightapp.forms import GetInfoForm
+
+from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage
+from django.core.paginator import PageNotAnInteger
+
 from flightapp.libs.telegram import telebot
 
 from flightapp.models.cart import Cart
@@ -10,6 +14,38 @@ from flightapp.models.products import Products
 from flightapp.models.category import Categories
 from flightapp.models.customer import CustomerModel
 from flightapp.models.order_history import OrderHistory
+
+
+
+def paginateProjects(request, product, results):
+
+    page = request.GET.get('page')
+    paginator = Paginator(product, results)
+
+    try:
+        product = paginator.page(page)
+    except PageNotAnInteger:
+        page = 1
+        product = paginator.page(page)
+    except EmptyPage:
+        page = paginator.num_pages
+        product = paginator.page(page)
+
+    leftIndex = (int(page) - 3)
+
+    if leftIndex < 1:
+        leftIndex = 1
+
+    rightIndex = (int(page) + 3)
+
+    if rightIndex > paginator.num_pages:
+        rightIndex = paginator.num_pages + 1
+
+    custom_range = range(leftIndex, rightIndex)
+
+    return custom_range, product
+
+
 
 
 def getCategoryid(mystr: str) -> int:

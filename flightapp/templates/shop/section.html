@@ -233,21 +233,7 @@
                     </div>
                     <!-- Tab Content Area End -->
 
-                    <!--  Pagination Area Start -->
-                    <div class="pro-pagination-style text-center text-lg-end" data-aos="fade-up" data-aos-delay="200">
-                        <div class="pages">
-                            <ul>
-                                <li class="li"><a class="page-link" href="shop-3-column.html#"><i class="fa fa-angle-left"></i></a>
-                                </li>
-                                <li class="li"><a class="page-link" href="shop-3-column.html#">1</a></li>
-                                <li class="li"><a class="page-link active" href="shop-3-column.html#">2</a></li>
-                                <li class="li"><a class="page-link" href="shop-3-column.html#">3</a></li>
-                                <li class="li"><a class="page-link" href="shop-3-column.html#"><i class="fa fa-angle-right"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--  Pagination Area End -->
+                    {% include 'paginations.html' with queryset=projects custom_range=custom_range %}
                 </div>
                 <!-- Shop Bottom Area End -->
             </div>

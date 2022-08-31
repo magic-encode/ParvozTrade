@@ -28,6 +28,8 @@ from flightapp.utils import searchHelper, wishList
 from flightapp.utils import categWishlistHelper, send_message
 from flightapp.libs.telegram import telebot
 
+from .utils import paginateProjects
+
 
 def homeView(request):
     
@@ -74,7 +76,7 @@ def shopView(request):
     myctx: dict = categWishlistHelper(request)
     dbctx["all_products"] = _all_products
     context = {**dbctx, **myctx}
-
+    custom_range, product = paginateProjects(request,  product, 3)
     return render(request, 'shop/shop.html', context)
 
 
@@ -86,6 +88,9 @@ def shopdetailView(request, id):
     
     
     items = Products.objects.get(id=id)
+    if items.comment:
+        counts = items.comment.count()
+        
     forms = CommentsForm()
     
     if request.method == "POST":
@@ -95,11 +100,11 @@ def shopdetailView(request, id):
         review.person = request.user
         review.save()
         
-        messages.success(request, 'Your review was successfully submitted!')
+        # messages.success(request, 'Your review was successfully submitted!')
         return redirect('shopdetail', id=items.id)
 
     
-    context = {**dbctx, **myctx, 'items': items, 'forms': forms}
+    context = {**dbctx, **myctx, 'items': items, 'forms': forms, 'counts': counts,}
 
     return render(request, 'shop/detail.html', context)
 
