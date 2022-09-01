@@ -77,7 +77,7 @@ def shopView(request):
     count = dbctx["all_products"].count()
 
     custom_range, dbctx["all_products"] = paginateProjects(
-        request,  dbctx["all_products"], 3)
+        request,  dbctx["all_products"], 6)
 
     context = {**dbctx, **myctx,  'custom_range': custom_range, 'count': count}
     return render(request, 'shop/shop.html', context)
