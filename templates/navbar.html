@@ -88,9 +88,10 @@
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="search-element">
-                        <form action="index.html#">
-                            <input type="text" placeholder="Search" />
-                            <button><i class="pe-7s-search" style="font-size:25px"></i></button>
+                        <form action="{% url 'search' %}" method="get">
+                            <input type="text" id="formInput#search"  name="search_query"
+                            placeholder="Qidirish...."  />
+                            <button class="btn btn-primary" type="submit" ><i class="pe-7s-search" style="font-size:25px"></i></button>
                         </form>
                     </div>
                 </div>

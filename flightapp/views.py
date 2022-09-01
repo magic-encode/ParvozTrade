@@ -32,8 +32,7 @@ from .utils import paginateProjects
 
 
 def homeView(request):
-    
-            
+
     day_recommends = Products.objects.filter(
         category=Categories.KUN_TAKLIFLARI)  # kunning eng yaxhi takliflari
     best_seller = Products.objects.filter(
@@ -63,7 +62,7 @@ def homeView(request):
 
 
 def aboutView(request):
-      
+
     context: dict = categWishlistHelper(request)
 
     return render(request, 'about/about.html', context)
@@ -75,8 +74,20 @@ def shopView(request):
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
     dbctx["all_products"] = _all_products
-    context = {**dbctx, **myctx}
-    custom_range, product = paginateProjects(request,  product, 3)
+
+    custom_range, dbctx['all_products'] = paginateProjects(request,  dbctx['all_products'], 3)
+
+    context = {**dbctx, **myctx,  'custom_range': custom_range}
+    return render(request, 'shop/shop.html', context)
+
+
+def searchView(request) -> list:
+    products, _ = searchHelper(request)
+    context: dict = categWishlistHelper(request)
+
+    if len(products) > 0:
+        context['products'] = products
+
     return render(request, 'shop/shop.html', context)
 
 
@@ -85,26 +96,25 @@ def shopdetailView(request, id):
     _all_products = Products.objects.all()
     dbctx: dict = {}
     dbctx["all_products"] = _all_products
-    
-    
+
     items = Products.objects.get(id=id)
     if items.comment:
         counts = items.comment.count()
-        
+
     forms = CommentsForm()
-    
+
     if request.method == "POST":
         forms = CommentsForm(request.POST)
         review = forms.save(commit=False)
         review.item = items
         review.person = request.user
         review.save()
-        
+
         # messages.success(request, 'Your review was successfully submitted!')
         return redirect('shopdetail', id=items.id)
 
-    
-    context = {**dbctx, **myctx, 'items': items, 'forms': forms, 'counts': counts,}
+    context = {**dbctx, **myctx, 'items': items,
+               'forms': forms, 'counts': counts, }
 
     return render(request, 'shop/detail.html', context)
 

@@ -17,19 +17,19 @@ from flightapp.models.order_history import OrderHistory
 
 
 
-def paginateProjects(request, product, results):
+def paginateProjects(request, products, results):
 
     page = request.GET.get('page')
-    paginator = Paginator(product, results)
+    paginator = Paginator(products, results)
 
     try:
-        product = paginator.page(page)
+        products = paginator.page(page)
     except PageNotAnInteger:
         page = 1
-        product = paginator.page(page)
+        products = paginator.page(page)
     except EmptyPage:
         page = paginator.num_pages
-        product = paginator.page(page)
+        products = paginator.page(page)
 
     leftIndex = (int(page) - 3)
 
@@ -43,7 +43,7 @@ def paginateProjects(request, product, results):
 
     custom_range = range(leftIndex, rightIndex)
 
-    return custom_range, product
+    return custom_range, products
 
 
 
@@ -102,7 +102,7 @@ def searchHelper(request) -> dict:
     products: list = Products.objects.distinct().filter(
         Q(name__icontains=search_query) |
         Q(description__icontains=search_query) |
-        Q(price__icontains=search_query) |
+        Q(price_new__icontains=search_query) |
         Q(category__in=category)
     )
 
