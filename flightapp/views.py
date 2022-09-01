@@ -82,13 +82,13 @@ def shopView(request):
 
 
 def searchView(request) -> list:
-    products, _ = searchHelper(request)
+    products = searchHelper(request)
     context: dict = categWishlistHelper(request)
 
     if len(products) > 0:
         context['products'] = products
 
-    return render(request, 'shop/shop.html', context)
+    return render(request, 'shop/search.html', context)
 
 
 def shopdetailView(request, id):

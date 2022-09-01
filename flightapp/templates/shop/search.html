@@ -20,11 +20,17 @@
 
         {% endif %}
     
-        <center>
+       
             {% if products == None %}
                 <h1>Hozircha bunday mahsulot mavjud emas</h1>
+
+            {% else %}
+                {% include 'shop/search_include.html' %}
+
             {% endif %}
-        </center>
+
+
+
 
         {% include 'footer.html' %}
         

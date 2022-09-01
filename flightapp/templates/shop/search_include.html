@@ -1,0 +1,243 @@
+{% load static %}
+
+<!-- breadcrumb-area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="breadcrumb-title">Product Page</h2>
+                <!-- breadcrumb-list start -->
+                <ul class="breadcrumb-list">
+                    <li class="breadcrumb-product"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-product active">Shop</li>
+                </ul>
+                <!-- breadcrumb-list end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb-area end -->
+<!-- Shop Page Start  -->
+<div class="shop-category-area pt-100px pb-100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Shop Top Area Start -->
+                <div class="shop-top-bar d-flex">
+                    <p class="compare-product"> <span>{{products.count}}</span>Mahsulot topildi  <span>{{all_products.count}}</span></p>
+                    <!-- Left Side End -->
+                    <div class="shop-tab nav">
+                        <button class="active" data-bs-target="#shop-grid" data-bs-toggle="tab">
+                            <i class="fa fa-th" aria-hidden="true"></i>
+                        </button>
+                        <button data-bs-target="#shop-list" data-bs-toggle="tab">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <!-- Right Side Start -->
+                    <div class="select-shoing-wrap d-flex align-items-center">
+                        <div class="shot-product">
+                            <p>Sort By:</p>
+                        </div>
+                        <!-- Single Wedge End -->
+                        <div class="header-bottom-set dropdown">
+                            <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">Default <i class="fa fa-angle-down"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Name, A to Z</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Name, Z to A</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Price, low to high</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Price, high to low</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Sort By new</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Sort By old</a></li>
+                            </ul>
+                        </div>
+                        <!-- Single Wedge Start -->
+                    </div>
+                    <!-- Right Side End -->
+                </div>
+                <!-- Shop Top Area End -->
+                <!-- Shop Bottom Area Start -->
+                <div class="shop-bottom-area">
+                    <!-- Tab Content Area Start -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="shop-grid">
+                                    <div class="row mb-n-30px">
+                                        {% for product in products %}
+                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
+                                            <!-- Single Prodect -->
+                                            <div class="product">
+                                                <span class="badges">
+                                                    {% if product.status %}
+                                                    <span class="sale">{{product.status}}</span>
+                                                    {% endif %}
+                                                    {% if product.discount %}
+                                                        <span class="sale">-{{product.discount}}%</span>
+                                                    {% endif %}
+                                                </span>
+                                                <div class="thumb">
+                                                    <a href="{% url 'shopdetail' product.id %}" class="image">
+                                                        <img src="{{product.image.url}}" alt="Product" />
+                                                        <img class="hover-image" src="{{product.image.url}}" alt="Product" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    
+                                                    <h5 class="title"><a href="{% url 'shopdetail' product.id %}">{{product.name}}
+                                                        </a>
+                                                    </h5>
+                                                    <span class="price">
+                                                        {% if product.price_old %}
+                                                        <span class="new"><del>{{product.price_old}}</del> - <b>${{product.price_new}}</b></span>
+                                                        {% else %}
+                                                        <span class="new"><b>${{product.price_new}}</b></span>
+                                                        {% endif %}
+                                                    </span>
+                                                </div>
+                                                <div class="actions">
+                                                    <a href="{% url 'add-cart' product.id%}" class="cart-btn" type="submit">
+                                                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart{{product.id}}"><i
+                                                            class="pe-7s-shopbag"></i>
+                                                        </button>
+                                                        
+                                                    </a>
+                                                    <a href="{% url 'add-wishlist' product.id%}" class="cart-btn" type="submit">
+                                                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{product.id}}"><i
+                                                            class="pe-7s-like"></i>
+                                                        </button>
+                                                    </a>
+                                                    
+                                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{product.id}}"><i class="pe-7s-look"></i></button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal Cart -->
+                                        <div class="modal customize-class fade" id="exampleModal-Cart{{product.id}}" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                                                        <div class="tt-modal-messages">
+                                                            <i class="pe-7s-check"></i> Mahsulot Savatchaga muvaffaqiyatli qoshildi !!!
+                                                        </div>
+                                                        <div class="tt-modal-product">
+                                                            <div class="tt-img">
+                                                                <img src="{{product.image.url}}" alt="Modern Smart Phone">
+                                                            </div>
+                                                            <h2 class="tt-title"><a href="#">{{product.name}}</a></h2>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    <!-- Modal -->
+
+                                    <!-- Modal wishlist -->
+                                        <div class="modal customize-class fade" id="exampleModal-Wishlist{{ product.id }}" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                                                        <div class="tt-modal-messages">
+                                                            <i class="pe-7s-check"></i> Mahsulot sevimlilarga muvaffaqiyatli qoshildi !!!
+                                                        </div>
+                                                        <div class="tt-modal-product">
+                                                            <div class="tt-img">
+                                                                <img src="{{product.image.url}}" alt="Modern Smart Phone">
+                                                            </div>
+                                                            <h2 class="tt-title"><a href="index.html#">{{product.name}}</a></h2>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="modal modal-2 fade" id="exampleModal{{product.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                                                        <div class="row">
+                                                            
+                                                            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                                                                <!-- Swiper -->
+                                                                <div class="swiper-container gallery-top">
+                                                                    <div class="swiper-wrapper">
+                                                                        <div class="swiper-slide">
+                                                                            <img class="img-responsive m-auto" src="{{product.image.url}}" alt="">
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                                                    
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                                                                <div class="product-details-content quickview-content">
+                                                                    <h2>{{product.name}} </h2>
+                                                                    <div class="pricing-meta">
+                                                                        <ul class="d-flex">
+                                                                            <li class="new-price">Narxi: {{product.price_new}} so'm</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="pro-details-rating-wrap">
+                                                                        <div class="rating-product">
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                    
+                                                                    </div>
+                                                                
+                                                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                                                        <p class="mt-30px">{{product.description}}</p>
+                                                                    </div>
+                                                                    
+                                                                
+                                                                    <div class="pro-details-quality">
+                                                                        <a href="{% url 'shopdetail' product.id %}" class="cart-btn" type="submit">
+                                                                            <div class="pro-details-cart">
+                                                                                <button class="add-cart">Buyurtma +
+                                                                                </button>
+                                                                            </div>
+                                                                        </a>
+                                                                        <a href="{% url 'add-cart' product.id%}" class="cart-btn" type="submit">
+                                                                            <div class="pro-details-cart">
+                                                                                <button class="add-cart">Savatcha +
+                                                                                </button>
+                                                                            </div>
+                                                                        </a>                                                                                                                                              
+                                                                    </div>                                                                    
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal end -->
+                                        {% endfor %}                                                                             
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Content Area End -->
+
+                    {% include 'paginations.html' with queryset=products custom_range=custom_range %}
+                </div>
+                <!-- Shop Bottom Area End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Page End  -->
