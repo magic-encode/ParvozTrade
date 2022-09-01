@@ -74,20 +74,23 @@ def shopView(request):
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
     dbctx["all_products"] = _all_products
+    count = dbctx["all_products"].count()
 
-    custom_range, dbctx['all_products'] = paginateProjects(request,  dbctx['all_products'], 3)
+    custom_range, dbctx["all_products"] = paginateProjects(
+        request,  dbctx["all_products"], 3)
 
-    context = {**dbctx, **myctx,  'custom_range': custom_range}
+    context = {**dbctx, **myctx,  'custom_range': custom_range, 'count': count}
     return render(request, 'shop/shop.html', context)
 
 
 def searchView(request) -> list:
-    products = searchHelper(request)
+    products, search_query = searchHelper(request)
     context: dict = categWishlistHelper(request)
 
     if len(products) > 0:
         context['products'] = products
 
+    context = {'products': products, 'search_query': search_query}
     return render(request, 'shop/search.html', context)
 
 
