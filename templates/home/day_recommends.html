@@ -178,6 +178,8 @@
         </div>
         <!-- Modal end -->
     {% endfor %}
+
     </div>
 </div>
+{% include 'paginations.html' with queryset=products custom_range=custom_range %}
 <!-- 1st tab end -->

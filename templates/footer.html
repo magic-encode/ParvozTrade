@@ -1,7 +1,36 @@
 {% load static %}
 
 <!-- Footer Area Start -->
-<div class="footer-area" style="background: #252525;>
+<style>
+    .footer-container{
+    }
+    .footer-area a{
+        color: #fff !important;
+        text-decoration: none;
+    }
+    .footer-area a:hover{
+        color: #F9CB27 !important;
+    }
+    .footer-area .link-follow li a:hover{
+        color: #fff !important;
+
+    }
+    .footer-area .single-link{
+        color: #fff !important;
+
+    }
+    .footer-area .footer-links p , .about-text{
+        color: #F9CB27 !important;
+
+    }
+    a{
+        text-decoration: none;
+    }
+    .footer-area .link-follow{
+        margin: 20% 0;
+    }
+</style>
+<div class="footer-area" style="background: #252525;">
     <div class="footer-container">
         <div class="footer-top">
             <div class="container">
@@ -12,8 +41,8 @@
                             <div class="footer-logo">
                                 <a href="index.html"><img src="{% static 'assets/images/logos.png' %}" alt=""></a>
                             </div>
-                            <p class="about-text">Lorem ipsum dolor sit amet consl adipisi elit, sed do eiusmod templ incididunt ut labore
-                            </p>
+                            {% comment %} <p class="about-text">Lorem ipsum dolor sit amet consl adipisi elit, sed do eiusmod templ incididunt ut labore
+                            </p> {% endcomment %}
                             <ul class="link-follow">
                                 <li>
                                     <a class="m-0" title="Telegram" target="_blank" rel="noopener noreferrer" href="index.html#"><i class="fa-brands fa-telegram"></i></a>
@@ -33,7 +62,7 @@
                     <!-- Start single blog -->
                     <div class="col-md-6 col-lg-3 col-sm-6 mb-lm-30px pl-lg-60px">
                         <div class="single-wedge">
-                            <h4 class="footer-herading">Services</h4>
+                            <h4 class="footer-herading" style="color: #F9CB27 !important;">Services</h4>
                             <div class="footer-links">
                                 <div class="footer-row">
                                     <ul class="align-items-center">
@@ -51,7 +80,7 @@
                     <!-- Start single blog -->
                     <div class="col-md-6 col-lg-3 col-sm-6 mb-lm-30px pl-lg-40px">
                         <div class="single-wedge">
-                            <h4 class="footer-herading">My Account</h4>
+                            <h4 class="footer-herading" style="color: #F9CB27 !important;">My Account</h4>
                             <div class="footer-links">
                                 <div class="footer-row">
                                     <ul class="align-items-center">
@@ -69,14 +98,12 @@
                     <!-- Start single blog -->
                     <div class="col-md-6 col-lg-3 col-sm-12">
                         <div class="single-wedge">
-                            <h4 class="footer-herading">Contact Info</h4>
+                            <h4 class="footer-herading" style="color: #F9CB27 !important;">Contact Info</h4>
                             <div class="footer-links">
                                 <!-- News letter area -->
-                                <p class="address">Address: Your Address Goes Here.</p>
                                 <p class="phone">Phone/Fax:<a href="tel:0123456789"> 0123456789</a></p>
                                 <p class="mail">Email:<a href="mailto:demo@example.com"> demo@example.com</a></p>
-                                <p class="mail"><a href="https://demo@example.com"> demo@example.com</a></p>
-                                <!-- News letter area  End -->
+                                
                             </div>
                         </div>
                     </div>
@@ -84,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
+        {% comment %} <div class="footer-bottom">
             <div class="container">
                 <div class="line-shape-top line-height-1">
                     <div class="row flex-md-row-reverse align-items-center">
@@ -99,7 +126,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
 </div>
 <!-- Footer Area End -->

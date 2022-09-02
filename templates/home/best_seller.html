@@ -249,6 +249,7 @@
         <!-- Modal end --> {% endcomment %}
         
         {% endfor %}
+        {% include 'paginations.html' with queryset=products custom_range=custom_range %}
     </div>
 </div>
 <!-- 2nd tab end -->

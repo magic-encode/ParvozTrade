@@ -1,11 +1,11 @@
-{% if queryset.has_other_pages %}
+
 
 
 <!--  Pagination Area Start -->
 <div class="pro-pagination-style text-center text-lg-end" data-aos="fade-up" data-aos-delay="200">
     <div class="pages">
         <ul>
-            {% if queryset.has_previous %}
+        {% if queryset.has_previous %}
         <li><a href="?page={{queryset.previous_page_number}}" class="page-link"
                 data-page="{{queryset.previous_page_number}}"><i class="fa fa-angle-left"></i></a></li>
         {% endif %}
@@ -28,5 +28,3 @@
     </div>
 </div>
 <!--  Pagination Area End -->
-
-{% endif %}

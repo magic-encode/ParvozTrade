@@ -24,7 +24,10 @@ urlpatterns = [
     path('empty/', views.emptyView, name='empty'),
     path('thanks/', views.thanksView, name='thanks'),
     
-    path('chekout/', views.chekoutView, name='chekout'),
+    path('checkout/', views.chekoutView, name='chekout'),
+    path('finish_shop/', views.finishView, name='finish_shop'),
+    
+    
 
     path('coming-soon/', views.comingView, name='coming-soon'),
     

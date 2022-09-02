@@ -93,7 +93,10 @@ def errorView(request):
 
 
 def chekoutView(request):
-    return render(request, 'pages/checkout.html')
+    return render(request, 'pages/checkout/checkout.html')
+
+def finishView(request):
+    return render(request, 'pages/checkout/finish_shop.html')
 
 
 def comingView(request):

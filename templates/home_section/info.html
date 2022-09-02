@@ -1,0 +1,86 @@
+ <!-- features__area-start -->
+ <style>
+    .features__area{
+        margin:100px auto;
+    }
+    .info_card_box{
+        width:100%;
+        display:flex;
+        justify-content:space-around;
+        flex-wrap:wrap;
+    }
+    .info_box_card{
+        width: 250px;
+        height 250px;
+        {% comment %} border-right: 0.5px solid #5d5d60; {% endcomment %}
+    }
+    .features__item{
+        margin:1%;
+        padding:1%;
+
+    }
+    .features__icon{
+        font-size:45px;
+        margin:1%;
+        padding:1%;
+        margin:  0 20px;
+    }
+    .features__icon i{
+        color: #F9CB26
+    }
+    .features__content{
+        font-size:16px
+    }
+ </style>
+ <section class="features__area pt-20">
+    <div class="container">
+        <div class="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 gx-0 info_card_box">
+            <div class="col info_box_card">
+                <div class="features__item d-flex white-bg">
+                    <div class="features__icon mr-20">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+                    <div class="features__content">
+                        <h6>Bepul yetkazish</h6>
+                        <p>Barcha buyurtmalar uchun 0 so'm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col info_box_card">
+                <div class="features__item d-flex white-bg">
+                    <div class="features__icon mr-20">
+                        <i class="fas fa-money-check"></i>
+                    </div>
+                    <div class="features__content">
+                        <h6>Ishonchli to'lov</h6>
+                        <p>100% havfsiz to'lov</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col info_box_card">
+                <div class="features__item d-flex white-bg">
+                    <div class="features__icon mr-20">
+                        <i class="fas fa-comment-alt"></i>
+                    </div>
+                    <div class="features__content">
+                        <h6>24/7 Qo'llab quvvatlash</h6>
+                        <p>24 Soat qo'llab quvvatlash</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col info_box_card">
+                <div class="features__item d-flex white-bg">
+                    <div class="features__icon mr-20">
+                        <i class="pe-7s-headphones"></i>
+                    </div>
+                    <div class="features__content">
+                        <h6>Do'stona xizmatlar</h6>
+                        <p>O'zaro do'stona maslahatlar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- features__area-end -->
+
