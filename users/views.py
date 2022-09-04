@@ -126,7 +126,7 @@ def blogView(request):
     
     context: dict = categWishlistHelper(request)
 
-    if request.user.is_authenticated:
+    if request.user.is_staff:
         cartProducts: Cart = Cart.objects.filter(
             user=request.user).prefetch_related("products").first()
 
