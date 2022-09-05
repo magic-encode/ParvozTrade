@@ -18,6 +18,7 @@ ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,6 +32,24 @@ INSTALLED_APPS = [
     # 'django_filters',
 
 ]
+
+
+JAZZMIN_SETTINGS = {
+   
+    "related_modal_active": True,
+    
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Library Admin",
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        
+        "default_icon_avto": "fas fa-users",
+
+    },
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
