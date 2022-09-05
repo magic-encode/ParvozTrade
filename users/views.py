@@ -123,7 +123,6 @@ def blogView(request):
     blogs = Post.objects.all()
     context = {'blogs': blogs}
     
-    
     context: dict = categWishlistHelper(request)
 
     if request.user.is_staff:
@@ -135,13 +134,13 @@ def blogView(request):
             context["cardItems"] = context['items']
             context["cartProductsCount"] = cartProducts.products.count()
     
+    context = {'blogs': blogs}
     
     return render(request, 'blog/blog.html', context)
 
 
 def blogDetailView(request, id):
     blog = Post.objects.get(id=id)
-
 
     return render(request, 'blog/detail.html', {'blog': blog})
 

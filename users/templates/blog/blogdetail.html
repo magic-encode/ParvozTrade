@@ -25,34 +25,34 @@
         <div class="row">
             <div class="col-lg-8 order-lg-last col-md-12 order-md-first">
                 <div class="blog-posts">
-                    <div class="single-blog-post blog-grid-post">
+                    <div class="single-blog-blog blog-grid-blog">
                         <div class="blog-image single-blog">
-                            {% if post.image %}
-                            <img class="img-fluid h-auto border-radius-10px" src="{{ post.image.url}}" alt="blog" />
+                            {% if blog.image %}
+                            <img class="img-fluid h-auto border-radius-10px" src="{{ blog.image.url}}" alt="blog" />
                             {% else %}
-                            <img class="img-fluid h-auto border-radius-10px" src="{{ post.video_img}}" alt="blog" />
+                            <img class="img-fluid h-auto border-radius-10px" src="{{ blog.video_img}}" alt="blog" />
                             {% endif %}
                         </div>
                         <div class="quate-speech-area">
                             <p class="quate-speech" data-aos="fade-up" data-aos-delay="200">
-                                {{ post.aforizm }}
+                                {{ blog.aforizm }}
                             </p>
-                            <span class="quater">{{ post.name_aforiz }} </span>
+                            <span class="quater">{{ blog.name_aforiz }} </span>
                         </div>
-                        <div class="blog-post-content-inner mt-30px">
+                        <div class="blog-blog-content-inner mt-30px">
                             <div class="blog-athor-date">
-                                <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i>{{ post.data }} </span>
-                                <span><a class="blog-author" href="blog-grid.html"><i class="fa fa-user" aria-hidden="true"></i>{{ post.userd }} </a></span>
+                                <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i>{{ blog.data }} </span>
+                                <span><a class="blog-author" href="blog-grid.html"><i class="fa fa-user" aria-hidden="true"></i>{{ blog.userd }} </a></span>
                             </div>
-                            <h4 class="blog-title">{{ post.title }} </h4>
+                            <h4 class="blog-title">{{ blog.title }} </h4>
                             <p data-aos="fade-up">
-                                {{ post.body }}
+                                {{ blog.body }}
                             </p>
                             
                         </div>
 
                     </div>
-                    <!-- single blog post -->
+                    <!-- single blog blog -->
                 </div>
                 <div class="blog-single-tags-share d-md-flex justify-content-between">
 
@@ -85,7 +85,7 @@
                     <div class="blog-nav-wrap">
 
                         <div class="nav-left d-flex justify-content-start align-items-center">
-                            <a class="nav-img" href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/post-1.webp' %}" alt="" /><i class="fa fa-angle-left"></i></a>
+                            <a class="nav-img" href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/blog-1.webp' %}" alt="" /><i class="fa fa-angle-left"></i></a>
                             <div class="media-side">
                                 <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
                                 <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="nav-right d-flex justify-content-end flex-row-reverse align-items-center">
-                            <a class="nav-img" href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/post-2.webp' %}" alt="" /><i class="fa fa-angle-right"></i></a>
+                            <a class="nav-img" href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/blog-2.webp' %}" alt="" /><i class="fa fa-angle-right"></i></a>
                             <div class="media-side">
                                 <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
                                 <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
@@ -231,7 +231,7 @@
                     <div class="sidebar-widget-group">
                         <div class="sidebar-widget">
                             <h3 class="sidebar-title">Categories</h3>
-                            <div class="category-post">
+                            <div class="category-blog">
                                 <ul>
                                     <li><a href="blog-single-left-sidebar.html#" class="selected m-0">Accesasories<span>(6)</span> </a></li>
                                     <li><a href="blog-single-left-sidebar.html#" class="">Computer<span>(4)</span> </a></li>
@@ -246,10 +246,10 @@
                         <!-- Sidebar single item -->
                         <div class="sidebar-widget">
                             <h3 class="sidebar-title">Recent Post</h3>
-                            <div class="recent-post-widget">
-                                <div class="recent-single-post d-flex">
+                            <div class="recent-blog-widget">
+                                <div class="recent-single-blog d-flex">
                                     <div class="thumb-side">
-                                        <a href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/post-1.webp' %}" alt="" /></a>
+                                        <a href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/blog-1.webp' %}" alt="" /></a>
                                     </div>
                                     <div class="media-side">
                                         <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
@@ -264,7 +264,7 @@
                         <!-- Sidebar single item -->
                         <div class="sidebar-widget">
                             <h3 class="sidebar-title">Archives</h3>
-                            <div class="category-post">
+                            <div class="category-blog">
                                 <ul>
                                     <li><a href="blog-single-left-sidebar.html#" class="selected m-0">March 2018</a></li>
                                     <li><a href="blog-single-left-sidebar.html#" class=""> February 2018</a></li>
