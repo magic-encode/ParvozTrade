@@ -1,7 +1,7 @@
 {% load static %}
 
 
-<!-- breadcrumb-area start -->
+        <!-- breadcrumb-area start -->
 <div class="breadcrumb-area">
     <div class="container">
         <div class="row align-items-center justify-content-center">
@@ -19,216 +19,66 @@
 </div>
 <!-- breadcrumb-area end -->
 
-<!-- Blog Area Start -->
-<div class="blog-grid pb-100px pt-100px main-blog-page single-blog-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 order-lg-last col-md-12 order-md-first">
-                <div class="blog-posts">
-                    <div class="single-blog-blog blog-grid-blog">
-                        <div class="blog-image single-blog">
-                            {% if blog.image %}
-                            <img class="img-fluid h-auto border-radius-10px" src="{{ blog.image.url}}" alt="blog" />
-                            {% else %}
-                            <img class="img-fluid h-auto border-radius-10px" src="{{ blog.video_img}}" alt="blog" />
-                            {% endif %}
-                        </div>
-                        <div class="quate-speech-area">
-                            <p class="quate-speech" data-aos="fade-up" data-aos-delay="200">
-                                {{ blog.aforizm }}
-                            </p>
-                            <span class="quater">{{ blog.name_aforiz }} </span>
-                        </div>
-                        <div class="blog-blog-content-inner mt-30px">
-                            <div class="blog-athor-date">
-                                <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i> - {{ blog.data }} </span>
-                                <span style="margin-left: 10px;"><a class="blog-author" href="blog-grid.html"><i class="fa fa-user" aria-hidden="true"></i> - {{ blog.userd }} </a></span>
+        <!-- Blog Area Start -->
+        <div class="blog-grid pb-100px pt-100px main-blog-page single-blog-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 offset-lg-2">
+                        <div class="blog-posts">
+                            <div class="single-blog-post blog-grid-post">
+                                <div class="blog-image single-blog">
+                                    {% if blog.image %}
+                                    <img class="img-fluid h-auto border-radius-10px" src="{{ blog.image.url}}" alt="blog" />
+                                    {% else %}
+                                    <img class="img-fluid h-auto border-radius-10px" src="{{ blog.video_img}}" alt="blog" />
+                                    {% endif %}
+                                </div>
+                                <div class="blog-post-content-inner mt-30px">
+                                    <div class="blog-athor-date">
+                                        <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i> - {{ blog.data }} </span>
+                                        <span style="margin-left: 10px;"><a class="blog-author" href="{% url 'profile' %}"><i class="fa fa-user" aria-hidden="true"></i> - {{ blog.userd }} </a></span>
+                                    </div>
+                                    <h4 class="blog-title">{{ blog.title }}</h4>
+                                    <p data-aos="fade-up">
+                                        {{ blog.text }}
+                                    </p>
+                                    
+                                </div>
                             </div>
-                            <h4 class="blog-title">{{ blog.title }} </h4>
-                            <p data-aos="fade-up">
-                                {{ blog.body }}
-                            </p>
                             
                         </div>
-
-                    </div>
-                    <!-- single blog blog -->
-                </div>
-                <div class="blog-single-tags-share d-md-flex justify-content-between">
-
-                    <div class="blog-single-tags d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <span class="title">Tages:</span>
-                        <ul class="tag-list">
-                            <li><a href="blog-single-left-sidebar.html#">Mobile,</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="blog-single-share mb-xs-15px d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <span class="title">Share:</span>
-                        <ul class="social">
-                            <li class="m-0">
-                                <a href="blog-single-left-sidebar.html#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="blog-single-left-sidebar.html#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="blog-single-left-sidebar.html#"><i class="fa fa-pinterest-p"></i></a>
-                            </li>
-                            <li>
-                                <a href="blog-single-left-sidebar.html#"><i class="fa fa-dribbble"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="blog-nav">
-                    <div class="blog-nav-wrap">
-
-                        <div class="nav-left d-flex justify-content-start align-items-center">
-                            <a class="nav-img" href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/blog-1.webp' %}" alt="" /><i class="fa fa-angle-left"></i></a>
-                            <div class="media-side">
-                                <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
-                                <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
-                                        amet conse adip</a>
-                                </h5>
+                        <div class="blog-single-tags-share d-md-flex justify-content-between">
+                            <div class="blog-single-tags d-flex" data-aos="fade-up" data-aos-delay="200">
+                                
+                                <ul class="tag-list">
+                                    <span class="title">Tags:</span>
+                            
+                                    <li><a href="">{{ blog.tags }} </a></li>
+                                    
+                                </ul>
                             </div>
-                        </div>
-
-                        <div class="nav-right d-flex justify-content-end flex-row-reverse align-items-center">
-                            <a class="nav-img" href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/blog-2.webp' %}" alt="" /><i class="fa fa-angle-right"></i></a>
-                            <div class="media-side">
-                                <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
-                                <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
-                                        amet conse adip</a>
-                                </h5>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="comment-area">
-                    <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Comments (03)</h2>
-                    <div class="review-wrapper">
-
-                        <div class="single-review" data-aos="fade-up" data-aos-delay="200">
-                            <div class="review-img">
-                                <img src="{% static 'assets/images/blog-image/comment-img-1.webp' %}" alt="" />
-                            </div>
-                            <div class="review-content">
-                                <div class="review-top-wrap">
-                                    <div class="review-left">
-                                        <div class="review-name">
-                                            <h4 class="title">Ramon Bateman
-                                                <span class="date">- 27, Jun 2030,</span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-bottom">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp labore et dol magna aliqua. Ut enim ad minim veniam.
-                                    </p>
-                                    <div class="review-left">
-                                        <a href="blog-single-left-sidebar.html#">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="single-review child-review" data-aos="fade-up" data-aos-delay="200">
-                            <div class="review-img">
-                                <img src="{% static 'assets/images/blog-image/comment-img-2.webp' %}" alt="" />
-                            </div>
-                            <div class="review-content">
-                                <div class="review-top-wrap">
-                                    <div class="review-left">
-                                        <div class="review-name">
-                                            <h4 class="title">Pierre Hackett
-                                                <span class="date">- 27, Jun 2030,</span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-bottom">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedd
-                                        labore et dol magna aliqua. Ut enim ad.</p>
-                                    <div class="review-left">
-                                        <a href="blog-single-left-sidebar.html#"> Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                       
-                    </div>
-                </div>
-
-                <div class="blog-comment-form">
-                    <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Leave a Comment</h2>
-                    <div class="form-inner">
-                        <div class="row">
-                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                                <div class="single-form mb-lm-15px">
-                                    <input type="text" placeholder="Name *" />
-                                </div>
-                            </div>
-                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                                <div class="single-form mb-lm-15px">
-                                    <input type="email" placeholder="Email *" />
-                                </div>
-                            </div>
-                            <div class="col-md-12" data-aos="fade-up" data-aos-delay="500">
-                                <div class="single-form mb-lm-15px">
-                                    <input type="email" placeholder="Subject (Optinal)" />
-                                </div>
-                            </div>
-                            <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
-                                <div class="single-form m-0">
-                                    <textarea placeholder="Message"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
-                                <button class="submit-btn mt-30px" type="submit">Send a Comment</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <!-- Sidebar Area Start -->
-            <div class="col-lg-4 order-lg-first col-md-12 order-md-last mt-md-50px mt-lm-50px" data-aos="fade-up" data-aos-delay="200">
-                <div class="blog-sidebar mr-20px">
-                    <!-- Sidebar single item -->
-                    <div class="search-widget">
-                        <form action="blog-single-left-sidebar.html#">
-                            <input placeholder="Search" type="text" />
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                    <!-- Sidebar single item -->
-                    <!-- Sidebar single item -->
-                    <div class="sidebar-widget-group">
-                        <div class="sidebar-widget">
-                            <h3 class="sidebar-title">Categories</h3>
-                            <div class="category-blog">
-                                <ul>
-                                    <li><a href="blog-single-left-sidebar.html#" class="selected m-0">Accesasories<span>(6)</span> </a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">Computer<span>(4)</span> </a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">Covid-19<span>(5)</span> </a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">Electronics<span>(3)</span> </a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">Frame Sunglasses<span>(7)</span> </a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">Furniture<span>(9)</span> </a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">Genuine Leather<span>(8)</span> </a></li>
+                            <div class="blog-single-share mb-xs-15px d-flex" data-aos="fade-up" data-aos-delay="200">
+                                <span class="title">Share:</span>
+                                <ul class="social">
+                                    <li class="m-0">
+                                        <a href="blog-single.html#"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-single.html#"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-single.html#"><i class="fa fa-pinterest-p"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-single.html#"><i class="fa fa-dribbble"></i></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <!-- Sidebar single item -->
-                        <div class="sidebar-widget">
-                            <h3 class="sidebar-title">Recent Post</h3>
-                            <div class="recent-blog-widget">
-                                <div class="recent-single-blog d-flex">
-                                    <div class="thumb-side">
-                                        <a href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/blog-1.webp' %}" alt="" /></a>
-                                    </div>
+                        <div class="blog-nav">
+                            <div class="blog-nav-wrap">
+                                <div class="nav-left d-flex justify-content-start align-items-center">
+                                    <a class="nav-img" href="blog-single-left-sidebar.html"><img src="assets/images/blog-image/post-1.webp" alt="" /><i class="fa fa-angle-left"></i></a>
                                     <div class="media-side">
                                         <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
                                         <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
@@ -236,42 +86,114 @@
                                         </h5>
                                     </div>
                                 </div>
-                                
+
+                                <div class="nav-right d-flex justify-content-end flex-row-reverse align-items-center">
+                                    <a class="nav-img" href="blog-single-left-sidebar.html"><img src="assets/images/blog-image/post-2.webp" alt="" /><i class="fa fa-angle-right"></i></a>
+                                    <div class="media-side">
+                                        <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i>27  jun, 2022</span>
+                                        <h5><a href="blog-single-left-sidebar.html">Lorem ipsum dolorl
+                                                amet conse adip</a>
+                                        </h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Sidebar single item -->
-                        <div class="sidebar-widget">
-                            <h3 class="sidebar-title">Archives</h3>
-                            <div class="category-blog">
-                                <ul>
-                                    <li><a href="blog-single-left-sidebar.html#" class="selected m-0">March 2018</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class=""> February 2018</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">January 2021</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">September 2019</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">March 2018</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#" class="">July 2021</a></li>
-                                </ul>
+                        
+                        <div class="comment-area">
+                            <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Comments (03)</h2>
+                            <div class="review-wrapper">
+                                <div class="single-review" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="review-img">
+                                        <img src="assets/images/blog-image/comment-img-1.webp" alt="" />
+                                    </div>
+                                    <div class="review-content">
+                                        <div class="review-top-wrap">
+                                            <div class="review-left">
+                                                <div class="review-name">
+                                                    <h4 class="title">Ramon Bateman
+                                                        <span class="date">- 27, Jun 2030,</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="review-bottom">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp labore et dol magna aliqua. Ut enim ad minim veniam.
+                                            </p>
+                                            <div class="review-left">
+                                                <a href="blog-single.html#">Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-review child-review" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="review-img">
+                                        <img src="assets/images/blog-image/comment-img-2.webp" alt="" />
+                                    </div>
+                                    <div class="review-content">
+                                        <div class="review-top-wrap">
+                                            <div class="review-left">
+                                                <div class="review-name">
+                                                    <h4 class="title">Pierre Hackett
+                                                        <span class="date">- 27, Jun 2030,</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="review-bottom">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sedd
+                                                labore et dol magna aliqua. Ut enim ad.</p>
+                                            <div class="review-left">
+                                                <a href="blog-single.html#"> Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-review" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="review-img">
+                                        <img src="assets/images/blog-image/comment-img-3.webp" alt="" />
+                                    </div>
+                                    <div class="review-content">
+                                        <div class="review-top-wrap">
+                                            <div class="review-left">
+                                                <div class="review-name">
+                                                    <h4 class="title">Moira Baxter
+                                                        <span class="date">- 27, Jun 2030,</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="review-bottom">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp labore et dol magna aliqua. Ut enim ad minim veniam.
+                                            </p>
+                                            <div class="review-left">
+                                                <a href="blog-single.html#"> Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Sidebar single item -->
-                        <div class="sidebar-widget">
-                            <h3 class="sidebar-title">Popular Tag</h3>
-                            <div class="sidebar-widget-tag d-inline-block">
-                                <ul>
-                                    <li><a href="blog-single-left-sidebar.html#">Mobile</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#">Laptop</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#">Smart TV</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#">Pendrive</a></li>
-                                    <li><a href="blog-single-left-sidebar.html#">Smartwatch</a></li>
-                                </ul>
+                        <div class="blog-comment-form">
+                            <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Izoh qoldirish</h2>
+                            <div class="form-inner">
+                                <div class="row">
+                                    
+                                    <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="single-form m-0">
+                                            <textarea placeholder="Message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
+                                        <button class="submit-btn mt-30px" type="submit">Jo'natish</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Sidebar single item -->
+
                     </div>
                 </div>
             </div>
-            <!-- Sidebar Area End -->
         </div>
-    </div>
-</div>
-<!-- Blag Area End -->
+        <!-- Blag Area End -->

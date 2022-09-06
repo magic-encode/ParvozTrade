@@ -16,14 +16,12 @@ class CustomUser(AbstractUser):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    tags = models.CharField(max_length=255)
     image = models.ImageField(verbose_name='image', null=True, blank=True)
-    image2 = models.ImageField(verbose_name='image_qoshimcha', null=True, blank=True)
     video = models.URLField(verbose_name='video', null=True, blank=True)
     video_img = models.ImageField(verbose_name='video_img', null=True, blank=True)
     userd  = models.OneToOneField(CustomUser,on_delete=models.PROTECT)
     text = models.TextField(verbose_name='blog matni')
-    aforizm = models.CharField(max_length=255, blank=True, null=True, verbose_name='aqilli gaplar')
-    name_aforiz = models.CharField(max_length=255, blank=True, null=True, verbose_name='aforizm egasi')
     data = models.DateField(auto_now_add=True)
     
     def __str__(self):          
