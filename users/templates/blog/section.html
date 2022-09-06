@@ -50,7 +50,7 @@
                         </div>
                         <h5 class="blog-heading"><a class="blog-heading-link" href="{% url 'blogdetail' post.id %}">{{post.title}}</a></h5>
                         <p>{{post.body}}</p>
-                        <a href="{% url 'blogdetail' post.id %}" class="btn btn-primary blog-btn"> Read More</a>
+                        <a href="{% url 'blogdetail' post.id %}" class="btn btn-primary blog-btn"> Batafsil</a>
                     </div>
                 </div>
             </div>
@@ -58,18 +58,7 @@
             {% endfor %}
         </div>
         <!--  Pagination Area Start -->
-        <div class="pro-pagination-style text-center mt-0 mb-0" data-aos="fade-up" data-aos-delay="200">
-            <div class="pages">
-                <ul>
-                    <li class="li"><a class="page-link" href="blog-grid.html#"><i class="fa fa-angle-left"></i></a></li>
-                    <li class="li"><a class="page-link active" href="blog-grid.html#">1</a></li>
-                    <li class="li"><a class="page-link" href="blog-grid.html#">2</a></li>
-                    <li class="li"><a class="page-link" href="blog-grid.html#">3</a></li>
-                    <li class="li"><a class="page-link" href="blog-grid.html#"><i class="fa fa-angle-right"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        {% include 'paginations.html' with queryset=products custom_range=custom_range %}
         <!--  Pagination Area End -->
     </div>
 </div>

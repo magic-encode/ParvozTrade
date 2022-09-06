@@ -122,6 +122,7 @@ def shopdetailView(request, id):
     return render(request, 'shop/detail.html', context)
 
 
+@login_required(login_url='login')
 def commentRemove(request, id):
     commentr = Comments.objects.get(id=id)
     profile = request.user.is_staff
@@ -229,6 +230,7 @@ def addCartView(request, id) -> None:
     return redirect('cart')
 
 
+@login_required(login_url='login')
 def orderView(request):
     if request.method == 'POST':
         price: int = 0

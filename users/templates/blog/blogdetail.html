@@ -78,50 +78,61 @@
                        
                         
                         <div class="comment-area">
-                            <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Comments (03)</h2>
+                            <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Izohlar ({{counts}})</h2>
                             <div class="review-wrapper">
-
-                                <div class="single-review" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="review-img">
-                                        <img src="assets/images/blog-image/comment-img-1.webp" alt="" />
-                                    </div>
-                                    <div class="review-content">
-                                        <div class="review-top-wrap">
-                                            <div class="review-left">
-                                                <div class="review-name">
-                                                    <h4 class="title">Ramon Bateman
-                                                        <span class="date">- 27, Jun 2030,</span>
-                                                    </h4>
+                                {% if user.is_authenticated %}
+                                    {% for comment in blog.commenting.all %}
+                                    <div class="single-review" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="review-img">
+                                            <img src="{% static 'images.png' %}" alt="" />
+                                        </div>
+                                        <div class="review-content">
+                                            <div class="review-top-wrap">
+                                                <div class="review-left">
+                                                    <div class="review-name">
+                                                        <h4 class="title">{{ comment.person.username }}</h4>
+                                                            <span class="date">- {{ comment.time }} </span>
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="review-bottom">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp labore et dol magna aliqua. Ut enim ad minim veniam.
-                                            </p>
-                                            <div class="review-left">
-                                                <a href="blog-single.html#">Reply</a>
+                                            <div class="review-bottom">
+                                                <p>
+                                                    {{ comment.body }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
+                                    {% endfor %}
+                                {% else %}
+                                <div class="single-review" data-aos="fade-up" data-aos-delay="200"> 
+                                    <div class="review-content">
+                                        <h4 class="title">
+                                            Izohlarni ko'rish uchun ro'yxatdan o'ting ....
+                                        </h4>
+                                        
+                                    </div>
                                 </div>
-
+                                {% endif %}
                             </div>
                         </div>
-                        
+
                         <div class="blog-comment-form">
                             <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Izoh qoldirish</h2>
                             <div class="form-inner">
                                 <div class="row">
                                     
-                                    <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
-                                        <div class="single-form m-0">
-                                            <textarea placeholder="Message"></textarea>
+                                    <form action="#" method="POST">
+                                        {% csrf_token %} 
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="rating-form-style form-submit">
+                                                    {{ forming.as_p}}
+                                                    <button class="btn btn-primary btn-hover-color-primary " type="submit" value="Submit">Submit</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12" data-aos="fade-up" data-aos-delay="200">
-                                        <button class="submit-btn mt-30px" type="submit">Jo'natish</button>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -11,7 +11,7 @@ urlpatterns = [
     path('register/', views.registerUser, name='register'),
     
     path('blog/', views.blogView, name='blog'),
-    path('blog/<int:id>/', views.blogDetailView, name='blogdetail'),
+    path('blog/<str:id>/', views.blogDetailView, name='blogdetail'),
     
     
     path('editAccount/', views.editAccount, name='edit'),
