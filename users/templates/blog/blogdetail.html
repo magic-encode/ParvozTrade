@@ -9,7 +9,7 @@
                 <h2 class="breadcrumb-title">Blog Single</h2>
                 <!-- breadcrumb-list start -->
                 <ul class="breadcrumb-list">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
                     <li class="breadcrumb-item active">Blog Single</li>
                 </ul>
                 <!-- breadcrumb-list end -->
@@ -109,6 +109,7 @@
                 <div class="comment-area">
                     <h2 class="comment-heading" data-aos="fade-up" data-aos-delay="200">Comments (03)</h2>
                     <div class="review-wrapper">
+
                         <div class="single-review" data-aos="fade-up" data-aos-delay="200">
                             <div class="review-img">
                                 <img src="{% static 'assets/images/blog-image/comment-img-1.webp' %}" alt="" />
@@ -133,6 +134,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="single-review child-review" data-aos="fade-up" data-aos-delay="200">
                             <div class="review-img">
                                 <img src="{% static 'assets/images/blog-image/comment-img-2.webp' %}" alt="" />
@@ -155,31 +157,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="single-review" data-aos="fade-up" data-aos-delay="200">
-                            <div class="review-img">
-                                <img src="{% static 'assets/images/blog-image/comment-img-3.webp' %}" alt="" />
-                            </div>
-                            <div class="review-content">
-                                <div class="review-top-wrap">
-                                    <div class="review-left">
-                                        <div class="review-name">
-                                            <h4 class="title">Moira Baxter
-                                                <span class="date">- 27, Jun 2030,</span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-bottom">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp labore et dol magna aliqua. Ut enim ad minim veniam.
-                                    </p>
-                                    <div class="review-left">
-                                        <a href="blog-single-left-sidebar.html#"> Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
 

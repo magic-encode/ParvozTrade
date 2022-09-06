@@ -1,10 +1,13 @@
 {% load static %}
 
 <!-- Eng kop sotilganlar -->
+<style>
+
+</style>
 <div class="tab-pane fade" id="toprated">
     <div class="row">
         {% for x in best_seller %}
-        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
+        <div class="product_container">
             <!-- Single Prodect -->
             <div class="product">
                 <span class="badges">
@@ -40,10 +43,9 @@
                 <div class="actions">
                     <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
                         class="pe-7s-shopbag"></i></button>
-                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                    <button style="margin: 0 30px;" class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
                             class="pe-7s-like"></i></button>
                     <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
-                    
                 </div>
             </div>
         </div>
