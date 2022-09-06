@@ -28,3 +28,11 @@ class Post(models.Model):
         return str(f"ID-{self.id} {self.title}")
 
 
+class CommentsBlog(models.Model):
+    item = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="commenting", null=True, blank=True)
+    person = models.ForeignKey(
+        CustomUser, related_name="usering", on_delete=models.DO_NOTHING, null=True, blank=True)
+    body = models.TextField(max_length=500, null=True, blank=True)
+    time = models.DateTimeField(auto_now_add=True)
+    

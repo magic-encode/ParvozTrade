@@ -5,6 +5,7 @@ from .forms import ChangeUserForm
 
 from .models import  Post
 from .models import CustomUser
+from .models import CommentsBlog
 
 
 class CustomUserAdmin(UserAdmin):
@@ -22,4 +23,5 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(Post)
+admin.site.register(CommentsBlog)
 admin.site.register(CustomUser, CustomUserAdmin)
