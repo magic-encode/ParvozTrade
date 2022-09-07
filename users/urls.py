@@ -24,7 +24,7 @@ urlpatterns = [
     path('empty/', views.emptyView, name='empty'),
     path('thanks/', views.thanksView, name='thanks'),
     
-    path('checkout/', views.chekoutView, name='chekout'),
+    path('checkout/<str:id>/', views.chekoutView, name='chekout'),
     path('finish_shop/', views.finishView, name='finish_shop'),
     
     

@@ -223,7 +223,7 @@ def addCartView(request, id) -> None:
 
 
 @login_required(login_url='login')
-def orderView(request):
+def orderView(request, _type: str = telebot.TYPE_ZAKAS):
     if request.method == 'POST':
         price: int = 0
         text: str = ""
@@ -244,7 +244,7 @@ def orderView(request):
 
         cartProducts.delete()
         text += F"Jami - {price} UZS"
-        telebot.send_message(text, telebot.TYPE_ZAKAS)
+        telebot.send_message(text, _type)
 
     return redirect('thanks')
 
@@ -263,16 +263,7 @@ def contactView(request, _type: str = telebot.TYPE_SAVOL):
 
             return redirect('contact')
 
-    context: dict = categWishlistHelper(request)
-
-    if request.user.is_authenticated:
-        cartProducts: Cart = Cart.objects.filter(
-            user=request.user).prefetch_related("products").first()
-
-        if cartProducts:
-            context['items'] = cartProducts.products.all()
-            context["cardItems"] = context['items']
-            context["form"] = form
-            context["cartProductsCount"] = cartProducts.products.count()
-
+    qyctx: dict = wishViewHelper(request)
+    myctx: dict = categWishlistHelper(request)
+    context = {**myctx, **qyctx, 'form': form}
     return render(request, 'contact/contact.html', context)

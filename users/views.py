@@ -1,12 +1,9 @@
-from itertools import product
-from multiprocessing import context
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 
 from django.contrib import messages
 from django.contrib.auth import login
-from django.contrib.auth import logout
-from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
@@ -14,7 +11,9 @@ from .forms import CustomUser
 from .forms import CreateUserForm
 from .forms import CommentsBlogForm
 
+from flightapp.utils import wishViewHelper
 from flightapp.utils import categWishlistHelper
+
 from flightapp.models.cart import Cart
 
 from .models import Post
@@ -85,11 +84,17 @@ def uzgarView(request):
 
 
 def errorView(request):
+    
     return render(request, 'pages/404.html')
 
 
-def chekoutView(request):
-    return render(request, 'pages/checkout/checkout.html')
+def chekoutView(request, id):
+    cheks = Products.objects.get(id=id)
+    myctx: dict = categWishlistHelper(request)
+    qyctx: dict = wishViewHelper(request)
+
+    context = {'cheks': cheks, **myctx, **qyctx}
+    return render(request, 'pages/checkout/checkout.html', context)
 
 
 def finishView(request):
