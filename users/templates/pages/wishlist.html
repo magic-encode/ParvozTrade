@@ -44,8 +44,8 @@
                                         </thead>
                                         <tbody>
                                             {% if user.is_authenticated %}
-                                                {% if cardItems %}
-                                                {% for item in cardItems %}
+                                                {% if items %}
+                                                {% for item in items %}
                                                 <tr>
                                                     <td class="product-thumbnail">
                                                         <a href="wishlist.html#"><img class="img-responsive ml-15px" src="{{item.image.url}}" alt="{{item.name}}" /></a>

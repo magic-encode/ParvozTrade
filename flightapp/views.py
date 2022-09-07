@@ -153,17 +153,13 @@ def cartView(request):
 
 @login_required(login_url='login')
 def wishlistView(request):
-    context: dict = wishList(request)
+    dbctx: dict = wishList(request)
+    myctx: dict = categWishlistHelper(request)
 
-    if request.user.is_authenticated:
-        wishProduct: Wishlist = Wishlist.objects.filter(
-            user=request.user).prefetch_related("products").first()
+    dbctx['items'] = Wishlist.objects.all()
 
-        if wishProduct:
-            context["items"] = wishProduct.products.all()
-            context["cardItem"] = context['items']
-            context["cartProductsCount"] = wishProduct.products.count()
-
+    context = {**myctx, **dbctx}
+    
     return render(request, 'pages/wishlist.html', context)
 
 
@@ -184,7 +180,7 @@ def addWishlistView(request, id) -> None:
 def removeWishlistView(request, id: int) -> None:
     wishProducts: Wishlist = Wishlist.objects.filter(
         user=request.user).prefetch_related("products").first()
-    if wishProducts:
+    if wishProducts: 
         wishItem = wishProducts.products.get(id=id)
         wishProducts.products.remove(wishItem)
 

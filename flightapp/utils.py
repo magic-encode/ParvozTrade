@@ -138,15 +138,15 @@ def categWishlistHelper(request) -> dict:
 
 
 def wishList(request):
-    myctx: dict = {}
-    myctx["cartProductsCount"] = 0
+    dbctx: dict = {}
+    dbctx["cartProductsCount"] = 0
 
     if request.user.is_authenticated:
         wishProduct: Wishlist = Wishlist.objects.filter(
             user=request.user).prefetch_related("products").first()
 
         if wishProduct:
-            myctx["cardItems"] = wishProduct.products.all()
-            myctx["cartProductsCount"] = wishProduct.products.count()
+            dbctx["items"] = wishProduct.products.all()
+            dbctx["cartProductsCount"] = wishProduct.products.count()
 
-    return myctx
+    return dbctx

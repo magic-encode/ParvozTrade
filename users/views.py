@@ -1,3 +1,4 @@
+from itertools import product
 from multiprocessing import context
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -20,23 +21,19 @@ from .models import Post
 
 from flightapp.utils import paginateProjects
 
+from flightapp.models.products import Products
+
 # -------------------------  pages ------------------------- ------------------------- ---------------------
 
 
 def profileView(request):
 
-    context: dict = categWishlistHelper(request)
+    myctx: dict = categWishlistHelper(request)
+   
+    
+    context = {**myctx, }
 
-    if request.user.is_authenticated:
-        cartProducts: Cart = Cart.objects.filter(
-            user=request.user).prefetch_related("products").first()
-
-        if cartProducts:
-            context['blog'] = cartProducts.products.all()
-            context["cardItems"] = context['blog']
-            context["cartProductsCount"] = cartProducts.products.count()
-
-    return render(request, 'pages/profiles.html')
+    return render(request, 'pages/profiles.html', context)
 
 
 def registerUser(request):
@@ -121,13 +118,12 @@ def wishlistView(request):
 
 def blogView(request):
     blogs = Post.objects.all()
-    context = {'blogs': blogs}
-
+    myctx: dict = categWishlistHelper(request)
     context: dict = categWishlistHelper(request)
     custom_range, blogs = paginateProjects(
         request,  blogs, 3)
 
-    if request.user.is_staff:
+    if request.user.is_authenticated:
         cartProducts: Cart = Cart.objects.filter(
             user=request.user).prefetch_related("products").first()
 
@@ -136,14 +132,15 @@ def blogView(request):
             context["cardItems"] = context['blog']
             context["cartProductsCount"] = cartProducts.products.count()
 
-    context = {'blogs': blogs}
+    context = {**myctx,'blogs': blogs, 'custom_range': custom_range}
 
     return render(request, 'blog/blog.html', context)
 
 
 def blogDetailView(request, id):
     blog = Post.objects.get(id=id)
-
+    myctx: dict = categWishlistHelper(request)
+    
     forming = CommentsBlogForm()
 
     if blog.commenting:
@@ -158,6 +155,6 @@ def blogDetailView(request, id):
 
         return redirect('blogdetail', id=blog.id)
 
-    context = {'blog': blog, 'counts': counts, 'blog': blog, 'forming': forming}
+    context = {**myctx, 'blog': blog, 'counts': counts, 'blog': blog, 'forming': forming}
 
     return render(request, 'blog/detail.html', context)
