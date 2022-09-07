@@ -24,8 +24,12 @@ from flightapp.models.order_history import OrderHistory
 from flightapp.forms import GetInfoForm
 from flightapp.forms import CommentsForm
 
-from flightapp.utils import searchHelper, wishList
-from flightapp.utils import categWishlistHelper, send_message
+from flightapp.utils import wishList
+from flightapp.utils import searchHelper
+from flightapp.utils import wishViewHelper
+from flightapp.utils import categWishlistHelper
+
+
 from flightapp.libs.telegram import telebot
 
 from .utils import paginateProjects
@@ -134,32 +138,29 @@ def commentRemove(request, id):
 
 @login_required(login_url='login')
 def cartView(request):
-    context: dict = categWishlistHelper(request)
+    myctx: dict = categWishlistHelper(request)
 
-    if request.user.is_authenticated:
-        cartProducts: Cart = Cart.objects.filter(
-            user=request.user).prefetch_related("products").first()
-
-        if cartProducts:
-            context['items'] = cartProducts.products.all()
-            context["cardItems"] = context['items']
-            context["cartProductsCount"] = cartProducts.products.count()
-
-            context['sum'] = cartProducts.products.aggregate(
-                Sum('price_new')).get('price_new__sum')
-
+    context = {**myctx, }
     return render(request, 'pages/cart/cart.html', context)
 
 
 @login_required(login_url='login')
 def wishlistView(request):
-    dbctx: dict = wishList(request)
     myctx: dict = categWishlistHelper(request)
+    qyctx: dict = wishViewHelper(request)
+    dbctx: dict = {}
+    dbctx["cartProductsCount"] = 0
 
-    dbctx['items'] = Wishlist.objects.all()
+    if request.user.is_authenticated:
+        wishProduct: Wishlist = Wishlist.objects.filter(
+            user=request.user).prefetch_related("products").first()
 
-    context = {**myctx, **dbctx}
-    
+        if wishProduct:
+            dbctx["items"] = wishProduct.products.all()
+            dbctx["wishProductsCount"] = wishProduct.products.count()
+
+    context = {**myctx, **dbctx, **qyctx}
+
     return render(request, 'pages/wishlist.html', context)
 
 
@@ -180,7 +181,7 @@ def addWishlistView(request, id) -> None:
 def removeWishlistView(request, id: int) -> None:
     wishProducts: Wishlist = Wishlist.objects.filter(
         user=request.user).prefetch_related("products").first()
-    if wishProducts: 
+    if wishProducts:
         wishItem = wishProducts.products.get(id=id)
         wishProducts.products.remove(wishItem)
 

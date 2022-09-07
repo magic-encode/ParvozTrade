@@ -16,7 +16,6 @@ from flightapp.models.customer import CustomerModel
 from flightapp.models.order_history import OrderHistory
 
 
-
 def paginateProjects(request, products, results):
 
     page = request.GET.get('page')
@@ -44,8 +43,6 @@ def paginateProjects(request, products, results):
     custom_range = range(leftIndex, rightIndex)
 
     return custom_range, products
-
-
 
 
 def getCategoryid(mystr: str) -> int:
@@ -85,7 +82,6 @@ def send_message(mydict: dict, _type: str = telebot.TYPE_ZAKAS) -> None:
         }
 
         telebot.send_message(**context)
-
 
 
 def searchHelper(request) -> dict:
@@ -137,6 +133,22 @@ def categWishlistHelper(request) -> dict:
     return myctx
 
 
+def wishViewHelper(request):
+    qyctx: dict = {}
+    qyctx["wishProductsCount"] = 0
+
+    if request.user.is_authenticated:
+        wishProducts: Wishlist = Wishlist.objects.filter(
+            user=request.user).prefetch_related("products").first()
+
+        if wishProducts:
+            qyctx["wishItems"] = wishProducts.products.all()
+            qyctx["wishProductsCount"] = wishProducts.products.count()
+            
+            
+    return qyctx
+
+
 def wishList(request):
     dbctx: dict = {}
     dbctx["cartProductsCount"] = 0
@@ -147,6 +159,6 @@ def wishList(request):
 
         if wishProduct:
             dbctx["items"] = wishProduct.products.all()
-            dbctx["cartProductsCount"] = wishProduct.products.count()
+            dbctx["wishProductsCount"] = wishProduct.products.count()
 
     return dbctx

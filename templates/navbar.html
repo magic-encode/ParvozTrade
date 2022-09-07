@@ -167,7 +167,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel">Savatcha ro'yxati</h5>
+          <h5 class="modal-title" id="exampleModalToggleLabel">Savatcha ro'yxati  ({{cartProductsCount}})</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
         </div>
         <div class="modal-body">
@@ -202,13 +202,13 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel2">Sevimlilar ro'yxati</h5>
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Sevimlilar ro'yxati  ({{wishProductsCount}})</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
         </div>
         <div class="modal-body">
             <div class="inner">
                 <div class="body customScroll">
-                    {% for items in cardItem %}
+                    {% for items in wishItems %}
                     <ul class="minicart-product-list">
                         <li>
                             <a href="single-product.html" class="image"><img src="{{items.image.url}}" alt="Cart product Image"></a>
@@ -225,7 +225,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary text-success"><a href="{% url 'wishlist' %}" style="color: green; letter-spacing: 7px;">Sevimlilar</a></button>
+          <button class="btn btn-primary text-success"><a href="{% url 'wishlist' %}" style="color: azure; letter-spacing: 7px;">Sevimlilar</a></button>
         </div>
       </div>
     </div>
@@ -342,7 +342,7 @@
         }
 
 </script>
-{% if messages %}
+{% comment %} {% if messages %}
 {% for message in messages %}
     <div class="alert  alert--{{message.tags}}">
         <p class="alert__message">{{message}}</p>
@@ -351,7 +351,7 @@
 
 {% endfor %}
 
-{% endif %}
+{% endif %} {% endcomment %}
 <script src="{% static 'uikit/app.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <!-- OffCanvas Menu End -->
