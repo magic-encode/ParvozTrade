@@ -240,7 +240,7 @@ def orderView(request, _type: str = telebot.TYPE_ZAKAS):
             price += product.price_new
             order_history.products.add(product)
             order_history.save()
-            text += f"{product.name} - {product.price} UZS\n"
+            text += f"{product.name} - {product.price_new} UZS\n"
 
         cartProducts.delete()
         text += F"Jami - {price} UZS"

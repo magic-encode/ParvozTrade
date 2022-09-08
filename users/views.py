@@ -1,3 +1,4 @@
+from uuid import uuid4
 
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -11,12 +12,16 @@ from .forms import CustomUser
 from .forms import CreateUserForm
 from .forms import CommentsBlogForm
 
+from flightapp.utils import send_message
 from flightapp.utils import wishViewHelper
 from flightapp.utils import categWishlistHelper
 
 from flightapp.models.cart import Cart
+from flightapp.models.order_history import OrderHistory
 
 from .models import Post
+
+from flightapp.libs.telegram import telebot
 
 from flightapp.utils import paginateProjects
 
@@ -98,7 +103,56 @@ def chekoutView(request, id):
 
 
 def finishView(request):
-    return render(request, 'pages/checkout/finish_shop.html')
+    myctx: dict = categWishlistHelper(request)
+    
+    context = {**myctx,}
+    return render(request, 'pages/checkout/finish_shop.html', context)
+
+
+@login_required(login_url='login')
+def orderView(request, _type: str = telebot.TYPE_ZAKAS):
+    if request.method == 'POST':
+        price: int = 0
+        text: str = ""
+        text += f"<b>ID</b>: {uuid4()}\n\n"
+        text += f"Haridor ismi: {request.user.fullname}\n"
+        text += f"Haridor Raqami: {request.user.number}\n\n"
+
+        cartProducts: Cart = Cart.objects.filter(
+            user=request.user).prefetch_related("products").first()
+        order_history, _ = OrderHistory.objects.get_or_create(
+            user=request.user)
+
+        for product in cartProducts.products.all():
+            price += product.price_new
+            order_history.products.add(product)
+            order_history.save()
+            text += f"{product.name} - {product.price_new} UZS\n"
+
+        cartProducts.delete()
+        text += F"Jami - {price} $"
+        telebot.send_message(text, _type)
+
+    return redirect('thanks')
+
+
+def sendMessageView(request, id: str) -> None:
+    if request.user.is_authenticated:
+        order_history, _ = OrderHistory.objects.get_or_create(user=request.user)
+        product = Products.objects.get(id=id)
+        order_history.products.add(product)
+        order_history.save()
+            
+    if request.method == 'POST':
+        mydict: dict = {}
+        mydict.update({
+            "name": request.POST.get('name'),
+            "phone": request.POST.get('phone'),
+            
+            "product_id": id
+        })
+        send_message(mydict)
+        return redirect('thanks')
 
 
 def comingView(request):

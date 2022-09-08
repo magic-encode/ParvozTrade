@@ -17,7 +17,7 @@ urlpatterns = [
     path('editAccount/', views.editAccount, name='edit'),
     path('uzgardi/', views.uzgarView, name='uzgardi'),
     
-
+    path('order/', views.orderView, name='order'),
     path('faq/', views.faqView, name='faq'),
     path('error/', views.errorView, name='error'),
     
@@ -26,9 +26,8 @@ urlpatterns = [
     
     path('checkout/<str:id>/', views.chekoutView, name='chekout'),
     path('finish_shop/', views.finishView, name='finish_shop'),
-    
-    
-
+    path('send-message/<str:id>/', views.sendMessageView, name='send-message'),
+      
     path('coming-soon/', views.comingView, name='coming-soon'),
     
 ]

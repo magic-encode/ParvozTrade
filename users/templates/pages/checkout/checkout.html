@@ -79,16 +79,22 @@
         {% include 'navbar.html' %}
 
         <div class="checkout_box">
-            <div class="checkout_title_box">
-                <h1 class="checkout__title">Buyurtma uchun formani to'ldiring</h1>
-            </div>
-            <div class="form_input">
-                <input type="text" placeholder="Ism">
-                <input type="number" value="+998">
-            </div>
-            <div class="form_input_sent_btn">
-                <button onclick="checkoutFun()">Bugurtma berish</button>
-            </div>
+            
+            <form method="POST" action="{% url 'send-message' cheks.id %}">
+                {% csrf_token %}
+                <div class="checkout_title_box">
+                    <h1 class="checkout__title">Buyurtma uchun formani to'ldiring</h1>
+                </div>
+                <div class="form_input">
+                    <input name="name" type="text" placeholder="Ism Familiyangiz" , required,
+                                                maxlength="50">
+                    <input name="phone" type="text" value="+998" placeholder="" , required,
+                                                maxlength="14">
+                </div>
+                <div class="form_input_sent_btn">
+                    <button type="submit" >Bugurtma berish</button>
+                </div>
+            </form>
             <hr class="product_line">
             <div class="product">
                 <div class="prodect_img">

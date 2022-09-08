@@ -14,16 +14,17 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-8">
                         <div class="inner_complated">
-                            <div class="img_cmpted"><img src="assets/images/icons/cmpted_logo.png" alt=""></div>
-                            <p class="dsc_cmpted">Thank you for ordering in our store. You will receive a confirmation
-                                email shortly.</p>
+                            <div class="img_cmpted"><img src="{% static 'assets/images/icons/cmpted_logo.png' %}" alt="" style="max-width: 35%;"></div>
+                            <p class="dsc_cmpted">
+                                Bizning dokonimizdan xarid qilganingiz tashakkur!!! Qisqa fursatda siz bilan bog'lanamiz.....
+                            </p>
                             <div class="btn_cmpted">
-                                <a href="shop-4-column.html" class="shop-btn" title="Go To Shop">Continue Shopping </a>
+                                <a href="{% url 'shop' %}" class="shop-btn" title="Go To Shop">Xaridni davom etish </a>
                             </div>
                         </div>
                         <div class="main_quickorder text-align-center">
-                            <h3 class="title">Call Us for Quick Order</h3>
-                            <div class="cntct typewriter-effect"><span class="call_desk"><a href="tel:+01234567890" id="typewriter_num">01 234 567 890</a></span></div>
+                            <h3 class="title">Tezkor buyurtma berish uchun bizga qo'ng'iroq qiling</h3>
+                            <div class="cntct typewriter-effect"><span class="call_desk"><a href="tel:+998940593733" id="typewriter_num">+998940593733</a></span></div>
                         </div>
                     </div>
                 </div>
