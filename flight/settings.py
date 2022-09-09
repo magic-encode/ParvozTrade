@@ -39,7 +39,6 @@ JAZZMIN_SETTINGS = {
 
     "related_modal_active": True,
 
-    # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Library Admin",
     "icons": {
         "auth": "fas fa-users-cog",
@@ -109,7 +108,12 @@ DATABASES = {
     }
 }
 
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -168,4 +172,3 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
-
