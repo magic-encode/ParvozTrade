@@ -10,13 +10,12 @@ env.read_env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = 'django-insecure-690d%5q2t9_&+gqh2lp_zapi-t!8uszzl+^uzv7faw4d7fl_i^'
+SECRET_KEY = env.str('SECRET_KEY')
 
-# DEBUG = env.bool("DEBUG", default=False)
+DEBUG = env.bool("DEBUG", default=True)
 
-DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -37,16 +36,16 @@ INSTALLED_APPS = [
 
 
 JAZZMIN_SETTINGS = {
-   
+
     "related_modal_active": True,
-    
+
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Library Admin",
     "icons": {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
-        
+
         "default_icon_avto": "fas fa-users",
 
     },
@@ -99,16 +98,16 @@ MYSERVICE: dict = {
 WSGI_APPLICATION = 'flight.wsgi.application'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': env.str('POSTGRES_ENGINE'),
-#         'NAME': env.str('POSTGRES_DB'),
-#         'USER': env.str('POSTGRES_USER'),
-#         'PASSWORD': env.str('POSTGRES_PASSWORD'),
-#         'HOST': env.str('POSTGRES_HOST'),
-#         'PORT': env.str('POSTGRES_PORT'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': env.str('POSTGRES_ENGINE'),
+        'NAME': env.str('POSTGRES_DB'),
+        'USER': env.str('POSTGRES_USER'),
+        'PASSWORD': env.str('POSTGRES_PASSWORD'),
+        'HOST': env.str('POSTGRES_HOST'),
+        'PORT': env.str('POSTGRES_PORT'),
+    }
+}
 
 DATABASES = {
     'default': {
@@ -175,5 +174,3 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 
-if os.getcwd() == '/app':
-    DEBUG = False
