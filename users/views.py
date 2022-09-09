@@ -31,11 +31,12 @@ from flightapp.models.products import Products
 
 
 def profileView(request):
-
     myctx: dict = categWishlistHelper(request)
+    tarix = OrderHistory.objects.filter(
+        user=request.user).prefetch_related("products").first()
    
-    
-    context = {**myctx, }
+    print(tarix)
+    context = {**myctx, 'tarix': tarix}
 
     return render(request, 'pages/profiles.html', context)
 

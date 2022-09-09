@@ -1,3 +1,4 @@
+from multiprocessing import context
 from uuid import uuid4
 
 from django.db.models import Sum
@@ -82,7 +83,7 @@ def shopView(request):
     count = dbctx["all_products"].count()
 
     custom_range, dbctx["all_products"] = paginateProjects(
-        request,  dbctx["all_products"], 6)
+        request,  dbctx["all_products"], 9)
 
     context = {**dbctx, **myctx,  'custom_range': custom_range, 'count': count}
     return render(request, 'shop/shop.html', context)
@@ -246,7 +247,9 @@ def orderView(request, _type: str = telebot.TYPE_ZAKAS):
         text += F"Jami - {price} UZS"
         telebot.send_message(text, _type)
 
-    return redirect('thanks')
+    tarix = order_history
+    context = {'tarix': tarix}
+    return redirect('thanks', context)
 
 
 def contactView(request, _type: str = telebot.TYPE_SAVOL):
