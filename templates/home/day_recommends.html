@@ -2,12 +2,24 @@
 
 
 <!-- kun takliflari -->
-<div class="tab-pane fade show active" id="newarrivals">
-    <div class="row mb-n-30px">
+
+<style>
+    .day_recommends_container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .day_recommends_cart{
+        margin: .5%;
+    }
+   
+</style>
+<div class="tab-pane fade show active " id="newarrivals">
+    <div class="day_recommends_container">
         {% for item in day_recommends %} 
-        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
+        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px day_recommends_cart">
             <!-- Single Prodect -->
-            <div class="product">
+            <div class="product" >
                 <span class="badges">
                     {% if item.status %}
                         <span class="sale">{{item.status}}</span>
@@ -47,7 +59,7 @@
                         </button>
                     </a>
                     <a href="{% url 'add-wishlist' item.id%}" class="cart-btn" type="submit">
-                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{item.id}}"><i
+                        <button class="action wishlist" style="margin: 0 1rem;" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{item.id}}"><i
                             class="pe-7s-like"></i>
                         </button>
                     </a>
@@ -60,18 +72,18 @@
 
 
 
-        <div class="modal modal-2 fade" id="exampleModal{{item.id}}" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
-                        <div class="row">
+        <div class="modal modal-2 fade " id="exampleModal{{item.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-xd" role="document">
+                <div class="modal-content day_recommends_modal_content" >
+                    <div class="modal-body day_recommends_modal_body" style="width: 100% !important; background-color: white;">
+                        <button type="button" class="btn-close close_btn_day_recomendets" data-bs-dismiss="modal" aria-label="Close" style="margin: 4% 8% !important; font-size: 30px; "> <i class="pe-7s-close"></i></button>
+                        <div class="row day_recommends_row" style="width: auto !important; background-color: white;">
                             
                             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
-                                <!-- Swiper -->
+                           <!-- Swiper -->
                                 <div class="swiper-container gallery-top">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
+                                        <div class="swiper-slide day_recommends_img_box">
                                             <img class="img-responsive m-auto" src="{{item.image.url}}" alt="">
                                         </div>
                                         
@@ -85,10 +97,10 @@
 
                             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                                 <div class="product-details-content quickview-content">
-                                    <h2>{{item.name}} </h2>
+                                    <h3>{{item.name}} </h3>
                                     <div class="pricing-meta">
                                         <ul class="d-flex">
-                                            <li class="new-price">Narxi: {{item.price_new}} so'm</li>
+                                            <li class="new-price" style="font-size: 20px;">Narxi: {{item.price_new}} so'm</li>
                                         </ul>
                                     </div>
                                     <div class="pro-details-rating-wrap">
@@ -99,38 +111,33 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                         </div>
-                                    
                                     </div>
-                                
-                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                                        <p class="mt-30px">{{item.description}}</p>
-                                    </div>
-                                    
-                                
-                                    <div class="pro-details-quality">
-                                        
-                                    
-                                            <a href="{% url 'chekout' item.id %}" class="cart-btn" type="submit">
-                                                <div class="pro-details-cart">
-                                                    <button class="add-cart">Buyurtma +
-                                                    </button>
-                                                </div>
-                                              </a>
 
-                                              <a href="{% url 'add-cart' item.id%}" class="cart-btn" type="submit">
-                                                <div class="pro-details-cart">
-                                                    <button class="add-cart">Savatcha +
-                                                    </button>
-                                                </div>
-                                              </a>
-                                        
-                                        
+                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0 day_recommends_comment_box">
+                                        <p class="mt-30px day_recommends_comment">{{item.description}}</p>
+                                    </div>
+
+
+                                    <div class="pro-details-quality m-auto shop_and_cart_btn_box_home_page_day_recomeds" style="gap: 1rem;">
+                                        <a href="{% url 'chekout' item.id %}" class="cart-btn" type="submit">
+                                            <div class="pro-details-cart">
+                                                <button style="width: 100px ; height: 40px; border-radius: 5px;" class="btn-warning">
+                                                    Buyurtma
+                                                </button>
+                                            </div>
+                                        </a>
+
+                                        <a href="{% url 'add-cart' item.id%}" class="cart-btn" type="submit">
+                                            <div class="pro-details-cart">
+                                                <button style="width: 100px ; height: 40px; border-radius: 5px;" class="btn-warning">
+                                                    Savatcha
+                                                </button>
+                                            </div>
+                                        </a>
                                     </div>
                                     
                                 </div>
                             </div>
-
-                            
                         </div>
                     </div>
                 </div>

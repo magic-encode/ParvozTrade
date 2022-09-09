@@ -51,12 +51,25 @@
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 text-center">
-                <h2 class="title" style="color: black;"> <span style="color: red; font-weight: bolder; font-size: 42px;">Smart Fashion</span> With Smart Devices </h2>
-                <a href="{% url 'shop' %}" class="btn btn-primary text-capitalize m-auto">Shop All Devices</a>
+                <h2 class="title" style="color: black;"> <span style="color: red; font-weight: bolder; font-size: 42px;">Zamonaviy mo'da</span> Smart qurilmalar bilan </h2>
+                <a href="{% url 'shop' %}" style="padding-top: 15px;" class="btn btn-primary text-capitalize m-auto qurilma_xarid_qiling_btn"> qurilmalarni xarid qiling</a>
             </div>
         </div>
     </div>
 </div>
+<style>
+    @media screen and (max-width: 574px) {
+        .qurilma_xarid_qiling_btn{
+            width: 40%;
+        }
+    }
+    @media screen and (max-width: 474px) {
+        .qurilma_xarid_qiling_btn{
+           width: auto;
+           height: auto;
+        }
+    }
+</style>
 <!-- Fashion Area End -->
 
 {% include 'home/feature.html' %}
