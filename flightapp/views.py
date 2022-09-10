@@ -1,4 +1,3 @@
-from multiprocessing import context
 from uuid import uuid4
 
 from django.db.models import Sum
@@ -11,13 +10,8 @@ from django.contrib.auth.decorators import login_required
 from flightapp.models.cart import Cart
 from flightapp.models.wishlist import Wishlist
 
-from flightapp.models.products import Brand, FeatureLeft
-from flightapp.models.products import Banner
 from flightapp.models.products import Products
 from flightapp.models.products import Comments
-from flightapp.models.products import BannerLefts
-from flightapp.models.products import FeatureLeft
-from flightapp.models.products import FeatureRights
 
 from flightapp.models.category import Categories
 from flightapp.models.order_history import OrderHistory
@@ -54,15 +48,10 @@ def homeView(request):
     dbctx['day_recommends'] = day_recommends
     dbctx["device"] = device
 
-    banners = Banner.objects.all()
     products = Products.objects.all()
-    bannerleft = BannerLefts.objects.all()
-    features = FeatureRights.objects.all()
-    devices = FeatureLeft.objects.all()
-    brand = Brand.objects.all()
+   
 
-    context: dict = {**dbctx, **myctx, **qyctx, 'products': products, 'banners': banners,
-                     'bannerleft': bannerleft, 'features': features, 'brand': brand, 'devices': devices, 'mywish': mywish}
+    context: dict = {**dbctx, **myctx, **qyctx, 'products': products,  'mywish': mywish}
 
     return render(request, 'home/index.html', context)
 
