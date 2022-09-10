@@ -8,7 +8,7 @@ from django.core.paginator import PageNotAnInteger
 from flightapp.libs.telegram import telebot
 
 from flightapp.models.cart import Cart
-from flightapp.models.wishlist import Wishlist
+from flightapp.models.wishs import WishModel
 
 from flightapp.models.products import Products
 from flightapp.models.category import Categories
@@ -138,7 +138,7 @@ def wishViewHelper(request):
     qyctx["wishProductsCount"] = 0
 
     if request.user.is_authenticated:
-        wishProducts: Wishlist = Wishlist.objects.filter(
+        wishProducts: WishModel = WishModel.objects.filter(
             user=request.user).prefetch_related("products").first()
 
         if wishProducts:
@@ -154,7 +154,7 @@ def wishList(request):
     dbctx["cartProductsCount"] = 0
 
     if request.user.is_authenticated:
-        wishProduct: Wishlist = Wishlist.objects.filter(
+        wishProduct: WishModel = WishModel.objects.filter(
             user=request.user).prefetch_related("products").first()
 
         if wishProduct:

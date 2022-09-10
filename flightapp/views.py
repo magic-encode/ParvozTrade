@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 from flightapp.models.cart import Cart
-from flightapp.models.wishlist import Wishlist
+from flightapp.models.wishs import WishModel
 
 from flightapp.models.products import Products
 from flightapp.models.products import Comments
@@ -153,7 +153,7 @@ def wishlistView(request):
 def addWishlistView(request, id) -> None:
 
     product: Products = Products.objects.get(id=id)
-    wishlist, _ = Wishlist.objects.get_or_create(user=request.user)
+    wishlist, _ = WishModel.objects.get_or_create(user=request.user)
     wishlist.products.add(product)
     wishlist.save()
     if request.META['SERVER_NAME'] in settings.ALLOWED_HOSTS:
@@ -164,7 +164,7 @@ def addWishlistView(request, id) -> None:
 
 @login_required(login_url='login')
 def removeWishlistView(request, id: int) -> None:
-    wishProducts: Wishlist = Wishlist.objects.filter(
+    wishProducts: WishModel = WishModel.objects.filter(
         user=request.user).prefetch_related("products").first()
     if wishProducts: 
         wishItem = wishProducts.products.get(id=id)
