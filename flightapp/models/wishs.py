@@ -6,5 +6,5 @@ from users.models import CustomUser
 
 
 class WishModel(models.Model):
-    user     = models.OneToOneField(CustomUser,on_delete=models.PROTECT)
+    user = models.OneToOneField(CustomUser,on_delete=models.PROTECT)
     products = models.ManyToManyField(Products,blank=True, related_name='wishlist')

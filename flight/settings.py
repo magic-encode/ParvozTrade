@@ -33,8 +33,6 @@ INSTALLED_APPS = [
 ]
 
 
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -81,27 +79,14 @@ MYSERVICE: dict = {
 WSGI_APPLICATION = 'flight.wsgi.application'
 
 
-if DEBUG:
-    DATABASES = {
+
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': env.str('POSTGRES_ENGINE'),
-            'NAME': env.str('POSTGRES_DB'),
-            'USER': env.str('POSTGRES_USER'),
-            'PASSWORD': env.str('POSTGRES_PASSWORD'),
-            'HOST': env.str('POSTGRES_HOST'),
-            'PORT': env.str('POSTGRES_PORT'),
-        }
-    }
 
-if 'test' in sys.argv or 'test_coverage' in sys.argv:
-    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 
 
