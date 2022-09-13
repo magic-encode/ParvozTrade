@@ -25,11 +25,11 @@ jobs:
           TELEBOT_CHAT_ID_ZAKAS: ${{ secrets.TELEBOT_CHAT_ID_ZAKAS }}
           TELEBOT_CHAT_ID_SAVOL: ${{ secrets.TELEBOT_CHAT_ID_SAVOL }}
 
-          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
-          EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-          EMAIL_USE_TLS: ${{ secrets.EMAIL_USE_TLS }}
-          EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
-          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+          # EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+          # EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+          # EMAIL_USE_TLS: ${{ secrets.EMAIL_USE_TLS }}
+          # EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+          # EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
 
           POSTGRES_ENGINE: ${{ secrets.POSTGRES_ENGINE }}
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
