@@ -16,7 +16,8 @@ SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool("DEBUG", default=False)
 
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'parvoz-trade.uz',
+                 '0.0.0.0:8000', '46.101.253.126']
 
 
 INSTALLED_APPS = [
@@ -79,7 +80,6 @@ MYSERVICE: dict = {
 WSGI_APPLICATION = 'flight.wsgi.application'
 
 
-
 DATABASES = {
     'default': {
         'ENGINE': env.str('POSTGRES_ENGINE'),
@@ -90,8 +90,6 @@ DATABASES = {
         'PORT': env.str('POSTGRES_PORT'),
     }
 }
-
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -134,11 +132,15 @@ EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = str(BASE_DIR.joinpath('static'))
-STATICFILES_DIRS = []
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 MEDIA_URL = '/media/'
+# yangi yuklanagan rasmlar qayerga tushishini ifodalash uchun ishlat$
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
