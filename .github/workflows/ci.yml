@@ -20,21 +20,21 @@ jobs:
           DEBUG: ${{ secrets.DEBUG }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
-          TELEBOT_URL: ${{ secrets.TELEBOT_URL }}
-          TELEBOT_TOKEN: ${{ secrets.TELEBOT_TOKEN }}
-          TELEBOT_CHAT_ID_ZAKAS: ${{ secrets.TELEBOT_CHAT_ID_ZAKAS }}
-          TELEBOT_CHAT_ID_SAVOL: ${{ secrets.TELEBOT_CHAT_ID_SAVOL }}
+          TELEBOT_URL: ${{ env.TELEBOT_URL }}
+          TELEBOT_TOKEN: ${{ env.TELEBOT_TOKEN }}
+          TELEBOT_CHAT_ID_ZAKAS: ${{ env.TELEBOT_CHAT_ID_ZAKAS }}
+          TELEBOT_CHAT_ID_SAVOL: ${{ env.TELEBOT_CHAT_ID_SAVOL }}
 
-          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
-          EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-          EMAIL_USE_TLS: ${{ secrets.EMAIL_USE_TLS }}
-          EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
-          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+          EMAIL_HOST: ${{ env.EMAIL_HOST }}
+          EMAIL_PORT: ${{ env.EMAIL_PORT }}
+          EMAIL_USE_TLS: ${{ env.EMAIL_USE_TLS }}
+          EMAIL_HOST_USER: ${{ env.EMAIL_HOST_USER }}
+          EMAIL_HOST_PASSWORD: ${{ env.EMAIL_HOST_PASSWORD }}
 
-          POSTGRES_ENGINE: ${{ secrets.POSTGRES_ENGINE }}
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
-          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_ENGINE: ${{ env.POSTGRES_ENGINE }}
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_HOST: ${{ env.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ env.POSTGRES_PORT }}
         run: python3 manage.py test
