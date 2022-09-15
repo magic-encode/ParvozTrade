@@ -10,10 +10,12 @@ from django.views.static import serve
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
+from flightapp.views import robots_txt
 
 urlpatterns = [
     
     path('admin/', admin.site.urls),
+    path("robots.txt", robots_txt),
     path('', include('flightapp.urls')),
     path('user/', include('users.urls')),
     path('users/', include('django.contrib.auth.urls')),
