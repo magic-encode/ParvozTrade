@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.homeView, name='home'),
     path('search/', views.searchView, name='search'),
     path('about/', views.aboutView, name='about'),
+    path('yandex_4bc38c819937bed7.html/', views.yandexView, name='yandex'),
 
     path('shop/', views.shopView, name='shop'),
     path('shop-detail/<str:id>/', views.shopdetailView, name='shopdetail'),

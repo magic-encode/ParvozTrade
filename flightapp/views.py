@@ -280,3 +280,7 @@ def contactView(request, _type: str = telebot.TYPE_SAVOL):
     myctx: dict = categWishlistHelper(request)
     context = {**myctx, **qyctx, 'form': form}
     return render(request, 'contact/contact.html', context)
+
+
+def yandexView(request):
+    return render(request, 'yandex.html')
