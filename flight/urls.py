@@ -7,6 +7,8 @@ from django.urls import include
 
 from django.views.static import serve
 
+from flightapp.views import yandexView
+
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
@@ -28,6 +30,7 @@ urlpatterns = [
     path(
         'sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'
     ),
+    path('yandex_4bc38c819937bed7.html/', yandexView, name='yandex'),
 
     path('', include('flightapp.urls')),
     path('user/', include('users.urls')),
