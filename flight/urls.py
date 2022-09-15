@@ -12,14 +12,27 @@ from django.contrib.auth import views as auth_views
 
 from flightapp.views import robots_txt
 
+from flightapp.sitemap import PageSitemap
+from django.contrib.sitemaps.views import sitemap
+
+sitemaps = {
+    'page': PageSitemap
+}
+
+
 urlpatterns = [
-    
+
     path('admin/', admin.site.urls),
     path("robots.txt", robots_txt),
+
+    path(
+        'sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'
+    ),
+
     path('', include('flightapp.urls')),
     path('user/', include('users.urls')),
     path('users/', include('django.contrib.auth.urls')),
-    
+
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="password_reset_email.html"),
          name="reset_password"),
 
@@ -31,8 +44,9 @@ urlpatterns = [
 
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="password_reset_complete.html"),
          name="password_reset_complete"),
-   
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += [re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),]
+urlpatterns += [re_path(r'^media/(?P<path>.*)$', serve,
+                        {'document_root': settings.MEDIA_ROOT, }), ]

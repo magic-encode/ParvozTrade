@@ -39,6 +39,9 @@ class Products(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+    def get_absolute_url(self):
+        return f"/page/{self.id}/"
 
 
 class Comments(models.Model):

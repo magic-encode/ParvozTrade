@@ -19,15 +19,18 @@ DEBUG = env.bool("DEBUG", default=False)
 ALLOWED_HOSTS = ['127.0.0.1', 'parvoz-trade.uz',
                  '0.0.0.0:8000', '46.101.253.126']
 
-
+SITE_ID = 1
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    # 'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    
     'users',
     'flightapp',
 
@@ -80,23 +83,23 @@ MYSERVICE: dict = {
 WSGI_APPLICATION = 'flight.wsgi.application'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': env.str('POSTGRES_ENGINE'),
-#         'NAME': env.str('POSTGRES_DB'),
-#         'USER': env.str('POSTGRES_USER'),
-#         'PASSWORD': env.str('POSTGRES_PASSWORD'),
-#         'HOST': env.str('POSTGRES_HOST'),
-#         'PORT': env.str('POSTGRES_PORT'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': env.str('POSTGRES_ENGINE'),
+        'NAME': env.str('POSTGRES_DB'),
+        'USER': env.str('POSTGRES_USER'),
+        'PASSWORD': env.str('POSTGRES_PASSWORD'),
+        'HOST': env.str('POSTGRES_HOST'),
+        'PORT': env.str('POSTGRES_PORT'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 
