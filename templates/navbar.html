@@ -2,9 +2,10 @@
 
 
 <header>
+
     <style>
         .hamburder__nav__bar{
-            width: 35%;
+            width: 50%;
             height: 100%;
             background-color: transparent;
             backdrop-filter: blur(5px);
@@ -22,7 +23,7 @@
             gap: 2rem;
         }
         .hamber__menu__bar__ul li a i{
-            font-size: 20px;
+            font-size: 2rem;
         }
         .hamber__menu__bar__ul__box ul{
             width: 100%;
@@ -38,13 +39,54 @@
             width: 100%;
             height: auto;
             color: white;
+            font-size: 1.5rem;
         }
-        @media screen and (max-width:500px) {
+        .hamburder__navigation__bar ul li{
+            font-size: 2rem;
+        }
+        @media screen and (max-width:990px) {
+            
+            .welcome-text > p{
+                display: none;
+            }
+        }
+        @media screen and (max-width: 660px) {
+            .hamber__menu__bar__ul li a i{
+                font-size: 1.5rem;
+            }
+            .hambuger_user_panel
+            ul
+            li
+            a{
+                font-size: 1.3rem;
+            }
+            .hamburder__navigation__bar ul li{
+                font-size: 1.4rem;
+            }
+        }
+        @media screen and (max-width:544px) {
+            .hamber__menu__bar__ul li a i{
+                font-size: 1rem;
+            }
+            .hambuger_user_panel
+            ul
+            li
+            a{
+                font-size: 1rem;
+            }
+            .hamburder__navigation__bar ul li{
+                font-size: 1rem;
+            }
+        }
+        @media screen and (max-width: 440px){
             .hambuger_user_panel{
-            display: none;
-            }   
-        } 
-    </style>
+                display: none;
+            }
+            .hamburder__navigation__bar ul li{
+                font-size: 20px;
+            }
+        }
+</style>
     <!-- Header top area start -->
     <div class="header-top">
         <div class="container">
@@ -52,13 +94,13 @@
                 <div class="col">
                     
                     <div class="welcome-text">
-                       
+                    
                         <p>Butun O'zbekiston bo'ylab to'liq bepul qaytarish va etkazib berish</p>
                     
                     </div>
                     
                 </div>
-                <div class="col d-none d-lg-block">
+                <div class="col d-none d-lg-block ">
                     <div class="top-nav">
                         <ul>
                             <li><a href="{% url 'faq' %}"><i class="fa fa-question"></i> Savollar </a></li>
@@ -67,7 +109,7 @@
                             {% if user.is_authenticated %}
                             <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> {{ user.username }}</a></li> </a></li>
                             {% else %}
-                            <li><a href="{% url 'login' %}"><i class="fa fa-arrow-right"></i> Login</a></li>
+                            <li><a href="{% url 'login' %}"><i class="fa fa-arrow-right"></i> Kirish</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -192,7 +234,7 @@
         </div>
         <div class="modal-footer">
             <a href="{% url 'cart' %}" class="text-warning" style="background-color: blue; padding: 2% 4%; border-radius: 5px;">
-                Cart
+                Savatcham
             </a>
         </div>
       </div>
@@ -228,7 +270,7 @@
         </div>
         <div class="modal-footer">
             <a href="{% url 'wishlist' %}" class="text-warning" style="background-color: blue; padding: 2% 4%; border-radius: 5px;">
-                Wishlist
+                Tilaklar
             </a>
         </div>
       </div>
@@ -242,14 +284,14 @@
             <div class="header-nav">
                 <div class="main-menu position-relative">
                     <ul>
-                        <li class="dropdown"><a href="{% url 'home' %}">Home</a>
+                        <li class="dropdown"><a href="{% url 'home' %}">Bosh safiha</a>
                         </li>
-                        <li><a href="{% url 'about' %}">About</a></li>
-                        <li class="dropdown position-static"><a href="{% url 'shop' %}">Shop</a>
+                        <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
+                        <li class="dropdown position-static"><a href="{% url 'shop' %}">Mahsulotlar</a>
                         </li>
-                        <li class="dropdown "><a href="{% url 'blog' %}">Blog </a>                          
+                        <li class="dropdown "><a href="{% url 'blog' %}">Blog</a>                          
                         </li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li><a href="{% url 'contact' %}">Biz bilan bog'laning</a></li>
                     </ul>
                 </div>
             </div>
@@ -292,21 +334,24 @@
         <ul>
             <li><a href="{% url 'faq' %}"><i class="fa fa-phone"></i> +012 3456 789</a></li>
             <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
-            <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> demo@example.com</a></li>
-            <li><a href="my-account.html"><i class="fa fa-user"></i> Account</a></li>
+            <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i>tyjsdev@example.com</a></li>
+            <li><a href="my-account.html"><i class="fa fa-user"></i> Akkaunt</a></li>
         </ul>
     </div>
     <div class="inner customScroll">
-        <div class="offcanvas-menu mb-4">
+        <div class="offcanvas-menu mb-4 hamburder__navigation__bar">
             <ul>
-                <li class="dropdown"><a href="{% url 'home' %}">Home</a>
+                <li class="dropdown"><a href="{% url 'home' %}">Bosh sahifa</a>
                 </li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li class="dropdown position-static"><a href="{% url 'shop' %}">Shop</a>
+                <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
+                <li class="dropdown position-static"><a href="{% url 'shop' %}">Mahsulotlar</a>
                 </li>
-                <li class="dropdown "><a href="{% url 'blog' %}">Blog </a>                          
+                <li class="dropdown "><a href="{% url 'blog' %}">Blog</a>
                 </li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'contact' %}">Biz bilan bog'laning</a></li>
+                <li>
+                    <a href="{% url 'login' %}">Kirish</a>
+                </li>
             </ul>
         </div>
         <!-- OffCanvas Menu End -->
@@ -314,13 +359,13 @@
         <div class="offcanvas-social mt-auto hamber__menu__bar__ul__box">
             <ul class="hamber__menu__bar__ul">
                 <li>
-                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-facebook text-warning"></i></a>
                 </li>
                 <li>
-                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-twitter text-warning"></i></a>
                 </li>
                 <li>
-                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="single-product-tabstyle-3.html#"><i class="fa-brands fa-instagram text-warning"></i></a>
                 </li>
             </ul>
         </div>

@@ -4,6 +4,11 @@
 {% include 'head.html' %}
 
 <body>
+  <style>
+    .register__input{
+      font-size: 2rem;
+    }
+  </style>
     <div class="main-wrapper">
         
         {% include 'navbar.html' %}
@@ -22,7 +27,7 @@
                                   {% csrf_token  %}
                                   <div class="d-flex flex-row align-items-center mb-4">
                                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
+                                    <div class="form-outline flex-fill mb-0 register__input">
                                       {{ forms.fullname }}
                                       FullName
                                     </div>
@@ -30,7 +35,7 @@
 
                                   <div class="d-flex flex-row align-items-center mb-4">
                                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
+                                    <div class="form-outline flex-fill mb-0 register__input">
                                       {{ forms.username }}
                                       UserName
                                     </div>

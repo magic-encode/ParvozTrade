@@ -39,7 +39,7 @@
                             <div class="footer-logo">
                                 <a href="index.html"><img src="{% static 'assets/images/logos.png' %}" alt=""></a>
                             </div>
-                            {% comment %} <p class="about-text">Lorem ipsum dolor sit amet consl adipisi elit, sed do eiusmod templ incididunt ut labore
+                            {% comment %} <p class="about-text">Butun O'zbekiston bo'ylab to'liq bepul qaytarish va etkazib berish
                             </p> {% endcomment %}
                             <ul class="link-follow">
                                 <li>
@@ -60,15 +60,14 @@
                     <!-- Start single blog -->
                     <div class="col-md-6 col-lg-3 col-sm-6 mb-lm-30px pl-lg-60px">
                         <div class="single-wedge">
-                            <h4 class="footer-herading" style="color: #F9CB27 !important;">Services</h4>
+                            <h4 class="footer-herading" style="color: #F9CB27 !important;">Servislar</h4>
                             <div class="footer-links">
                                 <div class="footer-row">
                                     <ul class="align-items-center">
-                                        <li class="li"><a class="single-link" href="my-account.html">My Account</a></li>
-                                        <li class="li"><a class="single-link" href="contact.html">Contact</a></li>
-                                        <li class="li"><a class="single-link" href="cart.html">Shopping cart</a></li>
-                                        <li class="li"><a class="single-link" href="shop-left-sidebar.html">Shop</a></li>
-                                        <li class="li"><a class="single-link" href="login.html">Services Login</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'contact' %}">Biz bilan bog'laning</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'cart' %}">Harid savatcham</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'shop' %}">Mahsulotlar</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'login' %}">Kirish</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -78,15 +77,13 @@
                     <!-- Start single blog -->
                     <div class="col-md-6 col-lg-3 col-sm-6 mb-lm-30px pl-lg-40px">
                         <div class="single-wedge">
-                            <h4 class="footer-herading" style="color: #F9CB27 !important;">My Account</h4>
+                            <h4 class="footer-herading" style="color: #F9CB27 !important;">Mening Akkountim</h4>
                             <div class="footer-links">
                                 <div class="footer-row">
                                     <ul class="align-items-center">
-                                        <li class="li"><a class="single-link" href="{% url 'profile' %}">My Account</a></li>
-                                        <li class="li"><a class="single-link" href="{% url 'contact' %}">Contact</a></li>
-                                        <li class="li"><a class="single-link" href="{% url 'cart' %}">Shopping cart</a></li>
-                                        <li class="li"><a class="single-link" href="{% url 'shop' %}">Shop</a></li>
-                                        <li class="li"><a class="single-link" href="{% url 'login' %}">Services Login</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'profile' %}">Mening Akkountim</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'cart' %}">Savat quticham</a></li>
+                                        <li class="li"><a class="single-link" href="{% url 'login' %}">Kirish</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -96,11 +93,11 @@
                     <!-- Start single blog -->
                     <div class="col-md-6 col-lg-3 col-sm-12">
                         <div class="single-wedge">
-                            <h4 class="footer-herading" style="color: #F9CB27 !important;">Contact Info</h4>
+                            <h4 class="footer-herading" style="color: #F9CB27 !important;">Biz bilan bog'laning</h4>
                             <div class="footer-links">
                                 <!-- News letter area -->
-                                <p class="phone">Phone/Fax:<a href="tel:0123456789"> 0123456789</a></p>
-                                <p class="mail">Email:<a href="mailto:demo@example.com"> demo@example.com</a></p>
+                                <p class="phone">Telefon raqam: <a href="tel:0123456789"> +998 94 444 74 49</a></p>
+                                <p class="mail">Email: <a href="mailto:demo@example.com"> parvoztrade@gmail.com</a></p>
                                 
                             </div>
                         </div>
@@ -109,7 +106,7 @@
                 </div>
             </div>
         </div>
-        {% comment %} <div class="footer-bottom">
+        <!-- {% comment %} <div class="footer-bottom">
             <div class="container">
                 <div class="line-shape-top line-height-1">
                     <div class="row flex-md-row-reverse align-items-center">
@@ -117,14 +114,12 @@
                             <div class="payment-mth"><a href="#"><img class="img img-fluid" src="{% static 'assets/images/icons/payment.png' %}" alt="payment-image"></a></div>
                         </div>
                         <div class="col-md-6 text-center text-md-start">
-                            <p class="copy-text"> © 2021 <strong>Hmart</strong> Made With <i class="fa fa-heart"
-                                aria-hidden="true"></i> By <a class="company-name" href="https://themeforest.net/user/codecarnival/portfolio">
-                                    <strong> Codecarnival </strong></a>.</p>
+                            <p class="copy-text"> © 2022 <strong>Parvoz trade</strong></p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> {% endcomment %}
+        </div> {% endcomment %} -->
     </div>
 </div>
 <!-- Footer Area End -->
