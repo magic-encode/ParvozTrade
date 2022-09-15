@@ -48,7 +48,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        key: ${{ secrets.KEY }}
         script: |
           cd ParvozTrade
           git pull origin main

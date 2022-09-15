@@ -1,5 +1,4 @@
 import os
-import sys
 
 from pathlib import Path
 from environs import Env
@@ -16,17 +15,21 @@ SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool("DEBUG", default=False)
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'parvoz-trade.uz', '0.0.0.0']
+
+ALLOWED_HOSTS = ['127.0.0.1', 'parvoz-trade.uz',
+                 '0.0.0.0:8000', '46.101.253.126']
 
 
+SITE_ID = 1
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sitemaps',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+   
     'users',
     'flightapp',
 
@@ -79,13 +82,23 @@ MYSERVICE: dict = {
 WSGI_APPLICATION = 'flight.wsgi.application'
 
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': env.str('POSTGRES_ENGINE'),
+        'NAME': env.str('POSTGRES_DB'),
+        'USER': env.str('POSTGRES_USER'),
+        'PASSWORD': env.str('POSTGRES_PASSWORD'),
+        'HOST': env.str('POSTGRES_HOST'),
+        'PORT': env.str('POSTGRES_PORT'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 
@@ -123,8 +136,8 @@ DEFAULT_FROM_EMAIL = 'Abdullajon Uzdeveloper'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env.str('EMAIL_HOST')
-EMAIL_PORT = env.int("EMAIL_PORT")
-EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
+EMAIL_PORT = env.str("EMAIL_PORT")
+EMAIL_USE_TLS = env.str('EMAIL_USE_TLS')
 EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 
@@ -135,9 +148,9 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')# yangi yuklanagan rasmlar qayerga tushishini ifodalash uchun ishlatiladi  
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
