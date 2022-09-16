@@ -27,6 +27,7 @@ from flightapp.utils import searchHelper
 from flightapp.utils import wishViewHelper
 from flightapp.utils import categWishlistHelper
 
+from users.models import Post
 
 from flightapp.libs.telegram import telebot
 
@@ -41,6 +42,10 @@ def homeView(request):
         category=Categories.ENG_KOP_SOTILADIGAN)  # eng ko'p sotiladigan
     device = Products.objects.filter(
         category=Categories.SIZ_UCHUN_TAVFSIYA)  # eng mashhur mahsulotlar
+    
+    
+    posts = Post.objects.filter(tags='home')
+    
 
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
@@ -54,7 +59,7 @@ def homeView(request):
     products = Products.objects.all()
    
 
-    context: dict = {**dbctx, **myctx, **qyctx, 'products': products,  'mywish': mywish}
+    context: dict = {**dbctx, **myctx, **qyctx, 'products': products,  'mywish': mywish, 'posts': posts}
 
     return render(request, 'home/index.html', context)
 

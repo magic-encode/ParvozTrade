@@ -20,7 +20,7 @@ class Post(models.Model):
     video = models.URLField(verbose_name='video', null=True, blank=True)
     video_img = models.ImageField(
         verbose_name='video_img', null=True, blank=True)
-    userd = models.OneToOneField(CustomUser, on_delete=models.PROTECT)
+    userd = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     text = models.TextField(verbose_name='blog matni')
     data = models.DateField(auto_now_add=True)
 

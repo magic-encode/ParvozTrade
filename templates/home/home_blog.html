@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="section-title text-center mb-30px0px">
                     <h2 class="title">Songi yangiliklar</h2>
-                    <p> Biz haqimizdagi eng so'ngi yangiliklar</p>
+                    <p> Texnika olamidagi eng so'ngi yangiliklar</p>
                 </div>
             </div>
         </div>
@@ -17,22 +17,24 @@
         <div class="row">
             
             <!-- End single blog -->
+            {% for post in posts %}
             <div class="col-lg-6 col-sm-6">
                 <div class="single-blog">
                     <div class="blog-image">
-                        <a href="blog-single-left-sidebar.html"><img src="{% static 'assets/images/blog-image/2.webp' %}" class="img-responsive w-100" alt=""></a>
+                        <a href="{% url 'blogdetail' post.id %}"><img src="{{post.image.url}}" class="img-responsive w-100" alt=""></a>
                     </div>
                     <div class="blog-text">
                         <div class="blog-athor-date line-height-1">
-                            <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i> 13, Sentabr 2022</span>
-                            <span><a class="blog-author" href="blog-grid.html"><i class="fa fa-user" aria-hidden="true"></i> Yahyobek Tohirjonov</a></span>
+                            <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i>{{post.data}} </span>
+                            <span><a class="blog-author" href="blog-grid.html"><i class="fa fa-user" aria-hidden="true"></i>{{post.userd.username}} </a></span>
                         </div>
-                        <h5 class="blog-heading"><a class="blog-heading-link" href="blog-single-left-sidebar.html">Kundalik turmushda ishlatiluvchi mahsulotlar</a></h5>
-                        <p>Bu mahsulotlar yordamida kundalik ishlarni tezroq va maroq bilan bajarishinggiz</p>
-                        <a href="blog-single-left-sidebar.html" class="btn btn-primary blog-btn">Ko'proq o'qish...</a>
+                        <h5 class="blog-heading"><a class="blog-heading-link" href="{% url 'blogdetail' post.id %}">{{post.title}} </a></h5>
+                        <p>{{post.text}} </p>
+                        <a href="{% url 'blogdetail' post.id %}" class="btn btn-primary blog-btn">Ko'proq o'qish...</a>
                     </div>
                 </div>
             </div>
+            {% endfor %}
             <!-- End single blog -->
         </div>
     </div>
