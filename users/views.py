@@ -179,7 +179,9 @@ def wishlistView(request):
 
 def blogView(request):
     blogs = Post.objects.all()
+    qyctx: dict = wishViewHelper(request)
     myctx: dict = categWishlistHelper(request)
+    context: dict = wishViewHelper(request)
     context: dict = categWishlistHelper(request)
     custom_range, blogs = paginateProjects(
         request,  blogs, 3)
@@ -193,7 +195,7 @@ def blogView(request):
             context["cardItems"] = context['blog']
             context["cartProductsCount"] = cartProducts.products.count()
 
-    context = {**myctx, 'blogs': blogs, 'custom_range': custom_range}
+    context = {**myctx, 'blogs': blogs, 'custom_range': custom_range, **qyctx}
 
     return render(request, 'blog/blog.html', context)
 

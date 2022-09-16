@@ -8,8 +8,8 @@
 </style>
 <div class="tab-pane fade" id="toprated" style="display:flex !important;  flex-wrap:wrap !important; justify-content:center !important;">
     <div class="row" style="display:flex !important;  flex-wrap:wrap !important; justify-content:center !important;">
-        {% for x in best_seller %}
         <div class="product_container" style="display:flex !important;  flex-wrap:wrap !important; justify-content:center !important;">
+            {% for x in best_seller %}
             <!-- Single Prodect -->
             <div class="product" style="width: 350px; height:auto; margin: .5% !important;">
                 <span class="badges">
@@ -43,56 +43,97 @@
                     </span>
                 </div>
                 <div class="actions">
-                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
-                        class="pe-7s-shopbag"></i>
-                    </button>
-                    <button style="margin: 0 30px;" class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist">
-                        <i class="pe-7s-like"></i>
+                    <a href="{% url 'add-cart' x.id%}" class="cart-btn" type="submit">
+                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart{{x.id}}"><i
+                            class="pe-7s-shopbag"></i>
                         </button>
-                    <button  class="action btn " data-bs-toggle="modal" href="#exampleModalToggle_best_seller" role="button">
-                        <i class="pe-7s-look"></i>
-                    </button>
+                    </a>
+                    <a href="{% url 'add-wishlist' x.id%}" class="cart-btn" type="submit">
+                        <button class="action wishlist" style="margin: 0 1rem;" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{x.id}}"><i
+                            class="pe-7s-like"></i>
+                        </button>
+                    </a>
+                    
+                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{x.id}}"><i class="pe-7s-look"></i></button>
+                    
+                </div>
+            </div>
+            <!-- Modal -->
+         <div class="modal modal-2 fade " id="exampleModal{{x.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-xd" role="document">
+                <div class="modal-content day_recommends_modal_content" >
+                    <div class="modal-body day_recommends_modal_body" style="width: 100% !important; background-color: white;">
+                        <button type="button" class="btn-close close_btn_day_recomendets" data-bs-dismiss="modal" aria-label="Close" style="margin: 4% 8% !important; font-size: 30px; "> <i class="pe-7s-close"></i></button>
+                        <div class="row day_recommends_row" style="width: auto !important; background-color: white;">
+                            
+                            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                           <!-- Swiper -->
+                                <div class="swiper-container gallery-top">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide day_recommends_img_box">
+                                            <img class="img-responsive m-auto" src="{{x.image.url}}" alt="">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                    
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                                <div class="product-details-content quickview-content">
+                                    <h3>{{x.name}} </h3>
+                                    <div class="pricing-meta">
+                                        <ul class="d-flex">
+                                            <li class="new-price" style="font-size: 20px;">Narxi: {{x.price_new}} so'm</li>
+                                        </ul>
+                                    </div>
+                                    <div class="pro-details-rating-wrap">
+                                        <div class="rating-product">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0 day_recommends_comment_box">
+                                        <p class="mt-30px day_recommends_comment">{{x.description}}</p>
+                                    </div>
+
+
+                                    <div class="pro-details-quality m-auto shop_and_cart_btn_box_home_page_day_recomeds" style="gap: 1rem;">
+                                        <a href="{% url 'chekout' x.id %}" class="cart-btn" type="submit">
+                                            <div class="pro-details-cart">
+                                                <button style="width: 100px ; height: 40px; border-radius: 5px;" class="btn-warning">
+                                                    Buyurtma
+                                                </button>
+                                            </div>
+                                        </a>
+
+                                        <a href="{% url 'add-cart' x.id%}" class="cart-btn" type="submit">
+                                            <div class="pro-details-cart">
+                                                <button style="width: 100px ; height: 40px; border-radius: 5px;" class="btn-warning">
+                                                    Savatcha
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-         <!-- Modal -->
-    
-        
-
-           <div class="modal fade" id="exampleModalToggle_best_seller" aria-hidden="true" aria-labelledby="exampleModalToggle_best_seller" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalToggle_best_seller">Product</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
-                </div>
-                <div class="modal-body">
-                    <div class="card" style="width: 100%;">
-                        <img src="https://www.calliaweb.co.uk/wp-content/uploads/2015/10/450x300.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">stars</li>
-                          <li class="list-group-item"><del>$80</del> $40</li>
-                        </ul>
-                      </div>
-                </div>
-                <div class="d-flex modal-footer">
-                    <a href="#" class="btn btn-warning" style="font-size: 20px !important; padding-top: 10px;">add to cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-    <!-- Modal end -->
-
-        {% comment %} <!-- Modal -->
-        <!-- Modal end --> {% endcomment %}
-        
+        <!-- Modal end -->       
         {% endfor %}
+        </div>
+
         {% include 'paginations.html' with queryset=products custom_range=custom_range %}
     </div>
 </div>

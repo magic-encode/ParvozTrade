@@ -21,7 +21,9 @@
             <div class="col-lg-6 col-sm-6">
                 <div class="single-blog">
                     <div class="blog-image">
+                        {% if post.image %}
                         <a href="{% url 'blogdetail' post.id %}"><img src="{{post.image.url}}" class="img-responsive w-100" alt=""></a>
+                        {% endif %}
                     </div>
                     <div class="blog-text">
                         <div class="blog-athor-date line-height-1">
