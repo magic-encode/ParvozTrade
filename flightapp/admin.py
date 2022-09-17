@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from flightapp.models.cart import Cart
-from flightapp.models.wishs import WishModel
+from .models import Cart
+from .models import WishModel
 
-from flightapp.models.products import Products
-from flightapp.models.products import Comments
+from .models import Products
+from .models import Comments
 
-from flightapp.models.order_history import OrderHistory
+from .models import OrderHistory
 
-from flightapp.models.category import Categories
+from .models import Categories
 
 admin.site.register(Cart)
 admin.site.register(Products)

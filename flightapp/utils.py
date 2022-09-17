@@ -7,13 +7,13 @@ from django.core.paginator import PageNotAnInteger
 
 from flightapp.libs.telegram import telebot
 
-from flightapp.models.cart import Cart
-from flightapp.models.wishs import WishModel
+from .models import Cart
+from .models import WishModel
 
-from flightapp.models.products import Products
-from flightapp.models.category import Categories
-from flightapp.models.customer import CustomerModel
-from flightapp.models.order_history import OrderHistory
+from .models import Products
+from .models import Categories
+from .models import CustomerModel
+from .models import OrderHistory
 
 
 def paginateProjects(request, products, results):

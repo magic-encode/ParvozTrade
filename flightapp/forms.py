@@ -1,9 +1,9 @@
 
 from django import forms
 
-from flightapp.models.products import Comments
+from .models import Comments
 
-from flightapp.models.sendmessage import GetInfo
+from .models import GetInfo
 
 
 class GetInfoForm(forms.ModelForm):

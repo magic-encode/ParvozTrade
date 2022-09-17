@@ -16,8 +16,8 @@ from flightapp.utils import send_message
 from flightapp.utils import wishViewHelper
 from flightapp.utils import categWishlistHelper
 
-from flightapp.models.cart import Cart
-from flightapp.models.order_history import OrderHistory
+from flightapp.models import Cart
+from flightapp.models import OrderHistory
 
 from .models import Post
 
@@ -25,7 +25,7 @@ from flightapp.libs.telegram import telebot
 
 from flightapp.utils import paginateProjects
 
-from flightapp.models.products import Products
+from flightapp.models import Products
 
 # -------------------------  pages ------------------------- ------------------------- ---------------------
 
