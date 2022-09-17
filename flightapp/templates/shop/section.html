@@ -2,31 +2,18 @@
 
 <!-- breadcrumb-area start -->
 <style> 
-    @media screen and (max-width:572px) {
-        .product__cart_container_shop{
-            padding: 0 25px;
-        }
-        .products__in__shop__page{
-            width: 80%;
-            margin:0.5%;
-        }
-        .title{
-            font-size: 15px !important;
-        }
-        .new{
-            font-size: 15px !important;
-        
-       }
-       .mb-30px{
-        margin: 0;
-       }
+    .product__cart_container_shop{
+        gap: 2rem;
+        justify-content: center;
+        display: flex;
+        flex-wrap:wrap;
     }
-    @media screen and (max-width:296px){
-        .title{
-            font-size: 10px !important;
-        }
-        .shop_product_icon{
-            margin:0 5px !important;
+    .products__in__shop__page{
+        width: 200px;
+    }
+    @media screen and (max-width:457px){
+        .products__in__shop__page{
+            width: 150px;
         }
     }
 </style>
@@ -68,7 +55,7 @@
                                 <div class="tab-pane fade show active product__cart_container_shop" id="shop-grid">
                                     <div class="row mb-n-30px product__cart_container_shop" >
                                         {% for alls in all_products %}
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px  products__in__shop__page__container" >
+                                           
                                             <!-- Single Prodect -->
                                             <div class="product products__in__shop__page" >
                                                 <span class="badges">
@@ -114,7 +101,7 @@
                                                     
                                                 </div>
                                             </div> 
-                                        </div>
+                                        
 
                                         <!-- Modal Cart -->
                                         <div class="modal customize-class fade" id="exampleModal-Cart{{alls.id}}" tabindex="-1" aria-hidden="true">

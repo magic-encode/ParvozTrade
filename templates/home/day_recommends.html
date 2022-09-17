@@ -6,13 +6,18 @@
 <style>
     .day_recommends_container{
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap:wrap;
+        gap: 2rem;
         justify-content: center;
     }
     .day_recommends_cart{
-        margin: .5%;
+        width: 200px;
     }
-   
+    @media screen and (max-width:457px){
+        .day_recommends_cart{
+            width: 150px;
+        }
+    }
 </style>
 <div class="tab-pane fade show active " id="newarrivals">
     <div class="day_recommends_container ">

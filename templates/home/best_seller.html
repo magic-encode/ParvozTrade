@@ -5,13 +5,27 @@
     .best_seller_product_img a img{
         width: 100%;
     }
+    .best_seller_pruduct_container{
+        display: flex;
+        flex-wrap:wrap;
+        gap: 2rem;
+        justify-content: center;
+    }
+    .best_seller_product{
+        width: 200px;
+    }
+    @media screen and (max-width:457px){
+        .best_seller_product{
+            width: 150px;
+        }
+    }
 </style>
-<div class="tab-pane fade" id="toprated" style="display:flex !important;  flex-wrap:wrap !important; justify-content:center !important;">
-    <div class="row" style="display:flex !important;  flex-wrap:wrap !important; justify-content:center !important;">
-        <div class="product_container" style="display:flex !important;  flex-wrap:wrap !important; justify-content:center !important;">
+<div class="tab-pane fade" id="toprated">
+    <div class="row">
+        <div class="product_container best_seller_pruduct_container">
             {% for x in best_seller %}
             <!-- Single Prodect -->
-            <div class="product" style="width: 350px; height:auto; margin: .5% !important;">
+            <div class="product best_seller_product">
                 <span class="badges">
                     {% if x.status %}
                         <span class="sale">{{x.status}}</span>
