@@ -5,11 +5,12 @@
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-12 text-center">
-                <h2 class="breadcrumb-title">Product Page</h2>
+                <h2 class="breadcrumb-title">Mahsulotlar</h2>
                 <!-- breadcrumb-list start -->
                 <ul class="breadcrumb-list">
-                    <li class="breadcrumb-alls"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="breadcrumb-alls active">Shop</li>
+                    <li class="breadcrumb-alls"><a href="{% url 'home' %}">Bosh sahifa</a></li>
+                    /
+                    <li class="breadcrumb-alls active">Mahsulotlar</li>
                 </ul>
                 <!-- breadcrumb-list end -->
             </div>
@@ -25,37 +26,7 @@
                 <!-- Shop Top Area Start -->
                 <div class="shop-top-bar d-flex">
                     <p class="compare-product"> <span>Mahsulotlar soni ({{count}}) </span></p>
-                    <!-- Left Side End -->
-                    <div class="shop-tab nav">
-                        <button class="active" data-bs-target="#shop-grid" data-bs-toggle="tab">
-                            <i class="fa fa-th" aria-hidden="true"></i>
-                        </button>
-                        <button data-bs-target="#shop-list" data-bs-toggle="tab">
-                            <i class="fa fa-list" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <!-- Right Side Start -->
-                    <div class="select-shoing-wrap d-flex align-items-center">
-                        <div class="shot-product">
-                            <p>Sort By:</p>
-                        </div>
-                        <!-- Single Wedge End -->
-                        <div class="header-bottom-set dropdown">
-                            <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">Default <i class="fa fa-angle-down"></i></button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a class="dropdown-alls" href="shop-3-column.html#">Name, A to Z</a></li>
-                                <li><a class="dropdown-alls" href="shop-3-column.html#">Name, Z to A</a></li>
-                                <li><a class="dropdown-alls" href="shop-3-column.html#">Price, low to high</a></li>
-                                <li><a class="dropdown-alls" href="shop-3-column.html#">Price, high to low</a></li>
-                                <li><a class="dropdown-alls" href="shop-3-column.html#">Sort By new</a></li>
-                                <li><a class="dropdown-alls" href="shop-3-column.html#">Sort By old</a></li>
-                            </ul>
-                        </div>
-                        <!-- Single Wedge Start -->
-                    </div>
-                    <!-- Right Side End -->
                 </div>
-                <!-- Shop Top Area End -->
                 <!-- Shop Bottom Area Start -->
                 <div class="shop-bottom-area">
                     <!-- Tab Content Area Start -->
@@ -67,7 +38,7 @@
                                         {% for alls in all_products %}
                                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                             <!-- Single Prodect -->
-                                            <div class="product">
+                                            <div class="product shop_product_render ">
                                                 <span class="badges">
                                                     {% if alls.status %}
                                                     <span class="sale">{{alls.status}}</span>
@@ -103,16 +74,17 @@
                                                         
                                                     </a>
                                                     <a href="{% url 'add-wishlist' alls.id%}" class="cart-btn" type="submit">
-                                                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{alls.id}}"><i
+                                                        <button class="action wishlist gap-3" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{alls.id}}"><i
                                                             class="pe-7s-like"></i>
                                                         </button>
                                                     </a>
                                                     <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{alls.id}}"><i class="pe-7s-look"></i></button>
+                                        <i class="fa-solid fa-left"></i>
                                                     
                                                 </div>
                                             </div> 
-                                        </div>
 
+                                        </div>
                                         <!-- Modal Cart -->
                                         <div class="modal customize-class fade" id="exampleModal-Cart{{alls.id}}" tabindex="-1" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -154,9 +126,8 @@
                                             </div>
                                         </div>
 
-
-                                        <div class="modal modal-2 fade" id="exampleModal{{alls.id}}" tabindex="-1" role="dialog" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal modal-2 fade" id="exampleModal{{alls.id}}" tabindex="-1" role="dialog"    aria-hidden="true">
+                                            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-body">
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
@@ -169,14 +140,11 @@
                                                                         <div class="swiper-slide">
                                                                             <img class="img-responsive m-auto" src="{{alls.image.url}}" alt="">
                                                                         </div>
-                                                                        
                                                                     </div>
                                                                 </div>
                                                                 <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
-                                                                    
                                                                 </div>
                                                             </div>
-
 
                                                             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                                                                 <div class="product-details-content quickview-content">
@@ -194,28 +162,26 @@
                                                                             <i class="fa fa-star"></i>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
-                                                                    
                                                                     </div>
-                                                                
                                                                     <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
                                                                         <p class="mt-30px">{{alls.description}}</p>
                                                                     </div>
-                                                                    
-                                                                
                                                                     <div class="pro-details-quality">
                                                                         <a href="{% url 'shopdetail' alls.id %}" class="cart-btn" type="submit">
                                                                             <div class="pro-details-cart">
-                                                                                <button class="add-cart">Buyurtma +
+                                                                                <button class="add-cart">
+                                                                                    Buyurtma +
                                                                                 </button>
                                                                             </div>
                                                                         </a>
                                                                         <a href="{% url 'add-cart' alls.id%}" class="cart-btn" type="submit">
                                                                             <div class="pro-details-cart">
-                                                                                <button class="add-cart">Savatcha +
+                                                                                <!-- <i class="fa-solid fa-left"></i> -->
+                                                                                <button class="add-cart">
+                                                                                    Savatcha +
                                                                                 </button>
                                                                             </div>
-                                                                        </a>                                                                                                                                              
-                                                                    </div>                                                                    
+                                                                        </a>
                                                                 </div>
                                                             </div> 
                                                         </div>
@@ -240,3 +206,4 @@
     </div>
 </div>
 <!-- Shop Page End  -->
+<i class="fa-solid fa-left"></i>

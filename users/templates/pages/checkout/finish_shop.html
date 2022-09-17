@@ -37,10 +37,16 @@
                 <div class="container">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-12 text-center">
-                            <h2 class="breadcrumb-title">Buyurtmalar</h2>
+                            <h2 class="breadcrumb-title">
+                                Buyurtmalar
+                            </h2>
                             <!-- breadcrumb-list start -->
                             <ul class="breadcrumb-list">
-                                <li class="breadcrumb-item"><a href="index.html">Asosiy</a></li>
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        Asosiy
+                                    </a>
+                                </li>
                                 <li class="breadcrumb-item active">Buyurtmalar</li>
                             </ul>
                             <!-- breadcrumb-list end -->
@@ -69,11 +75,11 @@
                                         <div class="col-lg-6 col-md-6">
                                             <div class="billing-info mb-4">
                                                 
-                                                <input style="border: 2px solid #5d5d60; border-radius: 5px" style= type="number" value="+998" />
+                                                <input style="border: 2px solid #5d5d60; border-radius: 5px" type="number" value="+998" />
                                             </div>
                                         </div>  
                                         <div class="Place-order mt-35">
-                                            <button type="submit" style=" border-radius: 5px; padding: 2% 5.5%;  "class=" btn-success">Bugurtma berish</button>
+                                            <button type="submit" style="border-radius: 5px; padding: 2% 5.5%;" class=" btn-success">Bugurtma berish</button>
                                         </div>             
                                     </div>
                                 </form>
@@ -129,7 +135,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -137,7 +142,127 @@
             </div>
             <!-- checkout area end -->
 
-        {% include 'footer.html' %}
+            <style>
+                .footer-area a{
+                    color: #fff !important;
+                    text-decoration: none;
+                }
+                .footer-area a:hover{
+                    color: #F9CB27 !important;
+                }
+                .footer-area .link-follow li a:hover{
+                    color: #fff !important;
+            
+                }
+                .footer-area .single-link{
+                    color: #fff !important;
+            
+                }
+                .footer-area .footer-links p , .about-text{
+                    color: #F9CB27 !important;
+            
+                }
+                a{
+                    text-decoration: none;
+                }
+                .footer-area .link-follow{
+                    margin: 20% 0;
+                }
+            </style>
+            <div class="footer-area" style="background: #252525;">
+                <div class="footer-container">
+                    <div class="footer-top">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Start single blog -->
+                                <div class="col-md-6 col-lg-3 mb-md-30px mb-lm-30px">
+                                    <div class="single-wedge">
+                                        <div class="footer-logo">
+                                            <a href="index.html"><img style="width: 90%;" src="{% static 'assets/images/logos.png' %}" alt=""></a>
+                                        </div>
+                                        {% comment %} <p class="about-text">Butun O'zbekiston bo'ylab to'liq bepul qaytarish va etkazib berish
+                                        </p> {% endcomment %}
+                                        <ul class="link-follow">
+                                            <li>
+                                                <a class="m-0" title="Telegram" target="_blank" rel="noopener noreferrer" href="index.html#"><i class="fa-brands fa-telegram"></i></a>
+                                            </li>
+                                            <li>
+                                                <a title="Facebook" target="_blank" rel="noopener noreferrer" href="index.html#"><i class="fa-brands fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a title="Instagram" target="_blank" rel="noopener noreferrer" href="index.html#"><i class="fa-brands fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- End single blog -->
+                                <!-- Start single blog -->
+                                <div class="col-md-6 col-lg-3 col-sm-6 mb-lm-30px pl-lg-60px">
+                                    <div class="single-wedge">
+                                        <h4 class="footer-herading" style="color: #F9CB27 !important;">Servislar</h4>
+                                        <div class="footer-links">
+                                            <div class="footer-row">
+                                                <ul class="align-items-center">
+                                                    <li class="li"><a class="single-link" href="{% url 'contact' %}">Biz bilan bog'laning</a></li>
+                                                    <li class="li"><a class="single-link" href="{% url 'cart' %}">Harid savatcham</a></li>
+                                                    <li class="li"><a class="single-link" href="{% url 'shop' %}">Mahsulotlar</a></li>
+                                                    <li class="li"><a class="single-link" href="{% url 'login' %}">Kirish</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End single blog -->
+                                <!-- Start single blog -->
+                                <div class="col-md-6 col-lg-3 col-sm-6 mb-lm-30px pl-lg-40px">
+                                    <div class="single-wedge">
+                                        <h4 class="footer-herading" style="color: #F9CB27 !important;">Mening Akkountim</h4>
+                                        <div class="footer-links">
+                                            <div class="footer-row">
+                                                <ul class="align-items-center">
+                                                    <li class="li"><a class="single-link" href="{% url 'profile' %}">Mening Akkountim</a></li>
+                                                    <li class="li"><a class="single-link" href="{% url 'cart' %}">Savat quticham</a></li>
+                                                    <li class="li"><a class="single-link" href="{% url 'login' %}">Kirish</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End single blog -->
+                                <!-- Start single blog -->
+                                <div class="col-md-6 col-lg-3 col-sm-12">
+                                    <div class="single-wedge">
+                                        <h4 class="footer-herading" style="color: #F9CB27 !important;">Biz bilan bog'laning</h4>
+                                        <div class="footer-links">
+                                            <!-- News letter area -->
+                                            <p class="phone">Telefon raqam: <a href="tel:0123456789"> +998 94 444 74 49</a></p>
+                                            <p class="mail">Email: <a href="mailto:demo@example.com"> parvoztrade@gmail.com</a></p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End single blog -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- {% comment %} <div class="footer-bottom">
+                        <div class="container">
+                            <div class="line-shape-top line-height-1">
+                                <div class="row flex-md-row-reverse align-items-center">
+                                    <div class="col-md-6 text-center text-md-end">
+                                        <div class="payment-mth"><a href="#"><img class="img img-fluid" src="{% static 'assets/images/icons/payment.png' %}" alt="payment-image"></a></div>
+                                    </div>
+                                    <div class="col-md-6 text-center text-md-start">
+                                        <p class="copy-text"> © 2022 <strong>Parvoz trade</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> {% endcomment %} -->
+                </div>
+            </div>
         
     </div>
 

@@ -2,15 +2,23 @@
 
 
 <!-- breadcrumb-area start -->
+<style>
+    @media screen and (max-width:753px) {
+        .send__message_button{
+            font-size: 1rem !important;
+        }
+    }
+</style>
 <div class="breadcrumb-area">
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-12 text-center">
-                <h2 class="breadcrumb-title">Contact Us</h2>
+                <h2 class="breadcrumb-title">Biz bilan bog'laning</h2>
                 <!-- breadcrumb-list start -->
                 <ul class="breadcrumb-list">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Contact</li>
+                    <li class="breadcrumb-item"><a href="index.html">Bosh sahifa</a></li>
+                    /
+                    <li class="breadcrumb-item active">Biz bilan bog'laning</li>
                 </ul>
                 <!-- breadcrumb-list end -->
             </div>
@@ -26,18 +34,17 @@
                 <div class="col-12">
                     <div class="contact-form">
                         <div class="contact-title mb-30">
-                            <h2 class="title">Send A Quest</h2>
+                            <h2 class="title">Biz bilan bog'laning</h2>
                         </div>
                         <form class="contact-form-style" action="{% url 'contact' %}" method="POST">
                             {% csrf_token %}
                             <div class="row">
                                 {{form.as_p}}
                                 <div class="col-lg-12 text-center">
-                                    <button class="btn btn-primary" type="submit" name="submit" value="Send message">Send Message</button>
+                                    <button class="btn btn-primary send__message_button" type="submit" name="submit" value="Send message" style="font-size: 2rem;">Yuborish</button>
                                 </div>
                             </div>
                         </form>
-                        
                     </div>
                 </div>
                 <div class="col-12">
@@ -47,9 +54,9 @@
                                 <img src="{% static 'assets/images/icons/contact-1.png' %}" alt="">
                             </div>
                             <div class="info-box">
-                                <h5 class="title">Address</h5>
-                                <p>Your address goes here. <br>
-                                123 Your Location</p>
+                                <h5 class="title">Manzil</h5>
+                                <p>Bizning Joylashuvimiz. <br>
+                                </p>
                             </div>
                         </div>
                         <div class="single-contact">
@@ -57,9 +64,9 @@
                                 <img src="{% static 'assets/images/icons/contact-2.png' %}" alt="">
                             </div>
                             <div class="info-box">
-                                <h5 class="title">Phone No</h5>
-                                <p><a href="tel:0123456789">+012 345 67 89</a></p>
-                                <p><a href="tel:0123456789">+012 345 67 89</a></p>
+                                <h5 class="title">Telefon raqam</h5>
+                                <p><a href="tel:0123456789">+998 345 67 89</a></p>
+                                <p><a href="tel:0123456789">+998 345 67 89</a></p>
                             </div>
                         </div>
                         <div class="single-contact m-0">
@@ -68,8 +75,8 @@
                             </div>
                             <div class="info-box">
                                 <h5 class="title">Email/Web</h5>
-                                <p><a href="mailto:demo@example.com">demo@example.com</a></p>
-                                <p><a href="https://www.example.com">www.example.com</a></p>
+                                <p><a href="mailto:demo@example.com">parvoztrade@gmail.com</a></p>
+                                <p><a href="https://www.example.com">www.parvoz-trade.uz</a></p>
                             </div>
                         </div>
                     </div>

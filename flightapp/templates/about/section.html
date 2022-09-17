@@ -1,15 +1,38 @@
 {% load static%}
 
 <!-- breadcrumb-area start -->
+<style>
+    @media screen and (max-width:957px) {
+        .about__us__pages__video > iframe{
+            width: 80%;
+            height: 300px !important;
+        }
+    }
+    @media screen and (max-width:500px) {
+        .about__us__pages__video > iframe{
+            width: 80%;
+            height: 250px !important;
+        }
+    }
+    @media screen and (max-width:346px) {
+        .about__us__pages__video > iframe{
+            width: 80%;
+            height: 150px !important;
+        }
+    }
+    .team-social li a i{
+        font-size: 1.4rem;
+    }
+</style>
 <div class="breadcrumb-area">
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-12 text-center">
-                <h2 class="breadcrumb-title">About Us</h2>
+                <h2 class="breadcrumb-title">Biz haqimizda</h2>
                 <!-- breadcrumb-list start -->
                 <ul class="breadcrumb-list">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="breadcrumb-item active">About Us</li>
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Bosh sahifa</a></li>
+                    <li class="breadcrumb-item active">Biz haqimizda</li>
                 </ul>
                 <!-- breadcrumb-list end -->
             </div>
@@ -26,15 +49,24 @@
                 <div class="about-wrapper text-center">
                     <div class="about-contant">
                         <h2 class="title">
-                            <span>Smart Fashion </span>
-                            With Smart Devices
+                            <span>
+                                Zamonaviy Dizayn
+                            </span>
+                            Qulay qurilmalar bilan
                         </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comml consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident sunt in culpa</p>
+                        <p>O'z biznesingiz rivoqlantirishda sizga kerak bo'luvchi sifaltli mahsulot ishlab chiqarish qurulmalari va kundalik hayotdagi ishlarni bajarishda qulaylik yaratib beruvchi sifatli va hamyonbob mahsulotlar</p>
                     </div>
-                    <div class="promo-video">
-                        <img src="{% static 'assets/images/about/promo-video-img.webp' %}" alt="">
-                        <a href="https://youtu.be/Hx64uvCA_zQ" class="venobox overlay-box" data-vbtype="video"><span
-                            class="fa fa-play"><i class="ripple"></i></span></a>
+                    <div class="promo-video about__us__pages__video">
+                        <iframe
+                            width="853" 
+                            height="480" 
+                            src="https://www.youtube.com/embed/dD4x7oxSBHk"
+                            title="Ishlab chiqarish uchun Lazer Stanok" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            controls 
+                            autoplay>
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -48,8 +80,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center">
-                    <h2 class="title line-height-1">Team Member</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available</p>
+                    <h2 class="title line-height-1">Jamoa azolari</h2>
+                    <p>Bizng jamoa azolari</p>
                 </div>
             </div>
         </div>
@@ -61,27 +93,26 @@
                         <img src="{% static 'assets/images/team/1.webp' %}" alt="">
                         <ul class="team-social d-flex">
                             <li>
-                                <a class="m-0" title="Twitter" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-facebook"
-                                    aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a title="Tumblr" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-tumblr" aria-hidden="true"></i>
+                                <a class="m-0" title="Facebook" target="_blank" rel="noopener noreferrer" href="about.html#">
+                                    <i class="fa-brands fa-facebook"aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li>
-                                <a title="Facebook" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-twitter" aria-hidden="true"></i>
+                                <a title="Telegram" target="_blank" rel="noopener noreferrer" href="https://t.me/Sardorbek_Turdaliyev1">
+                                    <i class="fa-brands fa-telegram" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li>
-                                <a title="Instagram" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-instagram" aria-hidden="true"></i>
+                                <a title="Instagram" target="_blank" rel="noopener noreferrer" href="about.html#">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div class="team-inner">
                         <div class="team-content">
-                            <h6 class="title">Sara Koivisto</h6>
-                            <span class="sub-title">Team Member</span>
+                            <h6 class="title">Turdualiyev Sardorbek</h6>
+                            <span class="sub-title">Menejer</span>
                         </div>
                     </div>
                 </div>
@@ -94,27 +125,26 @@
                         <img src="{% static 'assets/images/team/2.webp' %}" alt="">
                         <ul class="team-social d-flex">
                             <li>
-                                <a class="m-0" title="Twitter" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-facebook"
-                                    aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a title="Tumblr" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-tumblr" aria-hidden="true"></i>
+                                <a class="m-0" title="Facebook" target="_blank" rel="noopener noreferrer" href="about.html#">
+                                    <i class="fa-brands fa-facebook"aria-hidden="true" ></i>
                                 </a>
                             </li>
                             <li>
-                                <a title="Facebook" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-twitter" aria-hidden="true"></i>
+                                <a title="Telegram" target="_blank" rel="noopener noreferrer" href="https://t.me/YahyobekTohirjonov">
+                                    <i class="fa-brands fa-telegram" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li>
-                                <a title="Instagram" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-instagram" aria-hidden="true"></i>
+                                <a title="Instagram" target="_blank" rel="noopener noreferrer" href="about.html#">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div class="team-inner">
                         <div class="team-content">
-                            <h6 class="title">Anaiah Whitten</h6>
-                            <span class="sub-title">Team Member</span>
+                            <h6 class="title">Tohirjonov Yahyobek</h6>
+                            <span class="sub-title">Jamoa azosi</span>
                         </div>
                     </div>
                 </div>
@@ -127,27 +157,26 @@
                         <img src="{% static 'assets/images/team/3.webp' %}" alt="">
                         <ul class="team-social d-flex">
                             <li>
-                                <a class="m-0" title="Twitter" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-facebook"
-                                    aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a title="Tumblr" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-tumblr" aria-hidden="true"></i>
+                                <a class="m-0" title="Facebook" target="_blank" rel="noopener noreferrer" href="about.html#">
+                                    <i class="fa-brands fa-facebook"aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li>
-                                <a title="Facebook" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-twitter" aria-hidden="true"></i>
+                                <a title="Telegram" target="_blank" rel="noopener noreferrer" href="https://t.me/@Bunyodbek_Sharobidinov">
+                                    <i class="fa-brands fa-telegram" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li>
-                                <a title="Instagram" target="_blank" rel="noopener noreferrer" href="about.html#"><i class="fa fa-instagram" aria-hidden="true"></i>
+                                <a title="Instagram" target="_blank" rel="noopener noreferrer" href="about.html#">
+                                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div class="team-inner">
                         <div class="team-content">
-                            <h6 class="title">Rachel Leonard</h6>
-                            <span class="sub-title">Team Member</span>
+                            <h6 class="title">Po'latova Bunyodoy</h6>
+                            <span class="sub-title">SMM bo'yicha</span>
                         </div>
                     </div>
                 </div>
@@ -168,8 +197,8 @@
                         <img src="{% static 'assets/images/icons/1.png' %}" alt="">
                     </div>
                     <div class="feature-content">
-                        <h4 class="title">Free Shipping</h4>
-                        <span class="sub-title">Capped at $39 per order</span>
+                        <h4 class="title">Bepul dastavka</h4>
+                        <span class="sub-title">O'zbekiston bo'ylab bepul yetkazib berish hizmati</span>
                     </div>
                 </div>
             </div>
@@ -180,8 +209,8 @@
                         <img src="{% static 'assets/images/icons/2.png' %}" alt="">
                     </div>
                     <div class="feature-content">
-                        <h4 class="title">Card Payments</h4>
-                        <span class="sub-title">12 Months Installments</span>
+                        <h4 class="title">Kartadan to'lo'v</h4>
+                        <span class="sub-title">Karta yordamida masofadan to'lo'v qilish imkoniyati</span>
                     </div>
                 </div>
             </div>
@@ -192,8 +221,8 @@
                         <img src="{% static 'assets/images/icons/3.png' %}" alt="">
                     </div>
                     <div class="feature-content">
-                        <h4 class="title">Easy Returns</h4>
-                        <span class="sub-title">Shop With Confidence</span>
+                        <h4 class="title">qaytarib berish</h4>
+                        <span class="sub-title">Yaroqsiz masulot yetkazib berilsa qaytarib berish imkoniyati</span>
                     </div>
                 </div>
                 <!-- single item -->
@@ -209,8 +238,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center m-0">
-                    <h2 class="title">Client Feedback</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available</p>
+                    <h2 class="title">Mijozlar fikri</h2>
+                    <p>Bizning mahsulotlarni sotib olgan istemolchilar fikri</p>
                 </div>
             </div>
         </div>
@@ -236,7 +265,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-buttons">
@@ -249,4 +277,3 @@
     </div>
 </div>
 <!-- Testimonial area end-->
-

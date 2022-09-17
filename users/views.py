@@ -34,7 +34,7 @@ def profileView(request):
     myctx: dict = categWishlistHelper(request)
     tarix = OrderHistory.objects.filter(
         user=request.user).prefetch_related("products").first()
-   
+
     print(tarix)
     context = {**myctx, 'tarix': tarix}
 
@@ -90,7 +90,7 @@ def uzgarView(request):
 
 
 def errorView(request):
-    
+
     return render(request, 'pages/404.html')
 
 
@@ -105,8 +105,8 @@ def chekoutView(request, id):
 
 def finishView(request):
     myctx: dict = categWishlistHelper(request)
-    
-    context = {**myctx,}
+
+    context = {**myctx, }
     return render(request, 'pages/checkout/finish_shop.html', context)
 
 
@@ -139,17 +139,18 @@ def orderView(request, _type: str = telebot.TYPE_ZAKAS):
 
 def sendMessageView(request, id: str) -> None:
     if request.user.is_authenticated:
-        order_history, _ = OrderHistory.objects.get_or_create(user=request.user)
+        order_history, _ = OrderHistory.objects.get_or_create(
+            user=request.user)
         product = Products.objects.get(id=id)
         order_history.products.add(product)
         order_history.save()
-            
+
     if request.method == 'POST':
         mydict: dict = {}
         mydict.update({
             "name": request.POST.get('name'),
             "phone": request.POST.get('phone'),
-            
+
             "product_id": id
         })
         send_message(mydict)
@@ -178,7 +179,9 @@ def wishlistView(request):
 
 def blogView(request):
     blogs = Post.objects.all()
+    qyctx: dict = wishViewHelper(request)
     myctx: dict = categWishlistHelper(request)
+    context: dict = wishViewHelper(request)
     context: dict = categWishlistHelper(request)
     custom_range, blogs = paginateProjects(
         request,  blogs, 3)
@@ -192,7 +195,7 @@ def blogView(request):
             context["cardItems"] = context['blog']
             context["cartProductsCount"] = cartProducts.products.count()
 
-    context = {**myctx,'blogs': blogs, 'custom_range': custom_range}
+    context = {**myctx, 'blogs': blogs, 'custom_range': custom_range, **qyctx}
 
     return render(request, 'blog/blog.html', context)
 
@@ -200,12 +203,12 @@ def blogView(request):
 def blogDetailView(request, id):
     blog = Post.objects.get(id=id)
     myctx: dict = categWishlistHelper(request)
-    
+
     forming = CommentsBlogForm()
 
     if blog.commenting:
         counts = blog.commenting.count()
-        
+
     if request.method == "POST":
         forming = CommentsBlogForm(request.POST)
         review = forming.save(commit=False)
@@ -215,6 +218,7 @@ def blogDetailView(request, id):
 
         return redirect('blogdetail', id=blog.id)
 
-    context = {**myctx, 'blog': blog, 'counts': counts, 'blog': blog, 'forming': forming}
+    context = {**myctx, 'blog': blog, 'counts': counts,
+               'blog': blog, 'forming': forming}
 
     return render(request, 'blog/detail.html', context)

@@ -1,35 +1,34 @@
 <style>
-    .footer_line{
-        width:100%;
-        background: #F9CB26;
-        justify-content:center;
+    .footer_line_carusel{
+      width:100%;
+      background: #F9CB26;
+      overflow: hidden;
+
     }
-    #carouselExampleInterval{
-        padding:1%;
-        color: #fff;
-        font-size: 20;
+    
+    .footer_line_carusel_container{
+      display: flex;
+      justify-content: ;
+      animation: footer_liner_animate 18s linear infinite;
+      gap: 3rem;
+    }
+    .footer_line_carusel_container{
+      margin: 1% ;
+    }
+    @keyframes footer_liner_animate {
+      0%{
+        transform: translateX(100%);
+      }
+      100%{
+        transform: translateX(-100%);
+      }
     }
 </style>
-<div class="footer_line">
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active ai-center" data-bs-interval="10000">
-            <p class="text-center">Baliqchit tuman it park</p>
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <p class="text-center">+998 97 973 93 84</p>
-          </div>
-          <div class="carousel-item">
-            <p class="text-center">Baliqchit tuman it park</p>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+<div class="footer_line_carusel">
+  <div class="footer_line_carusel_container">
+        <p>Butun O'zbekiston bo'ylab sifatli va ishonchli yetkazib berish xizmati..</p>
+        <p>+998 97 973 93 84</p>
+        <p>Baliqchit tuman it park</p>
+  </div>
 </div>
+

@@ -1,6 +1,9 @@
 from uuid import uuid4
 
-from django.db.models import Sum
+from django.http import HttpResponse
+from django.views.decorators.http import require_GET
+
+
 from django.conf import settings
 from django.shortcuts import render
 from django.contrib import messages
@@ -24,6 +27,7 @@ from flightapp.utils import searchHelper
 from flightapp.utils import wishViewHelper
 from flightapp.utils import categWishlistHelper
 
+from users.models import Post
 
 from flightapp.libs.telegram import telebot
 
@@ -38,6 +42,10 @@ def homeView(request):
         category=Categories.ENG_KOP_SOTILADIGAN)  # eng ko'p sotiladigan
     device = Products.objects.filter(
         category=Categories.SIZ_UCHUN_TAVFSIYA)  # eng mashhur mahsulotlar
+    
+    
+    posts = Post.objects.filter(tags='home')
+    
 
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
@@ -51,9 +59,27 @@ def homeView(request):
     products = Products.objects.all()
    
 
-    context: dict = {**dbctx, **myctx, **qyctx, 'products': products,  'mywish': mywish}
+    context: dict = {**dbctx, **myctx, **qyctx, 'products': products,  'mywish': mywish, 'posts': posts}
 
     return render(request, 'home/index.html', context)
+
+
+@require_GET
+def robots_txt(request):
+    lines = [
+        "User-Agent: *",
+        "Disallow: /nogooglebot/",
+        "Allow: /",
+        "\n",
+        "User-agent: Yandex",
+        "Allow: /",
+        "\n",
+        "\n",
+        "User-agent: YandexNews",
+        "Allow: /rss/yandex.rss",
+        "Crawl-delay: 0.1",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
 
 
 def aboutView(request):
@@ -259,3 +285,7 @@ def contactView(request, _type: str = telebot.TYPE_SAVOL):
     myctx: dict = categWishlistHelper(request)
     context = {**myctx, **qyctx, 'form': form}
     return render(request, 'contact/contact.html', context)
+
+
+def yandexView(request):
+    return render(request, 'yandex.html')
