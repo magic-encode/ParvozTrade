@@ -1,38 +1,81 @@
-{% load static%}
-
-
-<!-- Feature product area start -->
 <style>
-    .footer__carousel__item{
-        width: auto;
-        height: auto;
-        margin: 1%;
+    .brand-carusel-f{
+        width: 100% !important;
+        margin: 50px 0;
     }
-    .footer__carousel__item img{
+    .brand-carusel-container{
         width: 100%;
-        height: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+}
+.brand-caruel-brand-slider{
+    display: flex;
+    max-width: 950px;
+    justify-content: space-between;
+    margin: 0 auto;
+    overflow-x: auto;
+    overflow: hidden;
+}        
+.brand-carusel-item{
+    animation: animate_brands_carusel 12s linear infinite;
+    margin-left: 30px;
+}
+.brand-carusel-item a img:hover{
+    animation: brand_animation_hover-effect 0.5s ease-in-out;
+}
+@keyframes brand_animation_hover-effect {
+    0%{
+        transform: scale(0.5);
     }
-    .footer_brands_area{
-      overflow-x: auto;
-      display: flex;
-      justify-content: center;
-      background-color: #F9CB26;
-      gap: 3rem;
-      height: auto;
+    100%{
+        transform: scale(1);
     }
-  </style>
-  <section class="footer_brands_area">
-    <div class="footer__carousel__item">
-      <img src="https://alsafia.uz/static/assets/img/brand/brand-6.png" class="d-block w-100" alt="footer__brand">
+}
+@keyframes animate_brands_carusel {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+</style>
+
+
+<section class="brand-carusel-f">
+    <div class="brand-carusel-container">
+        <div class="brand-caruel-brand-slider">
+            <div class="brand-carusel-item">
+                <a>
+                    <img src="https://alsafia.uz/static/assets/img/brand/brand-1.png" alt="brand logo">
+                </a>
+            </div>
+            <div class="brand-carusel-item">
+                <a>
+                    <img src="https://alsafia.uz/static/assets/img/brand/brand-2.png" alt="brand logo">
+                </a>
+            </div>
+            <div class="brand-carusel-item">
+                <a>
+                    <img src="https://alsafia.uz/static/assets/img/brand/brand-3.png" alt="brand logo">
+                </a>
+            </div>
+            <div class="brand-carusel-item">
+                <a>
+                    <img src="https://alsafia.uz/static/assets/img/brand/brand-4.png" alt="brand logo">
+                </a>
+            </div>
+            <div class="brand-carusel-item">
+                <a>
+                    <img src="https://alsafia.uz/static/assets/img/brand/brand-5.png" alt="brand logo">
+                </a>
+            </div>
+            <div class="brand-carusel-item">
+                <a>
+                    <img src="https://alsafia.uz/static/assets/img/brand/brand-6.png" alt="brand logo">
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="footer__carousel__item">
-        <img src="https://alsafia.uz/static/assets/img/brand/brand-5.png" class="d-block w-100" alt="footer__brand">
-      </div>
-      <div class="footer__carousel__item">
-        <img src="https://alsafia.uz/static/assets/img/brand/brand-3.png" class="d-block w-100" alt="footer__brand">
-      </div>
-      <div class="footer__carousel__item">
-        <img src="https://alsafia.uz/static/assets/img/brand/brand-1.png" class="d-block w-100" alt="footer__brand">
-      </div>
-  </section>
-<!-- Feature product area End -->
+</section>

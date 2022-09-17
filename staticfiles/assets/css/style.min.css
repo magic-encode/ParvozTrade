@@ -201,9 +201,9 @@ input {
     display: block
 }
 
-.pt-100px {
+/* .pt-100px {
     padding-top: 100px
-}
+} */
 
 @media only screen and (min-width:992px) and (max-width:1199px) {
     .pt-100px {

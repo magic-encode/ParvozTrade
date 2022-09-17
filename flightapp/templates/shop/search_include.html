@@ -5,12 +5,11 @@
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-12 text-center">
-                <h2 class="breadcrumb-title">Mahsulotlar</h2>
+                <h2 class="breadcrumb-title">Product Page</h2>
                 <!-- breadcrumb-list start -->
                 <ul class="breadcrumb-list">
-                    <li class="breadcrumb-product"><a href="{% url 'home' %}">Bosh Sahifa</a></li>
-                    /
-                    <li class="breadcrumb-product active">Mahsulotlar</li>
+                    <li class="breadcrumb-product"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-product active">Shop</li>
                 </ul>
                 <!-- breadcrumb-list end -->
             </div>
@@ -27,6 +26,34 @@
                 <div class="shop-top-bar d-flex">
                     <p class="compare-product"> <span>{{products.count}}</span>Mahsulot topildi  <span>{{all_products.count}}</span></p>
                     <!-- Left Side End -->
+                    <div class="shop-tab nav">
+                        <button class="active" data-bs-target="#shop-grid" data-bs-toggle="tab">
+                            <i class="fa fa-th" aria-hidden="true"></i>
+                        </button>
+                        <button data-bs-target="#shop-list" data-bs-toggle="tab">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <!-- Right Side Start -->
+                    <div class="select-shoing-wrap d-flex align-items-center">
+                        <div class="shot-product">
+                            <p>Sort By:</p>
+                        </div>
+                        <!-- Single Wedge End -->
+                        <div class="header-bottom-set dropdown">
+                            <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">Default <i class="fa fa-angle-down"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Name, A to Z</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Name, Z to A</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Price, low to high</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Price, high to low</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Sort By new</a></li>
+                                <li><a class="dropdown-product" href="shop-3-column.html#">Sort By old</a></li>
+                            </ul>
+                        </div>
+                        <!-- Single Wedge Start -->
+                    </div>
+                    <!-- Right Side End -->
                 </div>
                 <!-- Shop Top Area End -->
                 <!-- Shop Bottom Area Start -->

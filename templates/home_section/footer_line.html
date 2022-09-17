@@ -1,34 +1,180 @@
 <style>
-    .footer_line_carusel{
-      width:100%;
-      background: #F9CB26;
-      overflow: hidden;
+  .moveing-text-area {
+    background-color: #263C97;
+  }
+  .moveing-text-area .ovic-running {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--default-color);
+    overflow: hidden;
+    --running-space:180px;
+    --running-time:30s;
+    padding: 13px 0;
+  }
+  .moveing-text-area .ovic-running .wrap {
+    animation: ovic-running-1 var(--running-time) linear infinite;
+  }
+  .moveing-text-area .ovic-running .inner {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 100%;
+    white-space: nowrap;
+    animation: inherit;
+    animation-name: ovic-running-2;
+  }
+  .moveing-text-area .ovic-running .inner:hover,
+  .moveing-text-area .ovic-running .wrap:hover,
+  .moveing-text-area .ovic-running .wrap:hover .inner {
+    animation-play-state: paused;
+  }
+  .moveing-text-area .ovic-running .item {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    color: #ffffff;
+    font-size: 16px;
+  }
+  .moveing-text-area .ovic-running .item:not(:last-child) {
+    margin-inline-end: var(--running-space);
+  }
+  .container,
+  .container-fluid,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+      width: 100%;
+      padding-right: var(--bs-gutter-x, 15px);
+      padding-left: var(--bs-gutter-x, 15px);
+      margin-right: auto;
+      margin-left: auto
+  }
+  .moveing-text-area .ovic-running .wrap {
+    animation: ovic-running-1 var(--running-time) linear infinite;
+  }
+  .moveing-text-area .ovic-running .inner {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 100%;
+    white-space: nowrap;
+    animation: inherit;
+    animation-name: ovic-running-2;
+  }
+  @media (min-width:576px) {
 
+    .container,
+    .container-sm {
+        max-width: 540px
     }
-    
-    .footer_line_carusel_container{
-      display: flex;
-      justify-content: ;
-      animation: footer_liner_animate 18s linear infinite;
-      gap: 3rem;
+  }
+  @media (min-width:768px) {
+
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 720px
     }
-    .footer_line_carusel_container{
-      margin: 1% ;
+  }
+  @media (min-width:992px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm {
+        max-width: 960px
     }
-    @keyframes footer_liner_animate {
-      0%{
-        transform: translateX(100%);
-      }
-      100%{
-        transform: translateX(-100%);
-      }
+  }
+  @media (min-width:1200px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1140px
     }
+  }
+  @media (min-width:1400px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1440px
+    }
+  }
+  @keyframes ovic-running-1 {
+    0% {
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+  }
+  @keyframes ovic-running-2 {
+    100% {
+      -webkit-transform: translateX(-100%);
+      -moz-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      -o-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+  }
+  .moveing-text-area .ovic-running {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--default-color);
+    overflow: hidden;
+    --running-space:180px;
+    --running-time:30s;
+    padding: 13px 0;
+  }
+  .moveing-text-area .ovic-running .wrap {
+    animation: ovic-running-1 var(--running-time) linear infinite;
+  }
+  .moveing-text-area .ovic-running .inner {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 100%;
+    white-space: nowrap;
+    animation: inherit;
+    animation-name: ovic-running-2;
+  }
+  .moveing-text-area .ovic-running .inner:hover,
+  .moveing-text-area .ovic-running .wrap:hover,
+  .moveing-text-area .ovic-running .wrap:hover .inner {
+    animation-play-state: paused;
+  }
+  .moveing-text-area .ovic-running .item {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    color: #ffffff;
+    font-size: 16px;
+  }
+  .moveing-text-area .ovic-running .item:not(:last-child) {
+    margin-inline-end: var(--running-space);
+  }
 </style>
-<div class="footer_line_carusel">
-  <div class="footer_line_carusel_container">
-        <p>Butun O'zbekiston bo'ylab sifatli va ishonchli yetkazib berish xizmati..</p>
-        <p>+998 97 973 93 84</p>
-        <p>Baliqchit tuman it park</p>
-  </div>
-</div>
+<section class="moveing-text-area">
+    <div class="container">
+      <div class="ovic-running">
+        <div class="wrap">
+          <div class="inner">
+            <p class="item">O'zbekiston bo'ylab yetkazib berish tekin</p>
+            <p class="item">
+              Bizning ijtimoiy tarmoqlarimizga obuna bo'lishni unutmang!
+            </p>
+            <p class="item">
+              Murojat uchun +998 55 500 02 05 | Xaridingiz uchun rahmat!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 

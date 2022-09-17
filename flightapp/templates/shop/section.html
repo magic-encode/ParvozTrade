@@ -1,6 +1,35 @@
 {% load static %}
 
 <!-- breadcrumb-area start -->
+<style> 
+    @media screen and (max-width:572px) {
+        .product__cart_container_shop{
+            padding: 0 25px;
+        }
+        .products__in__shop__page{
+            width: 80%;
+            margin:0.5%;
+        }
+        .title{
+            font-size: 15px !important;
+        }
+        .new{
+            font-size: 15px !important;
+        
+       }
+       .mb-30px{
+        margin: 0;
+       }
+    }
+    @media screen and (max-width:296px){
+        .title{
+            font-size: 10px !important;
+        }
+        .shop_product_icon{
+            margin:0 5px !important;
+        }
+    }
+</style>
 <div class="breadcrumb-area">
     <div class="container">
         <div class="row align-items-center justify-content-center">
@@ -22,23 +51,26 @@
 <div class="shop-category-area pt-100px pb-100px">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" >
                 <!-- Shop Top Area Start -->
                 <div class="shop-top-bar d-flex">
                     <p class="compare-product"> <span>Mahsulotlar soni ({{count}}) </span></p>
+                    
+                    
                 </div>
+                <!-- Shop Top Area End -->
                 <!-- Shop Bottom Area Start -->
                 <div class="shop-bottom-area">
                     <!-- Tab Content Area Start -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="shop-grid">
-                                    <div class="row mb-n-30px">
+                    <div class="row" >
+                        <div class="col ">
+                            <div class="tab-content " >
+                                <div class="tab-pane fade show active product__cart_container_shop" id="shop-grid">
+                                    <div class="row mb-n-30px product__cart_container_shop" >
                                         {% for alls in all_products %}
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
+                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px  products__in__shop__page__container" >
                                             <!-- Single Prodect -->
-                                            <div class="product shop_product_render ">
+                                            <div class="product products__in__shop__page" >
                                                 <span class="badges">
                                                     {% if alls.status %}
                                                     <span class="sale">{{alls.status}}</span>
@@ -73,18 +105,17 @@
                                                         </button>
                                                         
                                                     </a>
-                                                    <a href="{% url 'add-wishlist' alls.id%}" class="cart-btn" type="submit">
-                                                        <button class="action wishlist gap-3" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{alls.id}}"><i
+                                                    <a style="margin:0 20px;" href="{% url 'add-wishlist' alls.id%}" class="cart-btn shop_product_icon" type="submit">
+                                                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{alls.id}}"><i
                                                             class="pe-7s-like"></i>
                                                         </button>
                                                     </a>
                                                     <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{alls.id}}"><i class="pe-7s-look"></i></button>
-                                        <i class="fa-solid fa-left"></i>
                                                     
                                                 </div>
                                             </div> 
-
                                         </div>
+
                                         <!-- Modal Cart -->
                                         <div class="modal customize-class fade" id="exampleModal-Cart{{alls.id}}" tabindex="-1" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -126,8 +157,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="modal modal-2 fade" id="exampleModal{{alls.id}}" tabindex="-1" role="dialog"    aria-hidden="true">
-                                            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+
+                                        <div class="modal modal-2 fade" id="exampleModal{{alls.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-body">
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
@@ -140,11 +172,14 @@
                                                                         <div class="swiper-slide">
                                                                             <img class="img-responsive m-auto" src="{{alls.image.url}}" alt="">
                                                                         </div>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                                 <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                                                    
                                                                 </div>
                                                             </div>
+
 
                                                             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                                                                 <div class="product-details-content quickview-content">
@@ -162,26 +197,28 @@
                                                                             <i class="fa fa-star"></i>
                                                                             <i class="fa fa-star"></i>
                                                                         </div>
+                                                                    
                                                                     </div>
+                                                                
                                                                     <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
                                                                         <p class="mt-30px">{{alls.description}}</p>
                                                                     </div>
+                                                                    
+                                                                
                                                                     <div class="pro-details-quality">
                                                                         <a href="{% url 'shopdetail' alls.id %}" class="cart-btn" type="submit">
                                                                             <div class="pro-details-cart">
-                                                                                <button class="add-cart">
-                                                                                    Buyurtma +
+                                                                                <button class="add-cart">Buyurtma +
                                                                                 </button>
                                                                             </div>
                                                                         </a>
                                                                         <a href="{% url 'add-cart' alls.id%}" class="cart-btn" type="submit">
                                                                             <div class="pro-details-cart">
-                                                                                <!-- <i class="fa-solid fa-left"></i> -->
-                                                                                <button class="add-cart">
-                                                                                    Savatcha +
+                                                                                <button class="add-cart">Savatcha +
                                                                                 </button>
                                                                             </div>
-                                                                        </a>
+                                                                        </a>                                                                                                                                              
+                                                                    </div>                                                                    
                                                                 </div>
                                                             </div> 
                                                         </div>
@@ -206,4 +243,3 @@
     </div>
 </div>
 <!-- Shop Page End  -->
-<i class="fa-solid fa-left"></i>
