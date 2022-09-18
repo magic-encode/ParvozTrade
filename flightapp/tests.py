@@ -2,12 +2,12 @@
 from django.test import Client
 from django.test import TestCase
 
-from flightapp.models import Cart
+
 from flightapp.models import Categories
 from flightapp.models import Products
 from flightapp.models import Comments
 from flightapp.models import GetInfo
-from flightapp.models.wishs import WishModel
+
 
 from users.models import CustomUser
 
