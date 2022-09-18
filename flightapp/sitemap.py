@@ -1,5 +1,5 @@
 from django.contrib.sitemaps import Sitemap
-from flightapp.models.products import Products
+from flightapp.models import Products
 
 from datetime import datetime
 
