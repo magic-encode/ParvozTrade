@@ -18,18 +18,34 @@
                       <div class="col-lg-12 col-xl-11">
                         <div class="card text-black" style="border-radius: 25px;">
                           <div class="card-body p-md-5">
+                            {% comment %} {% if messages %}
+                                {% for message in messages %}
+                                <div class="alert  alert--{{message.tags}}">
+                                    <p class="alert__message">{{message}}  </p>
+                                </div>
+                                {% endfor %}
+                              {% endif %} {% endcomment %}
                             <div class="row justify-content-center">
+                              
                               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-                
+                                
                                 <form class="mx-1 mx-md-4" action="{% url 'register' %}" method="POST">
                                   {% csrf_token  %}
+                                  
                                   <div class="d-flex flex-row align-items-center mb-4">
                                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                     <div class="form-outline flex-fill mb-0 register__input">
                                       {{ forms.fullname }}
                                       FullName
+                                    </div>
+                                  </div>
+                                  <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-number fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0 register__input">
+                                      {{ forms.number }}
+                                      Raqamingiz
                                     </div>
                                   </div>
 

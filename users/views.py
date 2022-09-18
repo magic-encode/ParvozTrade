@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 
 from django.contrib import messages
 from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
@@ -55,34 +57,38 @@ def registerUser(request):
             messages.success(request, 'User account was created!')
 
             login(request, user)
-            return redirect('profile')
+            return redirect('home')
 
         else:
             messages.success(
-                request, 'An error has occurred during registration')
+                request, 'Bunday foydalanuvchi mavjud!!',)
 
     context = {'page': page, 'forms': forms}
     return render(request, 'registration/register.html', context)
 
 
 def loginView(request):
-    return render(request, 'pages/login.html')
-
-
-@login_required(login_url='login')
-def editAccount(request):
-    profile = request.user.profile
-    form = CustomUser(instance=profile)
-
     if request.method == 'POST':
-        form = CustomUser(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-            return redirect('uzgardi')
+        user = authenticate(request, username=username, password=password)
 
-    context = {'form': form}
-    return render(request, 'pages/profile.html', context)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, 'Username OR password is incorrect')
+
+    context = {}
+    
+    return render(request, 'pages/login.html', context)
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
 
 
 def uzgarView(request):

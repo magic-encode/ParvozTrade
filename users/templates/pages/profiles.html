@@ -30,11 +30,10 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-3 col-lg-3">
                         <!-- Nav tabs -->
-                        <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0">
+                        <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0" style="margin-top: 20px; !important">
                             <ul role="tablist" class="nav flex-column dashboard-list">         
-                                {% comment %} <li> <a href="my-account.html#orders" data-bs-toggle="tab" class="nav-link">Buyurtmalar tarixi</a></li> {% endcomment %}
-                                <li><a href="my-account.html#account-details" data-bs-toggle="tab" class="nav-link">Accountni o'zgartirish </a>
-                                </li>
+                                <li> <a href="my-account.html#orders" data-bs-toggle="tab" class="nav-link">Buyurtmalar tarixi</a></li>
+                                                           
                                 <li><a href="{% url 'logout' %}" class="nav-link">Chiqib ketish  <i class="fa fa-arrow-left"></i></a></li>
                             </ul>
                         </div>
@@ -69,35 +68,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
+                            </div>                      
                             
-                           
-                            <div class="tab-pane fade" id="account-details">
-                                <h3>Accountni o'zgartirish </h3>
-                                <div class="login">
-                                    <div class="login_form_container">
-                                        <div class="account_login_form">
-                                            <form action="{% url 'edit' %}" method="POST">
-                                                {% csrf_token %}
-                                                
-                                                <div class="default-form-box mb-20">
-                                                    <label>User Name</label>
-                                                    <input type="text" name="first-name">
-                                                </div>
-                                                
-                                                <div class="default-form-box mb-20">
-                                                    <label>Email</label>
-                                                    <input type="text" name="email-name">
-                                                </div>
-                                                
-                                                <div class="save_button mt-3">
-                                                    <button class="btn" type="submit">Save</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
