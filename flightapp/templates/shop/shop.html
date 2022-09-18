@@ -8,7 +8,7 @@
     <div class="main-wrapper">
         
         {% include 'navbar.html' %}
-        {% if messages %}
+        {% comment %} {% if messages %}
 
         {% for message in messages %}
         <div class="alert  alert--{{message.tags}}" style="color: green;">
@@ -18,7 +18,7 @@
 
         {% endfor %}
 
-        {% endif %}
+        {% endif %} {% endcomment %}
         {% include 'shop/section.html' %}
 
         {% include 'footer.html' %}
