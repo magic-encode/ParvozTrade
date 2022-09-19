@@ -19,7 +19,7 @@
 <!-- breadcrumb-area end -->
 
 <!-- Product Details Area Start -->
-<div class="product-details-area pt-100px pb-100px" style="background-color: #FFFFFF; ">
+<div class="product-details-area pt-100px pb-100px" style="background-color: #FFFFFF; margin:50px 0;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
@@ -248,13 +248,13 @@
                                         </button>
                                         
                                     </a>
-                                    <a href="{% url 'add-wishlist' alls.id%}" class="cart-btn" type="submit">
+                                    <a href="{% url 'add-wishlist' alls.id%}" style="margin:0 10px;" class="cart-btn" type="submit">
                                         <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{alls.id}}"><i
                                             class="pe-7s-like"></i>
                                         </button>
                                     </a>
                                     
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{alls.id}}"><i class="pe-7s-look"></i></button>
+                                    {% comment %} <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{alls.id}}"><i class="pe-7s-look"></i></button> {% endcomment %}
                                     
                                 </div>
                             </div>
