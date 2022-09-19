@@ -5,6 +5,16 @@
     .shop_all_smart_devices_button{
         padding: 2.5% 0;
     }
+    @media screen and (max-width:1152px) {
+        .banner__slider__img img{
+            margin: 100px 0 !important;
+        }
+    }
+    /* @media screen and (max-width:500px) { */
+        /* .banner__slider__img{ */
+            /* padding: 0 300px; */
+        /* } */
+    /* } */
 </style>
 <div class="section ">
     <div class="hero-slider swiper-container slider-nav-style-1 slider-dot-style-1">
@@ -25,8 +35,8 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
                             <div class="show-case">
-                                <div class="hero-slide-image">
-                                    <img src="{% static 'assets/images/hero/inner-img/hero-1-1.png' %}" alt="" />
+                                <div class="hero-slide-image banner__slider__img">
+                                    <img src="{% static 'assets/images/banner/banner-img.png' %}" alt="stnok" />
                                 </div>
                             </div>
                         </div>
@@ -49,8 +59,8 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
                             <div class="show-case">
-                                <div class="hero-slide-image">
-                                    <img src="{% static 'assets/images/banner/banner-img.jpg' %}" alt="" />
+                                <div class="hero-slide-image banner__slider__img">
+                                    <img src="{% static 'assets/images/banner/banner-img.png' %}" alt="" />
                                 </div>
                             </div>
                         </div>
