@@ -25,7 +25,7 @@
         <div class="product_container best_seller_pruduct_container">
             {% for x in best_seller %}
             <!-- Single Prodect -->
-            <div class="product best_seller_product">
+            <div class="product best_seller_product" style="margin-left: 15px;!important">
                 <span class="badges">
                     {% if x.status %}
                         <span class="sale">{{x.status}}</span>
@@ -73,77 +73,77 @@
                 </div>
             </div>
             <!-- Modal -->
-         <div class="modal modal-2 fade " id="exampleModal{{x.id}}" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered modal-xd" role="document">
-                <div class="modal-content day_recommends_modal_content" >
-                    <div class="modal-body day_recommends_modal_body" style="width: 100% !important; background-color: white;">
-                        <button type="button" class="btn-close close_btn_day_recomendets" data-bs-dismiss="modal" aria-label="Close" style="margin: 4% 8% !important; font-size: 30px; "> <i class="pe-7s-close"></i></button>
-                        <div class="row day_recommends_row" style="width: auto !important; background-color: white;">
-                            
-                            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
-                           <!-- Swiper -->
-                                <div class="swiper-container gallery-top">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide day_recommends_img_box">
-                                            <img class="img-responsive m-auto" src="{{x.image.url}}" alt="">
+                <div class="modal modal-2 fade " id="exampleModal{{x.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-xd" role="document">
+                    <div class="modal-content day_recommends_modal_content" >
+                        <div class="modal-body day_recommends_modal_body" style="width: 100% !important; background-color: white;">
+                            <button type="button" class="btn-close close_btn_day_recomendets" data-bs-dismiss="modal" aria-label="Close" style="margin: 4% 8% !important; font-size: 30px; "> <i class="pe-7s-close"></i></button>
+                            <div class="row day_recommends_row" style="width: auto !important; background-color: white;">
+                                
+                                <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                            <!-- Swiper -->
+                                    <div class="swiper-container gallery-top">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide day_recommends_img_box">
+                                                <img class="img-responsive m-auto" src="{{x.image.url}}" alt="">
+                                            </div>
+                                            
                                         </div>
+                                    </div>
+                                    <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
                                         
                                     </div>
                                 </div>
-                                <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
-                                    
-                                </div>
-                            </div>
 
 
-                            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
-                                <div class="product-details-content quickview-content">
-                                    <h3>{{x.name}} </h3>
-                                    <div class="pricing-meta">
-                                        <ul class="d-flex">
-                                            <li class="new-price" style="font-size: 20px;">Narxi: {{x.price_new}} so'm</li>
-                                        </ul>
-                                    </div>
-                                    <div class="pro-details-rating-wrap">
-                                        <div class="rating-product">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="product-details-content quickview-content">
+                                        <h3>{{x.name}} </h3>
+                                        <div class="pricing-meta">
+                                            <ul class="d-flex">
+                                                <li class="new-price" style="font-size: 20px;">Narxi: {{x.price_new}} so'm</li>
+                                            </ul>
                                         </div>
-                                    </div>
-
-                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0 day_recommends_comment_box">
-                                        <p class="mt-30px day_recommends_comment">{{x.description}}</p>
-                                    </div>
-
-
-                                    <div class="pro-details-quality m-auto shop_and_cart_btn_box_home_page_day_recomeds" style="gap: 1rem;">
-                                        <a href="{% url 'chekout' x.id %}" class="cart-btn" type="submit">
-                                            <div class="pro-details-cart">
-                                                <button style="width: 100px ; height: 40px; border-radius: 5px;" class="btn-warning">
-                                                    Buyurtma
-                                                </button>
+                                        <div class="pro-details-rating-wrap">
+                                            <div class="rating-product">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
                                             </div>
-                                        </a>
+                                        </div>
 
-                                        <a href="{% url 'add-cart' x.id%}" class="cart-btn" type="submit">
-                                            <div class="pro-details-cart">
-                                                <button style="width: 100px ; height: 40px; border-radius: 5px;" class="btn-warning">
-                                                    Savatcha
-                                                </button>
-                                            </div>
-                                        </a>
+                                        <div class="pro-details-categories-info pro-details-same-style d-flex m-0 day_recommends_comment_box">
+                                            <p class="mt-30px day_recommends_comment">{{x.description}}</p>
+                                        </div>
+
+
+                                        <div class="pro-details-quality m-auto shop_and_cart_btn_box_home_page_day_recomeds" style="gap: 1rem;">
+                                            <a href="{% url 'chekout' x.id %}" class="cart-btn" type="submit">
+                                                <div class="pro-details-cart">
+                                                    <button style="width: 100px ; height: 40px; border-radius: 5px;" class="btn-warning">
+                                                        Buyurtma
+                                                    </button>
+                                                </div>
+                                            </a>
+
+                                            <a href="{% url 'add-cart' x.id%}" class="cart-btn" type="submit">
+                                                <div class="pro-details-cart">
+                                                    <button style="width: 100px ; height: 40px; border-radius: 5px;" class="btn-warning">
+                                                        Savatcha
+                                                    </button>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        
                                     </div>
-                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         <!-- Modal end -->       
         {% endfor %}
         </div>
