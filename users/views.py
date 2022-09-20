@@ -61,7 +61,7 @@ def registerUser(request):
 
         else:
             messages.success(
-                request, 'Bunday foydalanuvchi mavjud!!',)
+                request, "Bunday foydalanuvchi mavjud! /n yoki parol kiritshda xatoga yo'l qo'ydingiz.. ",)
 
     context = {'page': page, 'forms': forms}
     return render(request, 'registration/register.html', context)

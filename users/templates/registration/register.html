@@ -8,9 +8,17 @@
     .register__input{
       font-size: 2rem;
     }
+    .alert_error_message{
+      color: red;
+      cursor: pointer;
+    }
+    .form-outline > input{
+      height: 40px;
+      border: 1px solid black;
+      font-size: 14px;
+    }
   </style>
     <div class="main-wrapper">
-        
         {% include 'navbar.html' %}
                 <section class="vh-100" style="background: #eee;">
                   <div class="container h-100">
@@ -18,13 +26,25 @@
                       <div class="col-lg-12 col-xl-11">
                         <div class="card text-black" style="border-radius: 25px;">
                           <div class="card-body p-md-5">
-                            {% comment %} {% if messages %}
+                            
+                            {% if messages %}
                                 {% for message in messages %}
                                 <div class="alert  alert--{{message.tags}}">
-                                    <p class="alert__message">{{message}}  </p>
+                                    <p class="alert__message alert_error_message" style="color:red;">{{message}} 
+                                      <span>
+                                        <sup onClick="closeErrorMessageFun()" style="margin:10px;">
+                                          x
+                                        </sup>
+                                      </span>
+                                    </p>
                                 </div>
                                 {% endfor %}
-                              {% endif %} {% endcomment %}
+                              {% endif %}
+                              <script>
+                                function closeErrorMessageFun(){
+                                  document.querySelector('.alert_error_message').style = 'display:none;'
+                                }
+                              </script>
                             <div class="row justify-content-center">
                               
                               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -38,7 +58,7 @@
                                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                     <div class="form-outline flex-fill mb-0 register__input">
                                       {{ forms.fullname }}
-                                      Ism familiya
+                                     <p style="font-size: 18px;!important"> Ism familiya </p>
                                     </div>
                                   </div>
                                   
@@ -47,7 +67,7 @@
                                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                     <div class="form-outline flex-fill mb-0 register__input">
                                       {{ forms.username }}
-                                      User name
+                                     <p style="font-size: 18px;!important"> Username </p>
                                     </div>
                                   </div>
                 
@@ -63,7 +83,7 @@
                                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                     <div class="form-outline flex-fill mb-0">
                                       {{ forms.password1 }}
-                                      Parol  kiriting
+                                      Parol  kiriting (`katta, kichik harflar va sonlardan foydalaning.. kamida 8 honadan iborat bo'lsin..`)
                                     </div>
                                   </div>
                 
@@ -84,31 +104,7 @@
                                 </form>
                 
                               </div>
-                              <style>
-                                  .user__register__error__box{
-                                    margin-left: 100%;
-                                    padding-top: 50px;
-                                    font-size: 26px;
-                                    color: red;
-                                    cursor: pointer;
-                                  }
-                              </style>
-                              <div class="user__register__error__box">
-                                <p class="user__register__error">Bu foydalanuvchi mavjud 
-                                  <span>
-                                    <sup style="margin:10px;" onClick="deleterPinRegirterFun()">
-                                      x
-                                    </sup>
-                                  </span>
-                                </p>
-                              </div>
-                              <script>
-                                function deleterPinRegirterFun(){
-                                  let iconBox = document.querySelector('.user__register__error__box');
-                                  iconBox.style.display = 'none';
-                                }
-                                 
-                              </script>
+                            
                               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                                   class="img-fluid" alt="Sample image">

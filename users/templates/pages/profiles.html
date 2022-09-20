@@ -32,13 +32,13 @@
                         <!-- Nav tabs -->
                         <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0" style="margin-top: 20px; !important">
                             <ul role="tablist" class="nav flex-column dashboard-list">         
-                                <li> <a href="my-account.html#orders" data-bs-toggle="tab" class="nav-link">Buyurtmalar tarixi</a></li>
+                                <li> <a href="{% url 'cart' %}" class="nav-link">Buyurtmalar tarixi</a></li>
                                                            
                                 <li><a href="{% url 'logout' %}" class="nav-link">Chiqib ketish  <i class="fa fa-arrow-left"></i></a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-9 col-lg-9">
+                    {% comment %} <div class="col-sm-12 col-md-9 col-lg-9">
                         <!-- Tab panes -->
                         <div class="tab-content dashboard_content" data-aos="fade-up" data-aos-delay="200">
                             
@@ -71,7 +71,7 @@
                             </div>                      
                             
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>
