@@ -72,6 +72,8 @@ class Products(models.Model):
         max_length=255, verbose_name="olchami", null=True, blank=True)
     materials = models.CharField(
         max_length=255, verbose_name="materials", null=True, blank=True)
+    brend = models.CharField(
+        max_length=255, verbose_name="brend", null=True, blank=True)
     other_info = models.CharField(max_length=500, null=True, blank=True)
 
     def __str__(self) -> str:
