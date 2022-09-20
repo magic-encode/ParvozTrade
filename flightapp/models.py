@@ -52,16 +52,15 @@ class Products(models.Model):
     name = models.CharField(max_length=255, verbose_name="mahsulotning nomi")
     description = models.TextField(
         null=True, blank=True, verbose_name="mahsulot haqida qisqacha")
-    price_old = models.FloatField(
-        max_length=100, verbose_name="mahsulotning eski narxi", null=True, blank=True)
-    price_new = models.FloatField(verbose_name="mahsulotning yangi narxi")
+    price_old = models.IntegerField(
+       verbose_name="mahsulotning eski narxi", null=True, blank=True)
+    price_new = models.IntegerField(verbose_name="mahsulotning yangi narxi")
     discount = models.IntegerField(
         verbose_name="Chegirma", blank=True, null=True)
     category = models.ForeignKey(
         Categories, on_delete=models.CASCADE, related_name="category")
     image = models.ImageField(
         verbose_name='450x200', blank=True, default="banner_1.jpg")
-    is_ordered = models.BooleanField(verbose_name="is_ordered", default=False)
     status = models.CharField(
         max_length=50, verbose_name="status", choices=STATUS, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
