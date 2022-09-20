@@ -103,10 +103,10 @@
                         <div id="des-details2" class="tab-pane">
                             <div class="product-anotherinfo-wrapper text-start">
                                 <ul>
-                                    <li><span>Weight</span>{{items.weight}} </li>
-                                    <li><span>Dimensions</span>{{items.olchami}} </li>
-                                    <li><span>Materials</span>{{items.materials}} </li>
-                                    <li><span>Other Info</span>{{items.other_info}} </li>
+                                    <li><span>Og'irligi</span>{{items.weight}} </li>
+                                    <li><span>O'lchami</span>{{items.olchami}} </li>
+                                    <li><span>Material</span>{{items.materials}} </li>
+                                    <li><span>Boshqa ma'lumotlar</span>{{items.other_info}} </li>
                                 </ul>
                             </div>
                         </div>
@@ -237,7 +237,7 @@
                                         {% if alls.price_old %}
                                         <span class="new"><del>{{alls.price_old}}</del> - <b>${{alls.price_new}}</b></span>
                                         {% else %}
-                                        <span class="new"><b>${{alls.price_new}}</b></span>
+                                        <span class="new"><b>{{alls.price_new}} so'm</b></span>
                                         {% endif %}
                                     </span>
                                 </div>
