@@ -20,21 +20,20 @@
             {% for post in posts %}
             <div class="col-lg-6 col-sm-6">
                 <div class="single-blog">
-                    {% if post.image %}
+                    
                     <div class="blog-image">
+                        {% if post.image %}
                         <a href="{% url 'blogdetail' post.id %}"><img src="{{post.image.url}}" class="img-responsive w- 100" alt=""></a>
-                    </div>
-                    {% endif %}
-                    {% if post.video %}
-                    <div class="blog-post-media">
-                        <div class="blog-post-video position-relative">
+                        {% endif %}
+                        {% if post.video %}                 
                             <a class="venobox venoboxvid video-icon overflow-hidden vbox-item" data-gall="gall-video" data-autoplay="true" data-vbtype="video" href="{{post.video}}">
                                 <img class="img-responsive w-100 thumb-image ratio ratio-16x9" src="{{post.video_img.url}}" alt="">
                                 <img class="icon" src="{% static 'assets/images/icons/icon-youtube-play.png' %}" alt="">
                             </a>
-                        </div>
+                        {% endif %}
                     </div>
-                    {% endif %}
+                    
+                    
                     <div class="blog-text">
                         <div class="blog-athor-date line-height-1">
                             <span class="blog-date"><i class="fa fa-calendar" aria-hidden="true"></i>{{post.data}} </span>
