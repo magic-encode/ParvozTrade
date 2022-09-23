@@ -5,240 +5,117 @@
 
 <style>
     
-    .day_recommends_container{
-        display: flex;
-        flex-wrap:wrap;
-        gap: 2rem;
-        justify-content: center;
-    }
-    .day_recommends_cart{
-        margin: 0.1%;
-        width: 300px;
-    }
-    @media screen and (max-width:989px) {
-        .day_recommends_cart{
-            width: 300px;
-
-    }
-
-    .render__product__shop{
-        height: 400px;
-        margin:1%;
-    }
-
-    @media screen and (max-width:461px){
-        .day_recommends_cart{
-        }
-        .render__product__shop{
-        }
-        .thumb .image{
-            margin:7.5px 0;
-            height:50px;
-        }
-    }
-    .thumb .image img{
-        width: 100% ;
-        height: 100% ;
-    }
-    .thumb .image{
-        margin:15px 0;
-        height:200px;
-    }
-    .day_recommends_content{
-        text-align:center;
-        height: 100px;
-    }
-    @media (min-width:356) {
-        .day_recommends_cart{
-            width: 100px;
-
-        }
-        .render__product__shop{
-            width: 300px;
-        }
-    }
-    @media screen and (max-width:758px) {
-        .day_recommends_cart{
-            width: 300px;
-        }
-        .render__product__shop{
-            width: 200px;
-        }
-    }
-    @media screen and (max-width:1440px) {
-        .day_recommends_cart{
-            width: 300px;
-        }
-        .render__product__shop{
-            width: 300px;
-        }
-    }
-    @media screen and (max-width:1400px) {
+    <style> 
         .day_recommends_container{
-            gap: 1rem;
+            display: flex;
+            flex-wrap:wrap;
+            gap: 2rem;
+            justify-content: center;
         }
         .day_recommends_cart{
+            margin: 1%;
             width: 200px;
+    
         }
-        .render__product__shop{
-            margin: 0;
-            width: 200px;
-        }
-    }
-    @media screen and (max-width:744) {
-        .day_recommends_cart{
-            width: 200px;
-        }
-        .day_recommends_price span{
-            font-size: 10px !important;
-        }
-
-    }
-    @media screen and (max-width:426px) {
+        @media screen and (max-width:989px) {
             .day_recommends_cart{
-                width: 150px;
+                width: 300px;
             }
             .render__product__shop{
-                width: 150px;
+                width: 300px;
             }
-            .wishlist_day_recomendeds{
-                margin: 0 0rem !important;
-            }
-            .icon_day_recomendeds a{
-                width: 30px !important;
-                height: 30px !important;
-                font-size: 10px !important;
-            }
-            .day_recommends_content title{
-                font-size: 12px !important;
-            }
-            .best_seller_product_img .image{
-                height: 100px !important;
         }
-    }
-    @media screen and (max-width:321px) {
-        .day_recommends_content title{
-            font-size: 11px !important;
-        }
-        .render__product__shop{
-            width: 100px;
-        }
-        .day_recommends_cart{
-            width: 100px;
-        }
-        .day_recommends_price span{
-            font-size: 10px !important;
-        }
-        .render__product__shop{
-            width: 300px;
-        }
-    }
-    @media screen and (max-width:758px) {
-        .day_recommends_cart{
-            width: 300px;
-        }
-        .render__product__shop{
-            width: 200px;
-        }
-    }
-    @media screen and (max-width:1440px) {
-        .day_recommends_cart{
-            width: 300px;
-        }
-        .render__product__shop{
-            width: 300px;
-        }
-    }
-    @media screen and (max-width:1400px) {
-        .day_recommends_container{
-            gap: 1rem;
-        }
-        .day_recommends_cart{
-            width: 200px;
-        }
-        .render__product__shop{
-            margin: 0;
-            width: 200px;
-        }
-    }
-    @media screen and (max-width:744) {
-        .day_recommends_cart{
-            width: 200px;
-        }
-        .day_recommends_price span{
-            font-size: 10px !important;
-        }
-
-    }
-    @media screen and (max-width:426px) {
+        @media screen and (max-width:758px) {
             .day_recommends_cart{
-                width: 150px;
+                width: 300px;
             }
             .render__product__shop{
-                width: 150px;
+                width: 200px;
             }
-            .wishlist_day_recomendeds{
-                margin: 0 0rem !important;
+        }
+        @media screen and (max-width:1440px) {
+            .day_recommends_cart{
+                width: 300px;
             }
-            .icon_day_recomendeds a{
-                width: 30px !important;
-                height: 30px !important;
+            .render__product__shop{
+                width: 300px;
+            }
+        }
+        @media screen and (max-width:1400px) {
+            .day_recommends_container{
+                gap: 1rem;
+            }
+            .day_recommends_cart{
+                width: 200px;
+            }
+            .render__product__shop{
+                margin: 0;
+                width: 200px;
+            }
+        }
+        @media screen and (max-width:744) {
+            .day_recommends_cart{
+                width: 200px;
+            }
+            .day_recommends_price span{
                 font-size: 10px !important;
             }
+    
+        }
+        @media screen and (max-width:426px) {
+                .day_recommends_cart{
+                    width: 150px;
+                }
+                .render__product__shop{
+                    width: 150px;
+                }
+                .wishlist_day_recomendeds{
+                    margin: 0 0rem !important;
+                }
+                .icon_day_recomendeds a{
+                    width: 30px !important;
+                    height: 30px !important;
+                    font-size: 10px !important;
+                }
+                .day_recommends_content title{
+                    font-size: 12px !important;
+                }
+                .best_seller_product_img .image{
+                    height: 100px !important;
+                }
+                .badges .sale{
+                    scale: 0.8;
+                }
+        }
+        @media screen and (max-width:321px) {
             .day_recommends_content title{
-                font-size: 12px !important;
+                font-size: 11px !important;
             }
-            .best_seller_product_img .image{
-                height: 100px !important;
+            .render__product__shop{
+                width: 100px;
+            }
+            .day_recommends_cart{
+                width: 100px;
+            }
+            .day_recommends_price span{
+                font-size: 10px !important;
+            }
         }
-    }
-    @media screen and (max-width:321px) {
-        .day_recommends_content title{
-            font-size: 11px !important;
+        @media only screen and (max-width:479px) {
+            .product .content .title a {
+                font-size: 10px !important;
+            }
         }
-        .render__product__shop{
-            width: 100px;
+        @media screen and (max-width:1440px) {
+            
         }
-        .day_recommends_cart{
-            width: 100px;
+        .best_seller_product_img .image{
+                height: 200px;
+                /* margin: 20px 0; */
+            }
+            .best_seller_product_img a img{
+                width: 100%;
         }
-        .day_recommends_price span{
-            font-size: 10px !important;
-        }
-        .badges .sale{
-            scale: 0.5;
-        }
-    }
-    @media only screen and (max-width:479px) {
-        .product .content .title a {
-            font-size: 10px !important;
-        }
-    }
-    @media screen and (max-width:1440px) {
-        
-    }
-    .best_seller_product_img .image{
-            height: 300px;
-            /* margin: 20px 0; */
-        }
-        .best_seller_product_img a img{
-            width: 100%;
-    }
-    @media only screen and (max-width:479px) {
-        .product .content .title a {
-            font-size: 10px !important;
-        }
-    }
-    @media screen and (max-width:1440px) {
-        
-    }
-    .best_seller_product_img .image{
-            height: 300px;
-            /* margin: 20px 0; */
-        }
-        .best_seller_product_img a img{
-            width: 100%;
-    }
 </style>
 <div class="tab-pane fade show active " id="newarrivals">
     <div class="day_recommends_container ">

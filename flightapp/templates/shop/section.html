@@ -13,8 +13,6 @@
         width: 200px;
 
     }
-    .render__product__shop{
-    }
     @media screen and (max-width:989px) {
         .day_recommends_cart{
             width: 300px;
@@ -51,7 +49,6 @@
             width: 200px;
         }
     }
-
     @media screen and (max-width:744) {
         .day_recommends_cart{
             width: 200px;
@@ -114,14 +111,6 @@
         }
         .best_seller_product_img a img{
             width: 100%;
-=======
-    @media screen and (max-width:328px){
-        .products__in__shop__page{
-            width: 100px;
-        }
-        .best_seller_product_img .img{
-            height: 50px;
-        }
     }
 </style>
 <div class="breadcrumb-area">
@@ -164,9 +153,8 @@
                                         {% for alls in all_products %}
                                         <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px day_recommends_cart" style="justify-content: center;">
                                             <!-- Single Prodect -->
-
-                                            <div class="product products__in__shop__page " >
-
+                                            <div class="product render__product__shop " >
+                                                <span class="badges">
                                                     {% if alls.status %}
                                                     <span class="sale">{{alls.status}}</span>
                                                     {% endif %}
@@ -205,12 +193,10 @@
                                                             data-bs-target="#exampleModal-Cart{{alls.id}}">
                                                             <i class="pe-7s-shopbag"></i>
                                                         </button>
-                                                        
                                                     </a>
                                                     <a style="margin:0 20px;" href="{% url 'add-wishlist' alls.id%}" class="cart-btn shop_product_icon" type="submit">
                                                         <button 
                                                             class="action wishlist" 
-                                                            style="margin: 0 1rem;" 
                                                             title="Wishlist" 
                                                             data-bs-toggle="modal" 
                                                             data-bs-target="#exampleModal-Wishlist{{alls.id}}">
@@ -243,110 +229,107 @@
                                             </div>
                                         </div>  
                                     <!-- Modal -->
-
                                     <!-- Modal wishlist -->
-                                        <div class="modal customize-class fade" id="exampleModal-Wishlist{{ alls.id }}" tabindex="-1" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-body text-center">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
-                                                        <div class="tt-modal-messages">
-                                                            <i class="pe-7s-check"></i> Mahsulot sevimlilarga muvaffaqiyatli qoshildi !!!
+                                    <div class="modal customize-class fade" id="exampleModal-Wishlist{{ alls.id }}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body text-center">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                                                    <div class="tt-modal-messages">
+                                                        <i class="pe-7s-check"></i> Mahsulot sevimlilarga muvaffaqiyatli qoshildi !!!
+                                                    </div>
+                                                    <div class="tt-modal-product">
+                                                        <div class="tt-img">
+                                                            <img src="{{alls.image.url}}" alt="Modern Smart Phone">
                                                         </div>
-                                                        <div class="tt-modal-product">
-                                                            <div class="tt-img">
-                                                                <img src="{{alls.image.url}}" alt="Modern Smart Phone">
-                                                            </div>
-                                                            <h2 class="tt-title"><a href="index.html#">{{alls.name}}</a></h2>
-                                                        </div>
+                                                        <h2 class="tt-title"><a href="index.html#">{{alls.name}}</a></h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-
-                                        <div class="modal modal-2 fade" id="exampleModal{{alls.id}}" tabindex="-1" role="dialog" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
-                                                        <div class="row">
-                                                            
-                                                            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
-                                                                <!-- Swiper -->
-                                                                <div class="swiper-container gallery-top">
-                                                                    <div class="swiper-wrapper">
-                                                                        <div class="swiper-slide">
-                                                                            <img class="img-responsive m-auto" src="{{alls.image.url}}" alt="">
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                                <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
-                                                                    
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
-                                                                <div class="product-details-content quickview-content">
-                                                                    <h2>{{alls.name}} </h2>
-                                                                    <div class="pricing-meta">
-                                                                        <ul class="d-flex">
-                                                                            <li class="new-price">Narxi: {{alls.price_new}} so'm</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="pro-details-rating-wrap">
-                                                                        <div class="rating-product">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                        </div>
-                                                                    
-                                                                    </div>
-                                                                
-                                                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                                                                        <p class="mt-30px">{{alls.description}}</p>
-                                                                    </div>
-                                                                    
-                                                                
-                                                                    <div class="pro-details-quality">
-                                                                        <a href="{% url 'chekout' alls.id %}" class="cart-btn" type="submit">
-                                                                            <div class="pro-details-cart">
-                                                                                <button class="add-cart">Buyurtma
-                                                                                </button>
-                                                                            </div>
-                                                                        </a>
-                                                                        <a href="{% url 'add-cart' alls.id%}" class="cart-btn" type="submit">
-                                                                            <div class="pro-details-cart">
-                                                                                <button class="add-cart">Savatcha
-                                                                                </button>
-                                                                            </div>
-                                                                        </a>                                                                                                                                              
-                                                                    </div>                                                                    
-                                                                </div>
-                                                            </div> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Modal end -->
-                                        {% endfor %}                                                                             
                                     </div>
+
+
+                                    <div class="modal modal-2 fade" id="exampleModal{{alls.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                                                            <!-- Swiper -->
+                                                            <div class="swiper-container gallery-top">
+                                                                <div class="swiper-wrapper">
+                                                                    <div class="swiper-slide">
+                                                                        <img class="img-responsive m-auto" src="{{alls.image.url}}" alt="">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                                                            <div class="product-details-content quickview-content">
+                                                                <h2>{{alls.name}} </h2>
+                                                                <div class="pricing-meta">
+                                                                    <ul class="d-flex">
+                                                                        <li class="new-price">Narxi: {{alls.price_new}} so'm</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="pro-details-rating-wrap">
+                                                                    <div class="rating-product">
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                    </div>
+                                                                
+                                                                </div>
+                                                            
+                                                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                                                    <p class="mt-30px">{{alls.description}}</p>
+                                                                </div>
+                                                                
+                                                            
+                                                                <div class="pro-details-quality">
+                                                                    <a href="{% url 'chekout' alls.id %}" class="cart-btn" type="submit">
+                                                                        <div class="pro-details-cart">
+                                                                            <button class="add-cart">Buyurtma
+                                                                            </button>
+                                                                        </div>
+                                                                    </a>
+                                                                    <a href="{% url 'add-cart' alls.id%}" class="cart-btn" type="submit">
+                                                                        <div class="pro-details-cart">
+                                                                            <button class="add-cart">Savatcha
+                                                                            </button>
+                                                                        </div>
+                                                                    </a>                                                                                                                                              
+                                                                </div>                                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal end -->
+                                    {% endfor %}                                                                             
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Tab Content Area End -->
-
-                    {% include 'paginations.html' with queryset=products custom_range=custom_range %}
                 </div>
-                <!-- Shop Bottom Area End -->
+                <!-- Tab Content Area End -->
+
+                {% include 'paginations.html' with queryset=products custom_range=custom_range %}
             </div>
+            <!-- Shop Bottom Area End -->
         </div>
     </div>
+</div>
 </div>
 <!-- Shop Page End  -->
