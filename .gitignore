@@ -7,3 +7,4 @@ data/
 hmart/
 env/
 db.sqlite3
+media/
