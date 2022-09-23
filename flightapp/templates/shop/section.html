@@ -2,19 +2,117 @@
 
 <!-- breadcrumb-area start -->
 <style> 
-    .product__cart_container_shop{
-        gap: 2rem;
-        justify-content: center;
+    .day_recommends_container{
         display: flex;
         flex-wrap:wrap;
+        gap: 2rem;
+        justify-content: center;
     }
-    .products__in__shop__page{
+    .day_recommends_cart{
+        margin: 1%;
         width: 200px;
+
     }
-    @media screen and (max-width:457px){
-        .products__in__shop__page{
-            width: 150px;
+    .render__product__shop{
+    }
+    @media screen and (max-width:989px) {
+        .day_recommends_cart{
+            width: 300px;
         }
+        .render__product__shop{
+            width: 300px;
+        }
+    }
+    @media screen and (max-width:758px) {
+        .day_recommends_cart{
+            width: 300px;
+        }
+        .render__product__shop{
+            width: 200px;
+        }
+    }
+    @media screen and (max-width:1440px) {
+        .day_recommends_cart{
+            width: 300px;
+        }
+        .render__product__shop{
+            width: 300px;
+        }
+    }
+    @media screen and (max-width:1400px) {
+        .day_recommends_container{
+            gap: 1rem;
+        }
+        .day_recommends_cart{
+            width: 200px;
+        }
+        .render__product__shop{
+            margin: 0;
+            width: 200px;
+        }
+    }
+    @media screen and (max-width:744) {
+        .day_recommends_cart{
+            width: 200px;
+        }
+        .day_recommends_price span{
+            font-size: 10px !important;
+        }
+
+    }
+    @media screen and (max-width:426px) {
+            .day_recommends_cart{
+                width: 150px;
+            }
+            .render__product__shop{
+                width: 150px;
+            }
+            .wishlist_day_recomendeds{
+                margin: 0 0rem !important;
+            }
+            .icon_day_recomendeds a{
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 10px !important;
+            }
+            .day_recommends_content title{
+                font-size: 12px !important;
+            }
+            .best_seller_product_img .image{
+                height: 100px !important;
+            }
+            .badges .sale{
+                scale: 0.8;
+            }
+    }
+    @media screen and (max-width:321px) {
+        .day_recommends_content title{
+            font-size: 11px !important;
+        }
+        .render__product__shop{
+            width: 100px;
+        }
+        .day_recommends_cart{
+            width: 100px;
+        }
+        .day_recommends_price span{
+            font-size: 10px !important;
+        }
+    }
+    @media only screen and (max-width:479px) {
+        .product .content .title a {
+            font-size: 10px !important;
+        }
+    }
+    @media screen and (max-width:1440px) {
+        
+    }
+    .best_seller_product_img .image{
+            height: 200px;
+            /* margin: 20px 0; */
+        }
+        .best_seller_product_img a img{
+            width: 100%;
     }
 </style>
 <div class="breadcrumb-area">
@@ -53,11 +151,11 @@
                         <div class="col ">
                             <div class="tab-content " >
                                 <div class="tab-pane fade show active product__cart_container_shop" id="shop-grid">
-                                    <div class="row mb-n-30px product__cart_container_shop" >
+                                    <div class="row mb-n-30px product__cart_container_shop" style="justify-content: center;">
                                         {% for alls in all_products %}
-                                           
+                                        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px day_recommends_cart" style="justify-content: center;">
                                             <!-- Single Prodect -->
-                                            <div class="product products__in__shop__page" >
+                                            <div class="product render__product__shop " >
                                                 <span class="badges">
                                                     {% if alls.status %}
                                                     <span class="sale">{{alls.status}}</span>
@@ -66,18 +164,21 @@
                                                         <span class="sale">-{{alls.discount}}%</span>
                                                     {% endif %}
                                                 </span>
-                                                <div class="thumb">
+                                                <div class="thumb best_seller_product_img">
                                                     <a href="{% url 'shopdetail' alls.id %}" class="image">
                                                         <img src="{{alls.image.url}}" alt="Product" />
                                                         <img class="hover-image" src="{{alls.image.url}}" alt="Product" />
                                                     </a>
                                                 </div>
-                                                <div class="content">
+                                                <hr style="margin:5px 0 !important; ">
+                                                <div class="content day_recommends_content" >
                                                     
-                                                    <h5 class="title"><a href="{% url 'shopdetail' alls.id %}">{{alls.name}}
+                                                    <h5 class="title">
+                                                        <a href="{% url 'shopdetail' alls.id %}">
+                                                            {{alls.name}}
                                                         </a>
                                                     </h5>
-                                                    <span class="price">
+                                                    <span class="price day_recommends_price">
                                                         {% if alls.price_old %}
                                                         <span class="new"><del>{{alls.price_old}} so'm</del> - <b>{{alls.price_new}} so'm</b></span>
                                                         {% else %}
@@ -85,23 +186,32 @@
                                                         {% endif %}
                                                     </span>
                                                 </div>
-                                                <div class="actions">
+                                                <div class="actions icon_day_recomendeds">
                                                     <a href="{% url 'add-cart' alls.id%}" class="cart-btn" type="submit">
-                                                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart{{alls.id}}"><i
-                                                            class="pe-7s-shopbag"></i>
+                                                        <button 
+                                                            title="Add To Cart" 
+                                                            class="action add-to-cart" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#exampleModal-Cart{{alls.id}}">
+                                                            <i class="pe-7s-shopbag"></i>
                                                         </button>
                                                         
                                                     </a>
                                                     <a style="margin:0 20px;" href="{% url 'add-wishlist' alls.id%}" class="cart-btn shop_product_icon" type="submit">
-                                                        <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{alls.id}}"><i
-                                                            class="pe-7s-like"></i>
+                                                        <button 
+                                                            class="action wishlist" 
+                                                            style="margin: 0 1rem;" 
+                                                            title="Wishlist" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#exampleModal-Wishlist{{alls.id}}">
+                                                            <i class="pe-7s-like"></i>
                                                         </button>
                                                     </a>
                                                     <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{alls.id}}"><i class="pe-7s-look"></i></button>
                                                     
                                                 </div>
                                             </div> 
-                                        
+                                        </div>
 
                                         <!-- Modal Cart -->
                                         <div class="modal customize-class fade" id="exampleModal-Cart{{alls.id}}" tabindex="-1" aria-hidden="true">

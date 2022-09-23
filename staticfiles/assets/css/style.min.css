@@ -1850,6 +1850,9 @@ only screen and (min-width:768px) and (max-width:991px) {
         margin-top: 50px;
         text-align: center
     }
+    .hero-slide-image{
+        margin: 0 120px 0 0;
+    }
 }
 
 @media only screen and (max-width:575px) {
@@ -2709,18 +2712,18 @@ only screen and (max-width:767px) {
 
 @media only screen and (max-width:575px) {
     .product .content .title a {
-        font-size: 14px
+        font-size: 15px !important;
     }
 }
 
 @media only screen and (max-width:479px) {
     .product .content .title a {
-        font-size: 16px
+        font-size: 10px !important;
     }
 }
 
 .product .content .price {
-    font-size: 18px;
+    font-size: 12px;
     font-family: Poppins, sans-serif;
     line-height: 1;
     font-weight: 500;
