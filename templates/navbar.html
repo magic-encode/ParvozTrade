@@ -88,8 +88,10 @@
         .hamburder__navigation__bar ul li a , .hambuger_user_panel ul li{
             color: white;
         }
-        
-</style>
+        .position-relative ul{
+            color: black;
+        }
+    </style>
     <!-- Header top area start -->
     <div class="header-top">
         <div class="container">
@@ -283,19 +285,26 @@
  <!-- modal end -->
 
     <!-- header navigation area start -->
+
     <div class="header-nav-area d-none d-lg-block sticky-nav">
         <div class="container">
             <div class="header-nav">
                 <div class="main-menu position-relative">
                     <ul>
-                        <li class="dropdown"><a href="{% url 'home' %}">Bosh safiha</a>
+                        <li class="dropdown">
+                            <a href="{% url 'home' %}">Bosh safiha</a>
                         </li>
-                        <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
-                        <li class="dropdown position-static"><a href="{% url 'shop' %}">Mahsulotlar</a>
+                        <li>
+                            <a href="{% url 'about' %}">Biz haqimizda</a></li>
+                        <li class="dropdown position-static">
+                            <a href="{% url 'shop' %}">Mahsulotlar</a>
                         </li>
-                        <li class="dropdown "><a href="{% url 'blog' %}">Blog</a>                          
+                        <li class="dropdown ">
+                            <a href="{% url 'blog' %}">Blog</a>                          
                         </li>
-                        <li><a href="{% url 'contact' %}">Biz bilan bog'laning</a></li>
+                        <li>
+                            <a href="{% url 'contact' %}">Biz bilan bog'laning</a>
+                        </li>
                     </ul>
                 </div>
             </div>
