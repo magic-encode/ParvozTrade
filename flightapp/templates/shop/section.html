@@ -51,6 +51,7 @@
             width: 200px;
         }
     }
+
     @media screen and (max-width:744) {
         .day_recommends_cart{
             width: 200px;
@@ -113,6 +114,14 @@
         }
         .best_seller_product_img a img{
             width: 100%;
+=======
+    @media screen and (max-width:328px){
+        .products__in__shop__page{
+            width: 100px;
+        }
+        .best_seller_product_img .img{
+            height: 50px;
+        }
     }
 </style>
 <div class="breadcrumb-area">
@@ -155,8 +164,9 @@
                                         {% for alls in all_products %}
                                         <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px day_recommends_cart" style="justify-content: center;">
                                             <!-- Single Prodect -->
-                                            <div class="product render__product__shop " >
-                                                <span class="badges">
+
+                                            <div class="product products__in__shop__page " >
+
                                                     {% if alls.status %}
                                                     <span class="sale">{{alls.status}}</span>
                                                     {% endif %}
