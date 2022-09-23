@@ -14,9 +14,42 @@
     .day_recommends_cart{
         margin: 0.1%;
     }
+<<<<<<< HEAD
     @media screen and (max-width:989px) {
         .day_recommends_cart{
             width: 300px;
+=======
+    .render__product__shop{
+        height: 400px;
+        margin:1%;
+    }
+
+    @media screen and (max-width:461px){
+        .day_recommends_cart{
+        }
+        .render__product__shop{
+        }
+        .thumb .image{
+            margin:7.5px 0;
+            height:50px;
+        }
+    }
+    .thumb .image img{
+        width: 100% ;
+        height: 100% ;
+    }
+    .thumb .image{
+        margin:15px 0;
+        height:200px;
+    }
+    .day_recommends_content{
+        text-align:center;
+        height: 100px;
+    }
+    @media (min-width:356) {
+        .day_recommends_cart{
+            width: 100px;
+>>>>>>> b76496fc7a93a39ce16e0715495de9da7662fa77
         }
         .render__product__shop{
             width: 300px;
@@ -131,16 +164,16 @@
                         <img class="hover-image" src="{{item.image.url}}" alt="Product" />
                     </a>
                 </div>
-                {% comment %} <hr style="margin:5px 0 !important; "> {% endcomment %}
                 <div class="content day_recommends_content">                  
                     <h5 class="title">
                         <a href="{% url 'shopdetail' item.id %}">
                             {{item.name}}
                         </a>
                     </h5>
-                    <span class="price day_recommends_price">
-                        <hr style="margin:10px 0 !important; ">
-                        {% if item.price_old %}
+
+                    <span class="price">
+                        <hr/ style="margin:15px 0 !important; ">
+                       {% if item.price_old %}
                         <span class="new"> 
                             <del>{{item.price_old}} so'm</del> - <b>{{item.price_new}} so'm</b>
                         </span>
