@@ -2513,7 +2513,7 @@ only screen and (max-width:767px) {
 
 @media only screen and (min-width:992px) and (max-width:1199px) {
     .grid-4-view .product .content .title a {
-        font-size: 14px
+        font-size: 16px
     }
 }
 
@@ -2650,6 +2650,12 @@ only screen and (max-width:767px) {
     display: block;
     overflow: hidden
 }
+@media screen and (max-width: 426px) {
+    
+    .product .thumb .image {
+        height: 100px !important;
+    }
+}
 
 .product .thumb .image img {
     z-index: 1;
@@ -2702,6 +2708,11 @@ only screen and (max-width:767px) {
     margin: 10px 0 15px;
     font-family: Poppins, sans-serif
 }
+@media screen and (max-width: 426px) {
+    .product .content .title{
+        font-size: 13px;
+    }
+}
 
 .product .content .title a {
     text-decoration: none;
@@ -2712,18 +2723,18 @@ only screen and (max-width:767px) {
 
 @media only screen and (max-width:575px) {
     .product .content .title a {
-        font-size: 14px
+        font-size: 15px
     }
 }
 
 @media only screen and (max-width:479px) {
     .product .content .title a {
-        font-size: 16px
+        font-size: 10px
     }
 }
 
 .product .content .price {
-    font-size: 18px;
+    font-size: 13px;
     font-family: Poppins, sans-serif;
     line-height: 1;
     font-weight: 500;

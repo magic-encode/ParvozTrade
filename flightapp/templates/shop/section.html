@@ -16,6 +16,14 @@
             width: 150px;
         }
     }
+    @media screen and (max-width:328px){
+        .products__in__shop__page{
+            width: 100px;
+        }
+        .best_seller_product_img .img{
+            height: 50px;
+        }
+    }
 </style>
 <div class="breadcrumb-area">
     <div class="container">
@@ -57,7 +65,7 @@
                                         {% for alls in all_products %}
                                            
                                             <!-- Single Prodect -->
-                                            <div class="product products__in__shop__page" >
+                                            <div class="product products__in__shop__page " >
                                                 <span class="badges">
                                                     {% if alls.status %}
                                                     <span class="sale">{{alls.status}}</span>
@@ -66,7 +74,7 @@
                                                         <span class="sale">-{{alls.discount}}%</span>
                                                     {% endif %}
                                                 </span>
-                                                <div class="thumb">
+                                                <div class="thumb best_seller_product_img">
                                                     <a href="{% url 'shopdetail' alls.id %}" class="image">
                                                         <img src="{{alls.image.url}}" alt="Product" />
                                                         <img class="hover-image" src="{{alls.image.url}}" alt="Product" />

@@ -2,13 +2,17 @@
 
 <!-- Eng kop sotilganlar -->
 <style>
+    .best_seller_product_img .image{
+        height: 200px;
+        /* margin: 20px 0; */
+    }
     .best_seller_product_img a img{
         width: 100%;
     }
     .best_seller_pruduct_container{
         display: flex;
         flex-wrap:wrap;
-        gap: 2rem;
+        gap: 1rem;
         justify-content: center;
     }
     .best_seller_product{
@@ -19,13 +23,21 @@
             width: 150px;
         }
     }
+    @media screen and (max-width:320px){
+        .best_seller_product{
+            width: 100px;
+        }
+        .price span b , .price span del{
+            font-size: 12px;
+        }
+    }
 </style>
 <div class="tab-pane fade" id="toprated">
     <div class="row">
         <div class="product_container best_seller_pruduct_container">
             {% for x in best_seller %}
             <!-- Single Prodect -->
-            <div class="product best_seller_product" style="margin-left: 15px;!important">
+            <div class="product best_seller_product">
                 <span class="badges">
                     {% if x.status %}
                         <span class="sale">{{x.status}}</span>
@@ -44,6 +56,7 @@
                     <h5 class="title"><a href="{% url 'shopdetail' x.id %}">{{x.name}}
                         </a>
                     </h5>
+                    <hr  style="margin: 10px 0; width:90%;">
                     <span class="price">
                         {% if x.price_old %}
                         <span class="new"> 
