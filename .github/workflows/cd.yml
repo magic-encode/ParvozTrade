@@ -59,5 +59,3 @@ jobs:
           cp -r /root/ParvozTrade/static /var/www/static/
           cp -r /root/ParvozTrade/media /var/www/media/
           sudo systemctl restart nginx
-      
-      
