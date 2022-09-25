@@ -101,7 +101,7 @@
     }
     @media only screen and (max-width:479px) {
         .product .content .title a {
-            font-size: 10px !important;
+            font-size: 14px !important;
         }
     }
     @media screen and (max-width:1440px) {
@@ -122,6 +122,10 @@
         .day_recommends_content .title{
             height:30px;
         }
+    .product .thumb .image {
+        height: 80px !important;
+    }
+
     }
 </style>
 <div class="breadcrumb-area">
@@ -160,7 +164,7 @@
                         <div class="col ">
                             <div class="tab-content " >
                                 <div class="tab-pane fade show active product__cart_container_shop" id="shop-grid">
-                                    <div class="row mb-n-30px product__cart_container_shop" style="justify-content: center;">
+                                    <div class="row mb-n-30px product__cart_container_shop" style="justify-content: center; padding:1px;">
                                         {% for alls in all_products %}
                                         <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px day_recommends_cart" style="justify-content: center;">
                                             <!-- Single Prodect -->
@@ -179,7 +183,6 @@
                                                         <img class="hover-image" src="{{alls.image.url}}" alt="Product" />
                                                     </a>
                                                 </div>
-                                                <hr style="margin:5px 0 !important; ">
                                                 <div class="content day_recommends_content" >
                                                     
                                                     <h5 class="title">
@@ -187,6 +190,7 @@
                                                             {{alls.name}}
                                                         </a>
                                                     </h5>
+                                                    <hr style="margin:5px 0 !important; height:1px; backgroun-color:black; width:90%; ">
                                                     <span class="price day_recommends_price">
                                                         {% if alls.price_old %}
                                                         <span class="new"><del>{{alls.price_old}} so'm</del> - <b>{{alls.price_new}} so'm</b></span>

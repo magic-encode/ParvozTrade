@@ -787,7 +787,7 @@ header .main-menu ul li a {
     font-size: 14px;
     font-weight: 400;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: #fff;
     display: block;
     position: relative;
@@ -2653,7 +2653,7 @@ only screen and (max-width:767px) {
 @media screen and (max-width: 426px) {
     
     .product .thumb .image {
-        height: 100px !important;
+        height: 130px !important;
     }
 }
 
