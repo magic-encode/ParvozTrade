@@ -2656,6 +2656,11 @@ only screen and (max-width:767px) {
         height: 180px !important;
     }
 }
+@media screen and (max-width: 376px) {
+    .product .thumb .image {
+        height: 160px !important;
+    }
+}
 @media screen and (max-width: 320px) {
     
     .product .thumb .image {
