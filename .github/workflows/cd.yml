@@ -2,27 +2,11 @@ name: ParvozTrade CD
 
 on: 
   push:
-    branches: [master]
+    branches: [main]
 
 
 jobs:
   test:
-    custom_range, dbctx["all_products"] = paginateProjects(
-        request,  dbctx["all_products"], 9)
-
-    context = {**dbctx, **myctx,  'custom_range': custom_range, 'count': count}
-    return render(request, 'shop/shop.html', context)
-
-
-def searchView(request) -> list:
-    products, search_query = searchHelper(request)
-    context: dict = categWishlistHelper(request)
-
-    if len(products) > 0:
-        context['products'] = products
-
-    context = {'products': products, 'search_query': search_query}
-    return render(request, 'shop/search.html', cont
     runs-on: ubuntu-latest
     env:
       DJANGO_SETTINGS_MODULEL: flight.settings
@@ -39,22 +23,6 @@ def searchView(request) -> list:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
           TELEBOT_URL: $
-    custom_range, dbctx["all_products"] = paginateProjects(
-        request,  dbctx["all_products"], 9)
-
-    context = {**dbctx, **myctx,  'custom_range': custom_range, 'count': count}
-    return render(request, 'shop/shop.html', context)
-
-
-def searchView(request) -> list:
-    products, search_query = searchHelper(request)
-    context: dict = categWishlistHelper(request)
-
-    if len(products) > 0:
-        context['products'] = products
-
-    context = {'products': products, 'search_query': search_query}
-    return render(request, 'shop/search.html', cont{{ secrets.TELEBOT_URL }}
           TELEBOT_TOKEN: ${{ secrets.TELEBOT_TOKEN }}
           TELEBOT_CHAT_ID_ZAKAS: ${{ secrets.TELEBOT_CHAT_ID_ZAKAS }}
           TELEBOT_CHAT_ID_SAVOL: ${{ secrets.TELEBOT_CHAT_ID_SAVOL }}
@@ -82,7 +50,7 @@ def searchView(request) -> list:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
+        password: ${{ secrets.PASSWORD }}
         script: |
           cd ParvozTrade
           git pull origin main
@@ -90,6 +58,6 @@ def searchView(request) -> list:
           python3 manage.py collectstatic
           cp -r /root/ParvozTrade/static /var/www/static/
           cp -r /root/ParvozTrade/media /var/www/media/
-          systemctl restart gunicorn.service
+          sudo systemctl restart nginx
       
       
