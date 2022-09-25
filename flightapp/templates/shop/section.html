@@ -96,6 +96,8 @@
         .day_recommends_price span{
             font-size: 10px !important;
         }
+
+        
     }
     @media only screen and (max-width:479px) {
         .product .content .title a {
@@ -111,6 +113,15 @@
         }
         .best_seller_product_img a img{
             width: 100%;
+        }
+    .day_recommends_content .title{
+        text-align: center !important;
+        height:30px;
+    }
+    @media only screen and (max-width: 321px){
+        .day_recommends_content .title{
+            height:30px;
+        }
     }
 </style>
 <div class="breadcrumb-area">
@@ -184,7 +195,14 @@
                                                         {% endif %}
                                                     </span>
                                                 </div>
-                                                <div class="actions icon_day_recomendeds">
+                                                <style>
+                                                    .icon_day_recomendeds a{
+                                                        width: 30px !important;
+                                                        height: 30px !important;
+                                                        font-size: 10px !important;
+                                                    }
+                                                </style>
+                                                <div class="actions icon_day_recomendeds" >
                                                     <a href="{% url 'add-cart' alls.id%}" class="cart-btn" type="submit">
                                                         <button 
                                                             title="Add To Cart" 
@@ -194,9 +212,9 @@
                                                             <i class="pe-7s-shopbag"></i>
                                                         </button>
                                                     </a>
-                                                    <a style="margin:0 20px;" href="{% url 'add-wishlist' alls.id%}" class="cart-btn shop_product_icon" type="submit">
+                                                    <a style="margin:0;" href="{% url 'add-wishlist' alls.id%}" class="cart-btn shop_product_icon" type="submit">
                                                         <button 
-                                                            class="action wishlist" 
+                                                            class="action wishlist wishlist_day_recomendeds" 
                                                             title="Wishlist" 
                                                             data-bs-toggle="modal" 
                                                             data-bs-target="#exampleModal-Wishlist{{alls.id}}">

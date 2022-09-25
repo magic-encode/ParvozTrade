@@ -5,7 +5,7 @@
     .best_seller_product_img .image{
         height: 200px;
 
-        /* margin: 20px 0; */
+        {% comment %} margin:40px; {% endcomment %}
     }
     .best_seller_product_img a img{
         width: 100%;
@@ -34,6 +34,15 @@
     }
     .best_seller_product{
         margin: 1%;
+    }
+    .product .content .title{
+        text-align: center !important;
+        height:30px;
+    }
+    @media only screen and (max-width: 321px){
+        .product .content .title{
+            height:30px;
+        }
     }
 </style>
 <div class="tab-pane fade" id="toprated">
@@ -73,19 +82,35 @@
                         {% endif %}   
                     </span>
                 </div>
-                <div class="actions">
+                <div class="actions icon_day_recomendeds">
                     <a href="{% url 'add-cart' x.id%}" class="cart-btn" type="submit">
-                        <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart{{x.id}}"><i
-                            class="pe-7s-shopbag"></i>
+                        <button 
+                        title="Add To Cart" 
+                        class="action add-to-cart" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal-Cart{{x.id}}">
+                        <i class="pe-7s-shopbag"></i>
                         </button>
                     </a>
                     <a href="{% url 'add-wishlist' x.id%}" class="cart-btn" type="submit">
-                        <button class="action wishlist" style="margin: 0 1rem;" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{x.id}}"><i
-                            class="pe-7s-like"></i>
+                        <button 
+                        class="action wishlist wishlist_day_recomendeds" 
+                        style="margin: 0 1rem;" 
+                        title="Wishlist" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal-Wishlist{{x.id}}">
+                        <i class="pe-7s-like"></i>
                         </button>
                     </a>
                     
-                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{x.id}}"><i class="pe-7s-look"></i></button>
+                <button 
+                    class="action quickview" 
+                    data-link-action="quickview" 
+                    title="Quick view" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal{{x.id}}">
+                    <i class="pe-7s-look"></i>
+                </button>
                     
                 </div>
             </div>

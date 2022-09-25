@@ -2700,7 +2700,8 @@ only screen and (max-width:767px) {
 .product .content .title {
     font-size: 16px;
     margin: 10px 0 15px;
-    font-family: Poppins, sans-serif
+    font-family: Poppins, sans-serif;
+    text-align: center;
 }
 
 .product .content .title a {
@@ -5635,7 +5636,9 @@ only screen and (max-width:767px) {
     line-height: 74px;
     margin-bottom: 45px
 }
-
+.fashion-area .title h2 {
+    font-size: large;
+}
 .fashion-area .title span {
     font-size: 48px;
     font-weight: 300;
@@ -6656,7 +6659,7 @@ only screen and (max-width:767px) {
 
 @media only screen and (max-width:767px) {
     .about-contant .title {
-        font-size: 32px;
+        font-size: 25px;
         margin-bottom: 30px
     }
 }
@@ -9135,9 +9138,12 @@ only screen and (max-width:767px) {
     color: #000;
     margin: 0 0 30px;
     font-size: 24px;
-    line-height: 16px
 }
-
+@media screen and (max-width:320px) {
+    .billing-info-wrap h3{
+        font-size:20px;
+    }
+}
 .billing-info-wrap .billing-info input {
     background: transparent none repeat scroll 0 0;
     border: 1px solid #ebebeb;

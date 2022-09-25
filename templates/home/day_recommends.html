@@ -107,7 +107,9 @@
             }
         }
         @media screen and (max-width:1440px) {
-            
+            {% comment %} .render__product__shop{
+                width: 300px !important;
+            } {% endcomment %}
         }
         .best_seller_product_img .image{
                 height: 200px;
@@ -184,7 +186,14 @@
                         </button>
                     </a>
                     
-                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{item.id}}"><i class="pe-7s-look"></i></button>
+                <button 
+                    class="action quickview" 
+                    data-link-action="quickview" 
+                    title="Quick view" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal{{item.id}}">
+                    <i class="pe-7s-look"></i>
+                </button>
                     
                 </div>
             </div>

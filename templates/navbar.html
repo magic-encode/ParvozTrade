@@ -285,7 +285,11 @@
  <!-- modal end -->
 
     <!-- header navigation area start -->
-
+  <style>
+    .header-nav div ul li a {
+        color:  #000000 !important;
+    }
+  </style>
     <div class="header-nav-area d-none d-lg-block sticky-nav">
         <div class="container">
             <div class="header-nav">
@@ -303,7 +307,7 @@
                             <a href="{% url 'blog' %}">Blog</a>                          
                         </li>
                         <li>
-                            <a href="{% url 'contact' %}">Biz bilan bog'laning</a>
+                            <a href="{% url 'contact' %}">Bog'laning</a>
                         </li>
                     </ul>
                 </div>
@@ -354,14 +358,15 @@
     <div class="inner customScroll">
         <div class="offcanvas-menu mb-4 hamburder__navigation__bar">
             <ul>
-                <li class="dropdown"><a href="{% url 'home' %}">Bosh sahifa</a>
+                <li class="dropdown">
+                    <a href="{% url 'home' %}">Bosh sahifa</a>
                 </li>
                 <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
                 <li class="dropdown position-static"><a href="{% url 'shop' %}">Mahsulotlar</a>
                 </li>
                 <li class="dropdown "><a href="{% url 'blog' %}">Blog</a>
                 </li>
-                <li><a href="{% url 'contact' %}">Biz bilan bog'laning</a></li>
+                <li><a href="{% url 'contact' %}">Bog'laning</a></li>
                 <li>
                     <a href="{% url 'login' %}">Kirish</a>
                 </li>

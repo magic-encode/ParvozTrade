@@ -19,7 +19,7 @@
                     <ul class="product-tab-nav nav justify-content-start align-items-center">
                         <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#newarrivals">Kun takliflari</button>
                         </li>
-                        <li class="nav-item"><button class="nav-link " data-bs-toggle="tab" data-bs-target="#toprated">Eng kop sotiladigan</button>
+                        <li class="nav-item"><button class="nav-link " data-bs-toggle="tab" data-bs-target="#toprated" style="width:100%;">Eng kop sotiladigan</button>
                         </li>
                         
                     </ul>
@@ -45,14 +45,22 @@
     </div>
 </div>
 <!-- Product Area End -->
-
 <!-- Fashion Area Start -->
 <div class="fashion-area" data-bg-image="{% static 'images/midl.jpg' %}">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 text-center">
-                <h2 class="title" style="color: black;"> <span style="color: red; font-weight: bolder; font-size: 42px;">Sizning Biznesingiz</span> Smart qurilmalar bilan </h2>
-                <a href="{% url 'shop' %}" style="padding-top: 15px;" class="btn btn-primary text-capitalize m-auto qurilma_xarid_qiling_btn"> qurilmalarni xarid qiling</a>
+                <h2 class="title home_page__fashion"> 
+                    <span class="text-warning" style="font-weight: bolder;">
+                        Sizning Biznesingiz
+                    </span>
+                         Smart qurilmalar bilan 
+                </h2>
+                <a href="{% url 'shop' %}" 
+                style="padding-top: 15px; font-size: 16px;" 
+                class="btn btn-warning text-capitalize text-white m-auto qurilma_xarid_qiling_btn"> 
+                xarid qiling
+            </a>
             </div>
         </div>
     </div>

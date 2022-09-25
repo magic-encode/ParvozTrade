@@ -204,14 +204,24 @@
             </div>
         </div>
         <!-- Section Title & Tab End -->
+        {% comment %} <style>
+            .mahsulotlar_Img .image{
+                height: 200px;
+                margin:40px;
+            }
+            
+        </style> {% endcomment %}
         <div class="row">
             <div class="col">
                 <div class="new-product-slider swiper-container slider-nav-style-1">
 
-                    <div class="swiper-wrapper" >
+                    <div class="swiper-wrapper oxshash_mahsulotlar" >
                         {% for alls in all_products %}
                         <div class="swiper-slide">
-
+                        {% comment %} <div 
+                        class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px day_recommends_cart" 
+                        style="justify-content: center;"
+                        > {% endcomment %}
                             <!-- Single Prodect -->
                             <div class="product" >
                                 <span class="badges">
@@ -222,7 +232,7 @@
                                         <span class="sale">-{{alls.discount}}%</span>
                                     {% endif %}
                                 </span>
-                                <div class="thumb" >
+                                <div class="thumb mahsulotlar_Img" >
                                     <a href="{% url 'shopdetail' alls.id %}" class="image">
                                         <img src="{{alls.image.url}}" alt="Product" />
                                         <img class="hover-image" src="{{alls.image.url}}" alt="Product" />
@@ -234,6 +244,7 @@
                                         <a href="{% url 'shopdetail' alls.id %}">{{alls.name}}
                                         </a>
                                     </h5>
+                                    <hr style="margin:5px 0 !important; ">
                                     <span class="price">
                                         {% if alls.price_old %}
                                         <span class="new"><del>{{alls.price_old}}</del> - <b>${{alls.price_new}}</b></span>
@@ -247,18 +258,16 @@
                                         <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart{{alls.id}}"><i
                                             class="pe-7s-shopbag"></i>
                                         </button>
-                                        
                                     </a>
                                     <a href="{% url 'add-wishlist' alls.id%}" style="margin:0 10px;" class="cart-btn" type="submit">
                                         <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist{{alls.id}}"><i
                                             class="pe-7s-like"></i>
                                         </button>
                                     </a>
-                                    
                                     {% comment %} <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal{{alls.id}}"><i class="pe-7s-look"></i></button> {% endcomment %}
-                                    
                                 </div>
                             </div>
+                        {% comment %} </div> {% endcomment %}
                             <!-- Modal Cart -->
                             <div class="modal customize-class fade" id="exampleModal-Cart{{alls.id}}" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
