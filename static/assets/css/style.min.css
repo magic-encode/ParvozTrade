@@ -2653,7 +2653,7 @@ only screen and (max-width:767px) {
 @media screen and (max-width: 426px) {
     
     .product .thumb .image {
-        height: 130px !important;
+        height: 180px !important;
     }
 }
 
