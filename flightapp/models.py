@@ -106,8 +106,8 @@ class WishModel(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE, related_name="wishing", null=True, blank=True)
     products = models.ManyToManyField(Products,blank=True, related_name='wishlist')    
 
+from embed_video.fields import EmbedVideoField
 
 class ReklamaView(models.Model):
-    video_url = models.URLField(blank=True, null=True)
-    video_file = models.FileField(blank=True, null=True)
+    video_url = EmbedVideoField()
     

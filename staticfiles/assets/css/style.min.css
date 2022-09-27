@@ -79,7 +79,6 @@ html {
 
 .row {
     --bs-gutter-x: 30px
-    padding:1px;
 }
 
 body {
@@ -2514,7 +2513,7 @@ only screen and (max-width:767px) {
 
 @media only screen and (min-width:992px) and (max-width:1199px) {
     .grid-4-view .product .content .title a {
-        font-size: 14px
+        font-size: 16px
     }
 }
 
@@ -2651,6 +2650,29 @@ only screen and (max-width:767px) {
     display: block;
     overflow: hidden
 }
+@media screen and (max-width: 426px) {
+    
+    .product .thumb .image {
+        height: 180px !important;
+    }
+}
+@media screen and (max-width: 376px) {
+    .product .thumb .image {
+        height: 160px !important;
+    }
+}
+@media screen and (max-width: 320px) {
+    
+    .product .thumb .image {
+        height: 160px !important;
+    }
+}
+@media screen and (max-width: 280px) {
+    
+    .product .thumb .image {
+        height: 130px !important;
+    }
+}
 
 .product .thumb .image img {
     z-index: 1;
@@ -2702,7 +2724,12 @@ only screen and (max-width:767px) {
     font-size: 16px;
     margin: 10px 0 15px;
     font-family: Poppins, sans-serif;
-    text-align: center;
+    text-align:center;
+}
+@media screen and (max-width: 426px) {
+    .product .content .title{
+        font-size: 13px;
+    }
 }
 
 .product .content .title a {
@@ -2714,18 +2741,18 @@ only screen and (max-width:767px) {
 
 @media only screen and (max-width:575px) {
     .product .content .title a {
-        font-size: 15px !important;
+        font-size: 15px
     }
 }
 
 @media only screen and (max-width:479px) {
     .product .content .title a {
-        font-size: 10px !important;
+        font-size: 10px
     }
 }
 
 .product .content .price {
-    font-size: 12px;
+    font-size: 13px;
     font-family: Poppins, sans-serif;
     line-height: 1;
     font-weight: 500;
@@ -5635,7 +5662,7 @@ only screen and (max-width:767px) {
     color: #fff;
     font-weight: 700;
     line-height: 74px;
-    margin-bottom: 45px
+    margin-bottom: 45px;
 }
 .fashion-area .title h2 {
     font-size: large;
@@ -5643,9 +5670,8 @@ only screen and (max-width:767px) {
 .fashion-area .title span {
     font-size: 48px;
     font-weight: 300;
-    display: block
+    display: block;
 }
-
 @media only screen and (min-width:768px) and (max-width:991px),
 only screen and (max-width:767px) {
     .fashion-area .title span {
@@ -5679,7 +5705,7 @@ only screen and (max-width:767px) {
 
 @media only screen and (max-width:479px) {
     .fashion-area .title {
-        font-size: 28px
+        font-size: 18px
     }
 }
 
@@ -6681,7 +6707,7 @@ only screen and (max-width:767px) {
 
 @media only screen and (max-width:767px) {
     .about-contant .title span {
-        font-size: 28px;
+        font-size: 23px;
         margin-bottom: 10px
     }
 }

@@ -18,6 +18,7 @@ from .models import Comments
 
 from .models import Categories
 from .models import OrderHistory
+from .models import ReklamaView
 
 from flightapp.forms import GetInfoForm
 from flightapp.forms import CommentsForm
@@ -45,8 +46,8 @@ def homeView(request):
     
     
     posts = Post.objects.filter(tags='home')
-    
-
+    reklamalar = ReklamaView.objects.all()
+    print(reklamalar)
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
     qyctx: dict = wishViewHelper(request)
@@ -59,7 +60,7 @@ def homeView(request):
     products = Products.objects.all()
    
 
-    context: dict = {**dbctx, **myctx, **qyctx, 'products': products,  'mywish': mywish, 'posts': posts}
+    context: dict = {**dbctx, **myctx, **qyctx, 'products': products,  'mywish': mywish, 'posts': posts, 'reklamalar':reklamalar}
 
     return render(request, 'home/index.html', context)
 

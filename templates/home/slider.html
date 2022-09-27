@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load embed_video_tags %}
 <!-- Hero/Intro Slider Start -->
 <style>
     .shop_all_smart_devices_button{
@@ -73,18 +73,20 @@
 <div class="section ">
   
   <!-- Modal -->
+        
         <div class="modal-body reklam__modal ">
             {% comment %} download video {% endcomment %}
-            <video controls="true" outoplay>
-                <source src=".././static/reklama.mp4" type="video/mp4" />
-            </video>
-            {% comment %} from youtube {% endcomment %}
-            {% comment %} <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                
-            </iframe> {% endcomment %}
+        {% for rek in reklamalar %}
+            
+            
+            {% video rek.video_url '426x240' %}
+           
             <sup class="btn " style="margin: 20px -100px;" onClick="closeReklamModal()"><span class="btn-warning" style="padding:3%;">X</span> </sup>
+            
+        {% endfor %}
+            
         </div>
-      
+        
 
     
     <div class="hero-slider swiper-container slider-nav-style-1 slider-dot-style-1">
