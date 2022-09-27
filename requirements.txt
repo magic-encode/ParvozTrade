@@ -1,11 +1,11 @@
 Django
+django-embed-video
 django-filter
 django-heroku
-django-jazzmin
 environs
 gunicorn
 Pillow
+psycopg2
 psycopg2-binary
 requests
 whitenoise
-
