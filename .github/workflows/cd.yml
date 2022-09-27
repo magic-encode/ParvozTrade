@@ -54,6 +54,7 @@ jobs:
         script: |
           cd ParvozTrade
           git pull origin main
+          python3 manage.py makemigrations
           python3 manage.py migrate
           python3 manage.py collectstatic
           cp -r /root/ParvozTrade/static /var/www/static/
