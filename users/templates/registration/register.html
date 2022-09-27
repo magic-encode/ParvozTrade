@@ -21,16 +21,28 @@
         padding: 0rem !important;
         
       }
-
+      @media screen and (max-width:988px) {
+        .sign__up__img{
+          display:none;
+        } 
+      }
   </style>
-    <div class="main-wrapper">
+
+  <style>
+    .sign__up__cart__body input{
+      width: 95%;
+      border-radius: 5px;
+    }
+  </style>
+
+    <div class="main-wrapper ">
         {% include 'navbar.html' %}
                 <section class="vh-100" style="margin: 100px 0 !important;">
                   <div class="container h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                       <div class="col-lg-12 col-xl-11" >
                         <div class="card text-black" >
-                          <div class="card-body register__cart__body" >
+                          <div class="card-body register__cart__body" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; border:none;">
                             
                             {% if messages %}
                                 {% for message in messages %}
@@ -50,7 +62,7 @@
                                   document.querySelector('.alert_error_message').style = 'display:none;'
                                 }
                               </script>
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-center sign__up__form">
                               
                               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                 
@@ -61,7 +73,7 @@
                                   
                                   <div class="d-flex flex-row align-items-center mb-4">
                                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0 register__input">
+                                    <div class="form-outline flex-fill mb-0 register__input sign__up__cart__body">
                                       {{ forms.fullname }}
                                      <p style="font-size: 18px;!important"> Ism familiya </p>
                                     </div>
@@ -70,7 +82,7 @@
 
                                   <div class="d-flex flex-row align-items-center mb-4">
                                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0 register__input">
+                                    <div class="form-outline flex-fill mb-0 register__input sign__up__cart__body">
                                       {{ forms.username }}
                                      <p style="font-size: 18px;!important"> Username </p>
                                     </div>
@@ -78,7 +90,7 @@
                 
                                   <div class="d-flex flex-row align-items-center mb-4">
                                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
+                                    <div class="form-outline flex-fill mb-0 sign__up__cart__body">
                                       {{ forms.email }}
                                       Electron Pochta
                                     </div>
@@ -86,7 +98,7 @@
                 
                                   <div class="d-flex flex-row align-items-center mb-4">
                                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
+                                    <div class="form-outline flex-fill mb-0 sign__up__cart__body">
                                       {{ forms.password1 }}
                                       Parol  kiriting (`katta, kichik harflar va sonlardan foydalaning.. kamida 8 honadan iborat bo'lsin..`)
                                     </div>
@@ -94,14 +106,14 @@
                 
                                   <div class="d-flex flex-row align-items-center mb-4">
                                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
+                                    <div class="form-outline flex-fill mb-0 sign__up__cart__body">
                                       {{ forms.password2 }}
                                       Parol qayta kiriting
                                     </div>
                                   </div>
                 
-                                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                    <button type="submit" class="btn btn-success" style="color: cyan;">Register</button>
+                                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 sign__up__">
+                                    <button type="submit" class="btn btn-success" style="color: black;">Register</button>
                                   </div>
                                   
                                   
@@ -111,7 +123,7 @@
                               </div>
                             
                               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                <img style="display:none;" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                <img class="sign__up__img" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
                                   class="img-fluid" alt="Sample image">
                 
                               </div>
@@ -124,9 +136,10 @@
                 </section>
 
                 
-        {% include 'footer.html' %}
+
         
     </div>
+
 
     {% include 'jscript.html' %}
     

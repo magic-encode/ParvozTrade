@@ -91,6 +91,23 @@
         .position-relative ul{
             color: black;
         }
+
+        .register__input{
+            font-size: 2rem;
+          }
+          .alert_error_message{
+            color: red;
+            cursor: pointer;
+          }
+          .form-outline > input{
+            height: 40px;
+            border: 1px solid black;
+            font-size: 14px;
+          }
+            .register__cart__body{
+              padding: 0rem !important;
+              
+            }
     </style>
     <!-- Header top area start -->
     <div class="header-top">
@@ -359,16 +376,26 @@
         <div class="offcanvas-menu mb-4 hamburder__navigation__bar">
             <ul>
                 <li class="dropdown">
-                    <a href="{% url 'home' %}" >Bosh sahifa</a>
+                    <a href="{% url 'home' %}" style="text-decoration: none;">Bosh sahifa</a>
                 </li>
-                <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
-                <li class="dropdown position-static"><a href="{% url 'shop' %}">Mahsulotlar</a>
+                <li><a href="{% url 'about' %}" style="text-decoration: none;">Biz haqimizda</a></li>
+                <li class="dropdown position-static">
+                    <a href="{% url 'shop' %}" style="text-decoration: none;">
+                        Mahsulotlar
+                    </a>
                 </li>
-                <li class="dropdown "><a href="{% url 'blog' %}">Blog</a>
+                <li class="dropdown ">
+                    <a href="{% url 'blog' %}" style="text-decoration: none;">
+                        Blog
+                    </a>
                 </li>
-                <li><a href="{% url 'contact' %}">Bog'laning</a></li>
                 <li>
-                    <a href="{% url 'login' %}">Kirish</a>
+                    <a href="{% url 'contact' %}" style="text-decoration: none;">
+                        Bog'laning
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'login' %}" style="text-decoration: none;">Kirish</a>
                 </li>
             </ul>
         </div>
@@ -389,6 +416,7 @@
         </div>
     </div>
 </div>
+
 <script>
 
     function openMenu(){

@@ -34,8 +34,59 @@
             display: none;
         }
     }
+    .reklam__modal{
+        width: 100%;
+        height: 100%;
+        position: fixed !important;
+        top: 15% !important;
+        left: 17% !important;
+        z-index: 999 !important;
+        display: none;
+    }
+    .reklam__modal video , iframe {
+        width: 70%;
+        height: 70%;
+    }
+    @media screen and (max-width: 425px) {
+        .reklam__modal video , iframe {
+            width: 80%;
+            height: 40%;
+        }
+        .reklam__modal{
+            top: 20% !important;
+            left: 12% !important;
+        }
+    } 
 </style>
+<script>
+    const myTimeout = setTimeout(myGreeting, 5000);
+    
+    function myGreeting() {
+      document.querySelector(".reklam__modal").style.display  = "flex";
+    }
+
+    function closeReklamModal() {
+        document.querySelector(".reklam__modal").style.display  = "none";
+    }
+</script>
+    
 <div class="section ">
+  
+  <!-- Modal -->
+        <div class="modal-body reklam__modal ">
+            {% comment %} download video {% endcomment %}
+            <video controls="true" outoplay>
+                <source src=".././static/reklama.mp4" type="video/mp4" />
+            </video>
+            {% comment %} from youtube {% endcomment %}
+            {% comment %} <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                
+            </iframe> {% endcomment %}
+            <sup class="btn " style="margin: 20px -100px;" onClick="closeReklamModal()"><span class="btn-warning" style="padding:3%;">X</span> </sup>
+        </div>
+      
+
+    
     <div class="hero-slider swiper-container slider-nav-style-1 slider-dot-style-1">
         <!-- Hero slider Active -->
         <div class="swiper-wrapper">
