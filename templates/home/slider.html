@@ -76,14 +76,18 @@
         
         <div class="modal-body reklam__modal ">
             {% comment %} download video {% endcomment %}
-        {% for rek in reklamalar %}
+        {% comment %} {% for rek in reklamalar %}
             
-            
-            {% video rek.video_url '426x240' %}
+            <video controls="true" outoplay>
+                {% video rek.video_url '426x240' %}
            
             <sup class="btn " style="margin: 20px -100px;" onClick="closeReklamModal()"><span class="btn-warning" style="padding:3%;">X</span> </sup>
-            
-        {% endfor %}
+             {% endcomment %}
+            {% comment %} from youtube {% endcomment %}
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XvKAwF80zF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <sup class="btn " style="margin: 20px -100px;" onClick="closeReklamModal()"><span class="btn-warning" style="padding:3%;">X</span> </sup>
+        
+        {% comment %} {% endfor %} {% endcomment %}
             
         </div>
         

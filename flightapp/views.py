@@ -47,7 +47,7 @@ def homeView(request):
     
     posts = Post.objects.filter(tags='home')
     reklamalar = ReklamaView.objects.all()
-    print(reklamalar)
+   
     dbctx: dict = {}
     myctx: dict = categWishlistHelper(request)
     qyctx: dict = wishViewHelper(request)

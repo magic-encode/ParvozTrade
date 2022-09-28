@@ -11,6 +11,8 @@ from .models import OrderHistory
 
 from .models import Categories
 
+
+
 admin.site.register(Cart)
 admin.site.register(Products)
 admin.site.register(Comments)
