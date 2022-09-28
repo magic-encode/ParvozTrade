@@ -68,9 +68,10 @@ def homeView(request):
 @require_GET
 def robots_txt(request):
     lines = [
-        "User-Agent: *",
-        "Disallow: /nogooglebot/",
+        "User-Agent: Googlebot",
+        "Disallow: /not-for-google",
         "Allow: /",
+        "Sitemap: https://www.parvoz-trade.uz/sitemap.xml"
         "\n",
         "User-agent: Yandex",
         "Allow: /",
