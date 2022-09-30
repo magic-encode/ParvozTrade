@@ -57,9 +57,20 @@
             left: 12% !important;
         }
     } 
+    .reklam__modal span{
+        padding:3%;
+        width: 40px;
+        margin-top: 40px;
+        margin-left: -10px;
+        position: absolute;
+        height: 40px;
+        border-radius: 5px;
+        font-size: large;
+        font-weight: bold;
+    }
 </style>
 <script>
-    const myTimeout = setTimeout(myGreeting, 5000);
+    const myTimeout = setTimeout(myGreeting, 1000);
     
     function myGreeting() {
       document.querySelector(".reklam__modal").style.display  = "flex";
@@ -77,7 +88,21 @@
         <div class="modal-body reklam__modal ">
             
             <iframe width="560" height="315" src="https://www.youtube.com/embed/XvKAwF80zF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <sup class="btn " style="margin: 20px -100px;" onClick="closeReklamModal()"><span class="btn-warning" style="padding:3%;">X</span> </sup>
+            <sup class="btn " style="margin: -80px -100px; " onClick="closeReklamModal()">
+                <span class="btn-warning" 
+                style="
+                padding: 3%;
+                width: 40px;
+                margin-top: 40px;
+                margin-left: -10px;
+                position: absolute;
+                height: 40px;
+                border-radius: 5px;
+                font-size: large;
+                font-weight: bold;">
+                X
+                </span>
+                </sup>
                     
         </div>
         
