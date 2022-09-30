@@ -117,13 +117,13 @@
                     
                     <div class="welcome-text">
                     
-                        <p>Butun O'zbekiston bo'ylab to'liq bepul qaytarish va etkazib berish</p>
+                        <p>Butun O'zbekiston bo'ylab to'liq bepul etkazib berish</p>
                     
                     </div>
                     
                 </div>
                 <div class="col d-none d-lg-block ">
-                    <div class="top-nav">
+                    <div class="top-nav" style="padding-top: 4%;">
                         <ul>
                             <li><a href="{% url 'home' %}"><i class="fa fa-question"></i> Savollar </a></li>
                             <li><a href="tel:+998940593733"><i class="fa fa-phone"></i> +998940593733</a></li>
@@ -394,9 +394,11 @@
                         Bog'laning
                     </a>
                 </li>
-                <li>
-                    <a href="{% url 'login' %}" style="text-decoration: none;">Kirish</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> {{ user.username }}</a></li> </a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}"><i class="fa fa-arrow-right"></i> Kirish</a></li>
+                {% endif %}
             </ul>
         </div>
         <!-- OffCanvas Menu End -->

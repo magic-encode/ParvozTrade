@@ -3,7 +3,11 @@
 <!-- Hero/Intro Slider Start -->
 <style>
     .shop_all_smart_devices_button{
-        padding: 2.5% 0;
+        padding: 2%;
+        border: none;
+        border-radius: 5px;
+        font-size: medium;
+        font-weight: bold;
     }
     @media screen and (max-width:1152px) {
         .banner__slider__img img{
@@ -57,9 +61,20 @@
             left: 12% !important;
         }
     } 
+    .reklam__modal span{
+        padding:3%;
+        width: 40px;
+        margin-top: 40px;
+        margin-left: -10px;
+        position: absolute;
+        height: 40px;
+        border-radius: 5px;
+        font-size: large;
+        font-weight: bold;
+    }
 </style>
 <script>
-    const myTimeout = setTimeout(myGreeting, 5000);
+    const myTimeout = setTimeout(myGreeting, 1000);
     
     function myGreeting() {
       document.querySelector(".reklam__modal").style.display  = "flex";
@@ -77,7 +92,21 @@
         <div class="modal-body reklam__modal ">
             
             <iframe width="560" height="315" src="https://www.youtube.com/embed/XvKAwF80zF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <sup class="btn " style="margin: 20px -100px;" onClick="closeReklamModal()"><span class="btn-warning" style="padding:3%;">X</span> </sup>
+            <sup class="btn " style="margin: -80px -100px; " onClick="closeReklamModal()">
+                <span class="btn-warning" 
+                style="
+                padding: 3%;
+                width: 40px;
+                margin-top: 40px;
+                margin-left: -10px;
+                position: absolute;
+                height: 40px;
+                border-radius: 5px;
+                font-size: large;
+                font-weight: bold;">
+                X
+                </span>
+                </sup>
                     
         </div>
         
@@ -96,7 +125,7 @@
                                 <h2 class="title-1"> <br>
                                 Biznesinggiz rivoji uchun texnologiyalar<br>
                                 </h2>
-                                <a href="{% url 'shop' %}" class="btn btn-primary text-capitalize shop_all_smart_devices_button">Mahsulotlar</a>
+                                <a href="{% url 'shop' %}" class="btn-warning text-capitalize shop_all_smart_devices_button">Mahsulotlar</a>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
@@ -120,7 +149,7 @@
                                 <h2 class="title-1"> <br>
                                     Aqilli Uy Jihozlari &<br>
                                 Foydali texnikalar</h2>
-                                <a href="{% url 'shop' %}" class="btn btn-primary text-capitalize shop_all_smart_devices_button">Mahsulotlar</a>
+                                <a href="{% url 'shop' %}" class="btn-warning text-capitalize shop_all_smart_devices_button">Mahsulotlar</a>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
