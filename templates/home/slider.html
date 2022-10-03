@@ -74,9 +74,11 @@
     }
 </style>
 <script>
-   const myTimeout = setTimeout(playVid, 5000);
-
-   
+    const myTimeout = setTimeout(playVid, 5000);
+    const myTimeout = setTimeout(myGreeting, 1000);  
+    function myGreeting() {
+      document.querySelector(".reklam__modal").style.display  = "flex";
+    } 
    function playVid() { 
         var vid = document.getElementById("myVideo"); 
         vid.play(); 
@@ -113,19 +115,15 @@
   <!-- Modal -->
         
         <div class="modal-body reklam__modal ">
-            
-            <video id="myVideo" width="560" height="315" controls autoplay>
-                <source src="../../static/reklama.mp4" type="video/mp4">
-                <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
-            </video>
-            <!-- <iframe id="myVideo" width="560" height="315" src="https://www.youtube.com/embed/JtMuXmmDl9s" title="Задача из Собеседования на 160,000 Евро в Год" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <sup class="btn " style="margin: -80px -100px; " onClick="pauseVid()">
-                <span class="btn-warning closeRekalamaBtn" 
+                      
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XvKAwF80zF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <sup class="btn " style="margin: -80px -100px; " onClick="closeReklamModal()">
+                <span class="btn-warning" 
                 style="
                 padding: 3%;
                 width: 40px;
-                margin-top: 0;
-                margin-left: -20px;
+                margin-top: 40px;
+                margin-left: -10px;
                 position: absolute;
                 height: 40px;
                 border-radius: 5px;
