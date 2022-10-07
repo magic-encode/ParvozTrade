@@ -1,8 +1,6 @@
 {% load static %}
 
-
 <header>
-
     <style>
         .hamburder__nav__bar{
             width: 50%;
@@ -408,7 +406,8 @@
                     </a>
                 </li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">{{ user.username }}</a></li> </a></li>
+
+                    <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> {{ user.username }}</a></li> </a></li>
                     {% else %}
                     <li><a href="{% url 'login' %}"><i class="fa fa-arrow-right"></i> Kirish</a></li>
                 {% endif %}
