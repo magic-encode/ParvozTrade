@@ -82,7 +82,7 @@ MYSERVICE: dict = {
         }
     }
 }
-
+    
 
 WSGI_APPLICATION = 'flight.wsgi.application'
 

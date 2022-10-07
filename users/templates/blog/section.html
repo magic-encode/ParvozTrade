@@ -22,7 +22,7 @@
 <!-- Blog Area Start -->
 <div class="blog-grid pb-100px pt-100px main-blog-page single-blog-page">
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top:50px;">
             {% for post in blogs %}
             <div class="col-lg-6 col-md-6 col-xl-4 mb-50px">
                 <div class="single-blog">
@@ -50,7 +50,7 @@
                         </div>
                         <h5 class="blog-heading"><a class="blog-heading-link" href="{% url 'blogdetail' post.id %}">{{post.title}}</a></h5>
                         <p>{{post.body}}</p>
-                        <a href="{% url 'blogdetail' post.id %}" class="btn btn-primary blog-btn"> Batafsil</a>
+                        <a href="{% url 'blogdetail' post.id %}" class="" style="background:#0d6efd; color: #fff; padding: 4% 10%;border-radius:5px;">Batafsil</a>
                     </div>
                 </div>
             </div>

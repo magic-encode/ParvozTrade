@@ -3,21 +3,23 @@
 {% load static %}
 {% include 'head.html' %}
 
-<style type="text/css"> 
-    *{
+<style type="text/css">
+    * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
-    .checkout_box{
-        width: 40%;
+
+    .checkout_box {
+        width: 80%;
         height: auto;
         border: .5px solid #5d5d60;
         padding: 3% 2%;
-        margin: 50px auto;
+        margin: 0px auto;
         border-radius: 3px;
     }
-    .checkout_title_box{
+
+    .checkout_title_box {
         width: 100%;
         height: 100%;
         text-align: center;
@@ -25,24 +27,27 @@
         justify-content: center;
         margin: 1px 0;
     }
-    .checkout_title_box h1{
+
+    .checkout_title_box h1 {
         font-size: 20px;
         font-weight: 400;
         color: gray;
-    
+
     }
-    .form_input *{
-        display: block; 
-        width: 9y0%;
+
+    .form_input * {
+        display: block;
+        width: 90%;
         height: 40px;
         margin: 30px 0;
-        padding: 0.5%;
         border: 1px solid gray;
     }
-    .form_input_sent_btn{
+
+    .form_input_sent_btn {
         margin: 50px 0;
     }
-    .form_input_sent_btn button{
+
+    .form_input_sent_btn button {
         width: auto;
         padding: 1%;
         height: 40px;
@@ -56,47 +61,113 @@
         align-items: center;
         justify-content: center;
     }
-    .prodect_img{
+
+    .prodect_img {
         padding: 1%;
     }
-    .prodect_img img{
+
+    .prodect_img img {
         width: 80%;
         height: 80%;
     }
-    .project__text_title_box p{
+
+    .project__text_title_box p {
         margin: 20px 0;
         font-weight: bold;
         color: gray;
     }
-    .project_text_line{
+
+    .project_text_line {
         margin: 20px 0;
+    }
+    .project__text_title_box > h1{
+        font-size: 100%;
+    }
+    @media screen and (max-width:952px) {
+        .checkout_title_box h1{
+            font-size: 15px;
+        }
+    }
+    @media screen and (max-width:716px) {
+        .checkout_title_box h1{
+            font-size: 13px;
+        }
+    }
+    @media screen and (max-width:425px) {
+        .checkout_title_box h1{
+            font-size: 8px;
+        }
+        .project__text_title_box > h1{
+        font-size: 50%;
+        }
+        .project__text_title_box > p{
+        font-size: 50%;
+        }
+        .form_input * {
+        width: 90%;
+        font-size: small;
+        height: 30px;
+        margin: 50px 0;
+        border: 1px solid gray;
+    }
+    .form_input_sent_btn {
+        margin: 0;
+    }
+    .form_input_sent_btn button{
+        height: 30px;
+        font-size: 10px;
+    }
+    }
+
+    @media screen and (max-width:376px) {
+        .checkout_title_box h1{
+            font-size: 5px;
+        }
+        .project__text_title_box > h1{
+        font-size: 50%;
+        }
+        .project__text_title_box > p{
+        font-size: 50%;
+        }
+        .form_input * {
+        width: 90%;
+        font-size: 10px;
+        height: 20px;
+        margin: 10px 0;
+        border: 1px solid gray;
+    }
+    .form_input_sent_btn {
+        margin: 0;
+    }
+    .form_input_sent_btn button{
+        height: 30px;
+        font-size: 10px;
+    }
     }
 </style>
 
 <body>
     <div class="main-wrapper">
-        
+
         {% include 'navbar.html' %}
 
         <div class="checkout_box">
-            
+
             <form method="POST" action="{% url 'send-message' cheks.id %}">
                 {% csrf_token %}
                 <div class="checkout_title_box">
                     <h1 class="checkout__title">Buyurtma uchun formani to'ldiring</h1>
                 </div>
                 <div class="form_input">
-                    <input name="name" type="text" placeholder="Ism Familiyangiz" , required,
-                                                maxlength="50">
-                    <input name="phone" type="text" value="+998" placeholder="" , required,
-                                                maxlength="14">
+                    <input name="name" type="text" placeholder="Ism Familiyangiz" , required, maxlength="50">
+                    <input name="phone" type="text" value="+998" placeholder="Raqamingizni kiriting" , required, maxlength="14">
                 </div>
                 <div class="form_input_sent_btn">
-                    <button type="submit" >Bugurtma berish</button>
+                    <button type="submit">Buyurtma berish</button>
                 </div>
             </form>
             <hr class="product_line">
-            <div class="product">
+            <div class="product__checkout">
                 <div class="prodect_img">
                     <img src="{{cheks.image.url}}" alt="">
                 </div>
@@ -104,7 +175,7 @@
                     <div class="project__text_title_box">
                         <h1>Mahsulot narxi: ${{cheks.price_new}}</h1>
                         <p>Mahsulot haqida qisqacha</p>
-                        
+
                     </div>
                     <hr class="project_text_line">
                     <div class="project_text_box_description">
@@ -117,18 +188,14 @@
         </div>
         <script src="./data.js"></script>
         <script src="./script.js"></script>
-        *
+        
 
         {% include 'footer.html' %}
-        
+
     </div>
 
     {% include 'jscript.html' %}
-    
+
 </body>
 
-</html>         
-            
-            
-            
-
+</html>
