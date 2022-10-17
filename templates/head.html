@@ -9,11 +9,11 @@
     <meta name="google-site-verification" content="KUnhYvFemc-3GgjCSgQ3LN-CauTU1VR9jSuVR8yuisY" />
     <meta  name="description" content="{% block description %}Kelajakingizni biz bilan quring.Uy jihozlaridan tortib Biznes uchun texnikalar..{% endblock %}" >
     <meta  name="keywords" content="{% block keywords %}parvoz-trade.uz{% endblock %}" >
-    <meta name="twitter:title" content=" {% block twititle %}{% endblock %} " />
+    {% comment %} <meta name="twitter:title" content=" {% block twititle %}{% endblock %} " />
     <meta name="twitter:site" content="@parvoz-trade.uz" />
     <meta name="twitter:image" content="https://parvoz-trade.uz/static/rasm.png" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:description" content="{% block twitterdesc %}{% endblock %}" /> 
+    <meta name="twitter:description" content="{% block twitterdesc %}{% endblock %}" />  {% endcomment %}
     <meta property="og:image" content="{% static 'rasm.png' %}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{% block ogtitle %}Parvoz Trade{% endblock %}" />
@@ -23,7 +23,7 @@
     <meta name="yandex-verification" content="4bc38c819937bed7" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}" />
     <!-- Favicon from pe-7 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/gulpfile.min.js">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
