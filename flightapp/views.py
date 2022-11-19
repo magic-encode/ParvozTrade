@@ -291,3 +291,4 @@ def contactView(request, _type: str = telebot.TYPE_SAVOL):
 
 def yandexView(request):
     return render(request, 'yandex.html')
+
