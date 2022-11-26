@@ -117,6 +117,9 @@ def searchView(request) -> list:
     return render(request, 'shop/search.html', context)
 
 
+def yandexView(request):
+    return render(request, 'yandex.html')
+
 def shopdetailView(request, id):
     myctx: dict = categWishlistHelper(request)
     _all_products = Products.objects.all()

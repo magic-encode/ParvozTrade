@@ -8,6 +8,7 @@ urlpatterns = [
     path('search/', views.searchView, name='search'),
     path('about/', views.aboutView, name='about'),
     
+    path('yandex/', views.yandexView),
 
     path('shop/', views.shopView, name='shop'),
     path('shop-detail/<str:id>/', views.shopdetailView, name='shopdetail'),
